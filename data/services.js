@@ -12,6 +12,7 @@ export const ABCM_SERVICES = [
 
 export const ABCM_NAV = [
   { label: "Expertises", href: "/#services" },
+  { label: "Formations", href: "/formations-strasbourg/" },
   { label: "Références", href: "/#references" },
   { label: "FAQ", href: "/#faq" },
   { label: "Contact", href: "/contact" },
