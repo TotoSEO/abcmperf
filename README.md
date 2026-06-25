@@ -1,25 +1,62 @@
-# CODING AGENTS: READ THIS FIRST
+# ABCM Performances — Site web
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Refonte du site de **ABCM Performances**, agence de communication & marketing digital à Strasbourg (depuis 2015), construite avec **Next.js (App Router)** sur le **design system ABCM**.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Direction artistique : base claire premium ancrée sur le **bleu nuit** `#00001b`, accent unique **jaune** `#fad646` pour l'action, et la **palette des 5 couleurs du logo** (jaune / orange / magenta / bleu / vert) comme système expressif/catégoriel. Typo : Space Grotesk (titres) · Hanken Grotesk (texte) · Space Mono (labels).
 
-## What you should do — IMPORTANT
+## Démarrer
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de production (SSG)
+npm run start    # sert le build
+```
 
-**Find the primary design file under `project/` and read it top to bottom.** The chat transcripts will tell you which file the user was last iterating on. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+## Pages livrées (première passe)
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+| Route | Description |
+|-------|-------------|
+| `/` | Accueil — hero, bandeau clients, grille d'expertises filtrable, avis clients, FAQ, section contact |
+| `/contact` | Page contact dédiée (formulaire + coordonnées) |
+| `/services/[slug]` | Fiche expertise (8 services pré-générés en SSG ; `site-web`, `community`, `seo` ont une méthode détaillée) |
 
-## About the design files
+Périmètre validé avec le client : **Accueil + Contact + 1 service** (un parcours vertical complet). Les autres pages (À propos, Blog, fiches services détaillées) sont à étendre.
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Structure
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+```
+app/
+  layout.jsx            # chrome (Header/Footer), métadonnées SEO, fonts
+  page.jsx              # accueil
+  contact/page.jsx      # /contact
+  services/[slug]/page.jsx  # fiches services (generateStaticParams + metadata)
+  globals.css           # tokens du design system + base
+  ds.css                # styles des composants du design system
+  site.css              # mise en page des sections
+components/
+  ds/                   # primitives du design system portées en React/Next
+                        #   (Button, Card, Input, Accordion, ServiceCard, …)
+  site/                 # sections du site (Header, Hero, Services, Contact, …)
+data/services.js        # données partagées (services, navigation, étapes méthode)
+public/                 # logo ABCM
+project/                # design system source (handoff Claude Design) — référence
+chats/                  # transcript de conception — référence
+```
 
-## Bundle contents
+## Design system
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `ABCM Performances Design System` project files (HTML prototypes, assets, components)
+Le dossier `project/` contient le design system d'origine (tokens, composants, UI kits, specimens) exporté depuis Claude Design. Les primitives `components/ds/*` en sont le portage Next.js : mêmes classes CSS (`abcm-*`) et mêmes tokens, mais sans l'injection de `<style>` au runtime — tout le CSS est global (`app/*.css`) pour un rendu SSR propre. Voir `project/readme.md` pour le guide complet de la marque (fondations, voix, iconographie).
+
+### Notes / substitutions
+
+- **Polices** : Space Grotesk / Hanken Grotesk / Space Mono (choix « moderne » validé), au lieu du Roboto de la charte d'origine. Modifiable dans `app/globals.css` + le `<link>` de `app/layout.jsx`.
+- **Icônes** : [Lucide](https://lucide.dev) via `lucide-react`. Les glyphes de marque (Instagram/LinkedIn/YouTube) sont inlinés dans `components/ds/Icon.jsx` (retirés de lucide-react 1.x).
+- **Images & logos clients** : placeholders (wordmarks en niveaux de gris, motif des cercles). À remplacer par les vraies photos (équipe, bureau, projets) et logos clients pour la mise en production.
+- **Formulaire de contact** : non connecté à un back-end — affiche un état de succès factice. À brancher (email / CRM) avant production.
+
+## Sources
+
+- Charte / tokens : `project/uploads/` (extraits du thème WordPress Flatsome existant)
+- Site de référence : https://abcmperformances.com
+- Dépôt : https://github.com/TotoSEO/abcmperf
