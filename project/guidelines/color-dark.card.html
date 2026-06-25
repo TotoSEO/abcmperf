@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Dark surfaces" subtitle="Night-blue sections — [data-theme=dark]" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--night); font-family: var(--font-sans); }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; height: 96px; border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; border: 1px solid rgba(255,255,255,0.12); color: #fff; }
+  .sw b { font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
+  .sw span { font-family: var(--font-mono); font-size: 10px; opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw" style="background: var(--night);"><b>night</b><span>#00001b · bg</span></div>
+    <div class="sw" style="background: var(--neutral-900);"><b>900</b><span>surface</span></div>
+    <div class="sw" style="background: var(--neutral-800);"><b>800</b><span>surface-2</span></div>
+    <div class="sw" style="background: var(--accent-400); color: var(--night);"><b>accent</b><span>#fad646</span></div>
+  </div>
+</body>
+</html>

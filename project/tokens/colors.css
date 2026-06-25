@@ -1,0 +1,116 @@
+/* =========================================================================
+   ABCM PERFORMANCES — COLORS
+   Hybrid system: a calm cool-neutral base (anchored on the brand "night
+   blue"), a single yellow accent for action, and the 5-colour logo palette
+   reserved as a vivid categorical / expressive system.
+   ========================================================================= */
+
+:root {
+  /* ----- Brand raw values (from the existing charte) -------------------- */
+  --abcm-night:   #00001b;  /* bleu nuit — dark surfaces, header, footer */
+  --abcm-accent:  #fad646;  /* jaune doré — primary action / highlight */
+  --abcm-amber:   #ecb24c;  /* ambre — warning / secondary accent */
+  --abcm-pink:    #f4aaf9;  /* rose pâle — soft accent */
+  --abcm-gray:    #a49c9c;  /* gris taupe — legacy secondary */
+  --abcm-white:   #ffffff;
+
+  /* ----- Logo palette (categorical / expressive) ----------------------- */
+  --logo-yellow:  #f2c811;
+  --logo-orange:  #ee8a2c;
+  --logo-magenta: #d6306b;
+  --logo-blue:    #2e81c4;
+  --logo-green:   #6bb36b;
+
+  /* ----- Brand gradients (the 5 logo colours as one expressive system) -- */
+  --gradient-brand:   linear-gradient(90deg, var(--logo-yellow), var(--logo-orange), var(--logo-magenta), var(--logo-blue), var(--logo-green));
+  --gradient-brand-3: linear-gradient(90deg, var(--logo-magenta), var(--logo-blue), var(--logo-green));
+  --gradient-warm:    linear-gradient(90deg, var(--logo-yellow), var(--logo-orange), var(--logo-magenta));
+
+  /* ----- Neutral ramp (cool, biased toward the night blue) ------------- */
+  --neutral-0:    #ffffff;
+  --neutral-50:   #f7f7fb;
+  --neutral-100:  #eeeef4;
+  --neutral-200:  #e0e0ea;
+  --neutral-300:  #c8c8d6;
+  --neutral-400:  #9d9db1;
+  --neutral-500:  #6f6f88;
+  --neutral-600:  #4f4f66;
+  --neutral-700:  #353350;
+  --neutral-800:  #20203a;
+  --neutral-900:  #121228;
+  --neutral-950:  #08081c;
+  --night:        #00001b;
+
+  /* ----- Accent ramp (yellow) ------------------------------------------ */
+  --accent-50:    #fffbe6;
+  --accent-100:   #fff4bd;
+  --accent-200:   #ffe98a;
+  --accent-300:   #fcdf5e;
+  --accent-400:   #fad646;   /* core brand accent */
+  --accent-500:   #f0c520;
+  --accent-600:   #d2a60a;
+  --accent-700:   #a07e06;
+
+  /* ----- Semantic states (mapped onto the logo palette) ---------------- */
+  --success:      #4f9d54;   /* derived from logo green, AA on white */
+  --success-soft: #e7f3e7;
+  --info:         #2e81c4;   /* logo blue */
+  --info-soft:    #e3eef8;
+  --warning:      #c98a17;   /* amber, darkened for contrast */
+  --warning-soft: #fbf0d6;
+  --danger:       #d6306b;   /* logo magenta */
+  --danger-soft:  #fbe3ec;
+
+  /* =====================================================================
+     SEMANTIC ALIASES — light theme (default)
+     ===================================================================== */
+  --bg:             var(--neutral-50);
+  --bg-subtle:      var(--neutral-100);
+  --surface:        var(--neutral-0);
+  --surface-2:      var(--neutral-50);
+  --surface-inset:  var(--neutral-100);
+  --surface-dark:   var(--night);
+
+  --text:           var(--neutral-900);
+  --text-muted:     var(--neutral-500);
+  --text-subtle:    var(--neutral-400);
+  --text-inverse:   var(--neutral-0);
+  --text-on-accent: var(--night);
+
+  --border:         var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+  --border-dark:    var(--neutral-800);
+
+  --accent:          var(--accent-400);
+  --accent-hover:    var(--accent-500);
+  --accent-press:    var(--accent-600);
+  --accent-contrast: var(--night);
+
+  --link:        var(--neutral-900);
+  --link-hover:  var(--accent-600);
+
+  --ring:        color-mix(in oklch, var(--accent-400) 60%, transparent);
+  --overlay:     color-mix(in oklch, var(--night) 55%, transparent);
+}
+
+/* =========================================================================
+   DARK SCOPE — apply [data-theme="dark"] (or .on-dark) to night-blue sections
+   ========================================================================= */
+[data-theme="dark"], .on-dark {
+  --bg:             var(--night);
+  --bg-subtle:      var(--neutral-950);
+  --surface:        var(--neutral-900);
+  --surface-2:      var(--neutral-800);
+  --surface-inset:  var(--neutral-950);
+
+  --text:           var(--neutral-50);
+  --text-muted:     var(--neutral-400);
+  --text-subtle:    var(--neutral-500);
+  --text-inverse:   var(--neutral-900);
+
+  --border:         color-mix(in oklch, var(--neutral-50) 12%, transparent);
+  --border-strong:  color-mix(in oklch, var(--neutral-50) 22%, transparent);
+
+  --link:        var(--neutral-50);
+  --link-hover:  var(--accent-400);
+}

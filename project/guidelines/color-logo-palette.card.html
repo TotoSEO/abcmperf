@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Logo palette" subtitle="The 5 logo circles — categorical / expressive colours" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--surface); font-family: var(--font-sans); }
+  .row { display: flex; gap: 14px; }
+  .item { flex: 1; text-align: center; }
+  .dot { width: 100%; aspect-ratio: 1; max-width: 90px; margin: 0 auto 10px; border-radius: 50%; box-shadow: var(--shadow-md); }
+  .name { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--text); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="dot" style="background: var(--logo-yellow);"></div><div class="name">yellow</div><div class="hex">#f2c811</div></div>
+    <div class="item"><div class="dot" style="background: var(--logo-orange);"></div><div class="name">orange</div><div class="hex">#ee8a2c</div></div>
+    <div class="item"><div class="dot" style="background: var(--logo-magenta);"></div><div class="name">magenta</div><div class="hex">#d6306b</div></div>
+    <div class="item"><div class="dot" style="background: var(--logo-blue);"></div><div class="name">blue</div><div class="hex">#2e81c4</div></div>
+    <div class="item"><div class="dot" style="background: var(--logo-green);"></div><div class="name">green</div><div class="hex">#6bb36b</div></div>
+  </div>
+</body>
+</html>

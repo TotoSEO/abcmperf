@@ -1,0 +1,11 @@
+/* =========================================================================
+   ABCM PERFORMANCES — FONTS
+   Modernised pairing (see README "Visual Foundations").
+   - Display / headings : Space Grotesk  (geometric, characterful — echoes the
+     circular logo geometry)
+   - Body / UI          : Hanken Grotesk (clean, warm, highly legible)
+   - Mono / labels      : Space Mono     (technical accents, eyebrows, code)
+   The original brand used Roboto / Roboto Condensed — kept as fallbacks.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap');

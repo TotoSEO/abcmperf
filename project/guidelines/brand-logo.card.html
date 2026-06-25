@@ -1,0 +1,32 @@
+<!-- @dsCard group="Brand" viewport="700x180" name="Logo" subtitle="Primary mark on light and night-blue" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; display: flex; font-family: var(--font-sans); }
+  .pane { flex: 1; height: 180px; display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .light { background: var(--surface); }
+  .dark { background: var(--night); }
+  .mark { height: 40px; width: auto; }
+  .word { display: flex; flex-direction: column; line-height: 1; }
+  .word b { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+  .word span { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
+  .light .word b { color: var(--night); }
+  .light .word span { color: var(--text-muted); }
+  .dark .word b { color: #fff; }
+  .dark .word span { color: var(--accent-400); }
+</style>
+</head>
+<body>
+  <div class="pane light">
+    <img class="mark" src="../assets/logo-abcm-circles.png" alt="ABCM">
+    <div class="word"><b>ABCM</b><span>Performances</span></div>
+  </div>
+  <div class="pane dark">
+    <img class="mark" src="../assets/logo-abcm-circles.png" alt="ABCM">
+    <div class="word"><b>ABCM</b><span>Performances</span></div>
+  </div>
+</body>
+</html>

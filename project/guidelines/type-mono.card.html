@@ -1,0 +1,28 @@
+<!-- @dsCard group="Type" viewport="700x230" name="Mono & eyebrow" subtitle="Space Mono labels + the multicolor eyebrow (sur-titre)" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 26px; background: var(--surface); font-family: var(--font-sans); color: var(--text); }
+  .stack { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+  .row { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  /* Variant B — pill eyebrow */
+  .eyebrow-pill { display: inline-flex; align-items: center; gap: 0.55em; font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-700); background: var(--accent-100); padding: 0.5em 0.9em; border-radius: var(--radius-pill); }
+  .eyebrow-pill::before { content: ""; width: 0.55em; height: 0.55em; border-radius: 50%; background: var(--logo-magenta); }
+  .label { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); }
+  .num { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--text); }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <span class="eyebrow">Agence à Strasbourg · depuis 2015</span>
+    <span class="eyebrow-pill">Nos expertises</span>
+    <div class="row">
+      <span class="num">+150 projets</span>
+      <span class="label">slug / référencement-seo · v2.4</span>
+    </div>
+  </div>
+</body>
+</html>

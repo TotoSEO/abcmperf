@@ -1,0 +1,32 @@
+<!-- @dsCard group="Type" viewport="700x250" name="Body & lead" subtitle="Hanken Grotesk — running text, three sizes" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--surface); font-family: var(--font-sans); color: var(--text); }
+  .block { display: flex; gap: 16px; align-items: baseline; margin-bottom: 18px; }
+  .block:last-child { margin-bottom: 0; }
+  .tag { font-family: var(--font-mono); font-size: 10px; color: var(--text-subtle); width: 78px; flex: none; letter-spacing: 0.04em; }
+  .lead { font-size: 22px; line-height: 1.5; color: var(--text); font-weight: 500; margin: 0; max-width: 54ch; }
+  .body { font-size: 16px; line-height: 1.6; color: var(--neutral-700); margin: 0; max-width: 60ch; }
+  .small { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin: 0; max-width: 62ch; }
+  b { font-weight: 700; color: var(--text); }
+</style>
+</head>
+<body>
+  <div class="block">
+    <span class="tag">lead · 22</span>
+    <p class="lead">Votre partenaire pour booster votre <b>visibilité en ligne</b> et votre communication digitale à Strasbourg.</p>
+  </div>
+  <div class="block">
+    <span class="tag">body · 16</span>
+    <p class="body">Notre approche globale améliore vos performances grâce à une visibilité optimale sur le Web. Une équipe expérimentée vous accompagne sur tous vos projets, du <b>site vitrine</b> au référencement.</p>
+  </div>
+  <div class="block">
+    <span class="tag">small · 13</span>
+    <p class="small">Mentions, légendes et notes de bas de page. Lisible, discret, jamais en dessous de 13px.</p>
+  </div>
+</body>
+</html>
