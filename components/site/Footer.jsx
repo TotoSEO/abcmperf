@@ -13,7 +13,7 @@ const COLS = [
   { h: "Consulting", links: [
     { label: "Personal Branding", href: "/services/branding" },
     { label: "Référencement GEO (IA)", href: "/services/geo" },
-    { label: "Formations", href: "/services/formations" },
+    { label: "Formations à Strasbourg", href: "/formations-strasbourg/" },
   ] },
   { h: "Agence", links: [
     { label: "Références", href: "/#references" },
