@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button, SectionHeading, ServiceCard, Icon } from "@/components/ds";
 import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo, assetPath } from "@/data/formations";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
 
 const SITE = ABCM_INFO.url;
 
@@ -76,6 +77,7 @@ export function FormationsHub() {
 
   return (
     <div className="fmt-hub">
+      <ScrollReveal />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ---- Hero (pleine largeur) ---- */}
@@ -118,7 +120,10 @@ export function FormationsHub() {
                 <path d="M61 35 L74 42 L66 27" stroke="#f2c811" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-            <Link className="fhero__cta" href="/contact" rel="nofollow">Demander un devis</Link>
+            <span className="fhero__cta-stack">
+              <Link className="fhero__cta" href="/contact" rel="nofollow">Demander un devis</Link>
+              <a className="fhero__cta2" href="#formations">Voir les formations disponibles</a>
+            </span>
             <span className="fhero__note fhero__note--r">
               <span className="fhero__note-num">+10 ans</span>
               <span>d'expérience</span>
@@ -130,8 +135,8 @@ export function FormationsHub() {
       {/* ---- Ils nous font confiance ---- */}
       <section className="fhero-logos on-dark" data-theme="dark">
         <div className="container">
-          <p className="fhero-logos__title">Ils nous font confiance</p>
-          <div className="fhero-logos__grid">
+          <p className="fhero-logos__title" data-reveal>Ils nous font confiance</p>
+          <div className="fhero-logos__grid" data-reveal>
             {CLIENTS.map((c) => (
               <div key={c.slug} className="fhero-logos__card">
                 <img src={assetPath(`clients/${c.slug}.png`)} alt={c.name} loading="lazy" />
@@ -143,10 +148,12 @@ export function FormationsHub() {
 
       {/* ---- Silos ---- */}
       {groups.map(({ silo, items }, i) => (
-        <section key={silo.id} id={silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
+        <section key={silo.id} id={i === 0 ? "formations" : silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
           <div className="container">
-            <SectionHeading align="center" eyebrow={`${silo.emoji} ${silo.label}`} title={silo.label} description={silo.intro} />
-            <div className="fmt-hub__grid">
+            <div data-reveal>
+              <SectionHeading align="center" title={silo.label} description={silo.intro} />
+            </div>
+            <div className="fmt-hub__grid" data-reveal>
               {items.map((f) => (
                 <ServiceCard
                   key={f.slug}
@@ -167,7 +174,7 @@ export function FormationsHub() {
       {/* ---- Salle / locaux Strasbourg ---- */}
       <section className="section fmt-room">
         <div className="container fmt-room__inner">
-          <div className="fmt-room__media">
+          <div className="fmt-room__media" data-reveal="left">
             <img
               src={assetPath("salle-formation-strasbourg.webp")}
               alt="La salle de formation d'ABCM Performances à Strasbourg : lumineuse, avec tables de réunion et grandes fenêtres"
@@ -176,7 +183,7 @@ export function FormationsHub() {
               height="907"
             />
           </div>
-          <div className="fmt-room__text">
+          <div className="fmt-room__text" data-reveal="right">
             <SectionHeading eyebrow="Nos locaux" title="Formez-vous en présentiel au cœur de Strasbourg" />
             <p>
               Nos formations se déroulent dans un cadre lumineux et chaleureux à Strasbourg, propice à
@@ -196,7 +203,7 @@ export function FormationsHub() {
       {/* ---- CTA ---- */}
       <section className="section">
         <div className="container">
-          <div className="svc-banner">
+          <div className="svc-banner" data-reveal>
             <div>
               <h3>Un besoin spécifique ou une formation sur-mesure&nbsp;?</h3>
               <p>Toutes nos formations s'adaptent à votre équipe, en intra comme en inter-entreprise. Parlons de votre projet.</p>
@@ -208,7 +215,7 @@ export function FormationsHub() {
 
       {/* ---- Qualiopi (bas de page) ---- */}
       <section className="section quali-section">
-        <div className="container">
+        <div className="container" data-reveal>
           <QualiopiBlock />
         </div>
       </section>

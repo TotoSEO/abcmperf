@@ -6,6 +6,12 @@ import { useEffect } from "react";
 // parent. Respecte prefers-reduced-motion (aucune animation, tout visible).
 export function ScrollReveal() {
   useEffect(() => {
+    // Toujours démarrer en haut de page (évite la restauration de scroll du
+    // navigateur qui faisait "arriver" la page déjà défilée).
+    if (typeof window !== "undefined" && !window.location.hash) {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
     const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const els = Array.from(document.querySelectorAll("[data-reveal]"));
     if (reduce || !("IntersectionObserver" in window) || !els.length) return;
