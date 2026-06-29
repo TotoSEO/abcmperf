@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
-import { ABCM_SERVICES, getService } from "@/data/services";
+import { ABCM_SERVICES, getService, serviceMetadata } from "@/data/services";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return ABCM_SERVICES.map((s) => ({ slug: s.slug }));
@@ -8,13 +10,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const s = getService(slug);
-  if (!s) return {};
-  return {
-    title: `${s.title} à Strasbourg`,
-    description: `${s.desc} ABCM Performances, agence de communication & marketing digital à Strasbourg.`,
-    alternates: { canonical: `/services/${slug}/` },
-  };
+  return serviceMetadata(slug);
 }
 
 export default async function ServicePage({ params }) {

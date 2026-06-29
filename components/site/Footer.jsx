@@ -5,15 +5,16 @@ import { ABCM_INFO } from "@/data/formations";
 
 const COLS = [
   { h: "Expertises", links: [
-    { label: "Création de site web", href: "/services/site-web" },
-    { label: "Stratégie digitale", href: "/services/strategie" },
-    { label: "Community Management", href: "/services/community" },
-    { label: "Référencement SEO", href: "/services/seo" },
-    { label: "Google Ads", href: "/services/ads" },
+    { label: "Création de site web", href: "/services/site-internet/" },
+    { label: "Boutique e-commerce", href: "/services/site-ecommerce/" },
+    { label: "Référencement SEO", href: "/services/referencement-seo/" },
+    { label: "Community management", href: "/services/community-management/" },
+    { label: "Google Ads (SEA)", href: "/services/google-ads/" },
   ] },
   { h: "Consulting", links: [
-    { label: "Personal Branding", href: "/services/branding" },
-    { label: "Référencement GEO (IA)", href: "/services/geo" },
+    { label: "Marketing externalisé", href: "/services/marketing-externalise/" },
+    { label: "Personal branding", href: "/services/personal-branding/" },
+    { label: "Référencement GEO (IA)", href: "/services/referencement-geo/" },
     { label: "Formations à Strasbourg", href: "/formations-strasbourg/" },
     { label: "Modalités de formation", href: "/modalites-de-la-formation/" },
   ] },
