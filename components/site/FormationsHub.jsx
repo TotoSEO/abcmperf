@@ -1,10 +1,19 @@
 import React from "react";
 import Link from "next/link";
-import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
+import { Button, SectionHeading, ServiceCard, Icon } from "@/components/ds";
 import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo, assetPath } from "@/data/formations";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 
 const SITE = ABCM_INFO.url;
+
+const CLIENTS = [
+  { slug: "biomerieux", name: "Biomérieux" },
+  { slug: "caisse-epargne", name: "Caisse d'Épargne" },
+  { slug: "crcc", name: "CRCC" },
+  { slug: "pierre-lannier", name: "Pierre Lannier" },
+  { slug: "afi-esca", name: "AFI ESCA" },
+  { slug: "welch-kessler", name: "Welch Kessler & Associés" },
+];
 
 function buildJsonLd() {
   const orgId = SITE + "/#organization";
@@ -69,40 +78,68 @@ export function FormationsHub() {
     <div className="fmt-hub">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ---- Hero ---- */}
-      <section className="fmt-hero on-dark" data-theme="dark">
-        <div className="fmt-hero__motif"><CircleMotif size={340} overlap={0.32} opacity={0.7} /></div>
-        <div className="container fmt-hero__inner">
-          <span className="fmt-hero__eyebrow"><span className="fmt-hero__dot" aria-hidden="true" />Organisme certifié Qualiopi</span>
-          <h1 className="fmt-hero__title">Formations digitales, IA &amp; marketing à <span className="text-gradient-warm">Strasbourg</span></h1>
-          <p className="fmt-hero__lead">
-            {FORMATIONS.length} formations professionnelles pour monter en compétences sur l'IA, les réseaux sociaux,
-            le marketing digital, le web et la marque employeur. En présentiel à Strasbourg et dans le Grand Est,
-            ou à distance en visio. Intra et inter-entreprise, finançables via votre OPCO.
+      {/* ---- Hero (pleine largeur) ---- */}
+      <section className="fhero on-dark" data-theme="dark">
+        <div className="fhero__deco" aria-hidden="true">
+          <span className="fhero__shape fhero__shape--l" />
+          <span className="fhero__shape fhero__shape--r" />
+          <svg className="fhero__route fhero__route--l" viewBox="0 0 160 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M152 6 H40 a34 34 0 0 0 -34 34 V284" stroke="url(#fhrL)" strokeWidth="3" strokeDasharray="1 11" strokeLinecap="round" />
+            <defs><linearGradient id="fhrL" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#d6306b" /><stop offset="1" stopColor="#ee8a2c" /></linearGradient></defs>
+          </svg>
+          <svg className="fhero__route fhero__route--r" viewBox="0 0 160 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 6 H120 a34 34 0 0 1 34 34 V284" stroke="url(#fhrR)" strokeWidth="3" strokeDasharray="1 11" strokeLinecap="round" />
+            <defs><linearGradient id="fhrR" x1="1" y1="0" x2="0" y2="1"><stop stopColor="#f2c811" /><stop offset="1" stopColor="#d6306b" /></linearGradient></defs>
+          </svg>
+        </div>
+
+        <div className="container fhero__inner">
+          <span className="fhero__rating">
+            <span className="fhero__stars" aria-hidden="true">
+              <Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} /><Icon name="star" size={18} />
+            </span>
+            <span className="fhero__rating-txt">Organisme de formation certifié Qualiopi</span>
+          </span>
+
+          <h1 className="fhero__title">
+            <span className="fhero__hl-pink">Formez-vous</span> au digital, à l'IA et au marketing à <span className="fhero__hl-warm">Strasbourg</span>
+          </h1>
+
+          <p className="fhero__sub">
+            {FORMATIONS.length} formations professionnelles, en présentiel à Strasbourg ou à distance.
+            Intra et inter-entreprise, finançables via votre OPCO.
           </p>
-          <div className="fmt-hero__actions">
-            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
-            <Button as="a" href={`tel:${ABCM_INFO.phoneHref}`} variant="outline" size="lg" iconLeft={<Icon name="phone" size={18} />}>{ABCM_INFO.phone}</Button>
+
+          <div className="fhero__cta-row">
+            <span className="fhero__note fhero__note--l">
+              <span>Accès immédiat<br />au catalogue</span>
+              <svg className="fhero__arrow" viewBox="0 0 80 50" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 10 C40 6 66 16 72 40" stroke="#f2c811" strokeWidth="2.6" strokeLinecap="round" />
+                <path d="M61 35 L74 42 L66 27" stroke="#f2c811" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <Link className="fhero__cta" href="/contact" rel="nofollow">Demander un devis</Link>
+            <span className="fhero__note fhero__note--r">
+              <span className="fhero__note-num">+10 ans</span>
+              <span>d'expérience</span>
+            </span>
           </div>
-          <ul className="fmt-hero__trust">
-            <li><Icon name="graduation-cap" size={16} /> {FORMATIONS.length} formations</li>
-            <li><Icon name="shield-check" size={16} /> Certifié Qualiopi</li>
-            <li><Icon name="map-pin" size={16} /> Strasbourg &amp; visio</li>
-            <li><Icon name="check" size={16} /> Finançable OPCO</li>
-          </ul>
         </div>
       </section>
 
-      {/* ---- Nav silos ---- */}
-      <nav className="fmt-hub__nav" aria-label="Catégories de formation">
-        <div className="container fmt-hub__nav-inner">
-          {groups.map(({ silo }) => (
-            <a key={silo.id} href={`#${silo.id}`} className="fmt-hub__nav-link">
-              <span aria-hidden="true">{silo.emoji}</span> {silo.label}
-            </a>
-          ))}
+      {/* ---- Ils nous font confiance ---- */}
+      <section className="fhero-logos on-dark" data-theme="dark">
+        <div className="container">
+          <p className="fhero-logos__title">Ils nous font confiance</p>
+          <div className="fhero-logos__grid">
+            {CLIENTS.map((c) => (
+              <div key={c.slug} className="fhero-logos__card">
+                <img src={assetPath(`clients/${c.slug}.png`)} alt={c.name} loading="lazy" />
+              </div>
+            ))}
+          </div>
         </div>
-      </nav>
+      </section>
 
       {/* ---- Silos ---- */}
       {groups.map(({ silo, items }, i) => (
