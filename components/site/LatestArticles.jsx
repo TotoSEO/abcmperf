@@ -5,7 +5,7 @@ import { ARTICLES } from "@/data/articles";
 export function LatestArticles() {
   if (!ARTICLES.length) return null;
   return (
-    <section className="section articles-wrap">
+    <section className="section articles-wrap" id="blog">
       <div className="container">
         <div data-reveal>
           <SectionHeading

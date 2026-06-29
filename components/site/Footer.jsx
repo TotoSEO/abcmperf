@@ -5,16 +5,16 @@ import { ABCM_INFO } from "@/data/formations";
 
 const COLS = [
   { h: "Expertises", links: [
-    { label: "Création de site web", href: "/services/site-internet/" },
-    { label: "Boutique e-commerce", href: "/services/site-ecommerce/" },
-    { label: "Référencement SEO", href: "/services/referencement-seo/" },
-    { label: "Community management", href: "/services/community-management/" },
-    { label: "Google Ads (SEA)", href: "/services/google-ads/" },
+    { label: "Création de site web", href: "/agence-web-strasbourg/" },
+    { label: "Boutique e-commerce", href: "/creation-site-ecommerce/" },
+    { label: "Référencement SEO", href: "/referencement-strasbourg/" },
+    { label: "Community management", href: "/community-management/" },
+    { label: "Google Ads (SEA)", href: "/agence-sea/" },
   ] },
   { h: "Consulting", links: [
-    { label: "Marketing externalisé", href: "/services/marketing-externalise/" },
-    { label: "Personal branding", href: "/services/personal-branding/" },
-    { label: "Référencement GEO (IA)", href: "/services/referencement-geo/" },
+    { label: "Marketing externalisé", href: "/marketing-externalise/" },
+    { label: "Personal branding", href: "/personal-branding/" },
+    { label: "Référencement GEO (IA)", href: "/referencement-ia-geo/" },
     { label: "Formations à Strasbourg", href: "/formations-strasbourg/" },
     { label: "Modalités de formation", href: "/modalites-de-la-formation/" },
   ] },

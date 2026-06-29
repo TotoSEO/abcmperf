@@ -210,6 +210,23 @@
   --link-hover:  var(--accent-400);
 }
 
+/* Réaffirme le thème clair (ex. carte claire posée dans un hero sombre). */
+[data-theme="light"] {
+  --bg:             var(--neutral-50);
+  --bg-subtle:      var(--neutral-100);
+  --surface:        var(--neutral-0);
+  --surface-2:      var(--neutral-50);
+  --surface-inset:  var(--neutral-100);
+  --text:           var(--neutral-900);
+  --text-muted:     var(--neutral-500);
+  --text-subtle:    var(--neutral-400);
+  --text-inverse:   var(--neutral-0);
+  --border:         var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+  --link:           var(--neutral-900);
+  --link-hover:     var(--accent-600);
+}
+
 /* ---------- BASE ------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 

@@ -2,12 +2,15 @@ import React from "react";
 import Link from "next/link";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 import { TrainerBlock } from "@/components/site/TrainerBlock";
-import { Button, SectionHeading, Card, CircleMotif, Icon, Accordion } from "@/components/ds";
+import { RichContent } from "@/components/site/RichContent";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { Button, Card, CircleMotif, Icon, Accordion } from "@/components/ds";
 import {
   ABCM_INFO, HUB_URL, MODALITES_URL,
   STD_MODALITES, STD_TARIFS, STD_FINANCEMENT, STD_PREREQUIS, STD_DELAI, STD_ACCESSIBILITE,
-  getSilo, relatedFor,
+  getSilo, relatedFor, formationPriceFrom,
 } from "@/data/formations";
+import { formationContent } from "@/data/formationContent";
 
 const SITE = ABCM_INFO.url;
 
@@ -35,6 +38,7 @@ function buildJsonLd(f) {
   const canonical = SITE + f.url;
   const orgId = SITE + "/#organization";
   const workload = workloadISO(f.duree);
+  const priceFrom = formationPriceFrom(f);
 
   const course = {
     "@type": "Course",
@@ -47,7 +51,7 @@ function buildJsonLd(f) {
     offers: {
       "@type": "Offer",
       category: "Inter-entreprise",
-      price: "760",
+      price: String(priceFrom),
       priceCurrency: "EUR",
       url: canonical,
       availability: "https://schema.org/InStock",
@@ -87,6 +91,12 @@ function buildJsonLd(f) {
       addressRegion: ABCM_INFO.region,
       addressCountry: ABCM_INFO.country,
     },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: String(ABCM_INFO.googleStars),
+      reviewCount: String(ABCM_INFO.googleReviews),
+      bestRating: "5",
+    },
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Certification Qualiopi",
@@ -124,11 +134,16 @@ export function FormationDetail({ formation }) {
   const related = relatedFor(f);
   const tarifs = f.tarifs || STD_TARIFS;
   const jsonLd = buildJsonLd(f);
+  const content = formationContent(f.slug);
+  const priceStr = formationPriceFrom(f).toLocaleString("fr-FR");
+  const stars = Array.from({ length: ABCM_INFO.googleStars });
 
   const facts = [
+    { icon: "users", label: "Public visé", value: f.public },
+    { icon: "check", label: "Prérequis", value: f.prerequis || STD_PREREQUIS },
     { icon: "clock", label: "Durée", value: f.duree },
-    { icon: "check", label: "Délai d'accès", value: STD_DELAI },
-    { icon: "users", label: "Accessibilité", value: STD_ACCESSIBILITE },
+    { icon: "send", label: "Délai d'accès", value: STD_DELAI },
+    { icon: "shield-check", label: "Accessibilité", value: STD_ACCESSIBILITE },
   ];
 
   const formats = [
@@ -139,57 +154,79 @@ export function FormationDetail({ formation }) {
 
   return (
     <article className="fmt" style={{ "--silo-hue": `var(--logo-${f.hue})` }}>
+      <ScrollReveal />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ---- Hero ---- */}
-      <section className="fmt-hero on-dark" data-theme="dark">
-        <div className="fmt-hero__motif"><CircleMotif size={320} overlap={0.32} opacity={0.7} /></div>
-        <div className="container fmt-hero__inner">
-          <nav className="fmt__crumbs" aria-label="Fil d'Ariane">
-            <Link href="/">Accueil</Link>
-            <span aria-hidden="true">/</span>
-            <Link href={HUB_URL}>Formations</Link>
-            <span aria-hidden="true">/</span>
-            <span className="fmt__crumb-current">{f.name}</span>
-          </nav>
-          <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
-          <p className="fmt-hero__lead">{f.lead}</p>
-          <div className="fmt-hero__actions">
-            <Button as={Link} href="/contact" rel="nofollow" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Je suis intéressé par cette formation</Button>
-            <Button as="a" href={`tel:${ABCM_INFO.phoneHref}`} variant="outline" size="lg" iconLeft={<Icon name="phone" size={18} />}>{ABCM_INFO.phone}</Button>
+      {/* ---- Hero : deux colonnes (texte + carte produit) ---- */}
+      <section className="fmt-hero fmt-hero--split on-dark" data-theme="dark">
+        <div className="fmt-hero__motif"><CircleMotif size={300} overlap={0.32} opacity={0.6} /></div>
+        <div className="container fmt-hero__split">
+          <div className="fmt-hero__col">
+            <nav className="fmt__crumbs" aria-label="Fil d'Ariane">
+              <Link href="/">Accueil</Link>
+              <span aria-hidden="true">/</span>
+              <Link href={HUB_URL}>Formations</Link>
+              <span aria-hidden="true">/</span>
+              <span className="fmt__crumb-current">{f.name}</span>
+            </nav>
+            <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
+            <p className="fmt-hero__sub">Avec une formatrice experte, en présentiel à Strasbourg ou à distance.</p>
+            <p className="fmt-hero__lead">{f.lead}</p>
+            <Link className="fmt-hero__back" href={HUB_URL}>
+              <Icon name="arrow-left" size={16} /> Retour à <span>toutes nos formations</span>
+            </Link>
           </div>
-          <ul className="fmt-hero__trust">
-            <li><Icon name="shield-check" size={16} /> Certifié Qualiopi</li>
-            <li><Icon name="clock" size={16} /> {f.duree}</li>
-            <li><Icon name="map-pin" size={16} /> Présentiel &amp; visio</li>
-            <li><Icon name="check" size={16} /> Finançable OPCO</li>
-          </ul>
+
+          <aside className="fmt-pricecard" data-theme="light">
+            <div className="fmt-pricecard__deco" aria-hidden="true"><CircleMotif size={220} overlap={0.34} opacity={0.5} /></div>
+            <div className="fmt-pricecard__inner">
+              <p className="fmt-pricecard__name">{f.name}</p>
+              <p className="fmt-pricecard__price">
+                <span className="fmt-pricecard__from">accessible à partir de</span>
+                <span className="fmt-pricecard__amount">{priceStr} €</span>
+                <span className="fmt-pricecard__unit">HT / personne</span>
+              </p>
+              <div className="fmt-pricecard__actions">
+                <Button as={Link} href="/contact" rel="nofollow" variant="primary" block iconRight={<Icon name="arrow-right" size={18} />}>Je suis intéressé par cette formation</Button>
+                <a className="fmt-pricecard__ghost" href="#programme">Que contient cette formation&nbsp;? <Icon name="chevron-down" size={16} /></a>
+              </div>
+              <p className="fmt-pricecard__quali">
+                <Icon name="shield-check" size={16} /> ABCM Performances, organisme de formation agréé Qualiopi
+              </p>
+              <div className="fmt-pricecard__reviews">
+                <span className="fmt-pricecard__stars" aria-hidden="true">
+                  {stars.map((_, i) => <Icon key={i} name="star" size={16} />)}
+                </span>
+                <span className="fmt-pricecard__reviews-txt">{ABCM_INFO.googleStars}/5 · {ABCM_INFO.googleReviews} avis Google</span>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      {/* ---- Corps ---- */}
+      {/* ---- Corps : grille (contenu + encart infos) ---- */}
       <section className="section fmt-body">
         <div className="container fmt__grid">
           <div className="fmt__main">
             {/* Objectifs */}
-            <header className="fmt-head">
+            <header className="fmt-head" data-reveal>
               <span className="eyebrow">Objectifs pédagogiques</span>
               <h2 className="fmt-head__title">Ce que vous saurez faire</h2>
             </header>
-            <ul className="fmt__objectives">
+            <ul className="fmt__objectives" data-reveal>
               {f.objectifs.map((o) => (
                 <li key={o}><span className="fmt__obj-ic"><Icon name="check" size={16} /></span>{o}</li>
               ))}
             </ul>
 
             {/* Programme */}
-            <header className="fmt-head fmt__mt">
+            <header className="fmt-head fmt__mt" id="programme" data-reveal>
               <span className="eyebrow">Programme détaillé</span>
               <h2 className="fmt-head__title">Le déroulé de la formation</h2>
             </header>
             <ol className="fmt-modules">
               {f.programme.map((m, i) => (
-                <li className="fmt-module" key={m.module}>
+                <li className="fmt-module" key={m.module} data-reveal>
                   <div className="fmt-module__num">{String(i + 1).padStart(2, "0")}</div>
                   <div className="fmt-module__body">
                     <h3 className="fmt-module__title">{m.module}</h3>
@@ -201,32 +238,14 @@ export function FormationDetail({ formation }) {
               ))}
             </ol>
 
-            {/* Public & prérequis */}
-            <header className="fmt-head fmt__mt">
-              <span className="eyebrow">Pour qui</span>
-              <h2 className="fmt-head__title">Public &amp; prérequis</h2>
-            </header>
-            <div className="fmt__pubprereq">
-              <div className="fmt-pp">
-                <span className="fmt-pp__ic"><Icon name="users" size={22} /></span>
-                <h3>Public visé</h3>
-                <p>{f.public}</p>
-              </div>
-              <div className="fmt-pp">
-                <span className="fmt-pp__ic"><Icon name="check" size={22} /></span>
-                <h3>Prérequis</h3>
-                <p>{f.prerequis || STD_PREREQUIS}</p>
-              </div>
-            </div>
-
             {/* Modalités */}
-            <header className="fmt-head fmt__mt">
+            <header className="fmt-head fmt__mt" data-reveal>
               <span className="eyebrow">Modalités</span>
               <h2 className="fmt-head__title">Comment se déroule la formation</h2>
             </header>
             <div className="fmt-formats">
               {formats.map((fm) => (
-                <div className="fmt-format" key={fm.title}>
+                <div className="fmt-format" key={fm.title} data-reveal>
                   <span className="fmt-format__ic"><Icon name={fm.icon} size={22} /></span>
                   <h3 className="fmt-format__title">{fm.title}</h3>
                   <p>{fm.text}</p>
@@ -234,16 +253,13 @@ export function FormationDetail({ formation }) {
               ))}
             </div>
             <p className="fmt-modalites">{f.modalites || STD_MODALITES}</p>
-            <TrainerBlock />
-            <QualiopiBlock />
-            <p className="fmt-quali-more"><Link href={MODALITES_URL}><Icon name="arrow-right" size={16} /> Modalités, moyens pédagogiques &amp; d'encadrement</Link></p>
           </div>
 
-          {/* ---- Aside (buy-box) ---- */}
+          {/* ---- Encart « Informations sur cette formation » ---- */}
           <aside className="fmt__aside">
             <Card elevated padding="lg" className="fmt-box">
               <span className="fmt-box__bar" aria-hidden="true" />
-              <h3 className="fmt-box__title">Informations sur cette formation</h3>
+              <h2 className="fmt-box__title">Informations sur cette formation</h2>
               <ul className="fmt__facts">
                 {facts.map((ft) => (
                   <li key={ft.label}>
@@ -270,11 +286,29 @@ export function FormationDetail({ formation }) {
         </div>
       </section>
 
+      {/* ---- Contenu sémantique éditorial (pleine largeur) ---- */}
+      {content && (
+        <section className="section fmt-rich-wrap">
+          <div className="container">
+            <RichContent content={content} />
+          </div>
+        </section>
+      )}
+
+      {/* ---- Formatrice + Qualiopi (pleine largeur) ---- */}
+      <section className="section fmt-trust">
+        <div className="container">
+          <TrainerBlock />
+          <QualiopiBlock />
+          <p className="fmt-quali-more"><Link href={MODALITES_URL}><Icon name="arrow-right" size={16} /> Modalités, moyens pédagogiques &amp; d'encadrement</Link></p>
+        </div>
+      </section>
+
       {/* ---- FAQ ---- */}
       {f.faq && f.faq.length > 0 && (
         <section className="section section--alt fmt-faq">
           <div className="container faq">
-            <header className="fmt-head fmt-head--center">
+            <header className="fmt-head fmt-head--center" data-reveal>
               <span className="eyebrow">Questions fréquentes</span>
               <h2 className="fmt-head__title">On répond à vos questions</h2>
             </header>
@@ -286,7 +320,7 @@ export function FormationDetail({ formation }) {
       {/* ---- Maillage interne ---- */}
       <section className="section">
         <div className="container">
-          <header className="fmt-head">
+          <header className="fmt-head" data-reveal>
             <span className="eyebrow">{silo?.emoji} {silo?.label}</span>
             <h2 className="fmt-head__title">Formations liées</h2>
           </header>

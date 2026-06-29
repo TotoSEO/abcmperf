@@ -10,9 +10,9 @@ export function Services() {
     <section className="services" id="services">
       <div className="container">
         <div data-reveal>
-          <SectionHeading align="center" size="lg" eyebrow="Nos expertises"
+          <SectionHeading size="lg" eyebrow="Nos expertises"
             title="Nos services marketing &amp; communication"
-            description="Du site web au référencement, de la vidéo à la publicité : une agence à 360° pour piloter toute votre communication digitale." />
+            description="Chaque besoin n'appelle pas la même réponse. Du site web au référencement, de la vidéo à la publicité, nous vous accompagnons avec des solutions pensées pour renforcer votre présence." />
         </div>
 
         <div className="svc-groups">
@@ -27,11 +27,11 @@ export function Services() {
               </div>
               <div className="svc-group__grid">
                 {items.map((s) => (
-                  <Link key={s.slug} href={`/services/${s.slug}/`} className="svc-card" style={{ "--_hue": `var(--logo-${s.hue})` }}>
+                  <Link key={s.slug} href={`/${s.slug}/`} className="svc-card" style={{ "--_hue": `var(--logo-${s.hue})` }}>
                     <span className="svc-card__ic"><Icon name={s.icon} size={24} /></span>
                     <h4 className="svc-card__title">{s.name}</h4>
                     <p className="svc-card__desc">{s.tagline}</p>
-                    <span className="svc-card__go" aria-hidden="true">Découvrir <Icon name="arrow-right" size={16} /></span>
+                    <span className="svc-card__go" aria-hidden="true">J&apos;en veux plus <Icon name="arrow-right" size={16} /></span>
                   </Link>
                 ))}
               </div>

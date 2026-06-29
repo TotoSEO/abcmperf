@@ -1,8 +1,13 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { LogoMark, Button, Icon } from "@/components/ds";
-import { ABCM_NAV } from "@/data/services";
+import { LogoMark, Icon } from "@/components/ds";
+
+const NAV = [
+  { label: "Nos services", href: "/#services" },
+  { label: "Références", href: "/#references" },
+  { label: "Blog", href: "/#blog" },
+];
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
@@ -18,14 +23,17 @@ export function Header() {
   return (
     <header className={"site-header" + (scrolled ? " is-stuck" : "")}>
       <div className="container site-header__inner">
-        <LogoMark as={Link} href="/" />
-        <nav className="site-nav">
-          {ABCM_NAV.map((n) => (
-            <Link key={n.label} href={n.href} className="site-nav__link">{n.label}</Link>
-          ))}
-        </nav>
-        <div className="site-header__cta">
-          <Button as={Link} href="/contact" variant="primary" size="sm" iconRight={<Icon name="arrow-right" size={16} />}>Démarrer un projet</Button>
+        <div className="site-header__left">
+          <LogoMark as={Link} href="/" />
+          <nav className="site-nav">
+            {NAV.map((n) => (
+              <Link key={n.label} href={n.href} className="site-nav__link">{n.label}</Link>
+            ))}
+          </nav>
+        </div>
+        <div className="site-header__pill">
+          <Link href="/formations-strasbourg/" className="site-header__pillbtn site-header__pillbtn--ghost">Nos formations certifiées</Link>
+          <Link href="/contact" className="site-header__pillbtn site-header__pillbtn--solid">Nous contacter <Icon name="arrow-right" size={15} /></Link>
         </div>
         <button className="site-header__burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
           <Icon name={open ? "x" : "menu"} size={24} />
@@ -33,10 +41,11 @@ export function Header() {
       </div>
       {open && (
         <div className="site-menu">
-          {ABCM_NAV.map((n) => (
+          {NAV.map((n) => (
             <Link key={n.label} href={n.href} onClick={() => setOpen(false)}>{n.label}</Link>
           ))}
-          <Button as={Link} href="/contact" variant="primary" block onClick={() => setOpen(false)}>Démarrer un projet</Button>
+          <Link href="/formations-strasbourg/" className="site-menu__btn site-menu__btn--ghost" onClick={() => setOpen(false)}>Nos formations certifiées</Link>
+          <Link href="/contact" className="site-menu__btn site-menu__btn--solid" onClick={() => setOpen(false)}>Nous contacter</Link>
         </div>
       )}
     </header>

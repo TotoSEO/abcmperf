@@ -200,6 +200,28 @@ export function FormationsHub() {
         </div>
       </section>
 
+      {/* ---- Organisme spécialisé ---- */}
+      <section className="section fmt-hub__spec">
+        <div className="container container-narrow">
+          <header className="fmt-head" data-reveal>
+            <span className="eyebrow">Notre approche</span>
+            <h2 className="fmt-head__title">Un organisme de formation spécialisé</h2>
+          </header>
+          <p data-reveal>
+            Ce sont vos spécificités qui nous permettent de mettre en place des programmes entièrement
+            sur-mesure pour vos formations intra-entreprise. Nos formations inter-entreprise permettent
+            également à vos salariés de se former en-dehors de l&apos;entreprise et de rencontrer des salariés
+            d&apos;autres horizons. Nous nous occupons de toute la logistique et de l&apos;organisation.
+          </p>
+          <p data-reveal>
+            ABCM Performances vous propose donc des contenus adaptés à vos besoins précis. Loin des grands
+            organismes de formation, nous nous adaptons à chaque stratégie d&apos;entreprise afin de fournir une
+            réponse adaptée et réaliste. Nous partons toujours de contenus existants que nous adaptons pour vos
+            objectifs et votre réalité de terrain.
+          </p>
+        </div>
+      </section>
+
       {/* ---- CTA ---- */}
       <section className="section fmt-hub__cta">
         <div className="container">

@@ -29,7 +29,7 @@ function renderRich(text, kp) {
 
 function buildJsonLd(s) {
   const orgId = SITE + "/#organization";
-  const url = SITE + `/services/${s.slug}/`;
+  const url = SITE + `/${s.slug}/`;
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -156,7 +156,7 @@ export function ServiceDetail({ service }) {
             </div>
             <div className="svcd-more__grid" data-reveal>
               {siblings.map((x) => (
-                <Link key={x.slug} href={`/services/${x.slug}/`} className="svcd-more__card" style={{ "--_hue": `var(--logo-${x.hue})` }}>
+                <Link key={x.slug} href={`/${x.slug}/`} className="svcd-more__card" style={{ "--_hue": `var(--logo-${x.hue})` }}>
                   <span className="svcd-more__ic"><Icon name={x.icon} size={22} /></span>
                   <span className="svcd-more__name">{x.name}</span>
                   <span className="svcd-more__desc">{x.tagline}</span>

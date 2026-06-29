@@ -22,7 +22,28 @@ export const ABCM_INFO = {
   postalCode: "67000",
   country: "FR",
   url: "https://abcmperformances.com",
+  // Avis Google (affichés dans le hero des fiches). Modifiables ici.
+  googleStars: 5,
+  googleReviews: 41,
 };
+
+// Tarif d'entrée le plus bas (inter-entreprise, par personne et par jour, HT).
+// Sert à calculer le « à partir de » affiché sur chaque fiche.
+export const INTER_DAY_RATE = 760;
+
+// Nombre de jours minimum lu dans le libellé de durée ("2 jours (14 h)" -> 2,
+// "1 à 2 jours" -> 1). Utilisé pour le prix « à partir de ».
+function minDaysFromDuree(duree) {
+  const m = String(duree || "").match(/(\d+)\s*jour/i);
+  return m ? parseInt(m[1], 10) : 1;
+}
+
+// Prix « à partir de » (€ HT, par personne) d'une fiche : priceFrom explicite
+// si présent, sinon tarif inter-entreprise x nombre de jours minimum.
+export function formationPriceFrom(f) {
+  if (typeof f.priceFrom === "number") return f.priceFrom;
+  return INTER_DAY_RATE * minDaysFromDuree(f.duree);
+}
 
 // ---- Standards partagés (réutilisés par défaut sur chaque fiche) -------------
 export const STD_MODALITES =
@@ -175,8 +196,8 @@ export const FORMATIONS = [
         "Les différents types d'IA et leurs applications courantes" ] },
       { module: "Atelier : découverte des outils", points: [
         "ChatGPT : répondre, rédiger, synthétiser",
-        "Génération d'images : créer des visuels avec l'IA",
-        "Automatisation : simplifier ses tâches répétitives" ] },
+        "Génération d'images : créer des visuels avec l'IA (DALL·E)",
+        "Automatisation : simplifier ses tâches répétitives (Zapier, Make)" ] },
       { module: "Applications concrètes en entreprise", points: [
         "Cas d'usage en marketing, RH et gestion de projet",
         "Identifier les opportunités d'IA dans votre domaine" ] },
@@ -208,6 +229,8 @@ export const FORMATIONS = [
     objectifs: [
       "Élaborer et mettre en place une stratégie digitale adaptée à votre entreprise",
       "Maîtriser les principaux réseaux sociaux et leurs usages",
+      "Articuler réseaux sociaux, site internet et blog dans votre communication",
+      "Intégrer le mobile à votre stratégie de communication digitale",
       "Animer et développer une communauté",
       "Optimiser sa visibilité sociale (SMO) et l'articuler avec le référencement",
       "Mettre en place une veille et gérer son e-réputation",
@@ -572,7 +595,8 @@ export const FORMATIONS = [
     programme: [
       { module: "Les liens sponsorisés", points: [
         "Enjeux : rentabilité, fraude au clic, cadre légal",
-        "Réseaux et formats publicitaires",
+        "Réseaux et formats publicitaires (Google Ads, Microsoft Ads / Bing)",
+        "Campagnes cross-device : desktop, mobile et tablette",
         "Enchères, Quality Score et interface Google Ads" ] },
       { module: "Définir sa stratégie de campagne", points: [
         "Objectifs (vente, trafic) et plan média",
