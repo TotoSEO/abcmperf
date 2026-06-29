@@ -28,7 +28,7 @@
 .abcm-btn--lg { --_pad-y: 0.85em; --_pad-x: 1.6em; --_fs: var(--text-md); }
 .abcm-btn--block { display: flex; width: 100%; }
 .abcm-btn--primary { background: var(--accent-400); color: var(--accent-contrast); }
-.abcm-btn--primary:hover { background: var(--accent-300); box-shadow: var(--shadow-accent); transform: translateY(-1px); }
+.abcm-btn--primary:hover { background: var(--accent-300); color: var(--accent-contrast); box-shadow: var(--shadow-accent); transform: translateY(-1px); }
 .abcm-btn--primary:active { background: var(--accent-500); }
 .abcm-btn--secondary { background: var(--night); color: #fff; }
 .abcm-btn--secondary:hover { background: var(--neutral-800); transform: translateY(-1px); box-shadow: var(--shadow-md); }

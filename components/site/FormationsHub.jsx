@@ -169,11 +169,11 @@ export function FormationsHub() {
         <div className="container fmt-room__inner">
           <div className="fmt-room__media">
             <img
-              src={assetPath("salle-formation-strasbourg.jpg")}
-              alt="Les locaux d'ABCM Performances à Strasbourg, où se déroulent les formations en présentiel"
+              src={assetPath("salle-formation-strasbourg.webp")}
+              alt="La salle de formation d'ABCM Performances à Strasbourg : lumineuse, avec tables de réunion et grandes fenêtres"
               loading="lazy"
-              width="1536"
-              height="1024"
+              width="1360"
+              height="907"
             />
           </div>
           <div className="fmt-room__text">

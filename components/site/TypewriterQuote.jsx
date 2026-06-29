@@ -37,7 +37,7 @@ export function TypewriterQuote() {
 
   useEffect(() => {
     if (!started || count >= QUOTE.length) return;
-    const t = setTimeout(() => setCount((c) => c + 1), 24);
+    const t = setTimeout(() => setCount((c) => c + 1), 13);
     return () => clearTimeout(t);
   }, [started, count]);
 

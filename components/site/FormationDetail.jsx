@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
+import { TrainerBlock } from "@/components/site/TrainerBlock";
 import { Button, SectionHeading, Card, CircleMotif, Icon, Accordion } from "@/components/ds";
 import {
   ABCM_INFO, HUB_URL, MODALITES_URL,
@@ -126,9 +127,8 @@ export function FormationDetail({ formation }) {
 
   const facts = [
     { icon: "clock", label: "Durée", value: f.duree },
-    { icon: "users", label: "Public", value: f.public },
-    { icon: "graduation-cap", label: "Prérequis", value: f.prerequis || STD_PREREQUIS },
-    { icon: "map-pin", label: "Lieu & format", value: "Strasbourg / Grand Est & distanciel" },
+    { icon: "check", label: "Délai d'accès", value: STD_DELAI },
+    { icon: "users", label: "Accessibilité", value: STD_ACCESSIBILITE },
   ];
 
   const formats = [
@@ -235,8 +235,7 @@ export function FormationDetail({ formation }) {
               ))}
             </div>
             <p className="fmt-modalites">{f.modalites || STD_MODALITES}</p>
-            <p className="fmt__delai"><Icon name="clock" size={16} /> {STD_DELAI}</p>
-            <p className="fmt__delai"><Icon name="users" size={16} /> {STD_ACCESSIBILITE}</p>
+            <TrainerBlock />
             <QualiopiBlock />
             <p className="fmt-quali-more"><Link href={MODALITES_URL}><Icon name="arrow-right" size={16} /> Modalités, moyens pédagogiques &amp; d'encadrement</Link></p>
           </div>
@@ -245,7 +244,7 @@ export function FormationDetail({ formation }) {
           <aside className="fmt__aside">
             <Card elevated padding="lg" className="fmt-box">
               <span className="fmt-box__bar" aria-hidden="true" />
-              <h3 className="fmt-box__title">En bref</h3>
+              <h3 className="fmt-box__title">Informations sur cette formation</h3>
               <ul className="fmt__facts">
                 {facts.map((ft) => (
                   <li key={ft.label}>
