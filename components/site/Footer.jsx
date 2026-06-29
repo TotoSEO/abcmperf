@@ -38,7 +38,7 @@ export function Footer() {
         </div>
         {COLS.map((c) => (
           <div key={c.h} className="site-footer__col">
-            <h4>{c.h}</h4>
+            <p className="site-footer__h">{c.h}</p>
             {c.links.map((l) => <Link key={l.label} href={l.href}>{l.label}</Link>)}
           </div>
         ))}
