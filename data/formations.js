@@ -1,5 +1,5 @@
 // =============================================================================
-// ABCM PERFORMANCES — CATALOGUE FORMATIONS
+// ABCM PERFORMANCES · CATALOGUE FORMATIONS
 // Source unique de vérité pour le hub /formations-strasbourg/ et les 17 fiches.
 // Contenu des formations existantes restructuré depuis abcmperformances.com
 // (WordPress/Flatsome). Les 3 nouvelles fiches (no-code, gamma, personal-branding)
@@ -500,7 +500,7 @@ export const FORMATIONS = [
     cardDesc: "Créez et optimisez des campagnes Google Ads rentables.",
     title: "Formation Google Ads à Strasbourg",
     metaDescription: "Formation Google Ads à Strasbourg et en visio : créez, pilotez et optimisez vos campagnes Search, Display et remarketing. ROI mesuré. Qualiopi, financement OPCO.",
-    lead: "Google est le moteur de recherche par excellence. Cette formation vous apprend toutes les ficelles de Google Ads pour générer un maximum de trafic ciblé — et donc de ventes.",
+    lead: "Google est le moteur de recherche par excellence. Cette formation vous apprend toutes les ficelles de Google Ads pour générer un maximum de trafic ciblé, et donc de ventes.",
     objectifs: [
       "Réussir ses campagnes Google Ads",
       "Comprendre les objectifs des réseaux Search et Display",
@@ -829,7 +829,7 @@ export function relatedFor(formation) {
 
 export const HUB_URL = "/formations-strasbourg/";
 
-// Métadonnées Next.js dérivées d'une fiche (le template "%s — ABCM Performances"
+// Métadonnées Next.js dérivées d'une fiche (le template "%s | ABCM Performances"
 // est appliqué par app/layout.jsx).
 export function formationMetadata(slug) {
   const f = getFormation(slug);
@@ -843,7 +843,7 @@ export function formationMetadata(slug) {
       type: "website",
       locale: "fr_FR",
       siteName: "ABCM Performances",
-      title: `${f.title} — ABCM Performances`,
+      title: `${f.title} | ABCM Performances`,
       description: f.metaDescription,
       url: f.url,
     },

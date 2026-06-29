@@ -1,5 +1,5 @@
 /* =========================================================================
-   ABCM PERFORMANCES — GLOBAL TOKENS + BASE
+   ABCM PERFORMANCES - GLOBAL TOKENS + BASE
    Ported from the ABCM Performances design system (project/tokens/*).
    Fonts are loaded via <link> in app/layout.jsx.
    ========================================================================= */
@@ -61,7 +61,7 @@
   --danger:       #d6306b;
   --danger-soft:  #fbe3ec;
 
-  /* Semantic aliases — light theme (default) */
+  /* Semantic aliases - light theme (default) */
   --bg:             var(--neutral-50);
   --bg-subtle:      var(--neutral-100);
   --surface:        var(--neutral-0);

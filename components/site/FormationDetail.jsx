@@ -57,7 +57,7 @@ function buildJsonLd(f) {
       location: [
         {
           "@type": "Place",
-          name: "ABCM Performances — Strasbourg",
+          name: "ABCM Performances, Strasbourg",
           address: {
             "@type": "PostalAddress",
             addressLocality: ABCM_INFO.city,
@@ -88,7 +88,7 @@ function buildJsonLd(f) {
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Certification Qualiopi",
-      name: "Qualiopi — Actions de formation",
+      name: "Qualiopi : actions de formation",
     },
   };
 
@@ -155,7 +155,7 @@ export function FormationDetail({ formation }) {
           <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
           <p className="fmt-hero__lead">{f.lead}</p>
           <div className="fmt-hero__actions">
-            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander le programme</Button>
+            <Button as={Link} href="/contact" rel="nofollow" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Je suis intéressé par cette formation</Button>
             <Button as="a" href={`tel:${ABCM_INFO.phoneHref}`} variant="outline" size="lg" iconLeft={<Icon name="phone" size={18} />}>{ABCM_INFO.phone}</Button>
           </div>
           <ul className="fmt-hero__trust">
@@ -262,7 +262,7 @@ export function FormationDetail({ formation }) {
                 <ul>{tarifs.map((t) => <li key={t}>{t}</li>)}</ul>
               </div>
 
-              <Button as={Link} href="/contact" variant="primary" block iconRight={<Icon name="arrow-right" size={16} />}>Demander un devis</Button>
+              <Button as={Link} href="/contact" rel="nofollow" variant="primary" block iconRight={<Icon name="arrow-right" size={16} />}>Demander un devis</Button>
               <a className="fmt-box__mail" href={`mailto:${ABCM_INFO.email}`}><Icon name="mail" size={16} /> {ABCM_INFO.email}</a>
             </Card>
           </aside>
@@ -314,7 +314,7 @@ export function FormationDetail({ formation }) {
               <p>Parlons de votre projet de formation, en intra ou en inter-entreprise. Devis sous 48&nbsp;h.</p>
             </div>
             <div className="fmt-cta__actions">
-              <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
+              <Button as={Link} href="/contact" rel="nofollow" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
               <Button as="a" href={`tel:${ABCM_INFO.phoneHref}`} variant="outline" size="lg" iconLeft={<Icon name="phone" size={18} />}>{ABCM_INFO.phone}</Button>
             </div>
           </div>

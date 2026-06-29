@@ -31,9 +31,9 @@ export function Footer() {
           <LogoMark />
           <p>Agence de communication &amp; marketing digital à Strasbourg. Depuis 2015.</p>
           <div className="contact__social">
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><Icon name="instagram" size={20} /></a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube"><Icon name="youtube" size={20} /></a>
+            <a href="https://www.instagram.com/abcm_performances/" target="_blank" rel="noreferrer" aria-label="Instagram"><Icon name="instagram" size={20} /></a>
+            <a href="https://x.com/abcmperf" target="_blank" rel="noreferrer" aria-label="X (Twitter)"><Icon name="x-twitter" size={18} /></a>
+            <a href="https://www.linkedin.com/company/abcm-performances/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
           </div>
         </div>
         {COLS.map((c) => (

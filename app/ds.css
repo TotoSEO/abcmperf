@@ -1,5 +1,5 @@
 /* =========================================================================
-   ABCM PERFORMANCES — DESIGN SYSTEM COMPONENT STYLES
+   ABCM PERFORMANCES - DESIGN SYSTEM COMPONENT STYLES
    Ported verbatim from the design-system primitives (project/components/*).
    Loaded globally so components render correctly under SSR (no runtime
    <style> injection).

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Input, Textarea, Select, Button, Icon } from "@/components/ds";
+import { Input, Textarea, Button, Icon } from "@/components/ds";
 import { ABCM_INFO, formationsBySilo } from "@/data/formations";
 
 const cx = (...a) => a.filter(Boolean).join(" ");
@@ -9,7 +9,7 @@ const STEPS = ["Vos informations", "Votre besoin", "Détails"];
 const EMPTY = {
   prenom: "", nom: "", entreprise: "", email: "", telephone: "",
   motif: "", message: "",
-  formation: "", modalite: "", format: "", participants: "", periode: "", precisions: "",
+  formations: [], modalite: "", format: "", participants: "", periode: "", precisions: "",
 };
 
 /* Petit contrôle segmenté (radiogroup stylé). */
@@ -41,6 +41,13 @@ export function ContactWizard() {
 
   const set = (k) => (e) => setData((d) => ({ ...d, [k]: e.target.value }));
   const go = (next, d = "fwd") => { setDir(d); setStep(next); };
+  const toggleFormation = (name) =>
+    setData((d) => ({
+      ...d,
+      formations: d.formations.includes(name)
+        ? d.formations.filter((n) => n !== name)
+        : [...d.formations, name],
+    }));
 
   const validateInfos = () => {
     const er = {};
@@ -58,7 +65,7 @@ export function ContactWizard() {
     e.preventDefault();
     const er = {};
     if (data.motif === "renseignement" && !data.message.trim()) er.message = "Écrivez votre message";
-    if (data.motif === "formation" && !data.formation) er.formation = "Choisissez une formation";
+    if (data.motif === "formation" && data.formations.length === 0) er.formations = "Choisissez au moins une formation";
     setErrors(er);
     if (Object.keys(er).length) return;
     // NOTE: branchement back-end à faire (e-mail / CRM). Pour l'instant : confirmation visuelle.
@@ -85,9 +92,13 @@ export function ContactWizard() {
             <span className="fmt-wiz__done-ic"><Icon name="check" size={36} /></span>
             <h2>Merci {data.prenom}&nbsp;! Votre demande est partie.</h2>
             <p>
-              {data.motif === "formation"
-                ? <>Nous revenons vers vous très vite avec une proposition pour la formation <strong>{data.formation}</strong>.</>
-                : <>Notre équipe vous recontacte sous 48&nbsp;h ouvrées au sujet de votre demande.</>}
+              {data.motif === "formation" ? (
+                data.formations.length > 1
+                  ? <>Nous revenons vers vous très vite avec une proposition pour les <strong>{data.formations.length} formations</strong> sélectionnées.</>
+                  : <>Nous revenons vers vous très vite avec une proposition pour la formation <strong>{data.formations[0]}</strong>.</>
+              ) : (
+                <>Notre équipe vous recontacte sous 48&nbsp;h ouvrées au sujet de votre demande.</>
+              )}
             </p>
             <Button variant="outline" onClick={reset} iconLeft={<Icon name="arrow-left" size={16} />}>Nouvelle demande</Button>
           </div>
@@ -160,16 +171,46 @@ export function ContactWizard() {
                   <h2 className="fmt-wiz__title">Votre projet de formation</h2>
                   <p className="fmt-wiz__hint">Quelques précisions pour préparer une proposition adaptée.</p>
 
-                  <Select id="formation" label="Quelle formation souhaitez-vous réaliser ?" value={data.formation} onChange={set("formation")}>
-                    <option value="" disabled>Choisir une formation…</option>
+                  <div className="fmt-field fmt-pick">
+                    <span className="fmt-field__label">
+                      Quelle(s) formation(s) vous intéresse(nt) ?
+                      <span className="fmt-pick__hint">Plusieurs choix possibles</span>
+                    </span>
                     {formationsBySilo().map(({ silo, items }) => (
-                      <optgroup key={silo.id} label={`${silo.emoji} ${silo.label}`}>
-                        {items.map((f) => <option key={f.slug} value={f.name}>{f.name}</option>)}
-                      </optgroup>
+                      <div className="fmt-pick__group" key={silo.id}>
+                        <span className="fmt-pick__group-label">{silo.emoji} {silo.label}</span>
+                        <div className="fmt-pick__chips">
+                          {items.map((f) => {
+                            const on = data.formations.includes(f.name);
+                            return (
+                              <button
+                                type="button" key={f.slug} aria-pressed={on}
+                                className={cx("fmt-pick__chip", on && "is-sel")}
+                                onClick={() => toggleFormation(f.name)}
+                              >
+                                <span className="fmt-pick__check" aria-hidden="true"><Icon name="check" size={13} /></span>
+                                {f.name}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
                     ))}
-                    <option value="Autre / sur-mesure">Autre / formation sur-mesure</option>
-                  </Select>
-                  {errors.formation && <span className="fmt-field__error">{errors.formation}</span>}
+                    <div className="fmt-pick__group">
+                      <span className="fmt-pick__group-label">Autre</span>
+                      <div className="fmt-pick__chips">
+                        <button
+                          type="button" aria-pressed={data.formations.includes("Autre / sur-mesure")}
+                          className={cx("fmt-pick__chip", data.formations.includes("Autre / sur-mesure") && "is-sel")}
+                          onClick={() => toggleFormation("Autre / sur-mesure")}
+                        >
+                          <span className="fmt-pick__check" aria-hidden="true"><Icon name="check" size={13} /></span>
+                          Autre / formation sur-mesure
+                        </button>
+                      </div>
+                    </div>
+                    {errors.formations && <span className="fmt-field__error">{errors.formations}</span>}
+                  </div>
 
                   <Segmented
                     label="À distance ou sur site ?"
