@@ -46,6 +46,17 @@ export const STD_DELAI =
 export const STD_ACCESSIBILITE =
   "Nos formations sont ouvertes à tous les publics. En situation de handicap, contactez-nous pour adapter le déroulé et les supports à vos besoins.";
 
+// Mention Qualiopi à reproduire EXACTEMENT telle quelle (exigence) + certificat.
+export const QUALIOPI_MENTION =
+  "Organisme de formation certifiée Qualiopi, au titres des catégories d'actions suivantes : Actions de formation.";
+export const QUALIOPI_CERT_FILE = "certificat-qualiopi-abcm.png";
+export const MODALITES_URL = "/modalites-de-la-formation/";
+
+// Préfixe le basePath (GitHub Pages) pour un asset statique servi hors _next.
+export function assetPath(file) {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/${file}`;
+}
+
 // ---- Silos thématiques -------------------------------------------------------
 export const SILOS = [
   { id: "ia",        emoji: "🤖", label: "IA & Productivité",              icon: "sparkles",  hue: "orange",  intro: "Mettez l'intelligence artificielle au service de votre productivité et de vos contenus." },
