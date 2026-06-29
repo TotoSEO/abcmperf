@@ -209,6 +209,7 @@ export const FORMATIONS = [
       "Élaborer et mettre en place une stratégie digitale adaptée à votre entreprise",
       "Maîtriser les principaux réseaux sociaux et leurs usages",
       "Animer et développer une communauté",
+      "Optimiser sa visibilité sociale (SMO) et l'articuler avec le référencement",
       "Mettre en place une veille et gérer son e-réputation",
       "Mesurer ses actions",
     ],
@@ -223,6 +224,10 @@ export const FORMATIONS = [
         "Ligne éditoriale et calendrier de publication",
         "Bonnes pratiques d'animation et d'engagement",
         "Trouver de nouveaux clients et prospects" ] },
+      { module: "SMO : optimiser sa visibilité sociale", points: [
+        "Le SMO (Social Media Optimization) : principes et objectifs",
+        "Optimiser profils et contenus pour la portée et le partage",
+        "Articuler SMO, SEO et stratégie de contenu pour gagner en visibilité" ] },
       { module: "Stratégie, e-réputation & mesure", points: [
         "Définir une stratégie sur les médias sociaux",
         "Gérer son e-réputation",
@@ -233,6 +238,7 @@ export const FORMATIONS = [
     duree: "2 jours (14 h)",
     faq: [
       { q: "Quels réseaux sociaux sont abordés ?", a: "Facebook, LinkedIn, Instagram, X, YouTube, TikTok et Snapchat, avec un focus sur ceux qui correspondent à vos objectifs." },
+      { q: "Abordez-vous le SMO (Social Media Optimization) ?", a: "Oui, un module est dédié au SMO : optimiser vos profils et contenus sociaux pour gagner en visibilité et en portée, en complément du référencement naturel." },
       { q: "Combien de temps dure la formation ?", a: "En général 2 journées (14 h) suffisent pour acquérir les compétences nécessaires à la gestion des réseaux sociaux." },
       { q: "Est-ce finançable par l'OPCO ?", a: "Oui. La formation est éligible à un financement OPCO ou via le plan de développement des compétences. Organisme Qualiopi." },
     ],
@@ -466,11 +472,11 @@ export const FORMATIONS = [
     slug: "formation-referencement-strasbourg",
     url: "/formation-referencement-strasbourg/",
     silo: "marketing", hue: "green", icon: "search",
-    name: "SEO / SEA / SMO : piloter sa visibilité",
-    cardDesc: "Maîtrisez le référencement pour positionner durablement votre site.",
+    name: "SEO : maîtriser le référencement naturel",
+    cardDesc: "Positionnez durablement votre site dans les résultats naturels de Google.",
     title: "Formation référencement SEO à Strasbourg",
-    metaDescription: "Formation référencement SEO / SEA / SMO à Strasbourg et en visio : optimisez vos contenus et votre positionnement sur Google. Qualiopi, financement OPCO.",
-    lead: "Une formation sur-mesure pour réussir votre référencement. Comprenez et maîtrisez les principes du référencement et du positionnement d'un site dans les moteurs de recherche.",
+    metaDescription: "Formation SEO (référencement naturel) à Strasbourg et en visio : optimisez vos contenus et votre positionnement sur Google. Qualiopi, financement OPCO.",
+    lead: "Une formation sur-mesure pour réussir votre référencement naturel. Comprenez et maîtrisez les principes du SEO et du positionnement d'un site dans les résultats des moteurs de recherche.",
     objectifs: [
       "Organiser l'information sur un site ou un blog",
       "Optimiser les contenus de son site",
@@ -478,9 +484,10 @@ export const FORMATIONS = [
       "Travailler et améliorer son référencement naturel (SEO)",
     ],
     programme: [
-      { module: "Fondamentaux du référencement", points: [
-        "Comprendre SEO, SEA et SMO et leur complémentarité",
-        "Le fonctionnement des moteurs de recherche" ] },
+      { module: "Fondamentaux du référencement naturel", points: [
+        "Le fonctionnement des moteurs de recherche",
+        "Les piliers du SEO : technique, contenu et popularité",
+        "Situer le SEO parmi les leviers de visibilité (SEA, réseaux sociaux)" ] },
       { module: "Rédiger et optimiser ses contenus", points: [
         "Recherche de mots-clés et intention de recherche",
         "Techniques de rédaction web optimisée",
@@ -497,11 +504,55 @@ export const FORMATIONS = [
     prerequis: STD_PREREQUIS + " Disposer d'un site web ou d'un blog.",
     duree: "2 jours (14 h), extensible à 3 jours",
     faq: [
-      { q: "La formation couvre-t-elle SEO, SEA et SMO ?", a: "Oui. L'accent est mis sur le SEO (référencement naturel), avec la place du SEA et du SMO dans une stratégie de visibilité." },
+      { q: "La formation couvre-t-elle tout le référencement naturel ?", a: "Oui. Elle est entièrement dédiée au SEO : optimisation technique, rédaction de contenus et popularité, pour progresser durablement sur Google." },
+      { q: "Et le référencement payant (SEA) ?", a: "Le SEA (Google Ads et liens sponsorisés) fait l'objet d'une formation dédiée. Celle-ci se concentre sur le référencement naturel." },
       { q: "Travaille-t-on sur mon propre site ?", a: "Oui, l'optimisation se fait directement sur vos contenus. Une journée supplémentaire peut être ajoutée pour couvrir tout votre site." },
       { q: "Financement OPCO ?", a: "Oui, ou via le plan de développement des compétences. Organisme Qualiopi." },
     ],
-    related: ["formation-marketing-digital-webmarketing-strasbourg", "formation-publicite-google-ads", "formation-wordpress"],
+    related: ["formation-sea", "formation-marketing-digital-webmarketing-strasbourg", "formation-wordpress"],
+  },
+  {
+    slug: "formation-sea",
+    url: "/formation-sea/",
+    silo: "marketing", hue: "orange", icon: "line-chart",
+    name: "SEA : piloter son référencement payant",
+    cardDesc: "Lancez des campagnes de référencement payant rentables et mesurées.",
+    title: "Formation SEA & référencement payant à Strasbourg",
+    metaDescription: "Formation SEA (référencement payant) à Strasbourg et en visio : stratégie d'enchères, Google Ads, Microsoft Ads et pilotage du ROI. Qualiopi, financement OPCO.",
+    lead: "Le SEA, ou référencement payant, permet d'acheter une visibilité immédiate en haut des résultats de recherche. Cette formation vous apprend à bâtir, lancer et piloter des campagnes rentables, en complément de votre référencement naturel.",
+    objectifs: [
+      "Comprendre le SEA et sa complémentarité avec le SEO",
+      "Construire une stratégie d'enchères et de mots-clés",
+      "Lancer des campagnes sur Google Ads et Microsoft Ads",
+      "Mesurer et optimiser le retour sur investissement (ROI)",
+    ],
+    programme: [
+      { module: "Comprendre le référencement payant", points: [
+        "SEA, SEO, SMO : situer le payant dans une stratégie de visibilité",
+        "Le fonctionnement des enchères et du Quality Score",
+        "Panorama des régies : Google Ads, Microsoft Ads, Shopping" ] },
+      { module: "Préparer sa stratégie SEA", points: [
+        "Objectifs, audiences et parcours de conversion",
+        "Recherche de mots-clés et intention de recherche",
+        "Budget, structure de compte et plan de campagne" ] },
+      { module: "Créer et lancer ses campagnes", points: [
+        "Paramétrer une campagne Search étape par étape",
+        "Rédiger des annonces et des extensions efficaces",
+        "Landing pages, suivi des conversions et tracking" ] },
+      { module: "Piloter et optimiser", points: [
+        "Lire ses indicateurs et ses tableaux de bord",
+        "Optimiser enchères, ciblage et messages",
+        "Tests A/B et amélioration continue du ROI" ] },
+    ],
+    public: "Responsables marketing, e-commerce et communication, indépendants et chefs d'entreprise souhaitant lancer leurs campagnes payantes.",
+    prerequis: STD_PREREQUIS,
+    duree: "1 jour (7 h)",
+    faq: [
+      { q: "Quelle différence avec la formation Google Ads ?", a: "Cette formation SEA pose la stratégie d'ensemble du référencement payant (enchères, plateformes, ROI). La formation Google Ads va plus loin dans la pratique de la régie Google, sur 2 jours." },
+      { q: "Le SEA remplace-t-il le SEO ?", a: "Non, les deux sont complémentaires : le SEA apporte une visibilité immédiate, le SEO une visibilité durable. L'idéal est de combiner les deux." },
+      { q: "Comment financer la formation ?", a: "Via votre OPCO ou le plan de développement des compétences. Organisme certifié Qualiopi." },
+    ],
+    related: ["formation-publicite-google-ads", "formation-referencement-strasbourg", "formation-marketing-digital-webmarketing-strasbourg"],
   },
   {
     slug: "formation-publicite-google-ads",
@@ -854,7 +905,8 @@ const SEO_TITLES = {
   "formation-canva": "Formation Canva à Strasbourg & en visio",
   "formation-adobe-express": "Formation Adobe Express à Strasbourg & visio",
   "formation-marketing-digital-webmarketing-strasbourg": "Formation marketing digital à Strasbourg",
-  "formation-referencement-strasbourg": "Formation SEO, SEA & SMO à Strasbourg",
+  "formation-referencement-strasbourg": "Formation SEO à Strasbourg & en visio",
+  "formation-sea": "Formation SEA à Strasbourg & en visio",
   "formation-publicite-google-ads": "Formation Google Ads à Strasbourg & visio",
   "formation-inbound-marketing": "Formation inbound & social selling à Strasbourg",
   "formation-wordpress": "Formation WordPress à Strasbourg & en visio",

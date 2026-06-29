@@ -201,7 +201,7 @@ export function FormationsHub() {
       </section>
 
       {/* ---- CTA ---- */}
-      <section className="section">
+      <section className="section fmt-hub__cta">
         <div className="container">
           <div className="svc-banner" data-reveal>
             <div>

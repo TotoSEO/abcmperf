@@ -1,31 +1,44 @@
 import React from "react";
 import Link from "next/link";
 import { SectionHeading, Button, Icon } from "@/components/ds";
-import { ABCM_SERVICES } from "@/data/services";
+import { servicesByGroup } from "@/data/services";
 
 export function Services() {
+  const groups = servicesByGroup();
+
   return (
     <section className="services" id="services">
       <div className="container">
         <div data-reveal>
           <SectionHeading align="center" size="lg" eyebrow="Nos expertises"
             title="Nos services marketing &amp; communication"
-            description="Nos services couvrent tous les aspects de la communication digitale. Survolez une expertise pour la découvrir." />
+            description="Du site web au référencement, de la vidéo à la publicité : une agence à 360° pour piloter toute votre communication digitale." />
         </div>
-        <div className="svc-bento">
-          {ABCM_SERVICES.map((s) => (
-            <div className="svc-cell" data-reveal="scale" key={s.slug}>
-              <Link href={`/services/${s.slug}`} className="svc-tile" style={{ "--_hue": `var(--logo-${s.hue})` }}>
-                <span className="svc-tile__ic"><Icon name={s.icon} size={26} /></span>
-                <span className="svc-tile__go" aria-hidden="true"><Icon name="arrow-right" size={18} /></span>
-                <div className="svc-tile__body">
-                  <h3 className="svc-tile__title">{s.title}</h3>
-                  <p className="svc-tile__desc">{s.desc}</p>
+
+        <div className="svc-groups">
+          {groups.map(({ group, items }) => (
+            <div className="svc-group" key={group.id} style={{ "--_hue": `var(--logo-${group.hue})` }} data-reveal>
+              <div className="svc-group__head">
+                <span className="svc-group__ic"><Icon name={group.icon} size={24} /></span>
+                <div className="svc-group__heads">
+                  <p className="svc-group__eyebrow">{group.eyebrow}</p>
+                  <h3 className="svc-group__label">{group.label}</h3>
                 </div>
-              </Link>
+              </div>
+              <div className="svc-group__grid">
+                {items.map((s) => (
+                  <Link key={s.slug} href={`/services/${s.slug}/`} className="svc-card" style={{ "--_hue": `var(--logo-${s.hue})` }}>
+                    <span className="svc-card__ic"><Icon name={s.icon} size={24} /></span>
+                    <h4 className="svc-card__title">{s.name}</h4>
+                    <p className="svc-card__desc">{s.tagline}</p>
+                    <span className="svc-card__go" aria-hidden="true">Découvrir <Icon name="arrow-right" size={16} /></span>
+                  </Link>
+                ))}
+              </div>
             </div>
           ))}
         </div>
+
         <div className="svc-banner" data-reveal>
           <div>
             <h3>Un besoin sur-mesure&nbsp;?</h3>
