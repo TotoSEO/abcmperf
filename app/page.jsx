@@ -1,19 +1,19 @@
 import { Hero } from "@/components/site/Hero";
-import { Clients } from "@/components/site/Clients";
-import { Services } from "@/components/site/Services";
 import { Testimonials } from "@/components/site/Testimonials";
-import { FAQ } from "@/components/site/FAQ";
-import { Contact } from "@/components/site/Contact";
+import { Services } from "@/components/site/Services";
+import { FormationsPromo } from "@/components/site/FormationsPromo";
+import { WhyUs } from "@/components/site/WhyUs";
+import { LatestArticles } from "@/components/site/LatestArticles";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Clients />
-      <Services />
       <Testimonials />
-      <FAQ />
-      <Contact />
+      <Services />
+      <FormationsPromo />
+      <WhyUs />
+      <LatestArticles />
     </>
   );
 }
