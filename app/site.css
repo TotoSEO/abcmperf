@@ -40,7 +40,7 @@
 .services { background: color-mix(in oklch, var(--logo-blue) 7%, var(--surface)); border-radius: var(--radius-2xl); margin: var(--space-6) var(--space-5) 0; padding-block: var(--section-y); }
 .services__filters { display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: center; margin: var(--space-8) 0 var(--space-10); }
 .services__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
-.svc-banner { margin-top: var(--space-6); border-radius: var(--radius-2xl); background: var(--gradient-brand-3); color: #fff; padding: var(--space-8) var(--space-10); display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+.svc-banner { max-width: 760px; margin: clamp(var(--space-12), 6vw, var(--space-16)) auto 0; border-radius: var(--radius-2xl); background: var(--gradient-brand-3); color: #fff; padding: var(--space-6) var(--space-8); display: flex; align-items: center; justify-content: center; gap: var(--space-6); flex-wrap: wrap; text-align: center; }
 .svc-banner h3 { color: #fff; margin: 0 0 var(--space-1); font-size: var(--text-xl); }
 .svc-banner p { color: rgba(255,255,255,0.85); margin: 0; }
 
@@ -586,6 +586,60 @@
 @media (prefers-reduced-motion: reduce) {
   .trainer__photo { transition: none; }
 }
+
+/* =========================================================================
+   SCROLL REVEAL (accueil) ; actif seulement quand JS ajoute .reveal-on
+   ========================================================================= */
+.reveal-on [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); will-change: opacity, transform; }
+.reveal-on [data-reveal="left"] { transform: translateX(-34px); }
+.reveal-on [data-reveal="right"] { transform: translateX(34px); }
+.reveal-on [data-reveal="scale"] { transform: scale(0.94); }
+.reveal-on [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* =========================================================================
+   SERVICES · grille bento + tuiles (survol = agrandit + révèle le texte)
+   ========================================================================= */
+.svc-bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-4); margin-top: var(--space-10); }
+.svc-cell { grid-column: span 2; display: flex; }
+.svc-cell:nth-child(1), .svc-cell:nth-child(2), .svc-cell:nth-child(6), .svc-cell:nth-child(7) { grid-column: span 3; }
+.svc-tile { --_hue: var(--logo-blue); position: relative; overflow: hidden; flex: 1; min-height: 200px; padding: var(--space-6); border-radius: var(--radius-xl); background: linear-gradient(165deg, color-mix(in srgb, var(--_hue) 9%, var(--surface)), var(--surface) 62%); border: 1px solid var(--border); box-shadow: var(--shadow-sm); color: var(--text); transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out); }
+.svc-cell:nth-child(1) .svc-tile, .svc-cell:nth-child(2) .svc-tile { min-height: 240px; }
+.svc-tile__ic { position: absolute; top: var(--space-6); left: var(--space-6); width: 3em; height: 3em; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--_hue) 16%, #fff); color: var(--_hue); box-shadow: var(--shadow-sm); }
+.svc-tile__go { position: absolute; top: var(--space-6); right: var(--space-6); color: var(--_hue); opacity: 0; transform: translateX(-6px); transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out); }
+.svc-tile__body { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-6); }
+.svc-tile__title { margin: 0; font-size: var(--text-lg); line-height: 1.18; color: var(--text); }
+.svc-tile__desc { margin: var(--space-2) 0 0; color: var(--text-muted); font-size: var(--text-sm); line-height: var(--leading-snug); }
+@media (hover: hover) {
+  .svc-tile__desc { max-height: 0; opacity: 0; transform: translateY(6px); overflow: hidden; transition: max-height 0.45s var(--ease-out), opacity 0.35s var(--ease-out), transform 0.45s var(--ease-out); }
+  .svc-tile:hover { transform: scale(1.035); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--_hue) 45%, var(--border)); z-index: 2; }
+  .svc-tile:hover .svc-tile__desc { max-height: 12em; opacity: 1; transform: none; }
+  .svc-tile:hover .svc-tile__go { opacity: 1; transform: none; }
+}
+@media (max-width: 860px) {
+  .svc-bento { grid-template-columns: repeat(2, 1fr); }
+  .svc-bento .svc-cell { grid-column: auto; }
+  .svc-tile { display: flex; flex-direction: column; gap: var(--space-3); min-height: 0; }
+  .svc-tile__ic { position: static; }
+  .svc-tile__go { display: none; }
+  .svc-tile__body { position: static; padding: 0; }
+  .svc-tile__desc { max-height: none; opacity: 1; transform: none; overflow: visible; }
+}
+@media (max-width: 560px) { .svc-bento { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   POURQUOI NOUS · « Nos avantages » (cartes à grand numéro coloré)
+   ========================================================================= */
+.adv { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+.adv__item { --_hue: var(--logo-blue); position: relative; overflow: hidden; padding: var(--space-8) var(--space-6); border-radius: var(--radius-xl); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out); }
+.adv__item:nth-child(2) { --_hue: var(--logo-magenta); }
+.adv__item:nth-child(3) { --_hue: var(--logo-green); }
+.adv__item:nth-child(4) { --_hue: var(--logo-orange); }
+.adv__item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--_hue) 40%, var(--border)); }
+.adv__num { position: absolute; top: -0.34em; right: 0.04em; font-family: var(--font-display); font-weight: 800; font-size: 7rem; line-height: 1; color: var(--_hue); opacity: 0.13; pointer-events: none; user-select: none; }
+.adv__ic { position: relative; width: 3em; height: 3em; border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--_hue) 14%, var(--surface-2)); color: var(--_hue); margin-bottom: var(--space-4); }
+.adv__title { position: relative; margin: 0 0 var(--space-2); font-size: var(--text-lg); }
+.adv__text { position: relative; margin: 0; color: var(--text-muted); line-height: var(--leading-snug); }
+@media (max-width: 700px) { .adv { grid-template-columns: 1fr; } }
 
 /* =========================================================================
    CORRECTIFS RESPONSIVE (débordements mobile)

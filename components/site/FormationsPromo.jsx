@@ -8,7 +8,7 @@ export function FormationsPromo() {
     <section className="section fpromo-wrap">
       <div className="container">
         <div className="fpromo on-dark" data-theme="dark">
-          <div className="fpromo__text">
+          <div className="fpromo__text" data-reveal="left">
             <span className="eyebrow">Organisme de formation Qualiopi</span>
             <h2>ABCM Performances, votre organisme de formations professionnelles à Strasbourg</h2>
             <p>
@@ -17,7 +17,7 @@ export function FormationsPromo() {
               OPCO, et sont certifiées Qualiopi.
             </p>
           </div>
-          <div className="fpromo__card">
+          <div className="fpromo__card" data-reveal="right">
             <span className="fpromo__ic"><Icon name="graduation-cap" size={30} /></span>
             <p className="fpromo__card-title">{FORMATIONS.length} formations</p>
             <p className="fpromo__card-sub">IA, réseaux sociaux, marketing, web et marque employeur.</p>
