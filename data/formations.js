@@ -38,10 +38,36 @@ function minDaysFromDuree(duree) {
   return m ? parseInt(m[1], 10) : 1;
 }
 
-// Prix « à partir de » (€ HT, par personne) d'une fiche : priceFrom explicite
-// si présent, sinon tarif inter-entreprise x nombre de jours minimum.
+// Prix « à partir de » (€ HT, par personne) relevé sur chaque fiche du site
+// source : on prend le TOTAL le plus bas réellement affiché (tarif de l'offre
+// la moins chère x sa durée). Certaines fiches partagent le même tarif car le
+// site source les facture à l'identique ; d'autres diffèrent (Canva/Adobe : inter
+// sur 1 jour ; WordPress : uniquement one-to-one 990 €/jour x 5 jours).
+const PRICE_FROM = {
+  "formation-savoir-utiliser-chat-gpt-pour-ameliorer-sa-productivite": 760,
+  "formation-booster-ses-ecrits-professionnels-avec-lia": 760,
+  "formation-decouverte-de-lia": 760,
+  "formation-reseaux-sociaux": 1520,
+  "formation-linkedin": 1520,
+  "formation-capcut": 760,
+  "formation-canva": 760,
+  "formation-adobe-express": 760,
+  "formation-marketing-digital-webmarketing-strasbourg": 1520,
+  "formation-referencement-strasbourg": 1520,
+  "formation-sea": 760,
+  "formation-publicite-google-ads": 1520,
+  "formation-inbound-marketing": 1520,
+  "formation-wordpress": 4950,
+  "formation-no-code": 1520,
+  "formation-gamma": 760,
+  "formation-marketing-rh-marque-employeur": 1520,
+  "formation-personal-branding": 1520,
+};
+
+// priceFrom explicite sur la fiche > tarif relevé > calcul de repli.
 export function formationPriceFrom(f) {
   if (typeof f.priceFrom === "number") return f.priceFrom;
+  if (PRICE_FROM[f.slug]) return PRICE_FROM[f.slug];
   return INTER_DAY_RATE * minDaysFromDuree(f.duree);
 }
 
