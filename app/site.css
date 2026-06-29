@@ -20,9 +20,9 @@
 .site-menu .abcm-btn { margin-top: var(--space-2); }
 
 /* ---- Hero ---- */
-.hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(4rem, 2rem + 9vw, 8rem); border-radius: var(--radius-2xl); margin: var(--space-5) var(--space-5) 0 var(--space-3); }
+.hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(4rem, 2rem + 9vw, 8rem); }
 .hero__motif { position: absolute; top: -60px; right: -40px; opacity: 0.9; filter: blur(2px); }
-.hero__inner { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-5); max-width: 52rem; }
+.hero__inner { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-5); max-width: 60rem; }
 .hero__title { font-size: clamp(2.5rem, 1.7rem + 4.2vw, 4.5rem); line-height: 1.04; margin: 0; color: #fff; }
 .hero__hl { background: var(--gradient-warm); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero__lead { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--neutral-300); max-width: 54ch; margin: 0; }
@@ -85,7 +85,7 @@
 .site-footer__bottom { display: flex; justify-content: space-between; padding: var(--space-6) 0; border-top: 1px solid rgba(255,255,255,0.12); font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--neutral-500); }
 
 /* ---- Service detail ---- */
-.svc__hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(3rem, 2rem + 6vw, 6rem); border-radius: var(--radius-2xl); margin: var(--space-5) var(--space-5) 0; }
+.svc__hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(3rem, 2rem + 6vw, 6rem); }
 .svc__hero .container { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); max-width: 60ch; }
 .svc__back { background: none; border: none; cursor: pointer; color: var(--neutral-300); display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-2); }
 .svc__back:hover { color: var(--accent-400); }
@@ -118,7 +118,7 @@
 .fmt__crumb-current { color: var(--neutral-200); }
 
 /* ---- Hero (fiche + hub) ---- */
-.fmt-hero { position: relative; overflow: hidden; background: var(--night); color: #fff; border-radius: var(--radius-2xl); margin: var(--space-5) var(--space-5) 0; padding-block: clamp(2.75rem, 1.6rem + 5.5vw, 5.5rem); }
+.fmt-hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(2.75rem, 1.6rem + 5.5vw, 5.5rem); }
 .fmt-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 90% at 88% 0%, color-mix(in oklch, var(--silo-hue, var(--accent-400)) 26%, transparent), transparent 60%); pointer-events: none; }
 .fmt-hero__motif { position: absolute; top: -70px; right: -50px; opacity: 0.75; filter: blur(1px); }
 .fmt-hero__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); max-width: 52rem; }
@@ -344,7 +344,7 @@
 /* =========================================================================
    ACCUEIL · blocs (promo formations, pourquoi nous, blog)
    ========================================================================= */
-.hero__lead { max-width: 62ch; }
+.hero__lead { max-width: 70ch; }
 .hero__lead p { margin: 0 0 var(--space-3); }
 .hero__lead p:last-child { margin-bottom: 0; }
 
@@ -492,6 +492,57 @@
 .fmt-room__list li { display: flex; align-items: center; gap: var(--space-3); color: var(--text); font-weight: 500; }
 .fmt-room__list .abcm-ic { color: var(--accent-700); flex: none; }
 @media (max-width: 860px) { .fmt-room__inner { grid-template-columns: 1fr; gap: var(--space-8); } }
+
+/* =========================================================================
+   FORMATIONS HUB · hero pleine largeur (landing) + bandeau clients
+   ========================================================================= */
+.fhero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(3.5rem, 2rem + 8vw, 7rem); }
+.fhero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(125% 80% at 50% 28%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(125% 80% at 50% 28%, #000 52%, transparent 100%);
+}
+.fhero__deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.fhero__shape { position: absolute; display: block; box-shadow: 0 30px 70px rgba(0,0,0,0.45); opacity: 0.9; }
+.fhero__shape--l { left: -34px; top: 50%; width: clamp(150px, 12vw, 210px); aspect-ratio: 4 / 3; border-radius: 26px; transform: rotate(-8deg); background: conic-gradient(from 210deg, var(--logo-orange), var(--logo-magenta), var(--logo-blue), var(--logo-orange)); }
+.fhero__shape--r { right: -28px; top: 12%; width: clamp(160px, 13vw, 230px); aspect-ratio: 5 / 3; border-radius: 22px; transform: rotate(7deg); background: conic-gradient(from 30deg, var(--logo-blue), var(--logo-magenta), var(--logo-yellow), var(--logo-blue)); }
+.fhero__route { position: absolute; top: 7%; width: clamp(150px, 15vw, 235px); height: clamp(150px, 20vw, 290px); opacity: 0.6; }
+.fhero__route--l { left: 3.5%; }
+.fhero__route--r { right: 3.5%; }
+.fhero__inner { position: relative; z-index: 1; max-width: 60rem; margin-inline: auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-5); }
+.fhero__rating { display: inline-flex; align-items: center; gap: var(--space-3); padding: 0.5rem 1rem; border-radius: var(--radius-pill); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); }
+.fhero__stars { display: inline-flex; gap: 2px; color: var(--logo-yellow); }
+.fhero__stars svg { fill: currentColor; }
+.fhero__rating-txt { font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-200); }
+.fhero__title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.4rem, 1.4rem + 4.4vw, 4.85rem); line-height: 1.04; letter-spacing: var(--tracking-tight); margin: 0; max-width: 17ch; }
+.fhero__hl-pink { color: color-mix(in srgb, var(--logo-magenta), white 22%); }
+.fhero__hl-warm { background: var(--gradient-warm); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.fhero__sub { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--neutral-400); margin: 0; max-width: 56ch; }
+.fhero__cta-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(var(--space-4), 3vw, var(--space-10)); width: 100%; margin-top: var(--space-3); }
+.fhero__note { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--neutral-300); }
+.fhero__note--l { justify-content: flex-end; text-align: right; }
+.fhero__note--r { justify-content: flex-start; text-align: left; }
+.fhero__note-num { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: #fff; }
+.fhero__arrow { width: 64px; height: 40px; flex: none; }
+.fhero__cta { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.4rem; border-radius: var(--radius-pill); font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--night); white-space: nowrap; background: linear-gradient(90deg, var(--logo-magenta), var(--logo-orange), var(--logo-yellow)); box-shadow: 0 12px 36px color-mix(in srgb, var(--logo-orange) 45%, transparent); transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.fhero__cta:hover { transform: translateY(-2px); box-shadow: 0 16px 46px color-mix(in srgb, var(--logo-magenta) 50%, transparent); }
+@media (max-width: 1280px) { .fhero__deco { display: none; } }
+@media (max-width: 680px) {
+  .fhero__cta-row { grid-template-columns: 1fr; justify-items: center; }
+  .fhero__note { display: none; }
+}
+
+/* Bandeau « Ils nous font confiance » (suite du canevas sombre) */
+.fhero-logos { background: var(--night); color: #fff; padding-block: clamp(var(--space-8), 4vw, var(--space-14)); }
+.fhero-logos__title { text-align: center; font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-400); margin: 0 0 var(--space-8); }
+.fhero-logos__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-4); }
+.fhero-logos__card { display: flex; align-items: center; justify-content: center; min-height: 92px; padding: var(--space-5); background: #15151f; border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); }
+.fhero-logos__card img { max-width: 100%; max-height: 44px; width: auto; height: auto; object-fit: contain; filter: invert(1) brightness(1.8) opacity(0.72); transition: filter var(--dur-base); }
+.fhero-logos__card:hover img { filter: invert(1) brightness(2) opacity(1); }
+@media (max-width: 860px) { .fhero-logos__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .fhero-logos__grid { grid-template-columns: repeat(2, 1fr); } }
 
 /* =========================================================================
    CORRECTIFS RESPONSIVE (débordements mobile)
