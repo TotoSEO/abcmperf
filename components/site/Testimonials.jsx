@@ -11,8 +11,8 @@ export function Testimonials() {
   return (
     <section className="section section--alt" id="references">
       <div className="container">
-        <SectionHeading align="center" eyebrow="Avis clients" title="On prend soin de vous"
-          description="Une attention de tous les instants : chez nous, vous êtes chouchouté." />
+        <SectionHeading align="center" eyebrow="Avis clients" title="Les avis de nos clients"
+          description="Ils nous font confiance et témoignent de notre accompagnement et de la qualité de nos prestations." />
         <div className="testi__grid">
           {ITEMS.map((t) => <TestimonialCard key={t.author} {...t} />)}
         </div>
