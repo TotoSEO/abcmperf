@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { LogoMark, Icon } from "@/components/ds";
+import { ABCM_INFO } from "@/data/formations";
 
 const COLS = [
   { h: "Expertises", links: [
@@ -43,6 +44,22 @@ export function Footer() {
             {c.links.map((l) => <Link key={l.label} href={l.href}>{l.label}</Link>)}
           </div>
         ))}
+        <div className="site-footer__col site-footer__contact">
+          <p className="site-footer__h">Coordonnées</p>
+          <address className="site-footer__addr">
+            <Icon name="map-pin" size={16} />
+            <span>20 rue des Serruriers<br />67000 Strasbourg</span>
+          </address>
+          <a className="site-footer__tel" href={`tel:${ABCM_INFO.phoneHref}`}>
+            <Icon name="phone" size={16} /> {ABCM_INFO.phone}
+          </a>
+          <table className="site-footer__hours">
+            <tbody>
+              <tr><th scope="row">Lundi au vendredi</th><td>8h30 - 19h</td></tr>
+              <tr><th scope="row">Samedi &amp; dimanche</th><td>Fermé</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="container site-footer__bottom">
         <span>© 2026 ABCM Performances</span>
