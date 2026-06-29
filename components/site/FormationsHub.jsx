@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
-import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo, QUALIOPI_MENTION, QUALIOPI_CERT_FILE, assetPath } from "@/data/formations";
+import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
+import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 
 const SITE = ABCM_INFO.url;
 
@@ -92,16 +93,6 @@ export function FormationsHub() {
         </div>
       </section>
 
-      {/* ---- Mention Qualiopi ---- */}
-      <div className="fmt-quali-banner">
-        <div className="container">
-          <p>
-            <Icon name="shield-check" size={18} /> {QUALIOPI_MENTION}{" "}
-            <a href={assetPath(QUALIOPI_CERT_FILE)} target="_blank" rel="noreferrer">Voir le certificat</a>
-          </p>
-        </div>
-      </div>
-
       {/* ---- Nav silos ---- */}
       <nav className="fmt-hub__nav" aria-label="Catégories de formation">
         <div className="container fmt-hub__nav-inner">
@@ -146,6 +137,13 @@ export function FormationsHub() {
             </div>
             <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Nous contacter</Button>
           </div>
+        </div>
+      </section>
+
+      {/* ---- Qualiopi (bas de page) ---- */}
+      <section className="section quali-section">
+        <div className="container">
+          <QualiopiBlock />
         </div>
       </section>
     </div>

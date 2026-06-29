@@ -20,7 +20,7 @@ const COLS = [
     { label: "Références", href: "/#references" },
     { label: "FAQ", href: "/#faq" },
     { label: "Contact", href: "/contact" },
-    { label: "Mentions légales", href: "/contact" },
+    { label: "Mentions légales", href: "/mentions-legales/" },
   ] },
 ];
 

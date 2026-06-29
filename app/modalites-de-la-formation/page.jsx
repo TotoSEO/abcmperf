@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/ds";
-import { QUALIOPI_MENTION, QUALIOPI_CERT_FILE, assetPath, HUB_URL } from "@/data/formations";
+import { HUB_URL } from "@/data/formations";
+import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 
 export const metadata = {
   title: "Modalités de formation",
@@ -10,7 +11,6 @@ export const metadata = {
 };
 
 export default function ModalitesPage() {
-  const certHref = assetPath(QUALIOPI_CERT_FILE);
   return (
     <article className="modalites">
       <section className="fmt-hero on-dark" data-theme="dark">
@@ -26,10 +26,7 @@ export default function ModalitesPage() {
 
       <section className="section">
         <div className="container container-narrow prose">
-          <p className="prose__quali">
-            <Icon name="shield-check" size={18} /> {QUALIOPI_MENTION}{" "}
-            <a href={certHref} target="_blank" rel="noreferrer">Voir le certificat Qualiopi</a>
-          </p>
+          <QualiopiBlock />
 
           <p>Voici nos modalités et moyens pédagogiques :</p>
 
@@ -55,7 +52,7 @@ export default function ModalitesPage() {
           <h2>Accessibilité</h2>
           <p>Nous accueillons tout type de public et sans distinction.</p>
           <p>Cependant, si vous êtes en situation de handicap, vous pouvez être amené à avoir besoin d'un accompagnement spécifique ou d'une aide adaptée.</p>
-          <p>Afin d'organiser votre venue dans les meilleures conditions et de nous assurer que les moyens de la prestation de formation peuvent être adaptés à vos besoins spécifiques, vous pouvez nous contacter au 06 66 99 19 55 ou par mail info@abcmperformances.com</p>
+          <p>Afin d'organiser votre venue dans les meilleures conditions et de nous assurer que les moyens de la prestation de formation peuvent être adaptés à vos besoins spécifiques, vous pouvez nous contacter au 06 33 07 28 53 ou par mail info@abcmperformances.com</p>
 
           <h2>Le déroulé d'une formation</h2>
           <h3>En amont de la formation</h3>

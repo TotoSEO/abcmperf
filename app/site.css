@@ -405,3 +405,46 @@
 .prose__updated { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--text-subtle); margin-top: var(--space-8); }
 .prose__back { margin-top: var(--space-6); }
 .prose__back a { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 600; color: var(--accent-700); }
+
+/* =========================================================================
+   HERO · formes graphiques animées (accueil)
+   ========================================================================= */
+.hero__inner { z-index: 1; }
+.hero__shapes { position: absolute; top: 50%; right: clamp(1rem, 4vw, 4rem); transform: translateY(-50%); display: flex; align-items: center; gap: clamp(0.5rem, 1.4vw, 1.4rem); pointer-events: none; z-index: 0; }
+.hero__shape { display: block; opacity: 0; transform: translateY(30px) scale(0.8); animation: hero-shape-in 0.85s var(--ease-spring) forwards; will-change: transform, opacity; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }
+.hero__shape--1 { width: clamp(60px, 6vw, 104px); aspect-ratio: 3 / 3.6; border-radius: 999px 999px 26px 26px; background: conic-gradient(from 200deg, var(--logo-orange), var(--logo-magenta), var(--logo-green), var(--logo-blue), var(--logo-orange)); animation-delay: 0.05s; }
+.hero__shape--2 { width: clamp(68px, 7vw, 122px); aspect-ratio: 3 / 5; border-radius: 999px; background: conic-gradient(from 250deg, #8b6cff, var(--logo-blue), var(--logo-magenta), #8b6cff); margin-bottom: clamp(1.5rem, 5vw, 4rem); animation-delay: 0.16s; }
+.hero__shape--3 { width: clamp(68px, 7vw, 122px); aspect-ratio: 3 / 5; border-radius: 999px; background: conic-gradient(from 30deg, var(--logo-yellow), var(--logo-orange), #8b6cff, var(--logo-yellow)); margin-top: clamp(1.5rem, 5vw, 4rem); animation-delay: 0.27s; }
+.hero__shape--4 { width: clamp(52px, 5vw, 92px); aspect-ratio: 1; border-radius: 50%; background: conic-gradient(from 320deg, var(--logo-magenta), var(--logo-orange), var(--logo-yellow), var(--logo-magenta)); animation-delay: 0.38s; }
+@keyframes hero-shape-in { to { opacity: 0.95; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hero__shape { animation-duration: 0.001ms; opacity: 0.95; transform: none; } }
+@media (max-width: 1024px) { .hero__shapes { opacity: 0.5; } }
+@media (max-width: 760px) { .hero__shapes { display: none; } }
+
+/* =========================================================================
+   QUALIOPI · bloc logo + mention (réutilisable)
+   ========================================================================= */
+.quali-section { padding-top: 0; }
+.quali-block { display: flex; align-items: center; gap: clamp(var(--space-5), 3vw, var(--space-10)); flex-wrap: wrap; justify-content: center; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); box-shadow: var(--shadow-sm); padding: clamp(var(--space-6), 3vw, var(--space-10)); }
+.quali-block__logo { width: clamp(180px, 22vw, 240px); height: auto; flex: none; }
+.quali-block__body { max-width: 52ch; }
+.quali-block__mention { font-size: var(--text-md); font-weight: 600; color: var(--text); margin: 0 0 var(--space-3); line-height: var(--leading-snug); }
+.quali-block__link { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--accent-700); }
+@media (min-width: 700px) { .quali-block { flex-wrap: nowrap; text-align: left; } }
+.fmt-quali-more { margin-top: var(--space-4); }
+.fmt-quali-more a { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--accent-700); }
+.fmt-body .quali-block { margin-top: var(--space-6); }
+.prose .quali-block { margin-bottom: var(--space-6); }
+
+/* =========================================================================
+   CORRECTIFS RESPONSIVE (débordements mobile)
+   ========================================================================= */
+.hero .abcm-badge { white-space: normal; max-width: 100%; }      /* badge long -> retour à la ligne */
+.hero__title { overflow-wrap: break-word; }
+.fpromo__text, .fpromo__card { min-width: 0; }                   /* items de grille compressibles */
+.fmt-hero__actions { max-width: 100%; }
+.fmt-hero__actions .abcm-btn { max-width: 100%; }
+@media (max-width: 600px) {
+  .hero__title { font-size: var(--text-2xl); }                   /* titre hero plus petit sur mobile */
+  .fmt-hero__title { font-size: var(--text-xl); }
+}
