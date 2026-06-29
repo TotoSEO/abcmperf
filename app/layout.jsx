@@ -7,11 +7,11 @@ import { Footer } from "@/components/site/Footer";
 export const metadata = {
   metadataBase: new URL("https://abcmperformances.com"),
   title: {
-    default: "ABCM Performances, agence de communication & marketing digital à Strasbourg",
-    template: "%s | ABCM Performances",
+    default: "ABCM Performances : agence marketing digital à Strasbourg",
+    template: "%s | ABCM",
   },
   description:
-    "Agence de communication & marketing digital à Strasbourg depuis 2015. Création de site web, référencement SEO/GEO, Google Ads, community management et stratégie digitale.",
+    "Agence de communication & marketing digital à Strasbourg depuis 2015 : création de site web, SEO/GEO, Google Ads, réseaux sociaux et stratégie digitale.",
   keywords: ["agence communication Strasbourg", "marketing digital", "création site internet", "référencement SEO", "Google Ads", "community management"],
   openGraph: {
     type: "website",

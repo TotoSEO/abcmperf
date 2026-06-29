@@ -1,7 +1,7 @@
 import { ABCM_INFO } from "@/data/formations";
 
 export const metadata = {
-  title: "Mentions légales",
+  title: "Mentions légales & RGPD",
   description:
     "Mentions légales du site ABCM Performances : éditeur, propriété intellectuelle, cookies, protection des données personnelles (RGPD).",
   alternates: { canonical: "/mentions-legales/" },

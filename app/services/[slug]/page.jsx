@@ -11,8 +11,9 @@ export async function generateMetadata({ params }) {
   const s = getService(slug);
   if (!s) return {};
   return {
-    title: s.title,
+    title: `${s.title} à Strasbourg`,
     description: `${s.desc} ABCM Performances, agence de communication & marketing digital à Strasbourg.`,
+    alternates: { canonical: `/services/${slug}/` },
   };
 }
 

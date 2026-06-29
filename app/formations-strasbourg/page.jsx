@@ -1,9 +1,9 @@
 import { FormationsHub } from "@/components/site/FormationsHub";
 
 export const metadata = {
-  title: "Formations à Strasbourg : IA, réseaux sociaux, marketing & web",
+  title: "Formations digitales & IA à Strasbourg",
   description:
-    "17 formations professionnelles à Strasbourg et en visio : IA générative, réseaux sociaux, marketing digital, web et marque employeur. Organisme certifié Qualiopi, financement OPCO. Intra & inter-entreprise.",
+    "17 formations professionnelles à Strasbourg et en visio : IA, réseaux sociaux, marketing digital, web et marque employeur. Qualiopi, financement OPCO.",
   keywords: ["formation Strasbourg", "formation marketing digital Strasbourg", "formation IA", "formation réseaux sociaux", "Qualiopi", "OPCO"],
   alternates: { canonical: "/formations-strasbourg/" },
   openGraph: {

@@ -553,7 +553,7 @@ export const FORMATIONS = [
     name: "Inbound Marketing & Social Selling",
     cardDesc: "Attirez, convertissez et fidélisez grâce au contenu.",
     title: "Formation Inbound Marketing à Strasbourg",
-    metaDescription: "Formation Inbound Marketing & social selling à Strasbourg et en visio : attirez, convertissez et fidélisez grâce au contenu. Qualiopi, financement OPCO. Intra & inter.",
+    metaDescription: "Formation Inbound Marketing & social selling à Strasbourg et en visio : attirez, convertissez et fidélisez grâce au contenu. Qualiopi, financement OPCO.",
     lead: "Pour profiter de toutes les opportunités d'Internet, vous devez captiver vos prospects avec du contenu utile et engageant, pour les convertir en clients. L'Inbound Marketing vous accompagne dans cette démarche.",
     objectifs: [
       "Comprendre le principe d'une démarche Inbound Marketing",
@@ -842,11 +842,33 @@ export const HUB_URL = "/formations-strasbourg/";
 
 // Métadonnées Next.js dérivées d'une fiche (le template "%s | ABCM Performances"
 // est appliqué par app/layout.jsx).
+// Titres SEO concis et DISTINCTS du H1 (le H1 reste f.title). Le template
+// "%s | ABCM" est ajouté par le layout ; chaque <title> rendu fait < 62 car.
+const SEO_TITLES = {
+  "formation-savoir-utiliser-chat-gpt-pour-ameliorer-sa-productivite": "Formation ChatGPT à Strasbourg & en visio",
+  "formation-booster-ses-ecrits-professionnels-avec-lia": "Formation rédaction avec l'IA à Strasbourg",
+  "formation-decouverte-de-lia": "Formation découverte de l'IA à Strasbourg",
+  "formation-reseaux-sociaux": "Formation réseaux sociaux à Strasbourg & visio",
+  "formation-linkedin": "Formation LinkedIn à Strasbourg & en visio",
+  "formation-capcut": "Formation CapCut à Strasbourg & en visio",
+  "formation-canva": "Formation Canva à Strasbourg & en visio",
+  "formation-adobe-express": "Formation Adobe Express à Strasbourg & visio",
+  "formation-marketing-digital-webmarketing-strasbourg": "Formation marketing digital à Strasbourg",
+  "formation-referencement-strasbourg": "Formation SEO, SEA & SMO à Strasbourg",
+  "formation-publicite-google-ads": "Formation Google Ads à Strasbourg & visio",
+  "formation-inbound-marketing": "Formation inbound & social selling à Strasbourg",
+  "formation-wordpress": "Formation WordPress à Strasbourg & en visio",
+  "formation-no-code": "Formation No Code à Strasbourg & en visio",
+  "formation-gamma": "Formation Gamma à Strasbourg & en visio",
+  "formation-marketing-rh-marque-employeur": "Formation marque employeur à Strasbourg",
+  "formation-personal-branding": "Formation personal branding à Strasbourg & visio",
+};
+
 export function formationMetadata(slug) {
   const f = getFormation(slug);
   if (!f) return {};
   return {
-    title: f.title,
+    title: SEO_TITLES[f.slug] || f.title,
     description: f.metaDescription,
     keywords: [f.name, f.title, "formation Strasbourg", "Qualiopi", "OPCO"],
     alternates: { canonical: f.url },
