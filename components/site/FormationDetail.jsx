@@ -152,7 +152,6 @@ export function FormationDetail({ formation }) {
             <span aria-hidden="true">/</span>
             <span className="fmt__crumb-current">{f.name}</span>
           </nav>
-          <span className="fmt-hero__eyebrow"><span className="fmt-hero__dot" aria-hidden="true" />{silo?.emoji} {silo?.label}</span>
           <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
           <p className="fmt-hero__lead">{f.lead}</p>
           <div className="fmt-hero__actions">
