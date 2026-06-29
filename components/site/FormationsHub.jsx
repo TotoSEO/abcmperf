@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button, Badge, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
+import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
 import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
 
 const SITE = ABCM_INFO.url;
@@ -69,25 +69,26 @@ export function FormationsHub() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ---- Hero ---- */}
-      <section className="svc__hero on-dark" data-theme="dark">
-        <div className="hero__motif"><CircleMotif size={260} opacity={0.85} /></div>
-        <div className="container">
-          <Badge variant="accent" solid>Organisme certifié Qualiopi</Badge>
-          <h1 className="svc__title">Formations digitales, IA &amp; marketing à Strasbourg</h1>
-          <p className="hero__lead">
+      <section className="fmt-hero on-dark" data-theme="dark">
+        <div className="fmt-hero__motif"><CircleMotif size={340} overlap={0.32} opacity={0.7} /></div>
+        <div className="container fmt-hero__inner">
+          <span className="fmt-hero__eyebrow"><span className="fmt-hero__dot" aria-hidden="true" />Organisme certifié Qualiopi</span>
+          <h1 className="fmt-hero__title">Formations digitales, IA &amp; marketing à <span className="text-gradient-warm">Strasbourg</span></h1>
+          <p className="fmt-hero__lead">
             {FORMATIONS.length} formations professionnelles pour monter en compétences sur l'IA, les réseaux sociaux,
             le marketing digital, le web et la marque employeur. En présentiel à Strasbourg et dans le Grand Est,
             ou à distance en visio. Intra et inter-entreprise, finançables via votre OPCO.
           </p>
-          <div className="fmt__hero-meta">
-            <span><Icon name="graduation-cap" size={16} /> {FORMATIONS.length} formations</span>
-            <span><Icon name="shield-check" size={16} /> Certifié Qualiopi</span>
-            <span><Icon name="map-pin" size={16} /> Strasbourg &amp; visio</span>
-          </div>
-          <div className="fmt__hero-actions">
+          <div className="fmt-hero__actions">
             <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
             <Button as="a" href={`tel:${ABCM_INFO.phoneHref}`} variant="outline" size="lg" iconLeft={<Icon name="phone" size={18} />}>{ABCM_INFO.phone}</Button>
           </div>
+          <ul className="fmt-hero__trust">
+            <li><Icon name="graduation-cap" size={16} /> {FORMATIONS.length} formations</li>
+            <li><Icon name="shield-check" size={16} /> Certifié Qualiopi</li>
+            <li><Icon name="map-pin" size={16} /> Strasbourg &amp; visio</li>
+            <li><Icon name="check" size={16} /> Finançable OPCO</li>
+          </ul>
         </div>
       </section>
 
