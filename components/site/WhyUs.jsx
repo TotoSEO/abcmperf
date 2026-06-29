@@ -10,17 +10,17 @@ const STATS = [
 ];
 
 const ADVANTAGES = [
-  { icon: "map-pin", text: "Une agence strasbourgeoise spécialisée dans la stratégie de communication et le marketing digital." },
-  { icon: "users", text: "Une équipe d'experts : 9 collaborateurs, chacun œuvrant dans son domaine de prédilection." },
-  { icon: "clock", text: "Une réactivité à toute épreuve pour répondre rapidement à l'ensemble de vos demandes." },
-  { icon: "target", text: "Une approche à 360° : site web, e-commerce, SEO, SEA, publicités, réseaux sociaux et formation." },
+  { icon: "map-pin", title: "Ancrage strasbourgeois", text: "Une agence locale spécialisée en stratégie de communication et marketing digital." },
+  { icon: "users", title: "Une équipe d'experts", text: "9 collaborateurs, chacun œuvrant dans son domaine de prédilection." },
+  { icon: "clock", title: "Réactivité à toute épreuve", text: "Nous répondons rapidement à l'ensemble de vos demandes." },
+  { icon: "target", title: "Approche à 360°", text: "Web, e-commerce, SEO, SEA, publicités, réseaux sociaux et formation." },
 ];
 
 export function WhyUs() {
   return (
     <section className="section whyus-wrap" id="agence">
       <div className="container whyus">
-        <div className="whyus__text">
+        <div className="whyus__text" data-reveal="left">
           <SectionHeading eyebrow="Pourquoi nous" title="Pourquoi travailler avec nous ?" />
           <p className="whyus__lead">
             Notre agence de communication accompagne ses clients depuis 2015. <strong>Réactivité et
@@ -38,7 +38,7 @@ export function WhyUs() {
           <Button as={Link} href="/contact" variant="primary" iconRight={<Icon name="arrow-right" size={18} />}>Nous contacter</Button>
         </div>
 
-        <div className="whyus__media">
+        <div className="whyus__media" data-reveal="right">
           <img
             src="https://abcmperformances.com/wp-content/uploads/2020/01/abcm-17-1-scaled-e1578326636828.jpg"
             alt="Les locaux d'ABCM Performances à Strasbourg"
@@ -49,12 +49,14 @@ export function WhyUs() {
       </div>
 
       <div className="container whyus__adv">
-        <h3 className="whyus__adv-title">Nos avantages</h3>
-        <div className="whyus__cards">
-          {ADVANTAGES.map((a) => (
-            <div key={a.text} className="whyus__card">
-              <span className="whyus__card-ic"><Icon name={a.icon} size={22} /></span>
-              <p>{a.text}</p>
+        <h3 className="whyus__adv-title" data-reveal>Nos avantages</h3>
+        <div className="adv" data-reveal>
+          {ADVANTAGES.map((a, i) => (
+            <div key={a.title} className="adv__item">
+              <span className="adv__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <span className="adv__ic"><Icon name={a.icon} size={22} /></span>
+              <h4 className="adv__title">{a.title}</h4>
+              <p className="adv__text">{a.text}</p>
             </div>
           ))}
         </div>

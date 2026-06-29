@@ -7,13 +7,15 @@ export function LatestArticles() {
   return (
     <section className="section articles-wrap">
       <div className="container">
-        <SectionHeading
-          align="center"
-          eyebrow="Le blog"
-          title="Les derniers articles du blog"
-          description="Tendances, conseils et actualités du marketing digital."
-        />
-        <div className="articles__grid">
+        <div data-reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="Le blog"
+            title="Les derniers articles du blog"
+            description="Tendances, conseils et actualités du marketing digital."
+          />
+        </div>
+        <div className="articles__grid" data-reveal>
           {ARTICLES.map((a) => (
             <a key={a.url} href={a.url} target="_blank" rel="noreferrer" className="article-card">
               {a.date && <span className="article-card__date">{a.date}</span>}
