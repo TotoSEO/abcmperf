@@ -7,7 +7,6 @@ export const ABCM_SERVICES = [
   { hue: "yellow",  icon: "target",         title: "Google Ads",             desc: "Campagnes SEA, Display & Shopping qui boostent votre visibilité.", slug: "ads", cat: "Référencement" },
   { hue: "blue",    icon: "user-round",     title: "Personal Branding",      desc: "Positionnement, ciblage et diffusion de contenus sur-mesure.", slug: "branding", cat: "Conseil" },
   { hue: "magenta", icon: "line-chart",     title: "Stratégie digitale",     desc: "Audit, accompagnement et suivi de votre stratégie en ligne.", slug: "strategie", cat: "Conseil" },
-  { hue: "green",   icon: "graduation-cap", title: "Formations",             desc: "Montez en compétences sur le digital et l'IA avec nos experts.", slug: "formations", cat: "Conseil" },
 ];
 
 export const ABCM_NAV = [

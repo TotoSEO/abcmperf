@@ -221,8 +221,8 @@
 .fmt-hub__silo .abcm-sh { margin-bottom: var(--space-8); }
 .fmt-hub__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: var(--space-6); }
 /* CTA des cartes formation : présenté comme un bouton (et non un simple lien). */
-.fmt-hub__grid .abcm-service__link { margin-top: var(--space-3); align-self: flex-start; padding: 0.6em 1.1em; border-radius: var(--radius-pill); background: var(--accent-400); color: var(--night); box-shadow: var(--shadow-xs); transition: background var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
-.fmt-hub__grid .abcm-service:hover .abcm-service__link { background: var(--accent-300); color: var(--night); box-shadow: var(--shadow-accent); }
+.fmt-hub__grid .abcm-service__link { margin-top: var(--space-4); align-self: center; justify-content: center; padding: 0.6em 1.3em; border-radius: var(--radius-pill); background: transparent; border: 1.5px solid var(--_hue, var(--border-strong)); color: var(--_hue, var(--accent-700)); transition: background var(--dur-base) var(--ease-out); }
+.fmt-hub__grid .abcm-service:hover .abcm-service__link { background: color-mix(in oklch, var(--_hue, var(--accent-400)) 14%, var(--surface)); }
 
 @media (max-width: 1024px) {
   .fmt__grid { grid-template-columns: 1fr; gap: var(--space-10); }
@@ -337,6 +337,8 @@
    ACCUEIL · blocs (promo formations, pourquoi nous, blog)
    ========================================================================= */
 .hero__lead { max-width: 62ch; }
+.hero__lead p { margin: 0 0 var(--space-3); }
+.hero__lead p:last-child { margin-bottom: 0; }
 
 /* Promo formations */
 .fpromo-wrap { padding-block: var(--section-y-tight); }

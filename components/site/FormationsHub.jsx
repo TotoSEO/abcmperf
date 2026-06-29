@@ -107,7 +107,7 @@ export function FormationsHub() {
       {groups.map(({ silo, items }, i) => (
         <section key={silo.id} id={silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
           <div className="container">
-            <SectionHeading eyebrow={`${silo.emoji} ${silo.label}`} title={silo.label} description={silo.intro} />
+            <SectionHeading align="center" eyebrow={`${silo.emoji} ${silo.label}`} title={silo.label} description={silo.intro} />
             <div className="fmt-hub__grid">
               {items.map((f) => (
                 <ServiceCard
