@@ -310,6 +310,7 @@ hr { border: none; border-top: var(--border-width) solid var(--border); margin: 
 /* ---------- Layout helper --------------------------------------------- */
 .container { width: min(var(--container), 100% - 2 * var(--gutter)); margin-inline: auto; }
 .container-narrow { width: min(var(--container-narrow), 100% - 2 * var(--gutter)); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
