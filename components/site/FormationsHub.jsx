@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
-import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
+import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo, assetPath } from "@/data/formations";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 
 const SITE = ABCM_INFO.url;
@@ -126,6 +126,35 @@ export function FormationsHub() {
           </div>
         </section>
       ))}
+
+      {/* ---- Salle / locaux Strasbourg ---- */}
+      <section className="section fmt-room">
+        <div className="container fmt-room__inner">
+          <div className="fmt-room__media">
+            <img
+              src={assetPath("salle-formation-strasbourg.jpg")}
+              alt="Les locaux d'ABCM Performances à Strasbourg, où se déroulent les formations en présentiel"
+              loading="lazy"
+              width="1536"
+              height="1024"
+            />
+          </div>
+          <div className="fmt-room__text">
+            <SectionHeading eyebrow="Nos locaux" title="Formez-vous en présentiel au cœur de Strasbourg" />
+            <p>
+              Nos formations se déroulent dans un cadre lumineux et chaleureux à Strasbourg, propice à
+              l'apprentissage et aux échanges. Nous privilégions les petits groupes pour un accompagnement
+              personnalisé et un maximum de pratique.
+            </p>
+            <ul className="fmt-room__list">
+              <li><Icon name="users" size={18} /> Petits groupes : 8 personnes maximum</li>
+              <li><Icon name="map-pin" size={18} /> À Strasbourg et dans tout le Grand Est</li>
+              <li><Icon name="monitor" size={18} /> Aussi disponibles à distance, en visioconférence</li>
+            </ul>
+            <Button as={Link} href="/contact" variant="primary" rel="nofollow" iconRight={<Icon name="arrow-right" size={18} />}>Organiser une formation</Button>
+          </div>
+        </div>
+      </section>
 
       {/* ---- CTA ---- */}
       <section className="section">

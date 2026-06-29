@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Badge, Button, Icon } from "@/components/ds";
+import { Button, Icon } from "@/components/ds";
 
 export function Hero() {
   return (
@@ -12,7 +12,6 @@ export function Hero() {
         <span className="hero__shape hero__shape--4" />
       </div>
       <div className="container hero__inner">
-        <Badge variant="accent" solid dot>Agence &amp; organisme de formation Qualiopi · Strasbourg</Badge>
         <h1 className="hero__title">Agence marketing, digital et communication à <span className="hero__hl">Strasbourg</span></h1>
         <div className="hero__lead">
           <p>ABCM Performances est une agence de marketing, marketing digital et communication, ainsi qu'un organisme de formation certifié Qualiopi basé à Strasbourg.</p>
