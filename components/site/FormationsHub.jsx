@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
+import { Button, CircleMotif, Icon } from "@/components/ds";
 import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
 
 const SITE = ABCM_INFO.url;
@@ -13,7 +13,7 @@ function buildJsonLd() {
       {
         "@type": "CollectionPage",
         "@id": SITE + HUB_URL,
-        name: "Formations à Strasbourg — ABCM Performances",
+        name: "Formations à Strasbourg | ABCM Performances",
         description:
           "Catalogue des formations ABCM Performances à Strasbourg et en distanciel : IA, réseaux sociaux, marketing digital, web et marque employeur. Organisme certifié Qualiopi.",
         url: SITE + HUB_URL,
@@ -53,7 +53,7 @@ function buildJsonLd() {
         hasCredential: {
           "@type": "EducationalOccupationalCredential",
           credentialCategory: "Certification Qualiopi",
-          name: "Qualiopi — Actions de formation",
+          name: "Qualiopi : actions de formation",
         },
       },
     ],
@@ -105,25 +105,24 @@ export function FormationsHub() {
 
       {/* ---- Silos ---- */}
       {groups.map(({ silo, items }) => (
-        <section key={silo.id} id={silo.id} className="section fmt-hub__silo">
+        <section key={silo.id} id={silo.id} className="fmt-hub__silo" style={{ "--silo-hue": `var(--logo-${silo.hue})` }}>
           <div className="container">
-            <SectionHeading
-              eyebrow={`${silo.emoji} ${silo.label}`}
-              title={silo.label}
-              description={silo.intro}
-            />
+            <header className="fmt-hub__silo-head">
+              <span className="fmt-hub__silo-chip" aria-hidden="true">{silo.emoji}</span>
+              <div className="fmt-hub__silo-headtext">
+                <h2 className="fmt-hub__silo-title">{silo.label}</h2>
+                <p className="fmt-hub__silo-desc">{silo.intro}</p>
+              </div>
+              <span className="fmt-hub__silo-count">{items.length} formation{items.length > 1 ? "s" : ""}</span>
+            </header>
             <div className="fmt-hub__grid">
               {items.map((f) => (
-                <ServiceCard
-                  key={f.slug}
-                  as={Link}
-                  href={f.url}
-                  hue={f.hue}
-                  icon={<Icon name={f.icon} size={26} />}
-                  title={f.name}
-                  description={f.cardDesc}
-                  linkLabel="Voir la formation"
-                />
+                <Link key={f.slug} href={f.url} className="fmt-card" style={{ "--_hue": `var(--logo-${f.hue})` }}>
+                  <span className="fmt-card__ic"><Icon name={f.icon} size={24} /></span>
+                  <h3 className="fmt-card__title">{f.name}</h3>
+                  <p className="fmt-card__desc">{f.cardDesc}</p>
+                  <span className="fmt-card__btn">Voir la formation <Icon name="arrow-right" size={16} /></span>
+                </Link>
               ))}
             </div>
           </div>

@@ -7,8 +7,8 @@ import { Footer } from "@/components/site/Footer";
 export const metadata = {
   metadataBase: new URL("https://abcmperformances.com"),
   title: {
-    default: "ABCM Performances — Agence de communication & marketing digital à Strasbourg",
-    template: "%s — ABCM Performances",
+    default: "ABCM Performances, agence de communication & marketing digital à Strasbourg",
+    template: "%s | ABCM Performances",
   },
   description:
     "Agence de communication & marketing digital à Strasbourg depuis 2015. Création de site web, référencement SEO/GEO, Google Ads, community management et stratégie digitale.",
@@ -17,7 +17,7 @@ export const metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "ABCM Performances",
-    title: "ABCM Performances — Agence de communication & marketing digital",
+    title: "ABCM Performances, agence de communication & marketing digital",
     description: "Boostez votre visibilité sur le web & les réseaux. Une équipe à taille humaine à Strasbourg, depuis 2015.",
   },
 };
