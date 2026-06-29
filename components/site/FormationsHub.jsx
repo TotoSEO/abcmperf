@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Button, CircleMotif, Icon } from "@/components/ds";
+import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
 import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
 
 const SITE = ABCM_INFO.url;
@@ -104,25 +104,22 @@ export function FormationsHub() {
       </nav>
 
       {/* ---- Silos ---- */}
-      {groups.map(({ silo, items }) => (
-        <section key={silo.id} id={silo.id} className="fmt-hub__silo" style={{ "--silo-hue": `var(--logo-${silo.hue})` }}>
+      {groups.map(({ silo, items }, i) => (
+        <section key={silo.id} id={silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
           <div className="container">
-            <header className="fmt-hub__silo-head">
-              <span className="fmt-hub__silo-chip" aria-hidden="true">{silo.emoji}</span>
-              <div className="fmt-hub__silo-headtext">
-                <h2 className="fmt-hub__silo-title">{silo.label}</h2>
-                <p className="fmt-hub__silo-desc">{silo.intro}</p>
-              </div>
-              <span className="fmt-hub__silo-count">{items.length} formation{items.length > 1 ? "s" : ""}</span>
-            </header>
+            <SectionHeading eyebrow={`${silo.emoji} ${silo.label}`} title={silo.label} description={silo.intro} />
             <div className="fmt-hub__grid">
               {items.map((f) => (
-                <Link key={f.slug} href={f.url} className="fmt-card" style={{ "--_hue": `var(--logo-${f.hue})` }}>
-                  <span className="fmt-card__ic"><Icon name={f.icon} size={24} /></span>
-                  <h3 className="fmt-card__title">{f.name}</h3>
-                  <p className="fmt-card__desc">{f.cardDesc}</p>
-                  <span className="fmt-card__btn">Voir la formation <Icon name="arrow-right" size={16} /></span>
-                </Link>
+                <ServiceCard
+                  key={f.slug}
+                  as={Link}
+                  href={f.url}
+                  hue={f.hue}
+                  icon={<Icon name={f.icon} size={26} />}
+                  title={f.name}
+                  description={f.cardDesc}
+                  linkLabel="Voir la formation"
+                />
               ))}
             </div>
           </div>
