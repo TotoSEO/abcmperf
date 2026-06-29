@@ -91,7 +91,7 @@
   --overlay:     color-mix(in oklch, var(--night) 55%, transparent);
 
   /* ---------- TYPOGRAPHY ----------------------------------------------- */
-  --font-display: "Space Grotesk", "Roboto", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Space Grotesk", system-ui, sans-serif;
   --font-sans:    "Hanken Grotesk", "Roboto Condensed", system-ui, sans-serif;
   --font-mono:    "Space Mono", ui-monospace, "SFMono-Regular", monospace;
 
