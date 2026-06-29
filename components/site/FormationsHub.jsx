@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button, SectionHeading, ServiceCard, CircleMotif, Icon } from "@/components/ds";
-import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo } from "@/data/formations";
+import { ABCM_INFO, HUB_URL, FORMATIONS, formationsBySilo, QUALIOPI_MENTION, QUALIOPI_CERT_FILE, assetPath } from "@/data/formations";
 
 const SITE = ABCM_INFO.url;
 
@@ -91,6 +91,16 @@ export function FormationsHub() {
           </ul>
         </div>
       </section>
+
+      {/* ---- Mention Qualiopi ---- */}
+      <div className="fmt-quali-banner">
+        <div className="container">
+          <p>
+            <Icon name="shield-check" size={18} /> {QUALIOPI_MENTION}{" "}
+            <a href={assetPath(QUALIOPI_CERT_FILE)} target="_blank" rel="noreferrer">Voir le certificat</a>
+          </p>
+        </div>
+      </div>
 
       {/* ---- Nav silos ---- */}
       <nav className="fmt-hub__nav" aria-label="Catégories de formation">

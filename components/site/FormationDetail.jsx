@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Button, SectionHeading, Card, CircleMotif, Icon, Accordion } from "@/components/ds";
 import {
-  ABCM_INFO, HUB_URL,
+  ABCM_INFO, HUB_URL, MODALITES_URL,
   STD_MODALITES, STD_TARIFS, STD_FINANCEMENT, STD_PREREQUIS, STD_DELAI, STD_ACCESSIBILITE,
+  QUALIOPI_MENTION, QUALIOPI_CERT_FILE, assetPath,
   getSilo, relatedFor,
 } from "@/data/formations";
 
@@ -236,6 +237,11 @@ export function FormationDetail({ formation }) {
             <p className="fmt-modalites">{f.modalites || STD_MODALITES}</p>
             <p className="fmt__delai"><Icon name="clock" size={16} /> {STD_DELAI}</p>
             <p className="fmt__delai"><Icon name="users" size={16} /> {STD_ACCESSIBILITE}</p>
+            <p className="fmt-quali"><Icon name="shield-check" size={16} /> {QUALIOPI_MENTION}</p>
+            <div className="fmt-quali-links">
+              <a href={assetPath(QUALIOPI_CERT_FILE)} target="_blank" rel="noreferrer"><Icon name="shield-check" size={16} /> Voir le certificat Qualiopi</a>
+              <Link href={MODALITES_URL}><Icon name="arrow-right" size={16} /> Modalités &amp; moyens pédagogiques</Link>
+            </div>
           </div>
 
           {/* ---- Aside (buy-box) ---- */}

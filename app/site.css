@@ -380,3 +380,28 @@
   .fpromo { grid-template-columns: 1fr; gap: var(--space-6); }
   .articles__grid { grid-template-columns: 1fr; }
 }
+
+/* =========================================================================
+   QUALIOPI (mention + certificat) + pages de contenu (prose)
+   ========================================================================= */
+.fmt-quali { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-sm); color: var(--text); background: var(--success-soft); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin-top: var(--space-5); }
+.fmt-quali .abcm-ic { color: var(--success); flex: none; margin-top: 0.15em; }
+.fmt-quali-links { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-top: var(--space-3); }
+.fmt-quali-links a { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--accent-700); }
+.fmt-quali-banner { background: var(--surface); border-bottom: 1px solid var(--border); }
+.fmt-quali-banner p { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em var(--space-2); margin: 0; padding-block: var(--space-3); font-size: var(--text-sm); color: var(--text-muted); }
+.fmt-quali-banner .abcm-ic { color: var(--success); flex: none; }
+.fmt-quali-banner a { font-weight: 700; color: var(--accent-700); white-space: nowrap; }
+
+.prose h2 { font-size: var(--text-xl); margin: var(--space-10) 0 var(--space-4); }
+.prose h3 { font-size: var(--text-md); margin: var(--space-6) 0 var(--space-2); }
+.prose p { color: var(--text); line-height: var(--leading-relaxed); margin: 0 0 var(--space-4); }
+.prose ul { margin: 0 0 var(--space-4); padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.prose li { color: var(--text-muted); line-height: var(--leading-normal); }
+.prose li::marker { color: var(--accent-600); }
+.prose__quali { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.4em var(--space-2); background: var(--success-soft); border-radius: var(--radius-md); padding: var(--space-4); font-size: var(--text-sm); color: var(--text); }
+.prose__quali .abcm-ic { color: var(--success); flex: none; margin-top: 0.15em; }
+.prose__quali a { font-weight: 700; color: var(--accent-700); }
+.prose__updated { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--text-subtle); margin-top: var(--space-8); }
+.prose__back { margin-top: var(--space-6); }
+.prose__back a { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 600; color: var(--accent-700); }
