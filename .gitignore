@@ -29,3 +29,6 @@ next-env.d.ts
 # Python (outils d'extraction)
 __pycache__/
 *.pyc
+
+# Sorties temporaires d'agents
+scratch_*.json

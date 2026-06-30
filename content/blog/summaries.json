@@ -223,5 +223,221 @@
     "LinkedIn et Facebook : le carré (1080×1080 / 1200×1200 px) reste la valeur sûre.",
     "Pinterest : vertical 2:3 (1000×1500 px). YouTube : miniature 16:9 (1280×720 px).",
     "Gardez une zone de sécurité au centre pour éviter les recadrages."
+  ],
+  "bluesky-c-est-quoi": [
+    "Bluesky est un réseau social décentralisé fondé sur le protocole AT.",
+    "Chaque utilisateur choisit ou crée l'algorithme qui alimente son fil.",
+    "L'inscription est ouverte à tous depuis février 2024, sans invitation.",
+    "Son ambiance est jugée plus saine et plus conversationnelle que X.",
+    "Les marques peuvent y tester une communication authentique et de niche.",
+    "La modération et la monétisation restent ses principaux défis à relever."
+  ],
+  "combien-de-hashtags-utiliser-sur-instagram": [
+    "Instagram autorise jusqu'à 30 hashtags, mais ce n'est pas un objectif.",
+    "Quelques hashtags pertinents valent mieux qu'une longue liste générique.",
+    "Placez vos hashtags dans la légende, pas en commentaire ni masqués.",
+    "Mixez hashtags de niche, locaux et thématiques liés à votre contenu.",
+    "Analysez les hashtags de vos concurrents pour vous positionner et vous démarquer.",
+    "La qualité du contenu reste le premier moteur de visibilité."
+  ],
+  "cocon-semantique-kesako": [
+    "Le cocon sémantique organise vos pages autour d'un thème pour renforcer le SEO.",
+    "Formalisé par Laurent Bourrelly, il repose uniquement sur l'optimisation interne du site.",
+    "Il relie page mère, pages filles et pages complémentaires sur trois niveaux maximum.",
+    "Contrairement au silo, il se concentre sur l'intention et le besoin de l'internaute.",
+    "Un bon cocon diffuse le jus de lien vers vos pages stratégiques.",
+    "Des liens contextualisés et une structure claire améliorent durablement votre référencement."
+  ],
+  "comment-utiliser-google-my-business-efficacement": [
+    "Google Business Profile remplace Google My Business et booste votre visibilité locale gratuitement.",
+    "Revendiquez votre fiche au plus vite pour contrôler les informations diffusées sur vous.",
+    "Remplissez chaque rubrique : horaires, services, photos, contacts et zone desservie.",
+    "Publiez des posts réguliers pour rester visible dans la recherche et sur Maps.",
+    "Collectez et répondez aux avis clients pour renforcer image de marque et référencement.",
+    "La gestion se fait désormais directement depuis la recherche Google et Maps."
+  ],
+  "nouveautes-instagram-juin-2025": [
+    "Le format photo de référence est désormais le 3:4 (1080 x 1440 px).",
+    "La grille du profil se réorganise par glisser-déposer, sans republier.",
+    "Vous pouvez bloquer l'indexation de vos posts sur Google en un réglage.",
+    "Stories collaboratives et comptes ados renforcent collaboration et sécurité.",
+    "L'algorithme privilégie la vidéo courte et les interactions authentiques.",
+    "Adaptez visuels et publication pour gagner en visibilité dès 2026."
+  ],
+  "les-nouveautes-canva-create-2025": [
+    "Canva Create 2025 transforme l'outil en plateforme de création tout-en-un.",
+    "Visual Suite 2.0 centralise planification, design, collaboration et publication.",
+    "Canva Sheets transforme vos données en rapports et dashboards visuels.",
+    "Magic Studio génère textes, visuels et traductions à grande échelle.",
+    "Canva AI et Canva Code créent designs et mini-apps sans coder.",
+    "Sites multi-pages, voix IA et typographie avancée complètent le tableau."
+  ],
+  "perplexity-deep-research": [
+    "Perplexity Deep Research analyse et croise plusieurs sources pour une réponse synthétique.",
+    "Elle cite ses sources, ce qui permet de vérifier chaque information.",
+    "Le mode avancé reste accessible gratuitement, dans une limite quotidienne.",
+    "Elle excelle en veille concurrentielle, en recherche et en documentation.",
+    "Elle complète ChatGPT plutôt qu'elle ne le remplace, grâce à la transparence.",
+    "Vérifiez toujours les sources avant d'utiliser une synthèse en production."
+  ],
+  "meilleures-applis-canva-2024": [
+    "Canva intègre des dizaines d'applications qui accélèrent la création de contenus.",
+    "Mockups, Image Upscaler et les générateurs IA dopent la qualité de vos visuels.",
+    "Les connecteurs Instagram, LinkedIn et Monday centralisent votre community management.",
+    "Les apps Google Ads et Meta facilitent la production de visuels publicitaires.",
+    "La majorité des applications utiles sont accessibles dès la version gratuite.",
+    "Une formation Canva certifiée Qualiopi permet de gagner en autonomie rapidement."
+  ],
+  "instagram-reels-comment-ca-fonctionne": [
+    "Les Reels sont le format vidéo courte d'Instagram, jusqu'à 3 minutes.",
+    "L'algorithme met fortement en avant les Reels pour gagner en portée.",
+    "La création se fait en quelques étapes, avec musique, effets et montage.",
+    "Le format idéal pour montrer le côté humain de votre marque.",
+    "Tutoriels, coulisses et UGC fonctionnent particulièrement bien en Reels.",
+    "Les premières secondes sont décisives pour capter l'attention."
+  ],
+  "algorithmes-2025-meta-google-tiktok": [
+    "Meta, Google et TikTok placent l'IA au coeur de la diffusion publicitaire.",
+    "Meta Advantage+ automatise l'optimisation des audiences et des placements.",
+    "La recherche Google intègre l'IA générative dans les résultats sponsorisés.",
+    "TikTok favorise les vidéos natives proches du contenu UGC.",
+    "La créativité courte et authentique devient le principal levier de performance.",
+    "Aligner message, format et intention reste la règle d'or sur chaque plateforme."
+  ],
+  "comprendre-algorithme-tiktok": [
+    "L'algorithme TikTok recommande des vidéos selon vos interactions, pas selon votre nombre d'abonnés.",
+    "Trois familles de signaux pèsent : interactions, infos de la vidéo et réglages du compte.",
+    "Le temps de visionnage et les vues complètes sont les indicateurs les plus puissants.",
+    "Les 3 premières secondes décident si votre vidéo est poussée plus loin.",
+    "Sons tendance, hashtags pertinents et légendes optimisées aident la diffusion.",
+    "Régularité, authenticité et tests d'horaires construisent une visibilité durable."
+  ],
+  "comment-publier-un-gif-sur-une-page-facebook": [
+    "Coller un lien Giphy sur une page pro affiche un lien, pas un GIF animé.",
+    "La parade : enregistrer le GIF en .gif puis le publier comme un fichier image.",
+    "Un format .gif valide est indispensable pour conserver l'animation.",
+    "Si la publication directe échoue, programmez le post : c'est normal.",
+    "Alternatives : convertir le GIF en MP4, ou utiliser le bouton GIF des commentaires.",
+    "À doser : un GIF dynamise un fil, mais en abuser nuit à l'image de marque."
+  ],
+  "choisir-instagram-pour-booster-sa-visibilite-sur-le-web": [
+    "Instagram est une vitrine permanente : régularité et pertinence attirent l'audience.",
+    "Un compte attractif repose sur des valeurs fortes et des visuels de qualité.",
+    "Chaque visiteur se demande \"qu'est-ce que j'y gagne ?\" : répondez vite.",
+    "Répondre aux commentaires crée un lien d'attachement durable.",
+    "Les Reels offrent la plus forte portée organique pour gagner en visibilité.",
+    "S'imprégner des codes implicites de la plateforme fait toute la différence."
+  ],
+  "optimisation-sxo": [
+    "Le SXO fusionne SEO, expérience utilisateur et optimisation de la conversion.",
+    "Google valorise les sites rapides, clairs et agréables à parcourir.",
+    "Un bon classement ne suffit plus : il faut convertir le visiteur.",
+    "Les Core Web Vitals et le mobile-first sont des piliers du SXO.",
+    "On mesure le SXO via taux de rebond, durée de visite et conversions.",
+    "Le SXO ne remplace pas le SEO : il le prolonge et l'amplifie."
+  ],
+  "publicite-sur-linkedin-ads": [
+    "LinkedIn cible directement décideurs et professionnels grâce à un ciblage très précis.",
+    "Les Lead Gen Forms collectent des contacts sans quitter la plateforme.",
+    "Chaque objectif (notoriété, leads, trafic) appelle un format adapté.",
+    "Le coût par lead se pilote avec le CTR, le CPL et le taux de conversion.",
+    "Un budget de départ d'environ 10 euros par jour permet de tester.",
+    "L'A/B testing affine messages, visuels et audiences au fil des campagnes."
+  ],
+  "comment-optimiser-sa-page-facebook-pro": [
+    "Une page Pro se crée et se gère depuis Meta Business Suite, pas un profil.",
+    "Des informations complètes et à jour rassurent et renforcent votre vitrine.",
+    "Photo de profil au logo, couverture aux bonnes dimensions et message clair.",
+    "Des posts courts et variés, publiés aux bons créneaux, génèrent plus d'engagement.",
+    "Boutons d'action, Messenger et réponses enregistrées fluidifient la relation client.",
+    "La publicité Facebook Ads complète l'organique pour gagner en portée."
+  ],
+  "comment-utiliser-youtube-dans-sa-strategie-de-communication-digitale": [
+    "YouTube est un puissant canal d'acquisition pour attirer, convertir et fidéliser vos clients.",
+    "La vidéo capte plus d'attention et transmet vos messages plus vite que l'écrit.",
+    "Définissez d'abord un objectif clair : éduquer, divertir ou vendre.",
+    "Le référencement YouTube repose sur les mots-clés, le titre, la description et les chapitres.",
+    "Titre fort et miniature soignée déclenchent le clic et boostent le taux de visionnage.",
+    "Répondre aux commentaires fidélise l'audience et nourrit l'engagement."
+  ],
+  "seo-comment-rediger-un-article-optimise-pour-google": [
+    "Choisissez vos mots-clés avec des outils SEO avant d'écrire.",
+    "Privilégiez la longue traîne : moins de concurrence, trafic plus qualifié.",
+    "Reliez vos articles par un maillage interne pour bâtir un cocon sémantique.",
+    "Structurez avec H1, H2 et H3 pour aider Google et vos lecteurs.",
+    "Soignez la lisibilité : phrases courtes, paragraphes aérés, mots clés en gras.",
+    "Identifiez les requêtes réelles via Google Suggest et les personas."
+  ],
+  "seo-comment-optimiser-votre-netlinking": [
+    "Le netlinking repose sur les liens entrants et sortants comptabilisés par Google.",
+    "Un backlink de qualité transmet une part de l'autorité du site source.",
+    "Quelques liens de qualité valent mieux que des milliers de liens douteux.",
+    "L'article invité reste la méthode la plus simple pour obtenir des backlinks.",
+    "Une ressource imbattable attire des liens naturels et durables.",
+    "Réseaux sociaux et boutons de partage facilitent la diffusion de vos liens."
+  ],
+  "les-competences-indispensables-pour-reussir-sur-le-web": [
+    "Le SEO reste la base pour gagner en visibilité sans payer chaque clic.",
+    "Une rédaction web claire et structurée engage les visiteurs et rassure Google.",
+    "Le community management transforme une audience sociale en clients fidèles.",
+    "Lire ses données (GA4, Search Console) guide chaque décision marketing.",
+    "Maîtriser l'IA fait gagner du temps sur la production de contenu.",
+    "Ces compétences se complètent : combinez-les pour des résultats durables."
+  ],
+  "ia-entreprenariat": [
+    "L'IA aide les entrepreneurs à automatiser, créer et décider plus vite.",
+    "ChatGPT, Gemini et Claude couvrent l'essentiel des tâches rédactionnelles.",
+    "Des outils dédiés gèrent l'image, le SEO ou la création de logo.",
+    "Un même outil peut servir le service client, le blog ou le marketing.",
+    "L'IA reste un assistant : relecture et vérification humaines indispensables.",
+    "Se former permet d'exploiter ces outils sans perdre de temps."
+  ],
+  "seo-et-sem-quelle-strategie-choisir-pour-votre-entreprise": [
+    "Le SEO travaille les résultats naturels : lent à installer, durable et crédible.",
+    "Le SEM achète de la visibilité payante : immédiat mais payant en continu.",
+    "Le SEO mise sur le long terme, le SEM sur les résultats rapides.",
+    "Une campagne SEM révèle vite les mots-clés qui convertissent.",
+    "La combinaison SEO plus SEM reste l'approche la plus performante en 2026.",
+    "Le bon choix dépend de vos objectifs, votre budget et votre concurrence."
+  ],
+  "definir-sa-ligne-editoriale-sur-les-reseaux-sociaux": [
+    "La ligne éditoriale est le fil conducteur de votre discours de marque.",
+    "Elle définit à la fois vos contenus, votre ton et vos plateformes.",
+    "Commencez toujours par vos objectifs et votre cible avant de publier.",
+    "Chaque réseau social a ses codes, son public et son format idéal.",
+    "Un calendrier éditorial garantit régularité et cohérence dans la durée.",
+    "Variez les formats : posts, stories, vidéos et lives pour engager."
+  ],
+  "pourquoi-et-comment-faire-du-community-management": [
+    "Le community management gère la présence d'une marque sur les réseaux sociaux.",
+    "Le community manager est un véritable stratège, pas un simple animateur.",
+    "Ses missions vont de la veille au reporting, en passant par la création.",
+    "Bien mené, le community management est mesurable et génère du ROI.",
+    "Deux voies possibles : se former soi-même ou confier la mission à un pro.",
+    "Communiquer sur les réseaux sociaux ne s'improvise pas."
+  ],
+  "comment-utiliser-les-reseaux-sociaux-pour-generer-des-prospects": [
+    "Une ligne éditoriale planifiée bat toujours les publications postées à l'instinct.",
+    "Donnez de la valeur gratuite avant de vendre pour gagner la confiance.",
+    "Un tunnel de vente clair guide l'abonné du post jusqu'à l'achat.",
+    "Une proposition de valeur unique retient le visiteur sur votre site.",
+    "Concentrez vos efforts sur un ou deux réseaux plutôt que tous.",
+    "Mesurez, testez et ajustez chaque étape pour améliorer vos conversions."
+  ],
+  "pourquoi-votre-entreprise-doit-etre-presente-sur-les-reseaux-sociaux": [
+    "Les réseaux sociaux rendent votre entreprise visible là où sont vos clients.",
+    "Ils touchent vos clients, vos collaborateurs et vos futurs prospects à la fois.",
+    "Ils démontrent votre expertise et renforcent la confiance envers votre marque.",
+    "Les avis et échanges nourrissent votre e-réputation et votre expérience client.",
+    "Ils génèrent du trafic vers votre site et soutiennent votre référencement.",
+    "Ils ouvrent la porte à de nouveaux partenariats et à la veille concurrentielle."
+  ],
+  "identite-de-marque-le-guide-complet": [
+    "L'identité de marque va bien au-delà d'un logo : vision, valeurs, voix, visuel.",
+    "Une identité forte différencie, crée la confiance et fidélise vos clients.",
+    "À l'ère numérique, la cohérence sur tous les points de contact est cruciale.",
+    "L'IA aide à personnaliser et à gérer la réputation, sans remplacer l'humain.",
+    "Médias sociaux, e-réputation et engagement renforcent votre identité au quotidien.",
+    "Apple, Nike ou Coca-Cola illustrent la puissance d'une marque cohérente."
   ]
 }

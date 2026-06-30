@@ -9,6 +9,16 @@ const NAV = [
   { label: "Blog", href: "/articles/" },
 ];
 
+// Petit sceau « certifié » (SVG inline, léger) accolé au lien formations.
+function CertifiedBadge() {
+  return (
+    <svg className="cert-badge" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
+      <path className="cert-badge__seal" d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82 1.89 3.2L12 21.04l3.4 1.46 1.89-3.2 3.61-.82-.34-3.69L23 12z" />
+      <path className="cert-badge__check" d="M10.09 16.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48z" />
+    </svg>
+  );
+}
+
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
@@ -32,7 +42,7 @@ export function Header() {
           </nav>
         </div>
         <div className="site-header__actions">
-          <Link href="/formations-strasbourg/" className="site-header__formlink">Nos formations certifiées</Link>
+          <Link href="/formations-strasbourg/" className="site-header__formlink">Nos formations certifiées<CertifiedBadge /></Link>
           <Link href="/contact" className="site-header__pillbtn site-header__pillbtn--solid">Nous contacter <Icon name="arrow-right" size={15} /></Link>
         </div>
         <button className="site-header__burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -44,7 +54,7 @@ export function Header() {
           {NAV.map((n) => (
             <Link key={n.label} href={n.href} onClick={() => setOpen(false)}>{n.label}</Link>
           ))}
-          <Link href="/formations-strasbourg/" className="site-menu__btn site-menu__btn--ghost" onClick={() => setOpen(false)}>Nos formations certifiées</Link>
+          <Link href="/formations-strasbourg/" className="site-menu__btn site-menu__btn--ghost" onClick={() => setOpen(false)}>Nos formations certifiées<CertifiedBadge /></Link>
           <Link href="/contact" className="site-menu__btn site-menu__btn--solid" onClick={() => setOpen(false)}>Nous contacter</Link>
         </div>
       )}
