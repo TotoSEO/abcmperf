@@ -9,10 +9,15 @@ export function Services() {
   return (
     <section className="services" id="services">
       <div className="container">
-        <div data-reveal>
+        <div className="svc-head" data-reveal>
           <SectionHeading size="lg" eyebrow="Nos expertises"
             title="Nos services marketing &amp; communication"
             description="Chaque besoin n'appelle pas la même réponse. Du site web au référencement, de la vidéo à la publicité, nous vous accompagnons avec des solutions pensées pour renforcer votre présence." />
+          <div className="svc-head__deco" aria-hidden="true">
+            <span className="svc-blob svc-blob--1" />
+            <span className="svc-blob svc-blob--2" />
+            <span className="svc-blob svc-blob--3" />
+          </div>
         </div>
 
         <div className="svc-groups">
