@@ -216,5 +216,12 @@
     "Face à Shopify, plus clé en main et simple au départ, WooCommerce est souvent plus flexible sur le long terme et adapté à qui veut garder le contrôle et personnaliser.",
     "Optimiser une boutique passe par un bon hébergement, un thème léger (Astra, Blocksy, Shoptimizer), des images compressées en WebP, un tunnel d'achat simplifié et un travail SEO soigné.",
     "Des familles de plugins clés sont recommandées : SEO (Rank Math, Yoast), performance (WP Rocket, LiteSpeed Cache), images (Imagify, ShortPixel), emailing (Mailchimp, Klaviyo) et paiement (Stripe, PayPal, WooPayments), sans en multiplier l'installation."
+  ],
+  "formats-reseaux-sociaux-2025": [
+    "Instagram : adoptez le format portrait 3:4 (1080×1440 px) au feed.",
+    "Reels, Stories, TikTok et Snapchat : 9:16 plein écran (1080×1920 px).",
+    "LinkedIn et Facebook : le carré (1080×1080 / 1200×1200 px) reste la valeur sûre.",
+    "Pinterest : vertical 2:3 (1000×1500 px). YouTube : miniature 16:9 (1280×720 px).",
+    "Gardez une zone de sécurité au centre pour éviter les recadrages."
   ]
 }
