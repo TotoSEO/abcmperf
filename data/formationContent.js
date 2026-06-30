@@ -541,7 +541,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Les bénéfices sont concrets et documentés : les social sellers actifs génèrent en moyenne près de 45 % d'opportunités supplémentaires et sont nettement plus susceptibles d'atteindre leurs quotas que ceux qui n'adoptent pas la démarche. Chez ABCM Performances, l'objectif est précisément de vous rendre autonome sur une compétence durable et mesurable, transposable dès votre retour en poste."
+            "text": "Les bénéfices sont concrets : les commerciaux qui pratiquent activement le social selling génèrent davantage d'opportunités et atteignent plus souvent leurs objectifs que ceux qui s'en passent. Chez ABCM Performances, l'objectif est précisément de vous rendre autonome sur une compétence durable et mesurable, transposable dès votre retour en poste."
           }
         ]
       },
