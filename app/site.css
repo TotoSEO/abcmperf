@@ -17,6 +17,11 @@
 .site-header__actions { margin-left: auto; display: inline-flex; align-items: center; gap: clamp(var(--space-4), 2vw, var(--space-6)); }
 .site-header__formlink { font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); color: var(--logo-magenta); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; white-space: nowrap; transition: color var(--dur-base) var(--ease-out); }
 .site-header__formlink:hover { color: var(--logo-orange); }
+.site-header__formlink { display: inline-flex; align-items: center; }
+.cert-badge { flex: none; margin-left: 0.35em; vertical-align: -0.22em; }
+.cert-badge__seal { fill: var(--logo-blue); }
+.cert-badge__check { fill: #fff; }
+.site-menu__btn .cert-badge { vertical-align: middle; }
 .site-header__pill { margin-left: auto; display: inline-flex; align-items: center; gap: var(--space-1); background: var(--surface-inset); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 5px; }
 .site-header__pillbtn { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); padding: 0.6em 1.05em; border-radius: var(--radius-pill); white-space: nowrap; transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 .site-header__pillbtn--ghost { color: var(--text); }
