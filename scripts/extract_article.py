@@ -75,8 +75,9 @@ def strip_widgets(node):
 
 def convert_accordions(node, soup):
     for acc in node.select(".accordion"):
-        details_wrap = soup.new_tag("div")
-        details_wrap["class"] = ["blog-faq"]
+        # Conversion EN PLACE : chaque .accordion-item -> <details>, sans toucher
+        # au reste du conteneur (certains articles ont du texte rédactionnel
+        # « hors item » directement dans .accordion : on le conserve verbatim).
         for item in acc.select(".accordion-item"):
             title_el = item.select_one(".accordion-title")
             inner_el = item.select_one(".accordion-inner")
@@ -85,31 +86,47 @@ def convert_accordions(node, soup):
             summ = soup.new_tag("summary")
             summ.string = q
             det.append(summ)
-            if inner_el:
-                # garder le contenu rédactionnel de la réponse tel quel
+            if inner_el and inner_el.get_text(strip=True):
                 ans = soup.new_tag("div")
                 for child in list(inner_el.children):
                     ans.append(child.extract())
                 det.append(ans)
-            details_wrap.append(det)
-        acc.replace_with(details_wrap)
+            item.replace_with(det)
+        acc.name = "div"
+        acc["class"] = ["blog-faq"]
+
+# Pages statiques du nouveau site (routes, pas des "slug" de données).
+STATIC_ROUTES = {"contact", "formations-strasbourg", "mentions-legales",
+                 "modalites-de-la-formation", "articles"}
 
 def remap_href(href):
     if not href: return href
+    # racine du site -> accueil du nouveau site
+    if re.match(r"https?://abcmperformances\.com/?$", href):
+        return "%ASSET%/"
     m = re.match(r"https?://abcmperformances\.com/([a-z0-9-]+)/?$", href)
     if m:
         slug = m.group(1)
-        if slug in NEW_SITE_SLUGS or slug in BLOG_TARGET_SLUGS:
-            return f"/{slug}/"
+        if slug in NEW_SITE_SLUGS or slug in BLOG_TARGET_SLUGS or slug in STATIC_ROUTES:
+            # %ASSET% -> préfixe basePath (/abcmperf) au build, comme les images,
+            # pour que le lien <a> brut fonctionne aussi sur GitHub Pages.
+            return f"%ASSET%/{slug}/"
         return href  # page pas encore migrée : on garde le lien live
     return href
 
 KEEP_ATTRS = {"href", "src", "alt", "datetime", "colspan", "rowspan", "open"}
+KEEP_CLASS = {"blog-faq"}  # classes injectées par nous, à conserver pour le style
 
 def clean_attrs(node):
     for el in node.find_all(True):
         for attr in list(el.attrs.keys()):
-            if attr not in KEEP_ATTRS:
+            if attr == "class":
+                kept = [c for c in (el.get("class") or []) if c in KEEP_CLASS]
+                if kept:
+                    el["class"] = kept
+                else:
+                    del el["class"]
+            elif attr not in KEEP_ATTRS:
                 del el[attr]
 
 def is_decorative(src):
