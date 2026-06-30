@@ -66,9 +66,12 @@ function Block({ b }) {
           {b.cols.map((c, ci) => (
             <div className="rich__col" key={ci}>
               {c.title ? <h4 className="rich__col-title">{c.title}</h4> : null}
-              <ul className="rich__ul">
-                {c.items.map((it, i) => <li key={i}>{renderInline(it)}</li>)}
-              </ul>
+              {c.text ? <p className="rich__col-text">{renderInline(c.text)}</p> : null}
+              {c.items ? (
+                <ul className="rich__ul">
+                  {c.items.map((it, i) => <li key={i}>{renderInline(it)}</li>)}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>
