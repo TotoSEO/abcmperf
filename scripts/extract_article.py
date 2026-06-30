@@ -75,8 +75,9 @@ def strip_widgets(node):
 
 def convert_accordions(node, soup):
     for acc in node.select(".accordion"):
-        details_wrap = soup.new_tag("div")
-        details_wrap["class"] = ["blog-faq"]
+        # Conversion EN PLACE : chaque .accordion-item -> <details>, sans toucher
+        # au reste du conteneur (certains articles ont du texte rédactionnel
+        # « hors item » directement dans .accordion : on le conserve verbatim).
         for item in acc.select(".accordion-item"):
             title_el = item.select_one(".accordion-title")
             inner_el = item.select_one(".accordion-inner")
@@ -85,31 +86,47 @@ def convert_accordions(node, soup):
             summ = soup.new_tag("summary")
             summ.string = q
             det.append(summ)
-            if inner_el:
-                # garder le contenu rédactionnel de la réponse tel quel
+            if inner_el and inner_el.get_text(strip=True):
                 ans = soup.new_tag("div")
                 for child in list(inner_el.children):
                     ans.append(child.extract())
                 det.append(ans)
-            details_wrap.append(det)
-        acc.replace_with(details_wrap)
+            item.replace_with(det)
+        acc.name = "div"
+        acc["class"] = ["blog-faq"]
+
+# Pages statiques du nouveau site (routes, pas des "slug" de données).
+STATIC_ROUTES = {"contact", "formations-strasbourg", "mentions-legales",
+                 "modalites-de-la-formation", "articles"}
 
 def remap_href(href):
     if not href: return href
+    # racine du site -> accueil du nouveau site
+    if re.match(r"https?://abcmperformances\.com/?$", href):
+        return "%ASSET%/"
     m = re.match(r"https?://abcmperformances\.com/([a-z0-9-]+)/?$", href)
     if m:
         slug = m.group(1)
-        if slug in NEW_SITE_SLUGS or slug in BLOG_TARGET_SLUGS:
-            return f"/{slug}/"
+        if slug in NEW_SITE_SLUGS or slug in BLOG_TARGET_SLUGS or slug in STATIC_ROUTES:
+            # %ASSET% -> préfixe basePath (/abcmperf) au build, comme les images,
+            # pour que le lien <a> brut fonctionne aussi sur GitHub Pages.
+            return f"%ASSET%/{slug}/"
         return href  # page pas encore migrée : on garde le lien live
     return href
 
 KEEP_ATTRS = {"href", "src", "alt", "datetime", "colspan", "rowspan", "open"}
+KEEP_CLASS = {"blog-faq"}  # classes injectées par nous, à conserver pour le style
 
 def clean_attrs(node):
     for el in node.find_all(True):
         for attr in list(el.attrs.keys()):
-            if attr not in KEEP_ATTRS:
+            if attr == "class":
+                kept = [c for c in (el.get("class") or []) if c in KEEP_CLASS]
+                if kept:
+                    el["class"] = kept
+                else:
+                    del el["class"]
+            elif attr not in KEEP_ATTRS:
                 del el[attr]
 
 def is_decorative(src):
@@ -156,8 +173,31 @@ def normalize_dashes(s):
     if not s: return s
     return s.replace("—", "–").replace("―", "–")
 
+# Emojis pictographiques à retirer PARTOUT (demande client). On GARDE les flèches
+# texte (→ ← ↑ ↓, U+2190–U+21FF) qui servent de séparateurs dans le contenu.
+EMOJI_RE = re.compile(
+    "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U00002B00-\U00002BFF"
+    "\U0001F1E6-\U0001F1FF\U00002300-\U000023FF\U0000FE00-\U0000FE0F"
+    "\U0000200D\U000020E3]",
+    flags=re.UNICODE,
+)
+
+def strip_emojis(s):
+    if not s: return s
+    return re.sub(r" {2,}", " ", EMOJI_RE.sub("", s))
+
+def strip_emojis_tree(node):
+    for txt in list(node.find_all(string=True)):
+        new = strip_emojis(str(txt))
+        if new != str(txt):
+            txt.replace_with(NavigableString(new))
+    for img in node.find_all("img"):
+        if img.get("alt"):
+            img["alt"] = strip_emojis(img["alt"])
+
 def normalize_text(t):
     t = t.replace("\xa0", " ")
+    t = EMOJI_RE.sub("", t)  # diff verbatim : on ignore le retrait des emojis
     # pour le diff verbatim, on ignore la normalisation des tirets (— – -)
     t = re.sub(r"[—―–]", "-", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -175,6 +215,7 @@ def main():
     og_image = meta(soup, prop="og:image")
     h1 = soup.select_one("h1.entry-title") or soup.find("h1")
     title = h1.get_text(" ", strip=True) if h1 else (meta(soup, prop="og:title") or seo_title)
+    author = meta(soup, name="author")
 
     content = soup.select_one(".entry-content")
     if content is None:
@@ -192,15 +233,17 @@ def main():
     for a in content.find_all("a"):
         a["href"] = remap_href(a.get("href"))
     clean_attrs(content)
+    strip_emojis_tree(content)  # retrait des emojis dans le contenu (demande client)
 
     # sérialisation du contenu interne (verbatim, jamais retapé)
     inner = "".join(str(c) for c in content.children).strip()
     inner = re.sub(r"\n{3,}", "\n\n", inner)
     em_count = inner.count("—") + inner.count("―")
     inner = normalize_dashes(inner)  # retrait des tirets cadratins (demande client)
-    title = normalize_dashes(title)
-    seo_title = normalize_dashes(seo_title)
-    description = normalize_dashes(description)
+    title = strip_emojis(normalize_dashes(title))
+    seo_title = strip_emojis(normalize_dashes(seo_title))
+    description = strip_emojis(normalize_dashes(description))
+    author = strip_emojis(author)
 
     out_text = normalize_text(BeautifulSoup(inner, "lxml").get_text(" "))
 
@@ -220,7 +263,7 @@ def main():
     data = {
         "slug": slug, "url": url,
         "title": title, "seoTitle": seo_title, "description": description,
-        "date": published, "modified": modified,
+        "author": author, "date": published, "modified": modified,
         "cover": cover, "html": inner,
     }
     with open(os.path.join(CONTENT_BLOG, slug + ".json"), "w", encoding="utf-8") as f:

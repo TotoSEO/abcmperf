@@ -1,0 +1,220 @@
+{
+  "opal-google-creation-application-ia": [
+    "Opal est un assistant conversationnel IA annoncé par Google en juillet 2025 qui permet de créer des applications en décrivant simplement son idée, sans coder.",
+    "À partir d'une intention décrite à la voix ou au texte, l'outil génère le code, propose une interface, gère les logiques métiers de base et offre des recommandations UX/UI en temps réel.",
+    "Il incarne l'approche du vibe coding : on décrit un usage ou une ambiance plutôt que de programmer ligne par ligne.",
+    "Les premières fonctionnalités couvrent les apps web simples (formulaires, dashboards, landing pages), la génération de code HTML/CSS/JavaScript et la connexion à des bases de données préconfigurées.",
+    "Opal vise trois publics : les non-développeurs, les développeurs juniors ou freelances et les équipes produit/marketing souhaitant prototyper un MVP rapidement.",
+    "Encore en phase expérimentale sur Google for Developers, Opal doit être intégré à terme à Firebase, AppSheet et Android Studio."
+  ],
+  "4-outils-ia-utiles-peu-connus": [
+    "Runway ML permet de monter, retoucher, coloriser ou animer des vidéos via l'IA, et même d'effacer un élément ou de générer des plans à partir de texte.",
+    "Rewind.ai enregistre l'activité de l'utilisateur (navigation, mails, visios, docs) pour retrouver n'importe quelle information par une simple recherche, mais fonctionne uniquement sur Mac.",
+    "Gamma.app génère présentations, mini-sites et storytelling visuel à partir d'un prompt, avec des résultats exportables, modifiables et responsive.",
+    "ElevenLabs transforme un texte en audio d'une qualité vocale très réaliste, avec choix ou clonage de voix, idéal pour podcasts, voix off et tutoriels.",
+    "Ces outils sont majoritairement accessibles en version gratuite ou en essai et s'intègrent facilement dans un usage professionnel, à condition de vérifier les conditions d'utilisation sur les données."
+  ],
+  "edits-contre-capcut": [
+    "Edits est l'application de montage vidéo gratuite lancée par Instagram (Meta) pour concurrencer CapCut et retenir les créateurs dans son propre écosystème.",
+    "Elle propose une interface épurée avec timeline fluide, outils de découpage, transitions, effets, filtres, textes et superposition audio.",
+    "L'application est optimisée nativement pour les Reels : formats verticaux par défaut, résolution et durée prédéfinies, intégration directe au compte Instagram.",
+    "Le montage et la publication se font directement depuis Edits, sans passer par plusieurs applications, ce qui fait gagner du temps aux community managers et créateurs.",
+    "Edits ne vise pas à remplacer CapCut mais offre une expérience plus fluide et moins complexe pour ceux qui privilégient l'intégration à Instagram.",
+    "Disponible gratuitement sur l'App Store et le Google Play Store, l'outil requiert un compte Instagram pour fonctionner pleinement."
+  ],
+  "le-aeo-c-est-quoi": [
+    "L'AEO (Answer Engine Optimization) optimise le contenu pour que des IA comme ChatGPT ou CoPilot puissent directement recommander des réponses aux utilisateurs.",
+    "Contrairement au SEO qui vise le classement dans les moteurs de recherche, l'AEO se concentre sur la pertinence et la précision des réponses apportées via IA.",
+    "L'approche de contenu diffère : le SEO s'optimise pour les mots-clés, tandis que l'AEO mise sur une structure claire et une pertinence immédiate exploitable par les IA.",
+    "En matière de ciblage, le SEO exploite les recherches organiques alors que l'AEO anticipe l'intention de l'utilisateur pour une réponse rapide et personnalisée.",
+    "L'AEO devient incontournable pour positionner une entreprise comme source de réponses de confiance dans des environnements de plus en plus tournés vers l'IA."
+  ],
+  "les-normes-wcag-et-rgaa": [
+    "Les WCAG sont des normes internationales du W3C qui rendent les contenus web accessibles aux personnes handicapées selon le principe POUR (perceptible, opérable, compréhensible, robuste).",
+    "Elles comportent trois niveaux de conformité : A (minimal), AA (standard recommandé) et AAA (exigences maximales).",
+    "Le RGAA est l'adaptation française des WCAG, orientée vérifications concrètes, avec la version RGAA 4.1 reprenant les règles WCAG 2.1 niveau AA.",
+    "Le RGAA s'applique obligatoirement aux sites web et applications mobiles du secteur public, les entreprises privées étant encouragées mais pas contraintes.",
+    "Respecter ces normes rend le site utilisable par tous, réduit les risques légaux, améliore l'UX et renforce l'image de marque.",
+    "Des outils comme WebAIM et Tanaguru Engine permettent de diagnostiquer et d'auditer la conformité à l'accessibilité."
+  ],
+  "astuces-canva-pro": [
+    "L'onglet Styles et le Kit de marque appliquent automatiquement palette de couleurs et polices à tous les designs pour respecter la charte graphique.",
+    "Les modèles verrouillés figent les éléments fixes (logo, fond, CTA) et garantissent la cohérence visuelle lorsque la production est déléguée à une équipe ou des freelances.",
+    "Canva Pro intègre un planificateur de contenu pour programmer et publier sur Instagram, LinkedIn ou Facebook sans quitter la plateforme.",
+    "La fonction Bulk Create génère automatiquement des dizaines de visuels personnalisés à partir d'un fichier CSV, Excel ou Google Sheet.",
+    "D'autres fonctions avancées incluent la suppression d'arrière-plan en un clic, les liens interactifs dans les PDF exportés, les grilles et repères avec magnétisme, et les effets de texte (incrustation, 3D).",
+    "Des plugins tiers comme Pexels, Pixabay, Brandfetch, Typeform, Google Maps ou ChatGPT pour Canva enrichissent l'outil via l'onglet Applications."
+  ],
+  "google-veo": [
+    "Google Veo 3 est une IA générative de vidéos de Google DeepMind, présentée à Google I/O 2025 et intégrée à Gemini AI Studio, qui crée des vidéos réalistes à partir de texte.",
+    "Sa nouveauté majeure est la génération de son synchronisé : dialogues avec synchronisation labiale, bruitages, ambiances, musiques et effets sonores automatiques.",
+    "L'outil Flow offre un contrôle créatif précis : mouvements de caméra, modification du décor, choix du style visuel, ambiance lumineuse et sonore, et rythme narratif.",
+    "Pour limiter les deepfakes, Google ajoute un filigrane invisible SynthID et un filigrane visible activé par défaut, sauf pour la version Ultra.",
+    "Face à Sora d'OpenAI, Veo 3 se distingue par une résolution jusqu'à 4K, l'audio synchronisé, un contrôle créatif très avancé et une cohérence visuelle plus réaliste.",
+    "Disponible uniquement aux États-Unis, Veo 3 est proposé via Google AI Ultra à 249,99 $/mois et Google AI Pro à 19,99 $/mois, le déploiement international restant sans date annoncée."
+  ],
+  "une-overdose-des-consommateurs-face-a-lia": [
+    "L'IA est bien acceptée en BtoB et en automatisation (briefs, analyse de données, reporting) car elle libère du temps sans remplacer la créativité humaine.",
+    "Dans la publicité grand public, une annonce explicitement labellisée comme générée par IA est jugée moins naturelle et moins utile, avec un impact négatif sur l'engagement et l'intention d'achat à contenu identique.",
+    "Seuls 17 % des Français se disent à l'aise avec des contenus créés par IA, et plus de 7 consommateurs sur 10 trouvent moins authentique une marque qui en use massivement.",
+    "Les campagnes IA de Coca-Cola, McDonald's (Pays-Bas) et Valentino ont provoqué des bad buzz pour leur côté incohérent, sans âme ou en décalage avec l'émotion attendue.",
+    "Le rejet vise les usages perçus comme artificiels ou paresseux, pas l'IA en soi, et alimente un retour aux esthétiques humaines, artisanales et rétro (nostalgie des années 2000).",
+    "La clé est une IA responsable et sobre : un assistant à la créativité et à l'optimisation, avec transparence, plutôt qu'un substitut universel aux talents humains."
+  ],
+  "regles-techniques-emails": [
+    "Limiter le volume d'e-mails et choisir le bon canal selon le contexte : l'e-mail n'est pas adapté à toutes les situations.",
+    "Maîtriser les champs destinataire, CC, CCI et listes de diffusion, en n'y plaçant que les personnes réellement concernées et en justifiant les mises en copie.",
+    "Rédiger un objet concis et clair en 5 ou 6 mots, un seul sujet par e-mail, sinon envoyer deux mails séparés.",
+    "Structurer le corps en 3 paragraphes maximum avec des phrases d'une douzaine de mots, en gras sur les mots essentiels, pour une lecture aisée y compris sur mobile.",
+    "Soigner l'orthographe en se relisant après une pause de 2 minutes, expliciter toute abréviation et ne pas oublier la pièce jointe annoncée.",
+    "Gérer son temps en dédiant des plages horaires aux e-mails et en priorisant selon urgence et importance, plutôt que répondre en continu."
+  ],
+  "geo-vs-aeo": [
+    "L'AEO (Answer Engine Optimization) vise à faire apparaître le contenu comme réponse directe : featured snippets, assistants vocaux, chats IA.",
+    "Le GEO (Generative Engine Optimization) vise à ce que le contenu soit cité ou utilisé comme source par les moteurs génératifs et grands modèles de langage.",
+    "L'AEO privilégie un format Q&A, FAQ et langage conversationnel ; le GEO exige en plus de la crédibilité, des données chiffrées, des sources et un fort E-E-A-T.",
+    "Les deux approches sont complémentaires et non exclusives : une stratégie gagnante combine SEO, AEO et GEO pour couvrir recherche traditionnelle, vocale, conversationnelle et IA générative.",
+    "AEO et GEO restent un complément au SEO classique (vitesse, maillage interne, backlinks), qu'ils ne remplacent pas.",
+    "Points de vigilance : peu d'outils de mesure standardisés, risque de zéro-clic, évolution rapide des moteurs IA et nécessité d'une information fiable et à jour."
+  ],
+  "strategie-de-contenu-2026": [
+    "Clarifier d'abord ses objectifs marketing (leads, notoriété, fidélisation, expertise) avant de choisir formats et canaux, car chaque objectif appelle des supports différents.",
+    "Redéfinir ses personas 2026 en s'appuyant sur les stats 2025 (Google Analytics, Meta Insights, LinkedIn, CRM) pour identifier enjeux, habitudes et plateformes.",
+    "Bâtir un calendrier éditorial réaliste fondé sur la régularité plutôt que l'intensité, avec des thématiques piliers et des formats variés, via Notion, Trello ou Google Sheets.",
+    "Combiner contenus evergreen (guides, ressources, témoignages) et contenus opportunistes liés aux marronniers, temps forts business et actualité du secteur.",
+    "Pratiquer le content repurposing : un article devient carrousel, vidéo puis newsletter, une vidéo se découpe en shorts, pour diffuser plus de valeur avec moins d'idées."
+  ],
+  "presence-les-reseaux-sociaux": [
+    "Vouloir être présent sur tous les réseaux mène à l'éparpillement, à l'épuisement et à des résultats décevants, faute de stratégie.",
+    "Mieux vaut être régulier sur un seul réseau bien choisi que survoler cinq plateformes : l'enjeu est d'être au bon endroit, pas partout.",
+    "Chaque réseau a sa force : LinkedIn pour le BtoB et la prospection, Instagram pour le storytelling, Facebook pour les communautés locales, TikTok pour la viralité et l'audience jeune, Pinterest pour l'e-commerce et l'inspiration.",
+    "Le choix des plateformes doit dépendre des objectifs, de l'audience et du temps réellement disponible, dans une logique de moins mais mieux.",
+    "Pour une TPE ou un indépendant, 1 à 2 réseaux bien exploités suffisent, et la délégation à une agence est souvent la solution la plus efficace."
+  ],
+  "15-astuces-pour-maitriser-canva-comme-un-pro": [
+    "Gagner en rapidité avec les raccourcis clavier (T pour texte, R rectangle, C cercle, L ligne, Ctrl/Cmd+D pour dupliquer, Alt+flèches pour déplacer au pixel).",
+    "Soigner l'alignement et la cohérence via règles et repères, modèles intelligents personnalisables et pipette couleur pour harmoniser les teintes.",
+    "Exploiter les fonctions Canva Pro : suppression d'arrière-plan en un clic, import de polices personnalisées (OTF, TTF) dans le Brand Kit et redimensionnement multiformat.",
+    "Enrichir les visuels avec masques et cadres, Smartmockups, GIF/vidéos animées, import et montage de vidéos, et insertion de QR codes.",
+    "Travailler en équipe via le partage et les commentaires en temps réel, et organiser ses projets par dossiers.",
+    "Accélérer la création grâce aux outils d'IA générative : Magic Write pour le texte, Text to Image et Background Remover."
+  ],
+  "les-temps-forts-a-ne-pas-manquer-en-2026": [
+    "Janvier-février : profiter des résolutions professionnelles et d'une concurrence publicitaire moindre avec contenus pédagogiques, audits, essais gratuits et contenus AEO type \"comment...\".",
+    "Mars : mois très actif du premier trimestre, idéal pour publier contenus longs, livres blancs, campagnes d'acquisition et refonte SEO/AEO des contenus clés.",
+    "Avril-mai : préparer les activations été et rentrée, lancer du brand content, anticiper les automatisations estivales et travailler l'evergreen (Journée de la Terre, ponts de mai).",
+    "Août-septembre, le vrai nouvel an du marketing : reprise des budgets et cycles B2B, rebond des réseaux sociaux et nouveautés IA, moment des grands chantiers et campagnes ambitieuses.",
+    "Octobre-décembre : trimestre le plus rentable (Black Friday, Cyber Monday, Noël), à préparer avec campagnes SEA anticipées, tunnels dédiés et contenus de conversion.",
+    "Toute l'année : assurer une veille sur les annonces IA et Big Tech (fonctionnalités, formats publicitaires, exigences SEO/AEO) qui impactent immédiatement visibilité et performance."
+  ],
+  "limportance-des-reseaux-sociaux-pour-une-pme": [
+    "Les réseaux sociaux offrent aux PME une visibilité mondiale qui dépasse les frontières géographiques, y compris avec un budget marketing limité.",
+    "Les interactions instantanées créent un lien direct avec l'audience, renforçant la confiance et la fidélité à la marque.",
+    "L'écoute active sur ces plateformes permet aux PME de mieux comprendre les besoins clients et d'ajuster leurs offres pour rester compétitives.",
+    "Le marketing social est abordable et maximise la présence sans investissement massif, optimisant ainsi le budget de l'entreprise.",
+    "Une intégration efficace repose sur des objectifs précis et le principe 1 plateforme = 1 stratégie, chaque réseau choisi devant correspondre au public cible.",
+    "Se démarquer dans un environnement numérique concurrentiel exige un contenu engageant, créatif et adapté à chaque plateforme."
+  ],
+  "piloter-votre-communication-en-2026": [
+    "Notion AI structure les plannings éditoriaux, rédige des posts et génère des templates réutilisables en langage naturel.",
+    "Make (ex-Integromat) connecte les applications (Gmail, Instagram, Trello, Airtable) et crée des scénarios d'automatisation sans coder.",
+    "Looker Studio (ex-Data Studio) centralise les données de communication dans des dashboards personnalisés pour un suivi en temps réel basé sur des KPIs.",
+    "Copy.ai génère accroches, emails marketing, idées de posts et pages web via des workflows orientés objectifs (convertir, informer, fidéliser).",
+    "Metricool programme les publications, analyse les performances (TikTok, Google Business) et permet de suivre la concurrence ainsi que les Ads Google et Meta.",
+    "Tous ces outils proposent des versions gratuites ou accessibles et restent no-code ou très visuels, l'IA agissant comme assistant et non comme remplaçant de l'humain."
+  ],
+  "5-automatisations-ia-essentielles-en-2026": [
+    "Un calendrier éditorial dynamique (ChatGPT, Notion AI, Make) génère et priorise des idées chaque semaine : une PME du BTP a gagné +45 % de fréquence de publication.",
+    "Connecter son CRM (HubSpot, Sellsy, Pipedrive) à une IA produit résumés hebdos, insights et alertes, économisant environ 2 heures d'analyse par semaine.",
+    "L'automatisation de la génération d'idées et de scripts sociaux fournit hooks, légendes et vidéos adaptés à chaque plateforme (LinkedIn, Insta, TikTok).",
+    "Des workflows d'e-mails intelligents segmentent et personnalisent les envois : une formation en ligne a fait passer son taux d'ouverture de 22 % à 41 %.",
+    "Une veille stratégique automatisée (Perplexity Alerts, Notion AI, Make) surveille les concurrents et envoie un briefing hebdomadaire, soit 1 h 30 gagnée par semaine.",
+    "Chaque automatisation se met en place en moins de 2 heures, pour un gain global estimé de 10 à 20 heures par mois, l'IA ne remplaçant ni la vision stratégique ni l'analyse humaine."
+  ],
+  "threads-cest-quoi": [
+    "Threads est le réseau social de Meta lancé en juillet 2023, pensé comme un moyen intime et personnel de se connecter, centré sur les conversations en temps réel.",
+    "L'application autonome (iOS et Android) est intégrée à Facebook et Instagram, facilitant le partage des publications vers ces réseaux.",
+    "On y discute en temps réel, partage photos, vidéos et textes, crée des collections de partages et personnalise ses publications avec filtres et stickers.",
+    "Face à X, Threads se distingue par une interface épurée et minimaliste et un contenu plus léger et positif.",
+    "Threads propose des fonctionnalités absentes de X : collections de partages, message vocal et passage du compte en mode privé.",
+    "Meta prévoit d'ajouter de nouvelles fonctionnalités comme la messagerie privée, le réseau ayant le potentiel de séduire un public différent de celui de X."
+  ],
+  "charte-graphique-eco-friendly": [
+    "Une charte graphique éco-friendly privilégie couleurs douces, motifs organiques et formes simples afin de minimiser l'impact environnemental des éléments graphiques.",
+    "Des éléments graphiques épurés réduisent la charge des serveurs et la consommation d'énergie au chargement des pages, diminuant ainsi l'empreinte carbone du site.",
+    "Cette démarche renforce une image de marque positive en affichant l'engagement de l'entreprise envers la durabilité.",
+    "Les couleurs douces et formes organiques améliorent l'expérience utilisateur en réduisant stress et anxiété, favorisant engagement et fidélité.",
+    "Dans un marché saturé, une charte responsable permet de se différencier et d'attirer les clients soucieux de l'impact environnemental.",
+    "Patagonia et Ekwateur sont cités comme exemples de marques engagées dotées d'une charte graphique éco-friendly."
+  ],
+  "les-avantages-dune-strategie-omnicanale-pour-votre-entreprise": [
+    "La stratégie omnicanale intègre et connecte tous les points de contact (boutiques, e-commerce, réseaux sociaux, applications) pour une expérience fluide et cohérente.",
+    "Elle offre une expérience client personnalisée et continue : démarrer un achat en ligne et le finaliser en magasin avec assistance en temps réel.",
+    "La proximité et la personnalisation renforcent la fidélité et génèrent un attachement durable à la marque.",
+    "La collecte et l'analyse de données multi-sources améliorent la connaissance des besoins et préférences des consommateurs.",
+    "La multiplication des points de contact augmente les conversions et offre la flexibilité d'anticiper les tendances et d'intégrer de nouveaux outils.",
+    "Sa mise en place passe par l'analyse des comportements clients, une cohérence visuelle, un CRM de gestion centralisée et la formation des équipes."
+  ],
+  "ou-trouver-de-la-musique-libre-de-droit-pour-les-videos": [
+    "Les musiques diffusées à la radio ou à la télévision ne sont pas libres de droits et ne peuvent pas être réutilisées sans s'acquitter des droits associés.",
+    "La loi protège auteurs et compositeurs : utiliser une musique connue impose de signer un contrat d'édition avec un organisme comme la SACEM.",
+    "Deux solutions existent : composer sa propre musique ou recourir à une banque de musiques libres de droits accessible via différents sites web.",
+    "Le coût sur ces plateformes varie de la gratuité totale à une trentaine d'euros en moyenne, selon la musique et la licence choisies.",
+    "Parmi les sites cités figurent ccMixter, Shutterstock, Vimeo Music Store, SoundBlend, BeatPick, YouTube, Audionautix, Free Music Archive, Jamendo et Public Domain 4U.",
+    "La musique et les effets sonores véhiculent l'émotion et donnent toute sa dimension au message, rendant les montages visuels bien plus vivants."
+  ],
+  "apple-intelligence": [
+    "Apple Intelligence, annoncée en 2024, arrive en France dès avril 2025 sur les appareils compatibles.",
+    "La majorité des traitements s'effectuent localement sur l'appareil, garantissant confidentialité et rapidité sans dépendre du cloud.",
+    "L'IA s'intègre nativement à iOS, iPadOS et macOS via Siri, Messages, Mail et Notes.",
+    "Fonctionnalités clés : Siri conversationnel et contextuel, génération et résumé de texte, création d'images avec Image Playground, tri et organisation automatique des fichiers.",
+    "Appareils compatibles : iPhone 15 Pro et 15 Pro Max, iPad et Mac équipés d'une puce M1 ou plus récente."
+  ],
+  "le-personal-branding-c-est-quoi": [
+    "Le Personal Branding consiste à construire et gérer son image professionnelle en ligne sur les réseaux sociaux, son site web et autres canaux digitaux.",
+    "Cinq avantages clés : affirmation de l'expertise, renforcement du réseau, création d'opportunités commerciales, meilleure gestion de l'e-réputation et visibilité accrue.",
+    "La mise en place passe par quatre étapes : analyse de la présence actuelle, choix des bonnes plateformes, création de contenu de qualité et engagement avec la communauté.",
+    "Avec 86 % des consommateurs présents en ligne, une image de marque personnelle cohérente est essentielle pour se distinguer dans un environnement digital saturé.",
+    "Contrairement au marketing traditionnel centré sur l'entreprise ou le produit, le Personal Branding met l'accent sur la personne et reste pertinent dans tous les secteurs (freelances, consultants, cadres, dirigeants)."
+  ],
+  "claude-ai-en-2026-le-guide-complet": [
+    "En 2026, Claude.ai d'Anthropic est passé de simple chatbot à plateforme d'agents IA capable de créer, automatiser, analyser et exécuter, reposant sur l'IA constitutionnelle.",
+    "Trois modèles coexistent : Opus 4.7 (le plus puissant, vision avancée), Sonnet 4.6 (équilibre performance/rapidité) et Haiku 4.5 (rapide et économique).",
+    "Claude Design produit de vrais supports exploitables (landing pages, présentations, maquettes), et Claude Code génère du code, automatise les tests et peut travailler en routines autonomes 24h/24.",
+    "Les connecteurs MCP relient Claude à des applications grand public (Spotify, Uber, Booking.com) et professionnelles (Adobe Creative Cloud, Blender, Ableton Live), ainsi qu'à Word, Excel et PowerPoint.",
+    "Les abonnements vont du Gratuit au Pro (~20 $/mois), Max (~100 $/mois) et Team/Enterprise.",
+    "Face à ChatGPT, Claude se distingue par sa profondeur sur les textes longs et documents complexes et son intégration aux outils professionnels, tandis que ChatGPT excelle sur les images et la rapidité."
+  ],
+  "mon-e-commerce-ne-vend-pas-que-faire": [
+    "Les résultats d'un e-commerce s'obtiennent sur le moyen/long terme : persévérance et constance sont indispensables, sans attendre de ventes immédiates.",
+    "Identifier ses meilleures sources de trafic via Google Analytics, puis combiner publicités en ligne (Google Ads, Facebook) à court terme et SEO à long terme.",
+    "Créer du contenu gratuit à forte valeur ajoutée avec les bons mots-clés sert de porte d'entrée vers les produits ou services payants.",
+    "Lever les barrières à l'achat : livraison gratuite, garanties, politiques de retour et CGVU claires, visage humain de l'équipe, preuve sociale (avis et témoignages) et FAQ.",
+    "Améliorer le processus d'achat en réduisant le nombre de clics, en rassurant au check-out (paiement sécurisé, données non stockées) et en affichant les délais de livraison.",
+    "Construire une identité de marque forte autour de valeurs identifiables et bien définir ses clients idéaux pour adapter l'argumentaire de vente."
+  ],
+  "le-no-code-en-2026": [
+    "En 2026, le no-code est devenu un pilier stratégique et un standard de développement capable de rivaliser avec les méthodes traditionnelles, porté par des outils matures (Webflow, Framer, Bubble, Wix Studio, Make).",
+    "Le croisement IA + no-code automatise la génération de composants, l'UI/UX, les workflows, le contenu SEO/AEO et les tests A/B, permettant de livrer un site en quelques jours plutôt qu'en semaines.",
+    "Le no-code offre désormais des performances réelles : sites optimisés Core Web Vitals, design systems scalables, intégrations API avec CRM, architectures SEO-friendly et moins de dette technique.",
+    "Les directions marketing y gagnent un time-to-market réduit, plus d'autonomie des équipes et des coûts maîtrisés, avec un exemple cité de +42 % de conversion en 3 mois et un coût de maintenance divisé par 3.",
+    "Le secteur se professionnalise : la stratégie, l'architecture, la performance et la conversion restent un métier nécessitant des experts (architecture Webflow, design system, intégration API, UX).",
+    "Le choix de l'outil dépend du besoin (Webflow/Framer pour le premium, Wix Studio pour la rapidité, Bubble pour les apps complexes, Shopify pour l'e-commerce, Make/Zapier pour l'automatisation), un site no-code coûtant 30 à 50 % de moins qu'un développement traditionnel."
+  ],
+  "tendances-marketing-2026": [
+    "L'IA générative devient un acteur stratégique unifiant réflexion, création et diffusion, produisant insights, analyses et cohérence entre brand content, publicités, influence et CRM.",
+    "La fin du tracking traditionnel (disparition des cookies tiers) impose la first-party data, la contextualisation renforcée et l'IA d'attribution, avec un message pertinent qui prime sur le ciblage brut.",
+    "La vidéo 2026 devient hybride et générative : hyper-snacking, storytelling ultra-contextualisé, génération IA sécurisée (safe models) et vidéo conversationnelle façon AEO.",
+    "Google introduit une nouvelle génération de modèles d'images (Nano-Banana, Pro-Bond) plus réalistes et conformes aux guidelines, l'image devenant un support de réponse (SEO visuel + AEO).",
+    "L'influence se fait plus experte et assistée par IA : co-création créateur + IA, partenariats plus longs, valorisation de l'expertise sectorielle et montée des thought creators.",
+    "Le marketing de précision met fin au contenu générique : un même contenu est décliné et optimisé AEO sur plusieurs canaux, et les expériences phygitales mêlant réel, IA et social se développent."
+  ],
+  "woocommerce-en-2026": [
+    "WooCommerce, plugin gratuit et open source adossé à WordPress, reste en 2026 une référence e-commerce pour sa flexibilité, sa puissance SEO et la pleine propriété des données.",
+    "Les nouveautés 2026 incluent le High-Performance Order Storage (HPOS) pour mieux gérer les gros volumes, le checkout par blocs plus fluide et l'intégration de l'IA (descriptions produits, titres SEO, support, recommandations, anticipation des ruptures).",
+    "Ses limites tiennent à la rigueur technique requise : gestion de l'hébergement, des mises à jour, de la sécurité, de la performance et de la compatibilité des plugins.",
+    "Face à Shopify, plus clé en main et simple au départ, WooCommerce est souvent plus flexible sur le long terme et adapté à qui veut garder le contrôle et personnaliser.",
+    "Optimiser une boutique passe par un bon hébergement, un thème léger (Astra, Blocksy, Shoptimizer), des images compressées en WebP, un tunnel d'achat simplifié et un travail SEO soigné.",
+    "Des familles de plugins clés sont recommandées : SEO (Rank Math, Yoast), performance (WP Rocket, LiteSpeed Cache), images (Imagify, ShortPixel), emailing (Mailchimp, Klaviyo) et paiement (Stripe, PayPal, WooPayments), sans en multiplier l'installation."
+  ]
+}

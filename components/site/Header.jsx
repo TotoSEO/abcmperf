@@ -6,7 +6,7 @@ import { LogoMark, Icon } from "@/components/ds";
 const NAV = [
   { label: "Nos services", href: "/#services" },
   { label: "Références", href: "/#references" },
-  { label: "Blog", href: "/#blog" },
+  { label: "Blog", href: "/articles/" },
 ];
 
 export function Header() {

@@ -12,14 +12,21 @@ function frDate(iso) {
   if (Number.isNaN(d.getTime())) return "";
   return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(d);
 }
-
 function withBase(s, base) {
   return typeof s === "string" ? s.split("%ASSET%").join(base) : s;
 }
+function abs(src) {
+  // %ASSET%/blog/... -> URL absolue (domaine de production) pour le JSON-LD
+  return SITE + String(src || "").replace("%ASSET%", "");
+}
+function initials(name) {
+  if (!name) return "A";
+  return name.trim().slice(0, 1).toUpperCase();
+}
 
-function buildJsonLd(post, base) {
+function buildJsonLd(post) {
   const url = SITE + `/${post.slug}/`;
-  const img = post.cover ? withBase(post.cover.src, base).replace(/^\//, SITE + "/") : undefined;
+  const img = post.cover ? abs(post.cover.src) : undefined;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -30,9 +37,14 @@ function buildJsonLd(post, base) {
     datePublished: post.date || undefined,
     dateModified: post.modified || post.date || undefined,
     inLanguage: "fr-FR",
-    mainEntityOfPage: url,
-    author: { "@type": "Organization", name: ABCM_INFO.name, url: SITE },
-    publisher: { "@id": SITE + "/#organization" },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    author: { "@type": "Person", name: post.author || ABCM_INFO.name },
+    publisher: {
+      "@type": "Organization",
+      name: ABCM_INFO.name,
+      url: SITE,
+      logo: { "@type": "ImageObject", url: SITE + "/logo-abcm-full.png" },
+    },
   };
 }
 
@@ -40,7 +52,11 @@ export function BlogArticle({ post }) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const html = withBase(post.html || "", base);
   const cover = post.cover ? { ...post.cover, src: withBase(post.cover.src, base) } : null;
-  const jsonLd = buildJsonLd(post, base);
+  const jsonLd = buildJsonLd(post);
+  const summary = Array.isArray(post.summary) ? post.summary : null;
+  const dayPub = String(post.date || "").slice(0, 10);
+  const dayMod = String(post.modified || "").slice(0, 10);
+  const showModified = dayMod && dayMod !== dayPub;
 
   return (
     <article className="blog">
@@ -60,11 +76,13 @@ export function BlogArticle({ post }) {
             <span className="blog-crumbs__current">{post.title}</span>
           </nav>
           <h1 className="blog-hero__title">{post.title}</h1>
-          {post.date ? (
-            <p className="blog-hero__meta">
-              <Icon name="clock" size={16} /> Publié le {frDate(post.date)}
-            </p>
-          ) : null}
+          <div className="blog-hero__meta">
+            {post.author ? (
+              <span className="blog-hero__by"><span className="blog-hero__avatar" aria-hidden="true">{initials(post.author)}</span>Par {post.author}</span>
+            ) : null}
+            {post.date ? <span><Icon name="clock" size={15} /> Publié le {frDate(post.date)}</span> : null}
+            {showModified ? <span className="blog-hero__upd">Mis à jour le {frDate(post.modified)}</span> : null}
+          </div>
         </div>
       </header>
 
@@ -77,7 +95,28 @@ export function BlogArticle({ post }) {
       ) : null}
 
       <div className="container blog-wrap">
+        {summary ? (
+          <aside className="blog-tldr" aria-label="En bref">
+            <p className="blog-tldr__title"><Icon name="sparkles" size={18} /> En bref</p>
+            <ul className="blog-tldr__list">
+              {summary.map((b, i) => <li key={i}>{b}</li>)}
+            </ul>
+          </aside>
+        ) : null}
+
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: html }} />
+
+        <section className="blog-author" aria-label="Auteur">
+          <span className="blog-author__avatar" aria-hidden="true">{initials(post.author)}</span>
+          <div className="blog-author__body">
+            <span className="blog-author__kicker">Écrit par</span>
+            <span className="blog-author__name">{post.author || ABCM_INFO.name}</span>
+            <p className="blog-author__bio">
+              {post.author || "L'équipe"} fait partie de l&apos;équipe d&apos;ABCM Performances, agence de communication
+              digitale et organisme de formation certifié Qualiopi à Strasbourg.
+            </p>
+          </div>
+        </section>
 
         <footer className="blog-foot">
           <Link href={ARTICLES_URL} className="blog-foot__back">
