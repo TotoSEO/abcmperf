@@ -172,9 +172,6 @@ export function FormationDetail({ formation }) {
             <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
             <p className="fmt-hero__sub">Avec une formatrice experte, en présentiel à Strasbourg ou à distance.</p>
             <p className="fmt-hero__lead">{f.lead}</p>
-            <Link className="fmt-hero__back" href={HUB_URL}>
-              <Icon name="arrow-left" size={16} /> Retour à <span>toutes nos formations</span>
-            </Link>
           </div>
 
           <aside className="fmt-pricecard" data-theme="light">

@@ -31,8 +31,8 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <div className="site-header__pill">
-          <Link href="/formations-strasbourg/" className="site-header__pillbtn site-header__pillbtn--ghost">Nos formations certifiées</Link>
+        <div className="site-header__actions">
+          <Link href="/formations-strasbourg/" className="site-header__formlink">Nos formations certifiées</Link>
           <Link href="/contact" className="site-header__pillbtn site-header__pillbtn--solid">Nous contacter <Icon name="arrow-right" size={15} /></Link>
         </div>
         <button className="site-header__burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
