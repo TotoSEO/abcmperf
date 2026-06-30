@@ -151,8 +151,15 @@ def handle_images(node, slug, cover_src):
         img["src"] = localize(src)
     return cover, downloaded
 
+def normalize_dashes(s):
+    # Tirets cadratins/barres interdits sur le site -> tiret demi-cadratin (–).
+    if not s: return s
+    return s.replace("—", "–").replace("―", "–")
+
 def normalize_text(t):
     t = t.replace("\xa0", " ")
+    # pour le diff verbatim, on ignore la normalisation des tirets (— – -)
+    t = re.sub(r"[—―–]", "-", t)
     return re.sub(r"\s+", " ", t).strip()
 
 def main():
@@ -189,6 +196,11 @@ def main():
     # sérialisation du contenu interne (verbatim, jamais retapé)
     inner = "".join(str(c) for c in content.children).strip()
     inner = re.sub(r"\n{3,}", "\n\n", inner)
+    em_count = inner.count("—") + inner.count("―")
+    inner = normalize_dashes(inner)  # retrait des tirets cadratins (demande client)
+    title = normalize_dashes(title)
+    seo_title = normalize_dashes(seo_title)
+    description = normalize_dashes(description)
 
     out_text = normalize_text(BeautifulSoup(inner, "lxml").get_text(" "))
 
@@ -221,6 +233,7 @@ def main():
     print(f"  cover      : {cover['src'] if cover else None}")
     print(f"  images dl  : {len(downloaded)}")
     print(f"  html bytes : {len(inner)}")
+    print(f"  tirets —    : {em_count} retiré(s) -> –")
     print(f"  VERBATIM   : {'OK (0 ecart de mots)' if match else 'DIFF !!!' + diff_info}")
 
 if __name__ == "__main__":
