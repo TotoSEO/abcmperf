@@ -115,7 +115,7 @@
 .site-footer__bottom { display: flex; justify-content: space-between; padding: var(--space-6) 0; border-top: 1px solid rgba(255,255,255,0.12); font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--neutral-500); }
 
 /* ---- Service detail (.svcd) ---- */
-.svcd { --_hue: var(--logo-blue); }
+.svcd { --_hue: var(--logo-blue); --silo-hue: var(--_hue); }
 .svcd-hero { position: relative; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(2.5rem, 1.6rem + 5vw, 5rem); }
 .svcd-hero__deco { position: absolute; inset: 0; pointer-events: none; }
 .svcd-hero__blob { position: absolute; border-radius: 50%; filter: blur(64px); }
@@ -342,6 +342,8 @@
 .rich__h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); margin: var(--space-6) 0 var(--space-3); color: var(--text); }
 .rich__p { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 0 var(--space-4); }
 .rich__p strong { color: var(--text); }
+.rich__link { color: var(--accent-700); font-weight: 600; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--silo-hue, var(--accent-600)) 45%, transparent); text-underline-offset: 2px; transition: color var(--dur-base), text-decoration-color var(--dur-base); }
+.rich__link:hover { color: var(--silo-hue, var(--accent-700)); text-decoration-color: var(--silo-hue, var(--accent-700)); }
 .rich__ul, .rich__ol { margin: 0 0 var(--space-4); padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
 .rich__ul li, .rich__ol li { line-height: var(--leading-snug); color: var(--text-muted); }
 .rich__ul li::marker, .rich__ol li::marker { color: var(--silo-hue, var(--accent-600)); font-weight: 700; }

@@ -2,30 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { Button, Icon } from "@/components/ds";
 import { ABCM_SERVICES, SERVICE_GROUPS, getService } from "@/data/services";
+import { serviceContent } from "@/data/serviceContent";
 import { ABCM_INFO } from "@/data/formations";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { RichContent } from "@/components/site/RichContent";
 
 const SITE = ABCM_INFO.url;
-
-// Rend un texte en interprétant la syntaxe [ancre](/url/) -> <Link>.
-// Les liens sont posés DANS le contenu, sur des ancres naturelles et descriptives.
-function renderRich(text, kp) {
-  const out = [];
-  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
-  let last = 0;
-  let m;
-  let i = 0;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last) out.push(text.slice(last, m.index));
-    out.push(
-      <Link key={`${kp}-${i}`} href={m[2]} className="svcd-link">{m[1]}</Link>
-    );
-    last = m.index + m[0].length;
-    i += 1;
-  }
-  if (last < text.length) out.push(text.slice(last));
-  return out;
-}
 
 function buildJsonLd(s) {
   const orgId = SITE + "/#organization";
@@ -62,6 +44,7 @@ export function ServiceDetail({ service }) {
     .filter((slug) => slug !== s.slug)
     .map(getService)
     .filter(Boolean);
+  const content = serviceContent(s.slug);
   const jsonLd = buildJsonLd(s);
 
   return (
@@ -97,33 +80,7 @@ export function ServiceDetail({ service }) {
       <section className="section svcd-body">
         <div className="container svcd-grid">
           <div className="svcd-main">
-            <div className="svcd-prose">
-              {s.intro.map((p, i) => (
-                <p key={i} data-reveal>{renderRich(p, `intro-${i}`)}</p>
-              ))}
-            </div>
-
-            {s.features?.length ? (
-              <div className="svcd-block" data-reveal>
-                <h2 className="svcd-h2">Ce que comprend la prestation</h2>
-                <ul className="svcd-feats">
-                  {s.features.map((f) => (
-                    <li key={f}><Icon name="check" size={18} /><span>{f}</span></li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            {s.method?.length ? (
-              <div className="svcd-block" data-reveal>
-                <h2 className="svcd-h2">Notre méthode, étape par étape</h2>
-                <ol className="svcd-steps">
-                  {s.method.map((p, i) => (
-                    <li key={p}><span className="svcd-num">{String(i + 1).padStart(2, "0")}</span><span>{p}</span></li>
-                  ))}
-                </ol>
-              </div>
-            ) : null}
+            <RichContent content={content} />
           </div>
 
           <aside className="svcd-aside">
