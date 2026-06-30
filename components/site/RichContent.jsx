@@ -1,20 +1,24 @@
 import React from "react";
+import Link from "next/link";
 
-// Rendu du contenu sémantique éditorial des fiches formation.
-// Le contenu est structuré en blocs (data/formationContent.js) pour garder
-// une hiérarchie Hn propre, varier les formats (listes, tableaux, colonnes)
-// et rester pleine largeur, indépendamment de la grille de la fiche.
+// Rendu du contenu sémantique des fiches (formation + service).
+// Le contenu est structuré en blocs pour garder une hiérarchie Hn propre,
+// varier les formats (listes, tableaux, colonnes) et rester lisible.
 
-// Gras en ligne via **texte**.
+// Gras en ligne via **texte** et liens internes via [ancre](/url/).
 function renderInline(text) {
   const parts = [];
-  const re = /\*\*([^*]+)\*\*/g;
+  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
   let last = 0;
   let m;
   let i = 0;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
-    parts.push(<strong key={i}>{m[1]}</strong>);
+    if (m[1] !== undefined) {
+      parts.push(<strong key={i}>{m[1]}</strong>);
+    } else {
+      parts.push(<Link key={i} href={m[3]} className="rich__link">{m[2]}</Link>);
+    }
     last = m.index + m[0].length;
     i += 1;
   }
