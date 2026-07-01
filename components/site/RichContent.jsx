@@ -6,7 +6,7 @@ import Link from "next/link";
 // varier les formats (listes, tableaux, colonnes) et rester lisible.
 
 // Gras en ligne via **texte** et liens internes via [ancre](/url/).
-function renderInline(text) {
+export function renderInline(text) {
   const parts = [];
   const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
   let last = 0;

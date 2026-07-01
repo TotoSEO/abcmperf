@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
 import { TrainerBlock } from "@/components/site/TrainerBlock";
-import { RichContent } from "@/components/site/RichContent";
+import { RichContent, renderInline } from "@/components/site/RichContent";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { Button, Card, CircleMotif, Icon, Accordion } from "@/components/ds";
 import {
@@ -211,8 +211,8 @@ export function FormationDetail({ formation }) {
               <h2 className="fmt-head__title">Ce que vous saurez faire</h2>
             </header>
             <ul className="fmt__objectives" data-reveal>
-              {f.objectifs.map((o) => (
-                <li key={o}><span className="fmt__obj-ic"><Icon name="check" size={16} /></span>{o}</li>
+              {f.objectifs.map((o, oi) => (
+                <li key={oi}><span className="fmt__obj-ic"><Icon name="check" size={16} /></span>{renderInline(o)}</li>
               ))}
             </ul>
 
@@ -228,7 +228,7 @@ export function FormationDetail({ formation }) {
                   <div className="fmt-module__body">
                     <h3 className="fmt-module__title">{m.module}</h3>
                     <ul className="fmt-module__points">
-                      {m.points.map((p) => <li key={p}>{p}</li>)}
+                      {m.points.map((p, pi) => <li key={pi}>{renderInline(p)}</li>)}
                     </ul>
                   </div>
                 </li>

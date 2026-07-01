@@ -270,13 +270,13 @@ export const FORMATIONS = [
         "Facebook, LinkedIn, Instagram, X, YouTube, TikTok, Snapchat",
         "Choisir les réseaux adaptés à sa cible et ses objectifs" ] },
       { module: "Animer et développer une communauté", points: [
-        "Ligne éditoriale et calendrier de publication",
+        "[Ligne éditoriale](/definir-sa-ligne-editoriale-sur-les-reseaux-sociaux/) et calendrier de publication",
         "Bonnes pratiques d'animation et d'engagement",
         "Trouver de nouveaux clients et prospects" ] },
       { module: "SMO : optimiser sa visibilité sociale", points: [
         "Le SMO (Social Media Optimization) : principes et objectifs",
         "Optimiser profils et contenus pour la portée et le partage",
-        "Articuler SMO, SEO et stratégie de contenu pour gagner en visibilité" ] },
+        "Articuler SMO, SEO et [stratégie de contenu](/strategie-de-contenu-2026/) pour gagner en visibilité" ] },
       { module: "Stratégie, e-réputation & mesure", points: [
         "Définir une stratégie sur les médias sociaux",
         "Gérer son e-réputation",
@@ -306,7 +306,7 @@ export const FORMATIONS = [
       "Bâtir une stratégie de prospection commerciale efficace sur LinkedIn",
       "Mettre en place une démarche de social selling adaptée",
       "Définir une stratégie de présence et une ligne éditoriale claire",
-      "Animer son réseau et sa stratégie de contenu",
+      "[Animer son réseau](/developper-son-reseau-linkedin/) et sa stratégie de contenu",
     ],
     programme: [
       { module: "Pourquoi utiliser LinkedIn ?", points: [
