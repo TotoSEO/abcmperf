@@ -71,7 +71,7 @@ export const SERVICE_CONTENT = {
         { type: "h3", text: "Puis-je bénéficier d'un accompagnement stratégique sur le court ou long terme ?" },
         { type: "p", text: "Notre équipe vous accompagne sur toute la partie stratégie web, sur la durée que vous souhaitez. Nous travaillons en partenariat sans engagement, qui vous laisse libre de vos choix : seul le résultat compte chez nous." },
         { type: "h3", text: "Est-ce que vous proposez du community management ?" },
-        { type: "p", text: "Tout à fait. Nous avons une équipe de [community management](/community-management/) dédiée à vos réseaux sociaux, qui s'occupe de toute la stratégie de contenu pour vous. Là encore, pas d'engagement : c'est votre satisfaction qui détermine la durée du partenariat." },
+        { type: "p", text: "Tout à fait. Nous avons une équipe de [community management](/community-management/) dédiée à vos réseaux sociaux, qui s'occupe de toute la [stratégie de contenu](/strategie-de-contenu-2026/) pour vous. Là encore, pas d'engagement : c'est votre satisfaction qui détermine la durée du partenariat." },
         { type: "h3", text: "Est-ce que mon site peut devenir visible sur Google en 2 semaines ?" },
         { type: "p", text: "Nous avons des solutions efficaces pour vous rendre visible dans la page de résultats de Google. Dans ce cas, nous utilisons une stratégie [Google Ads](/agence-sea/). Et si vous misez sur le long terme, nous mettons en place une [stratégie de référencement](/referencement-strasbourg/) efficace et durable." },
         { type: "h3", text: "Pouvez-vous auditer mon site et me dire quelles corrections lui apporter ?" },
@@ -88,7 +88,7 @@ export const SERVICE_CONTENT = {
       { h2: "Un site e-commerce sur-mesure", blocks: [
         { type: "p", text: "Faites confiance à l'agence web ABCM Performances pour créer un site marchand efficace et rentable. Votre boutique en ligne est belle, bien positionnée sur les moteurs de recherche et **convertit vos visiteurs en acheteurs**. Notre expertise repose autant sur la qualité du site que sur les conseils et l'accompagnement pour booster vos ventes." },
         { type: "p", text: "Internet représente une mine d'opportunités pour qui sait les saisir. Si vous voulez gagner des clients et écouler votre stock, votre boutique doit être optimisée pour la vente et la facilité d'utilisation. Notre équipe construit avec vous le site qui répond à vos objectifs commerciaux : responsive et adapté à tous les supports (tablette, mobile, desktop), mais aussi performant et conforme aux attentes de Google en matière de [référencement naturel (SEO)](/referencement-strasbourg/)." },
-        { type: "p", text: "Nos web designers préparent et réalisent une maquette graphique selon vos besoins stratégiques et vos envies. L'ergonomie, le choix du menu, l'arborescence, la fluidité de navigation et le design adapté à tous les supports (tablette, mobile) sont étudiés et définis en amont. La charte graphique de votre site est soigneusement étudiée pour garantir votre succès sur le web." },
+        { type: "p", text: "Nos web designers préparent et réalisent une maquette graphique selon vos besoins stratégiques et vos envies. L'ergonomie, le choix du menu, l'arborescence, la fluidité de navigation et le design adapté à tous les supports (tablette, mobile) sont étudiés et définis en amont. La [charte graphique](/trouver-le-style-graphique-de-sa-marque/) de votre site est soigneusement étudiée pour garantir votre succès sur le web." },
       ] },
       { h2: "Pourquoi nous confier la création de votre site internet ?", blocks: [
         { type: "p", text: "Notre équipe conçoit des sites depuis plus de 9 ans. Nos experts en développement vous accompagnent dans la création de votre projet web afin que votre site soit performant. Les sites que nous développons répondent à un ensemble de critères de réussite et de notoriété pour votre entreprise sur le web." },
@@ -182,7 +182,7 @@ export const SERVICE_CONTENT = {
           "**GSO (Generative Search Optimization)** : l'optimisation pour la recherche générative au sein des moteurs de recherche traditionnels (ex. Google SGE, Search Generative Experience), qui mêle IA générative et référencement classique.",
           "**GEO (Generative Engine Optimization)** : une approche plus globale qui vise à optimiser votre présence sur tous les moteurs génératifs (IA conversationnelles, SGE, moteurs hybrides), en structurant et en diffusant vos contenus pour qu'ils soient référencés, cités et recommandés.",
         ] },
-        { type: "p", text: "Ensemble, AEO, GSO et GEO forment la nouvelle génération du référencement." },
+        { type: "p", text: "Ensemble, [AEO](/le-aeo-c-est-quoi/), GSO et GEO forment la nouvelle génération du référencement." },
       ] },
       { h2: "Pourquoi le GEO devient incontournable en 2026 ?", blocks: [
         { type: "p", text: "En 2026, la manière dont les internautes accèdent à l'information a profondément changé. Les IA génératives comme ChatGPT, Perplexity, Gemini ou la Search Generative Experience (SGE) de Google deviennent des points d'entrée majeurs. Ces outils privilégient les contenus structurés, fiables et bien contextualisés pour formuler leurs réponses, souvent sans afficher une liste classique de résultats." },
@@ -210,7 +210,7 @@ export const SERVICE_CONTENT = {
         { type: "p", text: "Notre audit met en évidence vos points forts existants et vous montre également les éléments bloquants et problématiques pour un référencement optimal. Nous identifions les axes d'optimisation possibles et ceux sur lesquels vous devez particulièrement être vigilant. Les corrections que nous vous proposons sont des leviers de performance forts qui vous feront gagner en visibilité sur le web." },
       ] },
       { h2: "Pourquoi nous confier votre audit SEO ?", blocks: [
-        { type: "p", text: "Notre audit de référencement SEO consiste à analyser et scruter les performances techniques de votre site web. À cette étape, nous nous assurons que votre site est techniquement compatible avec les exigences et les besoins du référencement : qualité du code, vitesse de chargement, architecture, liens et maillage, redirections en place et brisées, structure des URL, compatibilité mobile, balisages, fichier robots.txt, Google Search Console, optimisation des images, etc. Ces performances sont des prérogatives importantes pour un bon positionnement de votre site." },
+        { type: "p", text: "Notre audit de référencement SEO consiste à analyser et scruter les performances techniques de votre site web. À cette étape, nous nous assurons que votre site est techniquement compatible avec les exigences et les besoins du référencement : qualité du code, vitesse de chargement, architecture, liens et [maillage](/seo-comment-optimiser-votre-netlinking/), redirections en place et brisées, structure des URL, compatibilité mobile, balisages, fichier robots.txt, Google Search Console, optimisation des images, etc. Ces performances sont des prérogatives importantes pour un bon positionnement de votre site." },
         { type: "columns", cols: [
           { title: "Un audit diagnostic", text: "Vous découvrez quelles positions vous occupez sur le web et quelles requêtes les utilisateurs emploient pour vous trouver, afin de mieux vous placer dans les SERP." },
           { title: "Un audit de performances", text: "Parce que c'est le référencement qui vous amène 40 % de trafic sur votre site web, un audit technique et fonctionnel permet d'en tester et d'en optimiser la performance ; vous pouvez ensuite booster votre visibilité." },
@@ -235,7 +235,7 @@ export const SERVICE_CONTENT = {
       ] },
       { h2: "Faites vivre votre marque sur les réseaux sociaux", blocks: [
         { type: "p", text: "Les réseaux sociaux représentent un vecteur indispensable pour assurer une visibilité optimale sur le web. Leur valeur ajoutée se manifeste principalement par une e-notoriété accrue, le renforcement d'une image de marque robuste et rassurante, ainsi que la création d'une vitrine dynamique pour vos services et produits." },
-        { type: "p", text: "La communication sur les réseaux sociaux requiert une part significative de temps, de l'expérience et des compétences spécifiques. Notre équipe se charge de concevoir, pour votre entreprise ou marque, une stratégie de communication personnalisée, accompagnée d'une ligne éditoriale détaillée et performante. Cela garantit un renforcement optimal de votre visibilité sur les médias sociaux." },
+        { type: "p", text: "La communication sur les réseaux sociaux requiert une part significative de temps, de l'expérience et des compétences spécifiques. Notre équipe se charge de concevoir, pour votre entreprise ou marque, une stratégie de communication personnalisée, accompagnée d'une [ligne éditoriale](/definir-sa-ligne-editoriale-sur-les-reseaux-sociaux/) détaillée et performante. Cela garantit un renforcement optimal de votre visibilité sur les médias sociaux." },
       ] },
       { h2: "Pourquoi nous confier la gestion de vos réseaux sociaux ?", blocks: [
         { type: "p", text: "Le nombre d'utilisateurs des réseaux sociaux connaît une croissance constante, faisant de ce canal une opportunité d'acquisition incontournable. ABCM met à votre disposition un community manager dédié à la communication de votre marque ou entreprise. Il vous accompagne dans le développement d'une stratégie adaptée aux différentes plateformes, vous guide dans le choix judicieux des réseaux sociaux, et communique de manière active et efficace en votre nom." },
@@ -259,7 +259,7 @@ export const SERVICE_CONTENT = {
         { type: "ul", items: [
           "**Augmentation de l'engagement** : les vidéos génèrent un niveau d'engagement bien supérieur aux autres types de contenus ; elles attirent l'attention et suscitent des émotions.",
           "**Mémorabilité accrue** : les vidéos racontent une histoire de manière visuelle et immersive ; votre message a plus de chances de rester gravé dans l'esprit de votre audience.",
-          "**Portée élargie** : les algorithmes des réseaux sociaux favorisent le contenu vidéo, le mettant en avant dans les flux d'actualités et les résultats de recherche, pour atteindre un public plus large.",
+          "**Portée élargie** : les [algorithmes des réseaux sociaux](/algorithmes-2025-meta-google-tiktok/) favorisent le contenu vidéo, le mettant en avant dans les flux d'actualités et les résultats de recherche, pour atteindre un public plus large.",
           "**Humanisation de la marque** : les vidéos montrent le visage humain derrière votre entreprise et créent un lien émotionnel, renforçant la confiance et la fidélité à la marque.",
         ] },
         { type: "p", text: "La vidéo sur les réseaux sociaux est le meilleur moyen de stimuler l'engagement, d'accroître la portée de votre contenu et d'humaniser votre marque. En intégrant des vidéos percutantes dans votre stratégie de marketing digital, vous pouvez véritablement vous démarquer et captiver votre audience de manière efficace." },
@@ -337,7 +337,7 @@ export const SERVICE_CONTENT = {
         { type: "p", text: "Boostez le nombre de visites sur votre site web, augmentez les ventes de votre [boutique e-commerce](/creation-site-ecommerce/) et gagnez en visibilité sur le web grâce à nos campagnes de SEA. Nos experts se chargent de déployer et de piloter vos campagnes sur Google Search, Shopping et le réseau Display, pour augmenter votre chiffre d'affaires rapidement." },
       ] },
       { h2: "Notre expérience du web à votre service", blocks: [
-        { type: "p", text: "Le référencement payant (SEA) et le [référencement SEO](/referencement-strasbourg/) sont deux techniques complémentaires pour augmenter votre visibilité sur internet. La mise en place de campagnes sur Google Ads vous permet de gagner du temps et d'obtenir un ROI immédiat. À l'inverse, le SEO se déploie sur le long terme et permet de profiter de ses résultats sur une durée plus longue." },
+        { type: "p", text: "Le [référencement payant (SEA)](/seo-et-sem-quelle-strategie-choisir-pour-votre-entreprise/) et le [référencement SEO](/referencement-strasbourg/) sont deux techniques complémentaires pour augmenter votre visibilité sur internet. La mise en place de campagnes sur Google Ads vous permet de gagner du temps et d'obtenir un ROI immédiat. À l'inverse, le SEO se déploie sur le long terme et permet de profiter de ses résultats sur une durée plus longue." },
         { type: "p", text: "Grâce à des campagnes efficaces sur Google Search, vous êtes visible quasi immédiatement sur la page de résultats de Google. Grâce à Google Shopping, vous boostez les ventes de votre e-commerce. Et une présence sur le réseau Display de Google vous permet d'être visible sur les sites et plateformes partenaires, d'augmenter le nombre de visites sur votre site et d'améliorer votre notoriété." },
       ] },
       { h2: "Pourquoi travailler avec nous ?", blocks: [
@@ -380,7 +380,7 @@ export const SERVICE_CONTENT = {
         { type: "ol", items: [
           "À partir d'une analyse approfondie de votre contexte, ABCM conçoit une recommandation sur-mesure.",
           "Nous tenons compte de vos objectifs, de votre secteur d'activité et de la concurrence.",
-          "Notre approche vous permet d'optimiser votre marketing, d'accroître la confiance envers votre entreprise, d'attirer du trafic qualifié, d'améliorer votre visibilité sur internet, de tirer profit des réseaux sociaux et d'optimiser la relation client.",
+          "Notre approche vous permet d'optimiser votre marketing, d'accroître la confiance envers votre entreprise, d'attirer du trafic qualifié, d'améliorer votre visibilité sur internet, de [tirer profit des réseaux sociaux](/limportance-des-reseaux-sociaux-pour-une-pme/) et d'optimiser la relation client.",
         ] },
       ] },
     ],
@@ -392,7 +392,7 @@ export const SERVICE_CONTENT = {
         { type: "p", text: "Dans un monde complètement connecté, votre image personnelle est votre premier outil pour marquer les esprits et vous démarquer. Que vous soyez entrepreneur, cadre, consultant ou professionnel en quête de visibilité, notre service de personal branding est conçu pour révéler le meilleur de vous-même." },
       ] },
       { h2: "Pourquoi choisir le personal branding ?", blocks: [
-        { type: "p", text: "Le personal branding génère une visibilité renforcée, affine votre image professionnelle et positionne votre expertise comme une référence dans votre domaine. Ce travail stratégique requiert du temps, des compétences spécifiques et une approche personnalisée." },
+        { type: "p", text: "Le [personal branding](/le-personal-branding-c-est-quoi/) génère une visibilité renforcée, affine votre image professionnelle et positionne votre expertise comme une référence dans votre domaine. Ce travail stratégique requiert du temps, des compétences spécifiques et une approche personnalisée." },
         { type: "p", text: "Votre identité professionnelle va bien au-delà d'une simple présence en ligne : elle constitue le pont entre vous et votre audience cible. Grâce à notre expertise en stratégie digitale et en valorisation personnelle, nous façonnons une image cohérente et impactante. Nous créons une présence en ligne engageante et alignée sur vos valeurs, renforçant votre crédibilité et votre attractivité. Chez ABCM, nous co-construisons une stratégie de personal branding sur mesure pour révéler tout votre potentiel et propulser votre visibilité." },
         { type: "columns", cols: [
           { title: "Une identité professionnelle cohérente", text: "Nous structurons votre identité pour qu'elle reflète vos valeurs, vos compétences et vos ambitions, avec une image authentique alignée sur vos objectifs." },
