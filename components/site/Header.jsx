@@ -31,8 +31,7 @@ function ServicesMega({ groups }) {
               <div className="mega__chead">
                 <span className="mega__cic"><Icon name={group.icon} size={18} /></span>
                 <span className="mega__cheads">
-                  <span className="mega__ceyebrow">{group.eyebrow}</span>
-                  <span className="mega__clabel">{group.label}</span>
+                  <span className="mega__ctitle">{group.eyebrow}</span>
                 </span>
               </div>
               <ul className="mega__list">
