@@ -88,6 +88,12 @@ function Block({ b }) {
   }
 }
 
+// Rendu d'une liste de blocs seule (réutilisé par les sections designées des
+// fiches service, qui gèrent elles-mêmes le <h2> et l'habillage de section).
+export function Blocks({ blocks }) {
+  return (blocks || []).map((b, bi) => <Block b={b} key={bi} />);
+}
+
 export function RichContent({ content }) {
   if (!content || !Array.isArray(content.sections) || content.sections.length === 0) {
     return null;
