@@ -2,6 +2,7 @@ import {
   ArrowRight, ArrowLeft, Menu, X, Monitor, Megaphone, Search, Sparkles,
   Target, UserRound, LineChart, GraduationCap, Phone, Mail, MapPin, Send,
   Check, ChevronDown, Clock, ShieldCheck, Users, Sparkle, Star,
+  Palette, ArrowUpRight, Quote, LayoutGrid, Building2,
 } from "lucide-react";
 
 /* lucide-react 1.x removed brand glyphs - inline the social ones we need. */
@@ -68,6 +69,11 @@ const MAP = {
   linkedin: Linkedin,
   youtube: Youtube,
   "x-twitter": XTwitter,
+  palette: Palette,
+  "arrow-up-right": ArrowUpRight,
+  quote: Quote,
+  "layout-grid": LayoutGrid,
+  building: Building2,
 };
 
 export function Icon({ name, size = 20, strokeWidth = 2, className = "", style }) {

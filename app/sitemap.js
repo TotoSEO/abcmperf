@@ -15,6 +15,7 @@ export default function sitemap() {
     MODALITES_URL,
     "/mentions-legales/",
     "/articles/",
+    "/portfolio/",
     ...FORMATIONS.map((f) => f.url),
     ...ABCM_SERVICES.map((s) => `/${s.slug}/`),
   ];

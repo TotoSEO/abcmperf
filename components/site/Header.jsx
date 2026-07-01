@@ -7,7 +7,7 @@ import { servicesByGroup } from "@/data/services";
 import { SILOS } from "@/data/formations";
 
 const NAV = [
-  { label: "Références", href: "/#references" },
+  { label: "Références", href: "/portfolio/" },
   { label: "Blog", href: "/articles/" },
 ];
 
