@@ -27,6 +27,29 @@ function splitSections(html) {
   return { intro: intro.trim(), sections };
 }
 
+// Renommages d'affichage demandés (le contenu stocké reste verbatim).
+const TITLE_MAP = { "La Demande": "La demande du client" };
+
+// Chaque section prend une couleur ABCM différente (moins uniforme).
+const SECTION_HUES = ["var(--logo-blue)", "var(--logo-magenta)", "var(--logo-orange)", "var(--logo-green)"];
+
+// Encart promo (service/formation lié) qui se superpose au texte.
+function PromoAside({ promo }) {
+  const isF = promo.kind === "Formation";
+  const hue = /^(#|var\()/.test(promo.hue) ? promo.hue : `var(--logo-${promo.hue})`;
+  return (
+    <Link href={promo.url} className="pf-promo" style={{ "--_hue": hue }}>
+      <span className="pf-promo__ic"><Icon name={promo.icon || (isF ? "graduation-cap" : "sparkles")} size={22} /></span>
+      <span className="pf-promo__title">
+        <span className="pf-promo__kicker">{isF ? "Formation liée" : "Service lié"}</span>
+        {promo.name}
+      </span>
+      {promo.desc ? <span className="pf-promo__desc">{promo.desc}</span> : null}
+      <span className="pf-promo__go">{isF ? "Découvrir la formation" : "Découvrir le service"} <Icon name="arrow-right" size={14} /></span>
+    </Link>
+  );
+}
+
 function buildJsonLd(c) {
   const url = SITE + `${PORTFOLIO_URL}${c.slug}/`;
   return {
@@ -50,6 +73,14 @@ export function PortfolioCase({ item }) {
   const logo = withBase(c.logo, base);
   const body = withBase(c.body || "", base);
   const { intro, sections } = splitSections(body);
+  const promo = c.promo || null;
+  // L'encart promo se place dans la section "Notre réponse" (sinon la 2e).
+  const promoIdx = promo
+    ? (() => {
+        const r = sections.findIndex((s) => /r[ée]ponse/i.test(s.title));
+        return r >= 0 ? r : sections.length > 1 ? 1 : 0;
+      })()
+    : -1;
   const jsonLd = buildJsonLd(c);
 
   const related = getAllCases()
@@ -109,28 +140,47 @@ export function PortfolioCase({ item }) {
         </div>
       </section>
 
-      {/* ---- Corps (verbatim) : chaque section en 2 colonnes ---- */}
+      {/* ---- Corps (verbatim) : chaque section dans un encadré coloré ---- */}
       <section className="section pf-case2-body">
-        <div className="container">
+        <div className="pf-case2-body__deco" aria-hidden="true">
+          <span className="pf-rond pf-rond--1" />
+          <span className="pf-rond pf-rond--2" />
+          <span className="pf-rond pf-rond--3" />
+          <span className="pf-rond pf-rond--4" />
+          <span className="pf-rond pf-rond--5" />
+          <span className="pf-rond pf-rond--6" />
+        </div>
+        <div className="container pf-case2-body__inner">
           {intro ? (
             <div className="pf-intro" data-reveal dangerouslySetInnerHTML={{ __html: intro }} />
           ) : null}
 
           {sections.map((s, i) => (
-            <div className="pf-sec" key={i} data-reveal>
-              <div className="pf-sec__label">
+            <article className="pf-sec" key={i} data-reveal style={{ "--_hue": SECTION_HUES[i % SECTION_HUES.length] }}>
+              <header className="pf-sec__head">
                 <span className="pf-sec__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-                <h2 className="pf-sec__title">{s.title}</h2>
-                <span className="pf-sec__rule" aria-hidden="true" />
+                <h2 className="pf-sec__title">{TITLE_MAP[s.title] || s.title}</h2>
+              </header>
+              <div className="pf-sec__content">
+                {i === promoIdx && promo ? <PromoAside promo={promo} /> : null}
+                <div className="pf-sec__prose" dangerouslySetInnerHTML={{ __html: s.html }} />
               </div>
-              <div className="pf-sec__content" dangerouslySetInnerHTML={{ __html: s.html }} />
-            </div>
+            </article>
           ))}
 
-          {!sections.length && !intro ? (
-            <p className="pf-intro">
-              {c.title} nous a fait confiance{c.projectType ? ` pour ${c.projectType.toLowerCase()}` : ""}.
-            </p>
+          {!sections.length ? (
+            <div className="pf-sec">
+              {promo ? (
+                <div className="pf-sec__content">
+                  <PromoAside promo={promo} />
+                  <div className="pf-sec__prose">
+                    <p>{c.title} nous a fait confiance{c.projectType ? ` pour ${c.projectType.toLowerCase()}` : ""}.</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="pf-intro">{c.title} nous a fait confiance{c.projectType ? ` pour ${c.projectType.toLowerCase()}` : ""}.</p>
+              )}
+            </div>
           ) : null}
 
           <aside className="pf-case-cta" data-reveal>
