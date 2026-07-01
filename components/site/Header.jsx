@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LogoMark, Icon } from "@/components/ds";
 import { servicesByGroup } from "@/data/services";
+import { SILOS } from "@/data/formations";
 
 const NAV = [
-  { label: "Formations", href: "/formations-strasbourg/" },
   { label: "Références", href: "/#references" },
   { label: "Blog", href: "/articles/" },
 ];
@@ -20,10 +21,10 @@ function CertifiedBadge() {
   );
 }
 
-// Panneau megamenu des services (desktop) : 4 pôles, chacun avec ses fiches.
-function ServicesMega({ groups }) {
+// Megamenu services (desktop) : 4 pôles, chacun avec ses fiches.
+function ServicesMega({ groups, open }) {
   return (
-    <div className="mega" role="menu" aria-label="Nos services">
+    <div className={"mega" + (open ? " is-open" : "")} role="menu" aria-label="Nos services">
       <div className="mega__inner">
         <div className="mega__grid">
           {groups.map(({ group, items }) => (
@@ -55,11 +56,34 @@ function ServicesMega({ groups }) {
   );
 }
 
+// Megamenu formations (desktop) : 5 pôles → ancre de la section correspondante.
+function FormationsMega({ open }) {
+  return (
+    <div className={"mega mega--formations" + (open ? " is-open" : "")} role="menu" aria-label="Formations">
+      <div className="mega__inner">
+        <div className="fmega__grid">
+          {SILOS.map((silo) => (
+            <Link key={silo.id} href={`/formations-strasbourg/#${silo.id}`} className="fmega__col" role="menuitem" style={{ "--_hue": `var(--logo-${silo.hue})` }}>
+              <span className="fmega__ic"><Icon name={silo.icon} size={22} /></span>
+              <span className="fmega__label">{silo.label}</span>
+              <span className="fmega__intro">{silo.intro}</span>
+              <span className="fmega__go" aria-hidden="true">Voir les formations <Icon name="arrow-right" size={14} /></span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const [mobServices, setMobServices] = React.useState(false);
+  const [mobFormations, setMobFormations] = React.useState(false);
+  const [mega, setMega] = React.useState(null); // "services" | "formations" | null
   const [scrolled, setScrolled] = React.useState(false);
   const groups = servicesByGroup();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -68,7 +92,19 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const closeMenu = () => { setOpen(false); setMobServices(false); };
+  // Tout refermer à chaque changement de page (nav SPA : le hover/focus restait figé).
+  const firstRender = React.useRef(true);
+  React.useEffect(() => {
+    if (firstRender.current) { firstRender.current = false; return; }
+    setMega(null); setOpen(false); setMobServices(false); setMobFormations(false);
+    if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }, [pathname]);
+
+  const closeMenu = () => { setOpen(false); setMobServices(false); setMobFormations(false); };
+  // Ferme le megamenu si le focus quitte complètement le pôle (clavier).
+  const onItemBlur = (e) => { if (!e.currentTarget.contains(e.relatedTarget)) setMega(null); };
 
   return (
     <header className={"site-header" + (scrolled ? " is-stuck" : "")}>
@@ -76,11 +112,21 @@ export function Header() {
         <div className="site-header__left">
           <LogoMark as={Link} href="/" />
           <nav className="site-nav">
-            <div className="site-nav__item site-nav__item--mega">
-              <Link href="/#services" className="site-nav__link site-nav__link--mega">
-                Nos services <Icon name="chevron-down" size={13} className="site-nav__chev" />
-              </Link>
-              <ServicesMega groups={groups} />
+            <div className="site-nav__item site-nav__item--mega"
+              onMouseEnter={() => setMega("services")} onMouseLeave={() => setMega(null)} onBlur={onItemBlur}>
+              <button type="button" className="site-nav__link site-nav__link--mega site-nav__trigger"
+                aria-expanded={mega === "services"} onFocus={() => setMega("services")}>
+                Nos services <Icon name="chevron-down" size={13} className={"site-nav__chev" + (mega === "services" ? " is-open" : "")} />
+              </button>
+              <ServicesMega groups={groups} open={mega === "services"} />
+            </div>
+            <div className="site-nav__item site-nav__item--mega"
+              onMouseEnter={() => setMega("formations")} onMouseLeave={() => setMega(null)} onBlur={onItemBlur}>
+              <button type="button" className="site-nav__link site-nav__link--mega site-nav__trigger"
+                aria-expanded={mega === "formations"} onFocus={() => setMega("formations")}>
+                Formations <Icon name="chevron-down" size={13} className={"site-nav__chev" + (mega === "formations" ? " is-open" : "")} />
+              </button>
+              <FormationsMega open={mega === "formations"} />
             </div>
             {NAV.map((n) => (
               <Link key={n.label} href={n.href} className="site-nav__link">{n.label}</Link>
@@ -111,6 +157,18 @@ export function Header() {
                     </Link>
                   ))}
                 </div>
+              ))}
+            </div>
+          )}
+          <button className="site-menu__acc" aria-expanded={mobFormations} onClick={() => setMobFormations((v) => !v)}>
+            Formations <Icon name="chevron-down" size={16} className={"site-menu__accchev" + (mobFormations ? " is-open" : "")} />
+          </button>
+          {mobFormations && (
+            <div className="site-menu__sub">
+              {SILOS.map((silo) => (
+                <Link key={silo.id} href={`/formations-strasbourg/#${silo.id}`} className="site-menu__sublink" style={{ "--_hue": `var(--logo-${silo.hue})` }} onClick={closeMenu}>
+                  <span className="site-menu__subdot" aria-hidden="true" />{silo.label}
+                </Link>
               ))}
             </div>
           )}

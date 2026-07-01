@@ -122,7 +122,7 @@ export function FormationsHub() {
             </span>
             <span className="fhero__cta-stack">
               <Link className="fhero__cta" href="/contact" rel="nofollow">Demander un devis</Link>
-              <a className="fhero__cta2" href="#formations">Voir les formations disponibles</a>
+              <a className="fhero__cta2" href={`#${groups[0].silo.id}`}>Voir les formations disponibles</a>
             </span>
             <span className="fhero__note fhero__note--r">
               <span className="fhero__note-num">+10 ans</span>
@@ -148,11 +148,15 @@ export function FormationsHub() {
 
       {/* ---- Silos ---- */}
       {groups.map(({ silo, items }, i) => (
-        <section key={silo.id} id={i === 0 ? "formations" : silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
+        <section key={silo.id} id={silo.id} className={"section fmt-hub__silo" + (i % 2 === 1 ? " fmt-hub__silo--alt" : "")}>
           <div className="container">
-            <div data-reveal>
-              <SectionHeading align="center" title={silo.label} description={silo.intro} />
-            </div>
+            <header className="fmt-silo-head" style={{ "--_hue": `var(--logo-${silo.hue})` }} data-reveal>
+              <span className="fmt-silo-head__num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <span className="fmt-silo-head__ic"><Icon name={silo.icon} size={30} /></span>
+              <h2 className="fmt-silo-head__title">{silo.label}</h2>
+              <p className="fmt-silo-head__intro">{silo.intro}</p>
+              <span className="fmt-silo-head__rule" aria-hidden="true" />
+            </header>
             <div className="fmt-hub__grid" data-reveal>
               {items.map((f) => (
                 <ServiceCard
