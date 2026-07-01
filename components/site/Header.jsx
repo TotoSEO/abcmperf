@@ -51,10 +51,6 @@ function ServicesMega({ groups }) {
             </div>
           ))}
         </div>
-        <div className="mega__foot">
-          <Link href="/#services" className="mega__footlink">Voir tous les services <Icon name="arrow-right" size={15} /></Link>
-          <Link href="/contact" className="mega__footcta">Parler à un expert <Icon name="arrow-right" size={15} /></Link>
-        </div>
       </div>
     </div>
   );
