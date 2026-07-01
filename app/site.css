@@ -53,11 +53,10 @@
 .mega__col:first-child { padding-inline-start: 0; }
 .mega__col:last-child { padding-inline-end: 0; }
 .mega__col + .mega__col { border-left: 1px dashed var(--mega-rule); }
-.mega__chead { display: flex; align-items: flex-start; gap: 0.55em; min-height: 3.9em; padding-bottom: 0.7em; margin-bottom: 0.5em; border-bottom: 1px dashed var(--mega-rule); }
+.mega__chead { display: flex; align-items: center; gap: 0.6em; min-height: 2.7em; padding-bottom: 0.7em; margin-bottom: 0.5em; border-bottom: 1px dashed var(--mega-rule); }
 .mega__cic { width: 2.2em; height: 2.2em; flex: none; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 78%, #fff), var(--_hue)); box-shadow: 0 6px 14px -7px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.4); }
 .mega__cheads { display: flex; flex-direction: column; min-width: 0; }
-.mega__ceyebrow { font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--_hue); }
-.mega__clabel { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); line-height: 1.15; color: var(--text); }
+.mega__ctitle { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); line-height: 1.15; color: var(--_hue); }
 .mega__list { display: flex; flex-direction: column; gap: 0; list-style: none; margin: 0; padding: 0; }
 .mega__list li + li { border-top: 1px dashed var(--mega-rule); }
 .mega__link { --_hue: var(--logo-blue); display: flex; align-items: flex-start; gap: 0.55em; padding: 0.62em 0.5em; border-radius: var(--radius-md); transition: background var(--dur-base) var(--ease-out); }

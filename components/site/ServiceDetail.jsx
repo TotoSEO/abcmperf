@@ -29,8 +29,7 @@ function buildJsonLd(s) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Accueil", item: SITE + "/" },
-          { "@type": "ListItem", position: 2, name: "Expertises", item: SITE + "/#services" },
-          { "@type": "ListItem", position: 3, name: s.name, item: url },
+          { "@type": "ListItem", position: 2, name: s.name, item: url },
         ],
       },
     ],
@@ -61,8 +60,6 @@ export function ServiceDetail({ service }) {
         <div className="container svcd-hero__inner">
           <nav className="svcd-crumbs" aria-label="Fil d'Ariane">
             <Link href="/">Accueil</Link>
-            <span aria-hidden="true">/</span>
-            <Link href="/#services">Expertises</Link>
             <span aria-hidden="true">/</span>
             <span className="svcd-crumbs__current">{s.name}</span>
           </nav>
