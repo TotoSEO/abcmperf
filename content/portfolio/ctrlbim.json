@@ -9,5 +9,14 @@
   "cover": "%ASSET%/portfolio/ctrlbim/Plan-de-travail-1-4-2.jpg",
   "heroBg": "%ASSET%/portfolio/ctrlbim/aps-2016-blueprint-cover-image-e1501696254469.jpg",
   "logo": "%ASSET%/portfolio/ctrlbim/logo_ctrlbim_couleur.png",
-  "body": ""
+  "body": "",
+  "promo": {
+    "kind": "Service",
+    "url": "/agence-sea/",
+    "name": "Google Ads (SEA)",
+    "desc": "Des campagnes SEA pour des résultats rapides et mesurables.",
+    "icon": "target",
+    "hue": "yellow",
+    "slug": "agence-sea"
+  }
 }
