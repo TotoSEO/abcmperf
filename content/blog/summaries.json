@@ -232,14 +232,6 @@
     "Les marques peuvent y tester une communication authentique et de niche.",
     "La modération et la monétisation restent ses principaux défis à relever."
   ],
-  "combien-de-hashtags-utiliser-sur-instagram": [
-    "Instagram autorise jusqu'à 30 hashtags, mais ce n'est pas un objectif.",
-    "Quelques hashtags pertinents valent mieux qu'une longue liste générique.",
-    "Placez vos hashtags dans la légende, pas en commentaire ni masqués.",
-    "Mixez hashtags de niche, locaux et thématiques liés à votre contenu.",
-    "Analysez les hashtags de vos concurrents pour vous positionner et vous démarquer.",
-    "La qualité du contenu reste le premier moteur de visibilité."
-  ],
   "cocon-semantique-kesako": [
     "Le cocon sémantique organise vos pages autour d'un thème pour renforcer le SEO.",
     "Formalisé par Laurent Bourrelly, il repose uniquement sur l'optimisation interne du site.",
@@ -439,5 +431,89 @@
     "L'IA aide à personnaliser et à gérer la réputation, sans remplacer l'humain.",
     "Médias sociaux, e-réputation et engagement renforcent votre identité au quotidien.",
     "Apple, Nike ou Coca-Cola illustrent la puissance d'une marque cohérente."
+  ],
+  "meilleures-techniques-referencement-local": [
+    "Le référencement local rend votre entreprise visible sur les recherches géographiques et Google Maps.",
+    "Google classe les résultats locaux selon trois facteurs : pertinence, distance et notoriété.",
+    "La fiche Google Business Profile, gratuite, est le levier numéro un du SEO local.",
+    "Cohérence des coordonnées (NAP), citations, avis et backlinks locaux renforcent votre notoriété.",
+    "À Strasbourg, une fiche soignée et des avis réguliers suffisent souvent à intégrer le pack local."
+  ],
+  "tiktok-shop-une-fausse-bonne-idee": [
+    "TikTok Shop est la marketplace intégrée à TikTok, où l'on achète directement depuis les vidéos et les lives.",
+    "Lancé en France le 31 mars 2025, il dépasse déjà 33 000 vendeurs en mars 2026.",
+    "Pour vendre : compte Seller, catalogue, vidéos natives, affiliation créateurs et lives.",
+    "Son revers : saturation publicitaire, perte de crédibilité et dépendance à une plateforme volatile.",
+    "Pertinent pour la beauté et la mode, à intégrer dans une stratégie omnicanale, pas en canal unique."
+  ],
+  "comment-automatiser-vos-process-grace-a-nos-solutions-ia": [
+    "L'automatisation IA confie les tâches répétitives à des scénarios qui travaillent à votre place.",
+    "Elle fait gagner du temps, réduit les erreurs et fiabilise les workflows entre vos outils.",
+    "Les outils clés : Make, Zapier, n8n et Power Automate, selon votre besoin et votre écosystème.",
+    "Cas Dher Menuiserie : publication automatisée en 2 heures, une demi-journée gagnée par mois.",
+    "La réussite tient à l'analyse des flux : mieux vaut se faire accompagner pour un vrai ROI."
+  ],
+  "comment-utiliser-les-hashtags-sur-instagram": [
+    "En 2026, les hashtags n'augmentent plus la portée : ils servent à la découverte et au contexte.",
+    "Instagram recommande 3 à 5 hashtags pertinents, fini les 30 empilés d'autrefois.",
+    "Une légende riche en mots-clés compte désormais davantage que les hashtags.",
+    "Placez vos hashtags dans la légende, jamais en commentaire.",
+    "Combinez un hashtag large, un de niche et un de marque, adaptés à chaque contenu."
+  ],
+  "developper-son-reseau-linkedin": [
+    "Un profil complet et optimisé est la fondation de votre crédibilité sur LinkedIn.",
+    "Personnalisez vos invitations : le taux d'acceptation grimpe nettement.",
+    "Publiez 2 à 3 fois par semaine et apportez de la valeur avant de promouvoir.",
+    "Le cap des 500 connexions crédibilise, mais la pertinence prime sur le nombre.",
+    "Pilotez vos progrès avec le Social Selling Index, gratuit et noté sur 100."
+  ],
+  "la-desinfluence": [
+    "La désinfluence est une contre-tendance née sur TikTok qui pousse à consommer moins et mieux.",
+    "Le phénomène est massif : plus de 894 millions de vues pour #deinfluencing, surtout en beauté et mode.",
+    "Elle n'est pas sans paradoxe : beaucoup de créateurs continuent de collaborer avec des marques.",
+    "Pour votre marque, c'est un signal : misez sur la sincérité, la preuve et la durabilité.",
+    "Bien gérée, la désinfluence est une opportunité de bâtir la confiance, pas une menace."
+  ],
+  "le-marketing-vocal-et-comment-sy-preparer": [
+    "Le marketing vocal utilise assistants et recherche vocale pour interagir avec les consommateurs.",
+    "En France, environ 70 % des gens utilisent la commande vocale, 28 % chaque jour.",
+    "Optimiser pour la voix, c'est optimiser pour l'IA : même logique que le GEO et l'AEO.",
+    "Le SEO vocal cible des questions complètes, avec une réponse claire et concise.",
+    "Domino's, Sephora et Uber montrent déjà la voie du vocal au service du client."
+  ],
+  "mesurer-le-succes-de-votre-site-web": [
+    "Google Analytics 4, gratuit, mesure le trafic, l'engagement et les conversions par événements.",
+    "La Search Console complète GA4 en suivant votre visibilité dans Google.",
+    "Choisissez vos KPI selon l'objectif : notoriété, acquisition, engagement, conversion, fidélisation.",
+    "Centralisez vos données dans un tableau de bord Looker Studio pour un suivi clair.",
+    "Fuyez les vanity metrics : suivez ce qui déclenche une décision, pas ce qui flatte."
+  ],
+  "fidelisation-client-tpe-pme": [
+    "Un client fidèle coûte jusqu'à 5 fois moins cher qu'un nouveau, et vous recommande.",
+    "Une newsletter utile garde le lien sans être intrusive.",
+    "Récompensez la fidélité par un geste personnalisé, plus que par la valeur du cadeau.",
+    "Restez accessible et humain : la réactivité après-vente fait revenir les clients.",
+    "Demandez les avis, exploitez-les en preuve sociale et restez présent sur les bons canaux."
+  ],
+  "trouver-le-style-graphique-de-sa-marque": [
+    "Le style graphique réunit logo, couleurs, typographie et imagerie en un système cohérent.",
+    "Il renforce la reconnaissance et crée un lien émotionnel avec votre audience.",
+    "Cinq étapes : cibler son public, respecter ses valeurs, rester lisible, être cohérent, anticiper.",
+    "Formalisez vos choix dans une charte graphique, même simple.",
+    "Testez vos visuels et pilotez-les avec vos données d'engagement."
+  ],
+  "storytelling-marketing-dautomne": [
+    "Le storytelling marketing raconte votre marque pour créer émotion, lien et mémorisation.",
+    "Une bonne histoire différencie et donne du sens, là où l'argumentaire produit lasse.",
+    "La méthode : connaître son public, trouver son récit, le tisser, le diffuser partout.",
+    "Faites du client le héros et de votre marque le guide.",
+    "Starbucks, Apple ou The North Face en sont des exemples inspirants."
+  ],
+  "marketing-digital-special-budget-limite": [
+    "Un petit budget n'empêche pas un marketing efficace, avec méthode et créativité.",
+    "Le SEO et le marketing de contenu sont gratuits et rentables sur le long terme.",
+    "L'IA gratuite (rédaction, design, montage, automatisation) est le vrai game changer 2026.",
+    "Réseaux sociaux, e-mailing et micro-influence complètent l'arsenal à moindre coût.",
+    "Priorisez : d'abord SEO et contenu, puis réseaux et IA, puis publicité ciblée."
   ]
 }
