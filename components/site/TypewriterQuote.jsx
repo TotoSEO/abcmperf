@@ -45,6 +45,11 @@ export function TypewriterQuote() {
 
   return (
     <section className="tw-quote" aria-label="Notre promesse">
+      <div className="tw-quote__deco" aria-hidden="true">
+        <span className="rond rond--orange tw-quote__r1" />
+        <span className="rond rond--ring rond--magenta tw-quote__r2" />
+        <span className="rond rond--blue tw-quote__r3" />
+      </div>
       <div className="container">
         {/* Texte complet pour les lecteurs d'écran et le SEO (toujours dans le DOM). */}
         <p className="sr-only">{QUOTE}</p>

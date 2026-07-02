@@ -1,14 +1,35 @@
 import React from "react";
+import { Icon } from "@/components/ds";
+import { ABCM_INFO, assetPath } from "@/data/formations";
 
-const NAMES = ["Würth", "bioMérieux", "Caisse d'Épargne", "AFI", "CRCC", "Welch & Kessler", "Fortal", "Adis"];
+const LOGOS = [
+  { slug: "biomerieux", name: "bioMérieux" },
+  { slug: "afi-esca", name: "AFI ESCA" },
+  { slug: "caisse-epargne", name: "Caisse d'Épargne" },
+  { slug: "pierre-lannier", name: "Pierre Lannier" },
+  { slug: "crcc", name: "CRCC" },
+  { slug: "welch-kessler", name: "Welch Kessler" },
+];
 
 export function Clients() {
   return (
-    <section className="clients">
+    <section className="clients2" aria-label="Nos clients">
       <div className="container">
-        <p className="clients__label">Ils nous font confiance</p>
-        <div className="clients__row">
-          {NAMES.map((n) => <span key={n} className="clients__logo">{n}</span>)}
+        <div className="clients2__card" data-reveal>
+          <div className="clients2__intro">
+            <span className="clients2__stars" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, i) => <Icon key={i} name="star" size={16} />)}
+            </span>
+            <span className="clients2__rtxt"><b>{ABCM_INFO.googleStars},0</b> sur {ABCM_INFO.googleReviews} avis Google</span>
+            <span className="clients2__label">Ils nous font confiance</span>
+          </div>
+          <div className="clients2__row">
+            {LOGOS.map((c) => (
+              <span className="clients2__logo" key={c.slug}>
+                <img src={assetPath(`clients/${c.slug}.png`)} alt={c.name} loading="lazy" />
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
