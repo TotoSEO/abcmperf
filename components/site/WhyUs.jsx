@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { SectionHeading, Button, Icon } from "@/components/ds";
+import { assetPath } from "@/data/formations";
 
 const STATS = [
   { num: "+10", label: "ans d'expérience" },
@@ -19,6 +20,10 @@ const ADVANTAGES = [
 export function WhyUs() {
   return (
     <section className="section whyus-wrap" id="agence">
+      <div className="whyus__deco" aria-hidden="true">
+        <span className="rond rond--ring rond--green whyus__r1" />
+        <span className="rond rond--yellow whyus__r2" />
+      </div>
       <div className="container whyus">
         <div className="whyus__text" data-reveal="left">
           <SectionHeading eyebrow="Pourquoi nous" title="Pourquoi travailler avec nous ?" />
@@ -40,9 +45,11 @@ export function WhyUs() {
 
         <div className="whyus__media" data-reveal="right">
           <img
-            src="https://abcmperformances.com/wp-content/uploads/2020/01/abcm-17-1-scaled-e1578326636828.jpg"
-            alt="Les locaux d'ABCM Performances à Strasbourg"
+            src={assetPath("salle-formation-strasbourg.webp")}
+            alt="La salle de formation d'ABCM Performances à Strasbourg"
             loading="lazy"
+            width="1360"
+            height="907"
           />
           <span className="whyus__badge"><Icon name="map-pin" size={15} /> Strasbourg &amp; Grand Est</span>
         </div>

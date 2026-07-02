@@ -9,7 +9,12 @@ const ITEMS = [
 
 export function Testimonials() {
   return (
-    <section className="section section--alt" id="references">
+    <section className="section section--alt testi-wrap" id="references">
+      <div className="testi-wrap__deco" aria-hidden="true">
+        <span className="rond rond--magenta testi-wrap__r1" />
+        <span className="rond rond--ring rond--blue testi-wrap__r2" />
+        <span className="rond rond--yellow testi-wrap__r3" />
+      </div>
       <div className="container">
         <div data-reveal>
           <SectionHeading align="center" eyebrow="Avis clients" title="Les avis de nos clients"
