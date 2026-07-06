@@ -11,7 +11,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "L'IA générative, ce sont des assistants conversationnels comme **ChatGPT** ou **Claude** capables de produire du texte, des synthèses ou des idées à partir d'une simple consigne formulée en langage naturel. On leur parle comme à un collègue, et ils répondent en quelques secondes. Cette accessibilité explique leur adoption massive : aujourd'hui, presque tout le monde a déjà ouvert un de ces outils."
+            "text": "L'IA générative, ce sont des [assistants conversationnels](/5-automatisations-ia-essentielles-en-2026/) comme **ChatGPT** ou **Claude** capables de produire du texte, des synthèses ou des idées à partir d'une simple consigne formulée en langage naturel. On leur parle comme à un collègue, et ils répondent en quelques secondes. Cette accessibilité explique leur adoption massive : aujourd'hui, presque tout le monde a déjà ouvert un de ces outils."
           },
           {
             "type": "p",
@@ -112,7 +112,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Le bon réflexe n'est donc pas de trancher une fois pour toutes, mais de choisir selon la tâche. Beaucoup d'organisations combinent les deux : ChatGPT pour aller vite au quotidien, Claude pour les dossiers volumineux et les écrits soignés. Savoir comparer les outils et sélectionner celui qui convient à chaque besoin fait partie des compétences travaillées en formation."
+            "text": "Le bon réflexe n'est donc pas de trancher une fois pour toutes, mais de choisir selon la tâche. Beaucoup d'organisations combinent les deux : ChatGPT pour aller vite au quotidien, Claude pour [les dossiers volumineux et les écrits soignés](/claude-ai-en-2026-le-guide-complet/). Savoir comparer les outils et sélectionner celui qui convient à chaque besoin fait partie des compétences travaillées en formation."
           },
           {
             "type": "callout",
@@ -175,7 +175,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "Quand on parle de **rédaction assistée par l'IA**, on désigne l'usage d'un assistant rédactionnel reposant sur l'IA générative : un outil qui aide à produire un brouillon, à reformuler une phrase, à structurer un document ou à résumer une masse d'informations. Le mot important reste « aide ». L'IA propose, suggère et accélère, mais elle ne remplace pas l'auteur. C'est vous qui portez l'intention, le contexte et la responsabilité de ce qui est envoyé ou signé."
+            "text": "Quand on parle de **rédaction assistée par l'IA**, on désigne l'usage d'un [assistant rédactionnel reposant sur l'IA générative](/comment-automatiser-vos-process-grace-a-nos-solutions-ia/) : un outil qui aide à produire un brouillon, à reformuler une phrase, à structurer un document ou à résumer une masse d'informations. Le mot important reste « aide ». L'IA propose, suggère et accélère, mais elle ne remplace pas l'auteur. C'est vous qui portez l'intention, le contexte et la responsabilité de ce qui est envoyé ou signé."
           },
           {
             "type": "p",
@@ -332,7 +332,7 @@ export const FORMATION_CONTENT = {
               ],
               [
                 "Automatisation",
-                "Le fait de déléguer à une machine des tâches répétitives, pour libérer du temps sur ce qui a vraiment de la valeur."
+                "Le fait de [déléguer à une machine des tâches répétitives](/5-automatisations-ia-essentielles-en-2026/), pour libérer du temps sur ce qui a vraiment de la valeur."
               ]
             ]
           },
@@ -429,7 +429,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Dans les faits, deux métiers cohabitent. Le community manager exécute et fait vivre la communauté ; le social media manager arbitre et fixe le cap. Qui décide, qui exécute : la frontière est nette dans les grandes structures, beaucoup plus floue ailleurs. En TPE, en PME et chez les indépendants, la même personne porte souvent les deux casquettes. C'est précisément pour cette raison qu'une formation utile doit couvrir la stratégie ET l'animation, et non l'une sans l'autre."
+            "text": "Dans les faits, deux métiers cohabitent. Le [community manager](/community-management/) exécute et fait vivre la communauté ; le social media manager arbitre et fixe le cap. Qui décide, qui exécute : la frontière est nette dans les grandes structures, beaucoup plus floue ailleurs. En TPE, en PME et chez les indépendants, la même personne porte souvent les deux casquettes. C'est précisément pour cette raison qu'une formation utile doit couvrir la stratégie ET l'animation, et non l'une sans l'autre."
           },
           {
             "type": "p",
@@ -503,7 +503,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Sur le fond, vous repartez avec des compétences durables : tenir une ligne éditoriale claire, installer une régularité de publication, gagner en réactivité dans les échanges, et savoir gérer votre e-réputation, y compris dans les situations de crise où chaque réponse compte."
+            "text": "Sur le fond, vous repartez avec des compétences durables : tenir une [ligne éditoriale](/definir-sa-ligne-editoriale-sur-les-reseaux-sociaux/) claire, installer une régularité de publication, gagner en réactivité dans les échanges, et savoir gérer votre e-réputation, y compris dans les situations de crise où chaque réponse compte."
           },
           {
             "type": "callout",
@@ -529,7 +529,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "C'est là toute la différence avec la prospection classique et le cold calling. L'appel à froid interrompt une personne qui ne vous attend pas et démarre par une demande. Le social selling, lui, repose sur une approche relationnelle : vous existez déjà dans le paysage du prospect, vous avez apporté de la valeur avant de proposer quoi que ce soit. Une logique d'attraction qui remplace une logique d'intrusion."
+            "text": "C'est là toute la différence avec la prospection classique et le cold calling. L'appel à froid interrompt une personne qui ne vous attend pas et démarre par une demande. Le social selling, lui, [repose sur une approche relationnelle](/developper-son-reseau-linkedin/) : vous existez déjà dans le paysage du prospect, vous avez apporté de la valeur avant de proposer quoi que ce soit. Une logique d'attraction qui remplace une logique d'intrusion."
           },
           {
             "type": "p",
@@ -674,7 +674,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "La vidéo verticale, c'est le format 9:16 qui occupe tout l'écran d'un smartphone tenu droit, sans bandes noires ni rotation. C'est devenu le format roi de Reels, Shorts et TikTok, et ce n'est pas un hasard : nous tenons notre téléphone à la verticale dans la quasi-totalité de nos usages quotidiens. Une vidéo conçue pour cet axe occupe donc le maximum d'espace visuel et capte l'attention là où elle se joue vraiment, dans le pouce qui fait défiler."
+            "text": "La [vidéo verticale](/video-reseaux-sociaux/), c'est le format 9:16 qui occupe tout l'écran d'un smartphone tenu droit, sans bandes noires ni rotation. C'est devenu le format roi de [Reels, Shorts et TikTok](/formats-reseaux-sociaux-2025/), et ce n'est pas un hasard : nous tenons notre téléphone à la verticale dans la quasi-totalité de nos usages quotidiens. Une vidéo conçue pour cet axe occupe donc le maximum d'espace visuel et capte l'attention là où elle se joue vraiment, dans le pouce qui fait défiler."
           },
           {
             "type": "p",
@@ -823,7 +823,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "Canva est une plateforme de design graphique en ligne qui permet de créer des visuels sans aucune compétence préalable en graphisme. En 2026, c'est devenu bien plus qu'une banque de modèles : une véritable suite de création qui couvre les réseaux sociaux, le print, la présentation et la vidéo, le tout depuis un simple navigateur. On y travaille à plusieurs, on y stocke ses ressources, on y exporte dans tous les formats. Cette accessibilité est sa grande force, mais c'est aussi ce qui crée un malentendu."
+            "text": "Canva est une plateforme de design graphique en ligne qui permet de créer des visuels sans aucune compétence préalable en graphisme. En 2026, c'est devenu bien plus qu'[une banque de modèles](/15-astuces-pour-maitriser-canva-comme-un-pro/) : une véritable suite de création qui couvre les réseaux sociaux, le print, la présentation et la vidéo, le tout depuis un simple navigateur. On y travaille à plusieurs, on y stocke ses ressources, on y exporte dans tous les formats. Cette accessibilité est sa grande force, mais c'est aussi ce qui crée un malentendu."
           },
           {
             "type": "p",
@@ -914,7 +914,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "L'autre fonction décisive est l'espace marque, ou Brand Kit. Il centralise vos logos, vos couleurs et vos polices au même endroit, pour que chaque création reste fidèle à votre identité visuelle. Concrètement, vous produisez plus vite tout en restant **on brand**, et vous pouvez verrouiller certains éléments afin que vos équipes ne dévient pas de la charte. Fini les nuances de bleu approximatives ou les polices qui changent d'un document à l'autre."
+            "text": "L'autre fonction décisive est l'espace marque, ou Brand Kit. Il centralise vos logos, vos couleurs et vos polices au même endroit, pour que chaque création reste fidèle à votre [identité visuelle](/identite-de-marque-le-guide-complet/). Concrètement, vous produisez plus vite tout en restant **on brand**, et vous pouvez verrouiller certains éléments afin que vos équipes ne dévient pas de la charte. Fini les nuances de bleu approximatives ou les polices qui changent d'un document à l'autre."
           },
           {
             "type": "h3",
@@ -1011,7 +1011,7 @@ export const FORMATION_CONTENT = {
           {
             "type": "ul",
             "items": [
-              "**Réseaux sociaux** : posts, stories, carrousels, visuels animés et formats adaptés aux contraintes de chaque plateforme.",
+              "**Réseaux sociaux** : [posts, stories, carrousels](/formats-reseaux-sociaux-2025/), visuels animés et formats adaptés aux contraintes de chaque plateforme.",
               "**Print** : flyers, affiches, cartes de visite, menus et tous les supports destinés à l'impression.",
               "**Vidéo courte** : intros, sous-titres et animations simples pour vos Reels, Shorts et TikTok.",
               "**Communication interne et commerciale** : présentations, infographies, newsletters et signatures d'e-mail.",
@@ -1100,7 +1100,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Le **webmarketing**, lui, est plus resserré : il se concentre sur le web au sens strict, c'est-à-dire votre site, le référencement naturel, les réseaux sociaux et la publicité en ligne. On peut donc voir le webmarketing comme une composante du marketing digital, et non comme un synonyme parfait. Dans la pratique, les deux termes se recoupent largement et sont souvent employés l'un pour l'autre, ce qui n'a rien de gênant tant qu'on sait de quel périmètre on parle."
+            "text": "Le **webmarketing**, lui, est plus resserré : il se concentre sur le web au sens strict, c'est-à-dire votre site, [le référencement naturel](/referencement-strasbourg/), les réseaux sociaux et [la publicité en ligne](/agence-sea/). On peut donc voir le webmarketing comme une composante du marketing digital, et non comme un synonyme parfait. Dans la pratique, les deux termes se recoupent largement et sont souvent employés l'un pour l'autre, ce qui n'a rien de gênant tant qu'on sait de quel périmètre on parle."
           },
           {
             "type": "p",
@@ -1189,7 +1189,7 @@ export const FORMATION_CONTENT = {
                 "Durable si la base est entretenue"
               ],
               [
-                "Content marketing",
+                "[Content marketing](/strategie-de-contenu-2026/)",
                 "Long terme",
                 "Temps et production",
                 "Qualifié, en confiance",
@@ -1268,7 +1268,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "Investir dans le référencement naturel, ce n'est pas chercher un coup d'éclat ponctuel, c'est construire un actif qui travaille pour vous dans le temps. Voici les bénéfices concrets sur lesquels une stratégie SEO bien menée vous permet de capitaliser."
+            "text": "Investir dans le référencement naturel, ce n'est pas chercher un coup d'éclat ponctuel, c'est construire un actif qui travaille pour vous dans le temps. Voici les bénéfices concrets sur lesquels [une stratégie SEO bien menée](/referencement-strasbourg/) vous permet de capitaliser."
           },
           {
             "type": "ul",
@@ -1277,7 +1277,7 @@ export const FORMATION_CONTENT = {
               "**Une visibilité durable** : contrairement à la publicité qui s'arrête net dès que le budget est consommé, le SEO continue de produire des résultats longtemps après l'effort initial.",
               "**Plus de crédibilité et de confiance** : les internautes accordent spontanément plus de confiance aux résultats naturels qu'aux annonces, ce qui renforce votre image.",
               "**Une couverture large de mots-clés** : vous pouvez être présent sur tout le parcours d'achat, de la phase de découverte à la comparaison, jusqu'à la décision.",
-              "**Un atout pour votre visibilité locale** : sur les recherches géolocalisées, le SEO aide une entreprise ancrée sur son territoire à se démarquer auprès d'une clientèle de proximité.",
+              "**Un atout pour votre visibilité locale** : sur [les recherches géolocalisées](/meilleures-techniques-referencement-local/), le SEO aide une entreprise ancrée sur son territoire à se démarquer auprès d'une clientèle de proximité.",
               "**Un retour sur investissement de long terme** : former vos équipes, c'est acquérir une compétence interne qui continue de rapporter bien après la formation."
             ]
           },
@@ -1391,7 +1391,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Alors pourquoi se former plutôt qu'apprendre sur le tas ? Parce que l'interface de Google Ads donne une fausse impression de simplicité. Sans méthode sur les enchères, la sémantique et le paramétrage, lancer une campagne revient très vite à dépenser son budget à perte : clics non pertinents, mots-clés trop larges, suivi inexistant. La bonne nouvelle, c'est que le SEA s'apprend sans prérequis technique, des tout premiers fondamentaux jusqu'au pilotage fin des performances."
+            "text": "Alors pourquoi se former plutôt qu'apprendre sur le tas ? Parce que [l'interface de Google Ads](/agence-sea/) donne une fausse impression de simplicité. Sans méthode sur les enchères, la sémantique et le paramétrage, lancer une campagne revient très vite à dépenser son budget à perte : clics non pertinents, mots-clés trop larges, suivi inexistant. La bonne nouvelle, c'est que le SEA s'apprend sans prérequis technique, des tout premiers fondamentaux jusqu'au pilotage fin des performances."
           },
           {
             "type": "p",
@@ -1444,7 +1444,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Vu ainsi, les faiblesses de l'un sont presque toujours les forces de l'autre. Le SEA coûte à chaque clic mais vous donne un contrôle total sur le message et la capacité de tester une offre en quelques jours. Le SEO demande de la patience et du contenu, mais une fois les positions gagnées, le trafic continue d'arriver sans budget media. Les combiner permet d'occuper le terrain immédiatement avec le payant, pendant que le naturel construit une présence solide et rentable dans la durée."
+            "text": "Vu ainsi, les faiblesses de l'un sont presque toujours les forces de l'autre. Le SEA coûte à chaque clic mais vous donne un contrôle total sur le message et la capacité de tester une offre en quelques jours. Le SEO demande de la patience et du contenu, mais une fois les positions gagnées, le trafic continue d'arriver sans budget media. [Les combiner permet d'occuper le terrain immédiatement](/seo-et-sem-quelle-strategie-choisir-pour-votre-entreprise/) avec le payant, pendant que le naturel construit une présence solide et rentable dans la durée."
           },
           {
             "type": "p",
@@ -1534,7 +1534,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "Le **SEA** (Search Engine Advertising) désigne la publicité diffusée sur les moteurs de recherche : ces annonces qui apparaissent en tête des résultats lorsqu'un internaute tape une requête. Google Ads en est la principale régie, et c'est facile à comprendre quand on sait que Google capte la quasi-totalité des recherches effectuées en France. Se positionner sur Google Ads, c'est donc aller chercher la demande là où elle s'exprime, au moment précis où un prospect cherche votre produit ou votre service."
+            "text": "Le **SEA** (Search Engine Advertising) désigne la publicité diffusée sur les moteurs de recherche : ces annonces qui apparaissent en tête des résultats lorsqu'un internaute tape une requête. [Google Ads en est la principale régie](/agence-sea/), et c'est facile à comprendre quand on sait que Google capte la quasi-totalité des recherches effectuées en France. Se positionner sur Google Ads, c'est donc aller chercher la demande là où elle s'exprime, au moment précis où un prospect cherche votre produit ou votre service."
           },
           {
             "type": "p",
@@ -1559,7 +1559,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "Opposer le SEA et le SEO est une fausse question. Ce sont deux leviers d'acquisition aux temporalités et aux logiques différentes, qui se renforcent quand on les pense ensemble. Le SEA achète une visibilité immédiate ; le SEO la construit dans la durée. L'un permet de tester et de réagir vite, l'autre installe un actif pérenne."
+            "text": "Opposer le SEA et le SEO est une fausse question. Ce sont [deux leviers d'acquisition](/seo-et-sem-quelle-strategie-choisir-pour-votre-entreprise/) aux temporalités et aux logiques différentes, qui se renforcent quand on les pense ensemble. Le SEA achète une visibilité immédiate ; le SEO la construit dans la durée. L'un permet de tester et de réagir vite, l'autre installe un actif pérenne."
           },
           {
             "type": "table",
@@ -1697,7 +1697,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "On confond souvent ces deux termes parce qu'ils poursuivent le même but, mais ils n'agissent pas au même niveau. L'**inbound marketing** consiste à attirer des prospects vers vous grâce à du contenu utile (articles, guides, vidéos, livres blancs) plutôt qu'en les sollicitant par de la publicité intrusive. On parle alors d'un parcours en trois temps : on capte une audience large en haut de tunnel (TOFU), on l'éduque au milieu (MOFU), puis on accompagne la décision en bas de tunnel (BOFU)."
+            "text": "On confond souvent ces deux termes parce qu'ils poursuivent le même but, mais ils n'agissent pas au même niveau. L'**inbound marketing** consiste à attirer des prospects vers vous [grâce à du contenu utile](/strategie-de-contenu-2026/) (articles, guides, vidéos, livres blancs) plutôt qu'en les sollicitant par de la publicité intrusive. On parle alors d'un parcours en trois temps : on capte une audience large en haut de tunnel (TOFU), on l'éduque au milieu (MOFU), puis on accompagne la décision en bas de tunnel (BOFU)."
           },
           {
             "type": "p",
@@ -1766,7 +1766,7 @@ export const FORMATION_CONTENT = {
               "**Capter les prospects au bon moment** de leur réflexion, quand ils cherchent activement des réponses, plutôt que de les interrompre.",
               "**Construire un actif durable** : un contenu bien pensé continue d'attirer des visiteurs mois après mois et réduit votre dépendance à la publicité payante.",
               "**Aligner marketing et commercial** (le smarketing) autour d'un même tunnel et d'une même définition du bon prospect, pour arrêter de travailler en silos.",
-              "**Gagner en visibilité et en crédibilité** grâce au personal branding sur LinkedIn, qui transforme vos commerciaux en interlocuteurs reconnus dans leur domaine.",
+              "**Gagner en visibilité et en crédibilité** [grâce au personal branding sur LinkedIn](/personal-branding/), qui transforme vos commerciaux en interlocuteurs reconnus dans leur domaine.",
               "**Améliorer votre performance commerciale** en générant des opportunités plus qualifiées et plus engagées."
             ]
           },
@@ -1878,9 +1878,9 @@ export const FORMATION_CONTENT = {
             "type": "ul",
             "items": [
               "**Devenir autonome** : publier une page, corriger un texte, ajouter un article ou changer une photo deviennent des gestes simples que vous faites quand vous le voulez, sans attendre un prestataire et sans devis à chaque virgule.",
-              "**Faire des économies réelles** : en internalisant les modifications courantes, vous réduisez les coûts récurrents de maintenance et d'interventions externes. Le budget de la formation se rentabilise vite face à des factures d'agence répétées.",
+              "**Faire des économies réelles** : en internalisant les modifications courantes, vous réduisez les coûts récurrents [de maintenance et d'interventions externes](/maintenance-site-web/). Le budget de la formation se rentabilise vite face à des factures d'agence répétées.",
               "**Gagner du temps et éviter les erreurs** : sauvegardes, mises à jour, sécurité, ces sujets sensibles deviennent des réflexes encadrés plutôt que des sources d'angoisse ou de pannes.",
-              "**Couvrir des projets variés** : la même base sert pour un site vitrine, un blog, une stratégie de génération de leads ou une boutique en ligne avec WooCommerce. Vous apprenez un outil, vous ouvrez plusieurs possibilités.",
+              "**Couvrir des projets variés** : la même base sert pour [un site vitrine](/agence-web-strasbourg/), un blog, une stratégie de génération de leads ou [une boutique en ligne avec WooCommerce](/creation-site-ecommerce/). Vous apprenez un outil, vous ouvrez plusieurs possibilités.",
               "**Acquérir une compétence durable et valorisante** : savoir piloter un site WordPress reste utile dans le temps et pèse positivement sur votre employabilité comme sur l'agilité de votre entreprise."
             ]
           },
@@ -1969,7 +1969,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Pourquoi s'y intéresser maintenant ? Parce que les plateformes no code et low code connaissent une croissance soutenue et s'imposent progressivement comme une réponse à deux réalités du marché : la difficulté à recruter des développeurs et le besoin d'autonomie digitale des TPE et PME. Beaucoup d'entreprises n'ont ni le budget ni le temps de confier chaque modification de site ou chaque petit outil interne à un prestataire. Le No Code rend cette autonomie accessible."
+            "text": "Pourquoi s'y intéresser maintenant ? Parce que les [plateformes no code et low code](/le-no-code-en-2026/) connaissent une croissance soutenue et s'imposent progressivement comme une réponse à deux réalités du marché : la difficulté à recruter des développeurs et le besoin d'autonomie digitale des TPE et PME. Beaucoup d'entreprises n'ont ni le budget ni le temps de confier chaque modification de site ou chaque petit outil interne à un prestataire. Le No Code rend cette autonomie accessible."
           },
           {
             "type": "p",
@@ -2038,7 +2038,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "Mettre en ligne un site vitrine ou un MVP (produit minimum viable) pour tester une idée avant d'y investir lourdement. Vous validez l'intérêt du marché et publiez une offre rapidement, sans avancer des frais de développement importants."
+            "text": "Mettre en ligne [un site vitrine ou un MVP](/agence-web-strasbourg/) (produit minimum viable) pour tester une idée avant d'y investir lourdement. Vous validez l'intérêt du marché et publiez une offre rapidement, sans avancer des frais de développement importants."
           },
           {
             "type": "h3",
@@ -2116,7 +2116,7 @@ export const FORMATION_CONTENT = {
         "blocks": [
           {
             "type": "p",
-            "text": "**Gamma** est une plateforme d'intelligence artificielle générative qui produit des présentations, des documents et des pages web à partir d'un simple texte. Vous décrivez votre idée, vous collez quelques notes ou un plan, et l'outil construit un support mis en forme. Son éditeur fonctionne par blocs, à la manière d'un document moderne plutôt que d'un logiciel de diapositives classique : pas besoin de gérer des marges, des alignements ou une palette de couleurs à la main. C'est précisément ce qui rend Gamma accessible à une personne qui n'a aucune compétence en design."
+            "text": "**Gamma** est une plateforme d'[intelligence artificielle générative](/4-outils-ia-utiles-peu-connus/) qui produit des présentations, des documents et des pages web à partir d'un simple texte. Vous décrivez votre idée, vous collez quelques notes ou un plan, et l'outil construit un support mis en forme. Son éditeur fonctionne par blocs, à la manière d'un document moderne plutôt que d'un logiciel de diapositives classique : pas besoin de gérer des marges, des alignements ou une palette de couleurs à la main. C'est précisément ce qui rend Gamma accessible à une personne qui n'a aucune compétence en design."
           },
           {
             "type": "p",
@@ -2146,7 +2146,7 @@ export const FORMATION_CONTENT = {
               "**Support de formation et pédagogique** : transformer un cours, un PDF ou de simples notes en diapositives claires et interactives, idéal pour les formateurs et les enseignants.",
               "**Rapport et document professionnel** : produire un compte rendu, un livre blanc ou une proposition commerciale structurés sans repartir de zéro à chaque fois.",
               "**Page web, mini-site et landing page** : créer une page de présentation publiable en ligne sans écrire une ligne de code.",
-              "**Communication interne et marketing** : monter des newsletters, des supports d'événement ou des présentations d'équipe cohérents avec la charte graphique de l'entreprise."
+              "**Communication interne et marketing** : monter des newsletters, des supports d'événement ou des présentations d'équipe cohérents avec la [charte graphique de l'entreprise](/trouver-le-style-graphique-de-sa-marque/)."
             ]
           },
           {
@@ -2241,7 +2241,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "L'articulation est simple à mémoriser : l'EVP est le fond (ce que vous offrez vraiment), la marque employeur est la perception (ce que les autres en retiennent), et le marketing RH est le moteur qui diffuse l'un pour nourrir l'autre. Une marque employeur convaincante sans EVP réelle derrière ne tient pas longtemps, le décalage finit toujours par se voir."
+            "text": "L'articulation est simple à mémoriser : l'EVP est le fond (ce que vous offrez vraiment), [la marque employeur est la perception](/videos-marque-employeur/) (ce que les autres en retiennent), et le marketing RH est le moteur qui diffuse l'un pour nourrir l'autre. Une marque employeur convaincante sans EVP réelle derrière ne tient pas longtemps, le décalage finit toujours par se voir."
           },
           {
             "type": "h3",
@@ -2271,7 +2271,7 @@ export const FORMATION_CONTENT = {
               "**Révéler les valeurs et la culture réelles.** La fondation doit être authentique : on s'appuie sur ce qui existe vraiment dans l'entreprise, pas sur une culture rêvée.",
               "**Formaliser l'EVP.** Mettez des mots sur ce qui rend l'entreprise unique et désirable, ce que l'on y trouve et qu'on ne trouve pas ailleurs.",
               "**Définir le positionnement et les messages clés.** Choisissez les axes que vous voulez incarner et formulez des messages cohérents entre le discours et le vécu.",
-              "**Déployer un plan de communication multicanal.** Site carrière, LinkedIn, réseaux sociaux, prise de parole des collaborateurs ambassadeurs : chaque canal sert le même fil.",
+              "**Déployer un plan de communication multicanal.** [Site carrière, LinkedIn](/developper-son-reseau-linkedin/), réseaux sociaux, prise de parole des collaborateurs ambassadeurs : chaque canal sert le même fil.",
               "**Soigner l'expérience candidat et collaborateur.** De la première interaction à l'intégration, chaque point de contact confirme (ou contredit) votre promesse.",
               "**Mesurer, ajuster et faire vivre la marque dans le temps.** Une marque employeur n'est pas un projet à boucler mais une pratique à entretenir."
             ]
@@ -2360,7 +2360,7 @@ export const FORMATION_CONTENT = {
           },
           {
             "type": "p",
-            "text": "On confond souvent quatre notions voisines. Votre marque personnelle est l'identité que vous émettez volontairement : votre positionnement, votre discours, vos prises de parole. Votre e-réputation est la perception reçue, ce que l'on dit de vous et ce que l'on trouve à votre sujet en ligne. L'image de marque concerne une entreprise dans sa globalité, et la marque employeur sa capacité à attirer et fidéliser des talents. Le personal branding se situe à l'articulation de tout cela : c'est le levier individuel qui nourrit, ou fragilise, l'ensemble."
+            "text": "On confond souvent quatre notions voisines. [Votre marque personnelle](/le-personal-branding-c-est-quoi/) est l'identité que vous émettez volontairement : votre positionnement, votre discours, vos prises de parole. Votre e-réputation est la perception reçue, ce que l'on dit de vous et ce que l'on trouve à votre sujet en ligne. L'image de marque concerne une entreprise dans sa globalité, et la marque employeur sa capacité à attirer et fidéliser des talents. [Le personal branding se situe](/personal-branding/) à l'articulation de tout cela : c'est le levier individuel qui nourrit, ou fragilise, l'ensemble."
           },
           {
             "type": "p",
