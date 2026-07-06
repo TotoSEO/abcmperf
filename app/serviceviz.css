@@ -1,5 +1,5 @@
 /* =============================================================================
-   ServiceViz — scènes animées (SVG + CSS pur) pour les pages service & l'accueil.
+   ServiceViz : scènes animées (SVG + CSS pur) pour les pages service & l'accueil.
    Conçues dans l'atelier ; 0 dépendance, teintées par service via --_h.
    ============================================================================= */
 .sv-screen {
@@ -36,7 +36,7 @@
 
 /* ---- Scènes SEO / SEA / GEO ---- */
 /* =====================================================================
-     1. SEO — la courbe qui grimpe
+     1. SEO : la courbe qui grimpe
      ===================================================================== */
   .sv-viz-seo { --_h: var(--green); animation: seoFade 4.4s ease-in-out infinite; }
   @keyframes seoFade { 0%{opacity:0} 6%{opacity:1} 88%{opacity:1} 96%,100%{opacity:0} }
@@ -72,7 +72,7 @@
   @keyframes seoBadge { 0%,48%{transform:scale(0) rotate(-8deg)} 56%{transform:scale(1.12) rotate(3deg)} 62%,84%{transform:scale(1) rotate(0)} 92%,100%{transform:scale(0) rotate(-8deg)} }
 
   /* =====================================================================
-     2. SEA — le résultat sponsorisé
+     2. SEA : le résultat sponsorisé
      ===================================================================== */
   .sv-viz-sea { --_h: var(--yellow); padding: 8%; animation: seaFade 5.6s ease-in-out infinite; }
   @keyframes seaFade { 0%{opacity:0} 7%{opacity:1} 90%{opacity:1} 97%,100%{opacity:0} }
@@ -126,7 +126,7 @@
   @keyframes seaClick { 0%,64%{opacity:0; transform:scale(0.4)} 68%{opacity:0.9; transform:scale(1)} 80%,100%{opacity:0; transform:scale(2.4)} }
 
   /* =====================================================================
-     3. GEO — cité par l'IA
+     3. GEO : cité par l'IA
      ===================================================================== */
   .sv-viz-geo { --_h: var(--blue); padding: 7%; animation: geoFade 6.6s ease-in-out infinite; }
   @keyframes geoFade { 0%{opacity:0} 6%{opacity:1} 92%{opacity:1} 98%,100%{opacity:0} }
