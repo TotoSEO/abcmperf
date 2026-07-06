@@ -574,34 +574,34 @@ export const FORMATIONS = [
     metaDescription: "Formation SEA (référencement payant) à Strasbourg et en visio : stratégie d'enchères, Google Ads, Microsoft Ads et pilotage du ROI. Qualiopi, financement OPCO.",
     lead: "Le SEA, ou référencement payant, permet d'acheter une visibilité immédiate en haut des résultats de recherche. Cette formation vous apprend à bâtir, lancer et piloter des campagnes rentables, en complément de votre référencement naturel.",
     objectifs: [
-      "Comprendre le SEA et sa complémentarité avec le SEO",
-      "Construire une stratégie d'enchères et de mots-clés",
-      "Lancer des campagnes sur Google Ads et Microsoft Ads",
-      "Mesurer et optimiser le retour sur investissement (ROI)",
+      "Comprendre le référencement payant (SEA) et sa complémentarité avec le SEO",
+      "Situer les principales régies : Google Ads, Microsoft Advertising (Bing) et Shopping",
+      "Construire une première stratégie de mots-clés et d'enchères",
+      "Lancer une campagne Search et en lire les premiers résultats",
     ],
     programme: [
       { module: "Comprendre le référencement payant", points: [
         "SEA, SEO, SMO : situer le payant dans une stratégie de visibilité",
-        "Le fonctionnement des enchères et du Quality Score",
-        "Panorama des régies : Google Ads, Microsoft Ads, Shopping" ] },
-      { module: "Préparer sa stratégie SEA", points: [
-        "Objectifs, audiences et parcours de conversion",
+        "Le principe des enchères, du coût par clic et du Quality Score",
+        "Panorama des régies : Google Ads, Microsoft Advertising (Bing), Shopping" ] },
+      { module: "Préparer une première campagne", points: [
+        "Définir ses objectifs, son audience et sa zone de diffusion",
         "Recherche de mots-clés et intention de recherche",
-        "Budget, structure de compte et plan de campagne" ] },
-      { module: "Créer et lancer ses campagnes", points: [
-        "Paramétrer une campagne Search étape par étape",
-        "Rédiger des annonces et des extensions efficaces",
-        "Landing pages, suivi des conversions et tracking" ] },
-      { module: "Piloter et optimiser", points: [
-        "Lire ses indicateurs et ses tableaux de bord",
-        "Optimiser enchères, ciblage et messages",
-        "Tests A/B et amélioration continue du ROI" ] },
+        "Budget de départ et structure de compte simple" ] },
+      { module: "Lancer sa campagne Search", points: [
+        "Créer une campagne Search pas à pas",
+        "Rédiger des annonces et des extensions claires",
+        "Mettre en place un suivi des conversions de base" ] },
+      { module: "Lire et ajuster ses résultats", points: [
+        "Comprendre les indicateurs essentiels (CPC, CTR, conversions)",
+        "Premiers réflexes d'optimisation d'une campagne",
+        "Savoir quand passer à une gestion avancée (Google Ads)" ] },
     ],
     public: "Responsables marketing, e-commerce et communication, indépendants et chefs d'entreprise souhaitant lancer leurs campagnes payantes.",
     prerequis: STD_PREREQUIS,
     duree: "1 jour (7 h)",
     faq: [
-      { q: "Quelle différence avec la formation Google Ads ?", a: "Cette formation SEA pose la stratégie d'ensemble du référencement payant (enchères, plateformes, ROI). La formation Google Ads va plus loin dans la pratique de la régie Google, sur 2 jours." },
+      { q: "Quelle différence avec la formation Google Ads ?", a: "Cette formation SEA pose les fondamentaux du référencement payant, toutes régies confondues (Google, Microsoft/Bing, Shopping), en 1 jour. La formation Google Ads va beaucoup plus loin sur l'écosystème Google (Display, YouTube, Shopping, Performance Max, remarketing) et l'optimisation avancée, sur 2 jours." },
       { q: "Le SEA remplace-t-il le SEO ?", a: "Non, les deux sont complémentaires : le SEA apporte une visibilité immédiate, le SEO une visibilité durable. L'idéal est de combiner les deux." },
       { q: "Comment financer la formation ?", a: "Via votre OPCO ou le plan de développement des compétences. Organisme certifié Qualiopi." },
     ],
@@ -615,38 +615,41 @@ export const FORMATIONS = [
     cardDesc: "Créez et optimisez des campagnes Google Ads rentables.",
     title: "Formation Google Ads à Strasbourg",
     metaDescription: "Formation Google Ads à Strasbourg et en visio : créez, pilotez et optimisez vos campagnes Search, Display et remarketing. ROI mesuré. Qualiopi, financement OPCO.",
-    lead: "Google est le moteur de recherche par excellence. Cette formation vous apprend toutes les ficelles de Google Ads pour générer un maximum de trafic ciblé, et donc de ventes.",
+    lead: "La régie publicitaire de Google couvre bien plus que la recherche. Cette formation approfondie, sur 2 jours, vous fait exploiter tout l'écosystème Google Ads — Search, Display, YouTube, Shopping et Performance Max — pour générer un trafic ciblé et rentable.",
     objectifs: [
-      "Réussir ses campagnes Google Ads",
-      "Comprendre les objectifs des réseaux Search et Display",
-      "Assurer le suivi et l'optimisation des campagnes",
-      "Générer du trafic ciblé et mesurer le ROI",
+      "Exploiter tout l'écosystème Google Ads : Search, Display, YouTube, Shopping et Performance Max",
+      "Mettre en place un suivi des conversions et une attribution fiables",
+      "Déployer le remarketing et le ciblage d'audiences",
+      "Optimiser la rentabilité (ROAS) et industrialiser la gestion des campagnes",
     ],
     programme: [
-      { module: "Les liens sponsorisés", points: [
+      { module: "Cadre et écosystème Google Ads", points: [
         "Enjeux : rentabilité, fraude au clic, cadre légal",
-        "Réseaux et formats publicitaires (Google Ads, Microsoft Ads / Bing)",
-        "Campagnes cross-device : desktop, mobile et tablette",
-        "Enchères, Quality Score et interface Google Ads" ] },
-      { module: "Définir sa stratégie de campagne", points: [
-        "Objectifs (vente, trafic) et plan média",
-        "Période de diffusion et ciblage",
-        "Budget, stratégie d'enchères et complémentarité avec le SEO" ] },
-      { module: "Créer une campagne", points: [
-        "Paramétrage, mots-clés et ciblage",
-        "Rédaction des annonces et extensions",
-        "Landing pages, tracking et campagnes mobiles" ] },
-      { module: "Display, remarketing & optimisation", points: [
-        "Campagnes Display, YouTube et remarketing",
-        "Tableaux de bord et choix des KPI",
-        "Actions correctives et tests A/B" ] },
+        "Les réseaux : Search, Display, YouTube, Shopping et Performance Max",
+        "Enchères, Quality Score et prise en main avancée de l'interface" ] },
+      { module: "Stratégie de campagne et plan média", points: [
+        "Objectifs (vente, leads, notoriété) et plan média",
+        "Ciblage, calendrier de diffusion et complémentarité avec le SEO",
+        "Budget et stratégies d'enchères automatiques (tCPA, tROAS…)" ] },
+      { module: "Display, vidéo et Shopping", points: [
+        "Campagnes Display et bannières responsives",
+        "Publicité vidéo sur YouTube",
+        "Google Shopping et gestion des flux produits" ] },
+      { module: "Remarketing, audiences & Performance Max", points: [
+        "Listes de remarketing et audiences personnalisées",
+        "Scénarios de reciblage et segmentation",
+        "Performance Max : logique, atouts et bonnes pratiques" ] },
+      { module: "Tracking, pilotage et optimisation", points: [
+        "Google Tag, balises et suivi fiable des conversions",
+        "Tableaux de bord, KPI et lecture du ROAS",
+        "Tests A/B, actions correctives et Google Ads Editor" ] },
     ],
     public: "Responsables marketing, e-commerce, communication, chefs de produit, chargés de communication, webmasters.",
     prerequis: STD_PREREQUIS,
     duree: "2 jours (14 h)",
     faq: [
-      { q: "Faut-il déjà connaître Google Ads ?", a: "Non. La formation part des fondamentaux jusqu'à l'optimisation avancée des campagnes." },
-      { q: "Aborde-t-on le Display et le remarketing ?", a: "Oui : Search, Display, YouTube et remarketing, avec suivi des KPI et tests A/B." },
+      { q: "Quelle différence avec la formation SEA ?", a: "La formation SEA (1 jour) pose les fondamentaux du référencement payant, toutes régies confondues. Celle-ci se concentre sur l'écosystème Google et va beaucoup plus loin (Display, YouTube, Shopping, Performance Max, remarketing, optimisation avancée), sur 2 jours. La formation SEA est un bon préambule, mais n'est pas obligatoire." },
+      { q: "Aborde-t-on le Display, la vidéo et le remarketing ?", a: "Oui : Search, Display, YouTube, Shopping, Performance Max et remarketing, avec le suivi des conversions, les KPI, la lecture du ROAS et les tests A/B." },
       { q: "Financement ?", a: "OPCO ou plan de développement des compétences. Organisme certifié Qualiopi." },
     ],
     related: ["formation-marketing-digital-webmarketing-strasbourg", "formation-referencement-strasbourg", "formations-strasbourg/formation-inbound-marketing"],
