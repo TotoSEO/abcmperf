@@ -1501,3 +1501,69 @@
   .agencymap__card { grid-template-columns: 1fr; }
   .agencymap__map { min-height: 320px; order: -1; }
 }
+
+/* =========================================================================
+   HERO PREMIUM · mesh/aurora gradient + grain + type oversize (accueil)
+   ========================================================================= */
+.hero__aurora {
+  position: absolute; inset: -22% -12% -22% 24%; z-index: 0; pointer-events: none;
+  filter: blur(72px) saturate(1.18); opacity: 0.62; will-change: transform;
+  background:
+    radial-gradient(38% 48% at 78% 26%, var(--logo-blue), transparent 62%),
+    radial-gradient(34% 44% at 95% 58%, var(--logo-magenta), transparent 60%),
+    radial-gradient(30% 40% at 58% 84%, var(--logo-orange), transparent 62%),
+    radial-gradient(26% 36% at 102% 12%, var(--logo-yellow), transparent 58%),
+    radial-gradient(30% 42% at 74% 100%, var(--logo-green), transparent 62%);
+  animation: hero-aurora 22s ease-in-out infinite alternate;
+}
+@keyframes hero-aurora {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-3%, 2.5%, 0) scale(1.08) rotate(2deg); }
+  100% { transform: translate3d(2.5%, -2%, 0) scale(1.05) rotate(-1.5deg); }
+}
+/* Grain de film : texture fine par-dessus le dégradé, sous le texte. */
+.hero__grain {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.5; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+/* Titre plus imposant, éditorial. */
+.hero__title { font-size: clamp(2.8rem, 1.1rem + 6.2vw, 6rem); line-height: 0.98; letter-spacing: -0.03em; font-weight: 800; max-width: 20ch; }
+.hero__br { display: none; }
+@media (min-width: 900px) { .hero__br { display: inline; } }
+/* Mot mis en avant : dégradé multicolore de marque qui balaie doucement. */
+.hero__hl {
+  background: linear-gradient(100deg, var(--logo-yellow), var(--logo-orange), var(--logo-magenta), #8b6cff, var(--logo-blue), var(--logo-magenta), var(--logo-orange), var(--logo-yellow));
+  background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: hero-hl 9s ease-in-out infinite alternate;
+}
+@keyframes hero-hl { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero__aurora, .hero__hl { animation: none; }
+}
+
+/* =========================================================================
+   SERVICE HERO PREMIUM · aurora (teintée par le service) + grain + type
+   ========================================================================= */
+.svcd2-hero__inner { z-index: 2; }
+.svcd2-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg, var(--night) 0%, var(--night) 24%, color-mix(in srgb, var(--night) 52%, transparent) 56%, transparent 100%);
+}
+.svcd2-hero__aurora {
+  position: absolute; inset: -24% -12% -24% 20%; z-index: 0; pointer-events: none;
+  filter: blur(74px) saturate(1.16); opacity: 0.6; will-change: transform;
+  background:
+    radial-gradient(40% 50% at 82% 22%, var(--_hue), transparent 62%),
+    radial-gradient(34% 44% at 97% 60%, var(--logo-magenta), transparent 60%),
+    radial-gradient(30% 42% at 62% 94%, var(--logo-orange), transparent 62%),
+    radial-gradient(26% 34% at 102% 4%, var(--logo-yellow), transparent 58%);
+  animation: hero-aurora 22s ease-in-out infinite alternate;
+}
+.svcd2-hero__grain {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0.5; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+.svcd2-hero__title { font-size: clamp(2.4rem, 1.3rem + 4.6vw, 4.5rem); letter-spacing: -0.025em; }
+@media (prefers-reduced-motion: reduce) { .svcd2-hero__aurora { animation: none; } }
