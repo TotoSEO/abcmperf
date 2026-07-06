@@ -283,6 +283,14 @@ export function FormationDetail({ formation }) {
         </div>
       </section>
 
+      {/* ---- Formatrice (Audrey) : juste après « Comment se déroule la formation »,
+              avant le contenu éditorial SEO ---- */}
+      <section className="section fmt-trainer-wrap">
+        <div className="container">
+          <TrainerBlock />
+        </div>
+      </section>
+
       {/* ---- Contenu sémantique éditorial (pleine largeur) ---- */}
       {content && (
         <section className="section fmt-rich-wrap">
@@ -292,10 +300,9 @@ export function FormationDetail({ formation }) {
         </section>
       )}
 
-      {/* ---- Formatrice + Qualiopi (pleine largeur) ---- */}
+      {/* ---- Qualiopi (pleine largeur) ---- */}
       <section className="section fmt-trust">
         <div className="container">
-          <TrainerBlock />
           <QualiopiBlock />
           <p className="fmt-quali-more"><Link href={MODALITES_URL}><Icon name="arrow-right" size={16} /> Modalités, moyens pédagogiques &amp; d'encadrement</Link></p>
         </div>

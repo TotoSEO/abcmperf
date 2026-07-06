@@ -42,6 +42,13 @@ const CAT_BY_GROUP = {
   acquisition: "publicite",
 };
 
+// Surcharge par service quand le repli par pôle n'est pas pertinent : le
+// personal branding n'a pas de référence dédiée, on montre plutôt des projets
+// d'identité / image de marque (graphisme) que des campagnes publicitaires.
+const CAT_BY_SERVICE = {
+  "personal-branding": "graphisme",
+};
+
 // Sélectionne jusqu'à `max` fiches références pertinentes pour un service :
 // d'abord celles dont l'encart promo pointe ce service, puis les autres
 // services du même pôle, puis par catégorie thématique. `groupServiceSlugs`
@@ -50,11 +57,15 @@ export function casesForService(service, allCases, groupServiceSlugs = [], max =
   const cases = Array.isArray(allCases) ? allCases : [];
   const byPromo = cases.filter((c) => c.promo && c.promo.slug === service.slug);
   const byGroup = cases.filter((c) => c.promo && groupServiceSlugs.includes(c.promo.slug));
-  const cat = CAT_BY_GROUP[service.group];
+  const override = CAT_BY_SERVICE[service.slug];
+  const cat = override || CAT_BY_GROUP[service.group];
   const byCat = cat ? cases.filter((c) => (c.categories || []).includes(cat)) : [];
   const seen = new Set();
   const out = [];
-  for (const list of [byPromo, byGroup, byCat]) {
+  // Avec une surcharge de catégorie, elle prime sur le repli par pôle (dont les
+  // services voisins ne partagent pas forcément les mêmes références).
+  const order = override ? [byPromo, byCat, byGroup] : [byPromo, byGroup, byCat];
+  for (const list of order) {
     for (const c of list) {
       if (!seen.has(c.slug)) {
         seen.add(c.slug);

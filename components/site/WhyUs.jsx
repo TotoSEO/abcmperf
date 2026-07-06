@@ -7,7 +7,7 @@ const STATS = [
   { num: "+10", label: "ans d'expérience" },
   { num: "9", label: "experts dédiés" },
   { num: "360°", label: "de compétences" },
-  { num: "2015", label: "à vos côtés depuis" },
+  { num: "65+", label: "projets réalisés" },
 ];
 
 const ADVANTAGES = [
