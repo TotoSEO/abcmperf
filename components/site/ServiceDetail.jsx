@@ -8,6 +8,7 @@ import { PORTFOLIO_URL, primaryTheme, casesForService } from "@/data/portfolio";
 import { getAllCases } from "@/lib/portfolio";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { Blocks, renderInline } from "@/components/site/RichContent";
+import { ServiceShowcase } from "@/components/site/ServiceViz";
 
 const SITE = ABCM_INFO.url;
 
@@ -171,6 +172,7 @@ export function ServiceDetail({ service }) {
                 </div>
               </div>
             </section>
+            {i === 0 ? <ServiceShowcase slug={s.slug} /> : null}
             {i === ctaAfter ? (
               <section className="svcd2-cta-band">
                 <div className="container">

@@ -773,9 +773,24 @@
 @keyframes tw-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 .tw-quote__cite { margin-top: var(--space-5); font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-subtle); opacity: 0; transform: translateY(6px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
 .tw-quote__cite.is-visible { opacity: 1; transform: none; }
+
+/* ---- Variante 2 colonnes : promesse (révélée mot à mot) + réassurance ---- */
+.tw-quote--split .tw-quote__grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: center; }
+.tw-quote--split .tw-quote__col { min-width: 0; }
+.tw-quote__eyebrow { margin: 0 0 var(--space-4); color: var(--accent-700); }
+.tw-quote--split .tw-quote__text { text-align: left; max-width: 22ch; font-size: clamp(1.35rem, 0.9rem + 1.5vw, 2.1rem); line-height: 1.28; }
+.tw-word { display: inline-block; white-space: pre; }
+.tw-quote__text.is-in .tw-word { animation-name: tw-word; animation-duration: 0.5s; animation-timing-function: var(--ease-out); animation-fill-mode: both; }
+@keyframes tw-word { from { opacity: 0; transform: translateY(0.6em); } to { opacity: 1; transform: none; } }
+.tw-quote__viz .sv-screen { width: 100%; }
+@media (max-width: 860px) {
+  .tw-quote--split .tw-quote__grid { grid-template-columns: 1fr; }
+  .tw-quote--split .tw-quote__text { max-width: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .tw-quote__caret { animation: none; opacity: 0; }
   .tw-quote__cite { transition: none; }
+  .tw-quote__text.is-in .tw-word { animation: none; }
 }
 
 /* =========================================================================
