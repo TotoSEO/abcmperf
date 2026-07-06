@@ -1200,6 +1200,22 @@
 .pf-case-cta p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; max-width: 44ch; }
 
 /* autres references */
+/* Services mobilisés sur un projet (accès multi-services depuis la fiche). */
+.pf-case-svc__head { margin-bottom: var(--space-6); }
+.pf-case-svc__eyebrow { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--_hue, var(--accent-700)); margin-bottom: var(--space-2); }
+.pf-case-svc__title { font-size: var(--text-xl); margin: 0; }
+.pf-case-svc__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-4); }
+.pf-svc-chip { --_hue: var(--logo-blue); display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-radius: var(--radius-xl); background: color-mix(in oklch, var(--_hue) 6%, var(--surface)); border: 1px solid color-mix(in oklch, var(--_hue) 16%, var(--border)); text-decoration: none; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+.pf-svc-chip__ic { flex: none; width: 2.6em; height: 2.6em; border-radius: 13px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 78%, #fff), var(--_hue)); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.4); }
+.pf-svc-chip__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.pf-svc-chip__name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--text); line-height: 1.15; }
+.pf-svc-chip__desc { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-snug); margin-top: 2px; }
+.pf-svc-chip__go { flex: none; color: var(--_hue); display: inline-flex; transition: transform 0.3s var(--ease-out); }
+@media (hover: hover) {
+  .pf-svc-chip:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--_hue) 40%, var(--border)); }
+  .pf-svc-chip:hover .pf-svc-chip__go { transform: translateX(3px); }
+}
+
 .pf-case-more { background: var(--bg-subtle); }
 .pf-case-more__head { margin-bottom: var(--space-8); }
 .pf-case-more__eyebrow { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--_hue); }
