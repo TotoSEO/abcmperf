@@ -8,6 +8,7 @@ import { Team } from "@/components/site/Team";
 import { FormationsPromo } from "@/components/site/FormationsPromo";
 import { WhyUs } from "@/components/site/WhyUs";
 import { LatestArticles } from "@/components/site/LatestArticles";
+import { AgencyMap } from "@/components/site/AgencyMap";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -26,6 +27,7 @@ export default function HomePage() {
       <FormationsPromo />
       <WhyUs />
       <LatestArticles />
+      <AgencyMap />
     </>
   );
 }
