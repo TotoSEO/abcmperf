@@ -86,7 +86,10 @@ export const STD_FINANCEMENT =
   "Formation éligible à une prise en charge par votre OPCO ou via le plan de développement des compétences de l'entreprise. ABCM Performances est un organisme de formation certifié Qualiopi, gage de qualité reconnu par les financeurs.";
 
 export const STD_PREREQUIS =
-  "Être à l'aise avec l'ordinateur et la navigation sur Internet. Apporter un ordinateur portable. Bon niveau de français (oral et écrit).";
+  "Être à l'aise avec l'ordinateur et la navigation sur Internet. Apporter un ordinateur portable.";
+// Base + exigence de français (fiches IA / rédaction / montage où le live la mentionne).
+export const STD_PREREQUIS_FR =
+  STD_PREREQUIS + " Bon niveau de français (oral et écrit).";
 
 export const STD_DELAI =
   "Accès à la formation sous 14 jours maximum après votre demande.";
@@ -152,7 +155,7 @@ export const FORMATIONS = [
         "Bonnes pratiques pour ancrer l'IA dans ses routines de travail" ] },
     ],
     public: "Cadres dirigeants, responsables, consultants et tout profil souhaitant acquérir des compétences pratiques sur l'IA.",
-    prerequis: STD_PREREQUIS + " Un attrait pour les nouvelles technologies.",
+    prerequis: STD_PREREQUIS_FR + " Un attrait pour les nouvelles technologies.",
     duree: "1 jour (7 h)",
     faq: [
       { q: "À qui s'adresse cette formation ChatGPT ?", a: "Aux cadres, responsables, consultants et à tout professionnel souhaitant intégrer l'IA générative dans son quotidien, sans prérequis technique." },
@@ -193,7 +196,7 @@ export const FORMATIONS = [
         "Construire ses modèles réutilisables" ] },
     ],
     public: "Toute personne souhaitant améliorer ses écrits professionnels grâce à l'intelligence artificielle.",
-    prerequis: STD_PREREQUIS,
+    prerequis: STD_PREREQUIS_FR,
     duree: "1 jour (7 h)",
     faq: [
       { q: "Faut-il déjà savoir utiliser l'IA ?", a: "Non. La formation part des bases et vous met en pratique sur vos propres écrits, avec plusieurs outils." },
@@ -233,7 +236,7 @@ export const FORMATIONS = [
         "Gérer les risques et maximiser les bénéfices" ] },
     ],
     public: "Équipes, professionnels curieux, entrepreneurs et indépendants souhaitant comprendre et intégrer l'IA.",
-    prerequis: STD_PREREQUIS,
+    prerequis: STD_PREREQUIS_FR,
     duree: "1 jour (7 h)",
     faq: [
       { q: "Faut-il un bagage technique ?", a: "Aucun. La formation est pensée pour rendre l'IA accessible à toute une équipe, avec des cas d'usage concrets." },
@@ -333,7 +336,7 @@ export const FORMATIONS = [
     ],
     public: "Commerciaux, recruteurs, chefs d'entreprise et indépendants.",
     prerequis: STD_PREREQUIS,
-    duree: "1 à 2 jours (7 à 14 h)",
+    duree: "2 jours (14 h)",
     faq: [
       { q: "La formation couvre-t-elle la prospection commerciale ?", a: "Oui, c'est un axe central : construire une démarche de social selling et de prospection pour générer des opportunités." },
       { q: "Quelle durée choisir ?", a: "De 1 à 2 jours selon vos besoins et votre niveau de départ." },
@@ -373,7 +376,7 @@ export const FORMATIONS = [
         "Feedback personnalisé sur vos créations" ] },
     ],
     public: "Community managers, entrepreneurs, freelances et professionnels du marketing digital.",
-    prerequis: STD_PREREQUIS,
+    prerequis: STD_PREREQUIS_FR,
     duree: "1 jour (7 h)",
     faq: [
       { q: "Faut-il savoir monter des vidéos ?", a: "Non. CapCut est accessible : la formation part des bases et vous fait réaliser une vidéo complète." },
@@ -418,8 +421,8 @@ export const FORMATIONS = [
         "Créer et gérer une équipe, commentaires et historique" ] },
     ],
     public: "Toute personne souhaitant se développer dans le domaine de la communication.",
-    prerequis: "Aucun prérequis. Apporter un ordinateur portable.",
-    duree: "2 jours (14 h)",
+    prerequis: "Aucun prérequis particulier. Il suffit d'apporter un ordinateur portable.",
+    duree: "1 à 2 jours (7 à 14 h)",
     faq: [
       { q: "Faut-il des bases en graphisme ?", a: "Non, aucun prérequis. La formation est accessible à tous et privilégie la pratique." },
       { q: "Que saurai-je faire à la fin ?", a: "Créer en autonomie des supports de communication attractifs et adaptés à tous vos besoins (print, réseaux, vidéo)." },
@@ -464,8 +467,8 @@ export const FORMATIONS = [
         "Gérer une équipe, retours et historique" ] },
     ],
     public: "Toute personne souhaitant se développer dans le domaine de la communication.",
-    prerequis: "Aucun prérequis. Apporter un ordinateur portable.",
-    duree: "2 jours (14 h)",
+    prerequis: "Aucun prérequis particulier. Il suffit d'apporter un ordinateur portable.",
+    duree: "1 à 2 jours (7 à 14 h)",
     faq: [
       { q: "Quelle différence avec la formation Canva ?", a: "Les deux outils se ressemblent ; Adobe Express s'intègre à l'écosystème Adobe. Choisissez selon vos outils ; le contenu et la pédagogie sont équivalents." },
       { q: "Y a-t-il des prérequis ?", a: "Aucun. La formation s'adresse à tous les niveaux et privilégie la pratique." },
