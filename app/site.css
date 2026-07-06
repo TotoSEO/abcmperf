@@ -1467,3 +1467,37 @@
 .whyus__r2 { width: 110px; height: 110px; opacity: 0.08; bottom: 8%; left: -30px; }
 .whyus__media img { aspect-ratio: 5 / 4; }
 @media (max-width: 960px) { .whyus__media img { aspect-ratio: 16 / 10; } }
+
+/* =========================================================================
+   AGENCE · carte de localisation (accueil bas de page + page contact)
+   ========================================================================= */
+.agencymap { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--surface), color-mix(in oklch, var(--logo-blue) 5%, var(--surface))); }
+.agencymap__deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.agencymap .container { position: relative; z-index: 1; }
+.agencymap__r1 { width: 280px; height: 280px; opacity: 0.06; top: -90px; right: -90px; }
+.agencymap__r2 { width: 190px; height: 190px; border-width: 26px; opacity: 0.07; bottom: -70px; left: -60px; }
+.agencymap__r3 { width: 84px; height: 84px; opacity: 0.09; top: 16%; left: 7%; }
+.agencymap__card { display: grid; grid-template-columns: 0.92fr 1.08fr; align-items: stretch; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); overflow: hidden; }
+.agencymap__info { display: flex; flex-direction: column; gap: var(--space-3); padding: clamp(var(--space-6), 3.5vw, var(--space-10)); }
+.agencymap__eyebrow { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--logo-magenta); }
+.agencymap__title { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem); line-height: 1.08; letter-spacing: var(--tracking-tight); margin: 0; }
+.agencymap__lead { color: var(--text-muted); font-size: var(--text-md); line-height: var(--leading-relaxed); margin: 0 0 var(--space-2); max-width: 42ch; }
+.agencymap__list { list-style: none; margin: 0 0 var(--space-2); padding: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.agencymap__list li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-md); color: var(--text); line-height: 1.4; }
+.agencymap__list a { color: var(--text); transition: color var(--dur-base) var(--ease-out); }
+.agencymap__list a:hover { color: var(--accent-700); }
+.agencymap__ic { flex: none; width: 2.4em; height: 2.4em; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; color: var(--accent-700); background: color-mix(in oklch, var(--logo-blue) 12%, var(--surface)); }
+.agencymap__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: auto; padding-top: var(--space-4); }
+.agencymap__btn { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); padding: 0.75em 1.2em; border-radius: var(--radius-pill); transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
+.agencymap__btn--primary { background: var(--accent-400); color: var(--accent-contrast); }
+.agencymap__btn--primary:hover { background: var(--accent-300); box-shadow: var(--shadow-accent); transform: translateY(-2px); }
+.agencymap__btn--ghost { border: 1px solid var(--border-strong); color: var(--text); }
+.agencymap__btn--ghost:hover { border-color: var(--accent-400); color: var(--accent-700); }
+.agencymap__map { position: relative; min-height: 380px; background: var(--surface-2); }
+.agencymap__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; filter: saturate(1.02); }
+.agencymap__maplink { position: absolute; right: var(--space-4); bottom: var(--space-4); display: inline-flex; align-items: center; gap: 0.35em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-2xs); color: var(--text); background: color-mix(in srgb, var(--surface) 92%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 0.5em 0.9em; box-shadow: var(--shadow-sm); transition: color var(--dur-base) var(--ease-out); }
+.agencymap__maplink:hover { color: var(--accent-700); }
+@media (max-width: 820px) {
+  .agencymap__card { grid-template-columns: 1fr; }
+  .agencymap__map { min-height: 320px; order: -1; }
+}
