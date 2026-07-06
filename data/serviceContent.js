@@ -30,7 +30,7 @@ export const SERVICE_CONTENT = {
           "Convertissent vos visiteurs en clients",
           "Respectent les dernières normes UX, RGPD et sécurité",
         ] },
-        { type: "p", text: "En plus du [référencement naturel (SEO)](/referencement-strasbourg/), nous intégrons une stratégie d'AEO (Answer Engine Optimization) pour maximiser votre présence dans les moteurs de recherche et dans les réponses générées par l'IA (comme ChatGPT ou Google SGE). Nous vous aidons à être trouvés, compris et choisis." },
+        { type: "p", text: "En plus du référencement naturel (SEO), nous intégrons une stratégie d'AEO (Answer Engine Optimization) pour maximiser votre présence dans les moteurs de recherche et dans les réponses générées par l'IA (comme ChatGPT ou Google SGE). Nous vous aidons à être trouvés, compris et choisis." },
       ] },
       { h2: "Pourquoi travailler avec nous ?", blocks: [
         { type: "h3", text: "Un site web performant pour booster votre activité" },
@@ -60,8 +60,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Une stratégie performante", text: "C'est la clé de la réussite sur le web : cette stratégie part de l'analyse de vos besoins." },
           { title: "Un service web adapté", text: "Les outils et les leviers que nous activons sont adaptés et correspondent à vos objectifs." },
+          { title: "Une stratégie web rentable", text: "Votre stratégie vous amène du trafic, des prospects et de nouveaux clients, en adéquation avec votre image de marque." },
         ] },
-        { type: "p", text: "**Une stratégie web rentable** : votre stratégie vous amène du trafic, des prospects et de nouveaux clients, en adéquation avec votre image de marque." },
       ] },
       { h2: "Foire aux questions", blocks: [
         { type: "h3", text: "Combien de temps faut-il pour créer un site web ?" },
@@ -71,9 +71,9 @@ export const SERVICE_CONTENT = {
         { type: "h3", text: "Puis-je bénéficier d'un accompagnement stratégique sur le court ou long terme ?" },
         { type: "p", text: "Notre équipe vous accompagne sur toute la partie stratégie web, sur la durée que vous souhaitez. Nous travaillons en partenariat sans engagement, qui vous laisse libre de vos choix : seul le résultat compte chez nous." },
         { type: "h3", text: "Est-ce que vous proposez du community management ?" },
-        { type: "p", text: "Tout à fait. Nous avons une équipe de [community management](/community-management/) dédiée à vos réseaux sociaux, qui s'occupe de toute la [stratégie de contenu](/strategie-de-contenu-2026/) pour vous. Là encore, pas d'engagement : c'est votre satisfaction qui détermine la durée du partenariat." },
+        { type: "p", text: "Tout à fait. Nous avons une équipe de community management dédiée à vos réseaux sociaux, qui s'occupe de toute la [stratégie de contenu](/strategie-de-contenu-2026/) pour vous. Là encore, pas d'engagement : c'est votre satisfaction qui détermine la durée du partenariat." },
         { type: "h3", text: "Est-ce que mon site peut devenir visible sur Google en 2 semaines ?" },
-        { type: "p", text: "Nous avons des solutions efficaces pour vous rendre visible dans la page de résultats de Google. Dans ce cas, nous utilisons une stratégie [Google Ads](/agence-sea/). Et si vous misez sur le long terme, nous mettons en place une [stratégie de référencement](/referencement-strasbourg/) efficace et durable." },
+        { type: "p", text: "Nous avons des solutions efficaces pour vous rendre visible dans la page de résultats de Google. Dans ce cas, nous utilisons une stratégie Google Ads. Et si vous misez sur le long terme, nous mettons en place une stratégie de référencement efficace et durable." },
         { type: "h3", text: "Pouvez-vous auditer mon site et me dire quelles corrections lui apporter ?" },
         { type: "p", text: "Tout à fait. Notre équipe réalise un [audit complet](/audit-referencement/) de votre site, que vous recevez ensuite au format PDF avec l'ensemble des corrections et améliorations à apporter. Cela vous permet d'en booster les performances comme la visibilité sur le web." },
       ] },
@@ -96,8 +96,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Un site performant", text: "Un site qui fait la différence sur le web : trouvé rapidement, il fournit une réponse claire aux utilisateurs." },
           { title: "Un site responsive", text: "Un site accessible, au design responsive et optimisé pour tous les supports : mobile, tablette, ordinateur." },
+          { title: "Un site efficace", text: "Un site que vous pouvez facilement prendre en main pour modifier les contenus quand vous le souhaitez, en toute autonomie. Une fois en ligne, nous pouvons en assurer la [maintenance et l'hébergement](/maintenance-site-web/)." },
         ] },
-        { type: "p", text: "**Un site efficace** : un site que vous pouvez facilement prendre en main pour modifier les contenus quand vous le souhaitez, en toute autonomie. Une fois en ligne, nous pouvons en assurer la [maintenance et l'hébergement](/maintenance-site-web/)." },
       ] },
       { h2: "Quelle technologie ?", blocks: [
         { type: "p", text: "Selon vos besoins, nous déterminons ensemble quelle technologie sera la plus adaptée au développement de votre site : **WordPress**, **WooCommerce**, **React** ou **Elementor**." },
@@ -112,7 +112,7 @@ export const SERVICE_CONTENT = {
         { type: "h3", text: "Les paiements sont-ils sécurisés ?" },
         { type: "p", text: "Oui. Nous intégrons des solutions de paiement fiables et sécurisées, conformes aux standards en vigueur, pour rassurer vos clients et protéger vos transactions." },
         { type: "h3", text: "Puis-je gérer mon site et mes produits en autonomie ?" },
-        { type: "p", text: "Absolument. Nous vous formons à la prise en main : vous ajoutez et modifiez produits, prix et contenus quand vous le souhaitez. Nous pouvons aussi assurer la [maintenance et l'hébergement](/maintenance-site-web/)." },
+        { type: "p", text: "Absolument. Nous vous formons à la prise en main : vous ajoutez et modifiez produits, prix et contenus quand vous le souhaitez. Nous pouvons aussi assurer la maintenance et l'hébergement." },
       ] },
     ],
   },
@@ -134,8 +134,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Un site performant", text: "Votre site doit être à l'image de votre marque : toujours à jour. Ne laissez pas une mise à jour ruiner votre image sur internet." },
           { title: "Un site optimisé", text: "Si votre site n'est pas optimisé pour tous les supports, vous perdez des prospects. Confiez-nous le responsive design de votre site." },
+          { title: "Un site actualisé", text: "Si votre site ne ressemble pas à ce que les utilisateurs s'attendent à trouver, vous risquez de ne pas les rassurer. Nous retouchons votre site pour l'optimiser." },
         ] },
-        { type: "p", text: "**Un site actualisé** : si votre site ne ressemble pas à ce que les utilisateurs s'attendent à trouver, vous risquez de ne pas les rassurer. Nous retouchons votre site pour l'optimiser." },
       ] },
       { h2: "Comment ça fonctionne ?", blocks: [
         { type: "p", text: "Pour maintenir votre site à jour, nous intervenons sur plusieurs options différentes :" },
@@ -180,8 +180,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Un site visible", text: "Vos clients vous recherchent et vous trouvent dans Google. C'est là que vous devez être visible." },
           { title: "Un site rentable", text: "Mieux vous êtes positionné, plus vous recevez de demandes entrantes, mieux vous vendez." },
+          { title: "Un site reconnu", text: "Apparaître dans les premiers résultats de recherche est un gage de qualité pour les utilisateurs, qui vous feront confiance." },
         ] },
-        { type: "p", text: "**Un site reconnu** : apparaître dans les premiers résultats de recherche est un gage de qualité pour les utilisateurs, qui vous feront confiance." },
       ] },
       { h2: "Quels types de sites ?", blocks: [
         { type: "p", text: "Nous référençons tous types de sites internet, peu importe la technologie utilisée. Un [audit SEO](/audit-referencement/) du site est toujours effectué en amont, afin de nous assurer qu'il dispose de toutes les capacités pour se positionner correctement. Le cas échéant, nous réalisons une liste de préconisations indispensables pour mettre votre site à jour par rapport aux critères de Google." },
@@ -190,7 +190,7 @@ export const SERVICE_CONTENT = {
       { h2: "Notre méthode SEO en 4 étapes", blocks: [
         { type: "p", text: "Le référencement naturel n'a rien de magique : c'est une méthode rigoureuse, transparente, que nous déroulons avec vous." },
         { type: "ol", items: [
-          "**Audit & stratégie.** Nous réalisons un [audit SEO complet](/audit-referencement/) (technique, contenu, concurrence) et définissons ensemble les mots-clés qui vous amènent des clients, pas seulement du trafic.",
+          "**Audit & stratégie.** Nous réalisons un audit SEO complet (technique, contenu, concurrence) et définissons ensemble les mots-clés qui vous amènent des clients, pas seulement du trafic.",
           "**Optimisation technique & on-site.** Nous corrigeons les freins techniques (vitesse, indexation, structure, balises, mobile) et optimisons vos pages stratégiques pour Google.",
           "**Contenu & autorité.** Nous produisons ou optimisons vos contenus et renforçons l'autorité de votre site (maillage interne, netlinking de qualité) pour installer votre expertise.",
           "**Suivi & reporting.** Chaque mois, vous recevez un reporting clair (positions, trafic, conversions) et nous ajustons la stratégie en continu.",
@@ -232,12 +232,12 @@ export const SERVICE_CONTENT = {
       ] },
       { h2: "Pourquoi le GEO devient incontournable en 2026 ?", blocks: [
         { type: "p", text: "En 2026, la manière dont les internautes accèdent à l'information a profondément changé. Les IA génératives comme ChatGPT, Perplexity, Gemini ou la Search Generative Experience (SGE) de Google deviennent des points d'entrée majeurs. Ces outils privilégient les contenus structurés, fiables et bien contextualisés pour formuler leurs réponses, souvent sans afficher une liste classique de résultats." },
-        { type: "p", text: "Le GEO s'impose donc comme une stratégie essentielle pour toute entreprise qui souhaite être visible dans ces réponses automatisées, renforcer son autorité en ligne et devancer ses concurrents. En combinant GEO, [SEO](/referencement-strasbourg/) et AEO, les marques construisent une présence durable et incontournable dans l'écosystème de la recherche de demain." },
+        { type: "p", text: "Le GEO s'impose donc comme une stratégie essentielle pour toute entreprise qui souhaite être visible dans ces réponses automatisées, renforcer son autorité en ligne et devancer ses concurrents. En combinant GEO, SEO et AEO, les marques construisent une présence durable et incontournable dans l'écosystème de la recherche de demain." },
         { type: "columns", cols: [
           { title: "Anticipez la transformation de la recherche", text: "La recherche en ligne vit une mutation historique : les IA génératives (ChatGPT, Perplexity, Gemini, Google SGE…) deviennent les nouveaux « moteurs de réponse ». En travaillant votre GEO dès maintenant, vous placez votre marque en position de leader, là où vos concurrents sont encore absents. C'est une opportunité stratégique pour capter de nouveaux canaux de visibilité avant qu'ils ne soient saturés." },
           { title: "Une expertise SEO + IA unique", text: "Notre équipe maîtrise à la fois les fondamentaux du SEO traditionnel et les leviers avancés de l'AEO / GSO / GEO. Nous structurons vos contenus pour qu'ils soient compris, cités et mis en avant par les moteurs génératifs, tout en consolidant votre visibilité sur Google. Cette double approche vous garantit des résultats durables, quelle que soit l'évolution des algorithmes." },
+          { title: "Maximisez votre retour sur investissement", text: "Le GEO ne se contente pas d'améliorer votre position, il renforce votre crédibilité, génère du trafic qualifié et multiplie vos points de contact avec vos audiences, dans les environnements IA où les décisions se prennent de plus en plus vite. Avec une stratégie GEO sur mesure, vous obtenez plus de visibilité, plus de leads et une longueur d'avance durable." },
         ] },
-        { type: "p", text: "**Maximisez votre retour sur investissement** : le GEO ne se contente pas d'améliorer votre position, il renforce votre crédibilité, génère du trafic qualifié et multiplie vos points de contact avec vos audiences, dans les environnements IA où les décisions se prennent de plus en plus vite. Avec une stratégie GEO sur mesure, vous obtenez plus de visibilité, plus de leads et une longueur d'avance durable." },
       ] },
       { h2: "ABCM, l'expertise GEO qui fait la différence", blocks: [
         { type: "p", text: "Choisir ABCM, c'est faire le pari d'une stratégie d'avance. Notre agence combine expertise technique, vision stratégique et capacité à traduire les évolutions rapides de la recherche en leviers concrets de performance. Nous ne nous contentons pas d'optimiser votre site : nous vous positionnons comme une source incontournable dans les réponses des IA. Ensemble, faisons en sorte que votre marque soit celle que les moteurs génératifs citent, recommandent et mettent en avant." },
@@ -252,7 +252,7 @@ export const SERVICE_CONTENT = {
       ] },
       { h2: "Questions fréquentes sur le GEO", blocks: [
         { type: "h3", text: "Le GEO remplace-t-il le référencement SEO classique ?" },
-        { type: "p", text: "Non, il le prolonge. Le [SEO](/referencement-strasbourg/) reste indispensable pour Google : les IA génératives s'appuient largement sur des contenus déjà bien référencés. Le GEO ajoute une couche d'optimisation pour être compris et cité par les moteurs de réponse (ChatGPT, Perplexity, Gemini, SGE)." },
+        { type: "p", text: "Non, il le prolonge. Le SEO reste indispensable pour Google : les IA génératives s'appuient largement sur des contenus déjà bien référencés. Le GEO ajoute une couche d'optimisation pour être compris et cité par les moteurs de réponse (ChatGPT, Perplexity, Gemini, SGE)." },
         { type: "h3", text: "Comment être cité par ChatGPT ou Perplexity ?" },
         { type: "p", text: "En publiant des contenus fiables, structurés et clairement rattachés à votre expertise, puis en renforçant votre autorité sur le sujet. Les IA privilégient les sources qui répondent précisément à une question et qui sont reconnues ailleurs sur le web. C'est exactement ce que nous travaillons." },
         { type: "h3", text: "Est-ce utile pour une TPE ou une PME locale ?" },
@@ -278,8 +278,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Un audit diagnostic", text: "Vous découvrez quelles positions vous occupez sur le web et quelles requêtes les utilisateurs emploient pour vous trouver, afin de mieux vous placer dans les SERP." },
           { title: "Un audit de performances", text: "Parce que c'est le référencement qui vous amène 40 % de trafic sur votre site web, un audit technique et fonctionnel permet d'en tester et d'en optimiser la performance ; vous pouvez ensuite booster votre visibilité." },
+          { title: "Un audit pour se démarquer", text: "Connaître l'existant et le potentiel de votre site est précieux pour se démarquer de la concurrence. Nous analysons également le positionnement de vos concurrents pour vous aider à vous positionner de manière optimale." },
         ] },
-        { type: "p", text: "**Un audit pour se démarquer** : connaître l'existant et le potentiel de votre site est précieux pour se démarquer de la concurrence. Nous analysons également le positionnement de vos concurrents pour vous aider à vous positionner de manière optimale." },
       ] },
       { h2: "Comment ça fonctionne ?", blocks: [
         { type: "ol", items: [
@@ -295,7 +295,7 @@ export const SERVICE_CONTENT = {
         { type: "h3", text: "Combien de temps prend un audit ?" },
         { type: "p", text: "Comptez généralement une à deux semaines entre la collecte des accès et la remise du rapport commenté, selon la taille de votre site." },
         { type: "h3", text: "Dois-je faire l'audit avant de lancer une stratégie SEO ?" },
-        { type: "p", text: "C'est vivement recommandé. Un site qui présente des freins techniques ne pourra pas tirer profit d'une [stratégie de référencement](/referencement-strasbourg/). L'audit garantit que chaque euro investi ensuite en SEO produit des effets." },
+        { type: "p", text: "C'est vivement recommandé. Un site qui présente des freins techniques ne pourra pas tirer profit d'une stratégie de référencement. L'audit garantit que chaque euro investi ensuite en SEO produit des effets." },
         { type: "h3", text: "Puis-je réaliser les corrections moi-même ?" },
         { type: "p", text: "Absolument. Le rapport est pensé pour être actionnable : vous pouvez appliquer les corrections en interne, ou nous en confier la mise en œuvre. C'est vous qui choisissez." },
       ] },
@@ -316,14 +316,14 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Une communication impactante", text: "Gestion de votre communauté et de vos fans, élaboration d'une ligne éditoriale claire, présence efficace sur les réseaux sociaux : notre équipe de community managers est à la disposition de votre marque." },
           { title: "Une communication claire", text: "L'élaboration de la stratégie, en adéquation avec vos besoins marketing et stratégiques, vous permet de toucher les cibles visées avec efficience et rendement." },
+          { title: "Une communication puissante", text: "Votre communication se dynamise, se diversifie et se renforce pour refléter votre image de marque en B2B comme en B2C, et mettre en avant votre savoir-faire et votre expertise." },
         ] },
-        { type: "p", text: "**Une communication puissante** : votre communication se dynamise, se diversifie et se renforce pour refléter votre image de marque en B2B comme en B2C, et mettre en avant votre savoir-faire et votre expertise." },
         { type: "p", text: "Nos prestations couvrent la **création de contenu**, la **stratégie**, les **publicités** et la **gestion** quotidienne de vos réseaux sociaux." },
       ] },
       { h2: "Comment nous gérons vos réseaux sociaux", blocks: [
         { type: "ol", items: [
           "**Audit & benchmark.** Nous analysons votre présence actuelle, vos concurrents et vos audiences pour repérer les leviers de croissance.",
-          "**Stratégie & ligne éditoriale.** Nous définissons vos plateformes prioritaires, vos piliers de contenu et une [ligne éditoriale](/definir-sa-ligne-editoriale-sur-les-reseaux-sociaux/) claire.",
+          "**Stratégie & ligne éditoriale.** Nous définissons vos plateformes prioritaires, vos piliers de contenu et une ligne éditoriale claire.",
           "**Calendrier & création.** Nous produisons visuels, vidéos et textes, planifiés dans un calendrier éditorial validé avec vous.",
           "**Animation & modération.** Nous publions, animons votre communauté et répondons aux messages et commentaires en votre nom.",
           "**Reporting & optimisation.** Chaque mois, un rapport de performance et des recommandations pour progresser.",
@@ -365,8 +365,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Équipe dédiée", text: "Chez ABCM, notre équipe dédiée à la création de vidéos pour les réseaux sociaux ne se contente pas de suivre les tendances. Nous comprenons que chaque entreprise a des besoins spécifiques. En choisissant notre expertise, vous bénéficiez d'un partenariat conçu sur-mesure pour votre secteur d'activité, aligné sur vos objectifs commerciaux." },
           { title: "Stratégie personnalisée", text: "Au-delà des normes, nous concevons une stratégie de vidéos pour les réseaux sociaux personnalisée, spécialement élaborée pour mettre en valeur votre singularité et propulser votre présence en ligne vers de nouveaux sommets. Nous nous adaptons avec créativité à l'identité propre de votre entreprise." },
+          { title: "Innovation", text: "Reconnus pour notre adaptabilité, nous intégrons les dernières innovations en matière de création vidéo pour garantir votre pertinence et votre avantage concurrentiel. Laissez notre expertise en création de vidéos pour les réseaux sociaux propulser votre entreprise vers de nouveaux sommets, en captivant votre public, en renforçant votre crédibilité et en générant des résultats tangibles." },
         ] },
-        { type: "p", text: "**Innovation** : reconnus pour notre adaptabilité, nous intégrons les dernières innovations en matière de création vidéo pour garantir votre pertinence et votre avantage concurrentiel. Laissez notre expertise en création de vidéos pour les réseaux sociaux propulser votre entreprise vers de nouveaux sommets, en captivant votre public, en renforçant votre crédibilité et en générant des résultats tangibles." },
       ] },
       { h2: "Détails du pack", blocks: [
         { type: "p", text: "Inclus dans cette offre :" },
@@ -418,8 +418,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Équipe dédiée", text: "Chez ABCM, notre équipe dédiée à la création de vidéos pour la marque employeur ne se contente pas de suivre les tendances. Nous comprenons que chaque entreprise a des besoins spécifiques en matière d'attraction de talents. En choisissant notre expertise, vous bénéficiez d'un partenariat conçu sur-mesure pour votre secteur d'activité, aligné sur vos objectifs en matière de recrutement et de communication RH." },
           { title: "Stratégie personnalisée", text: "Au-delà des normes, nous concevons une stratégie de vidéos pour la marque employeur personnalisée, spécialement élaborée pour mettre en valeur l'unicité de votre culture d'entreprise. Nous nous adaptons avec créativité à l'identité propre de votre entreprise et à l'histoire que vous souhaitez raconter aux futurs collaborateurs." },
+          { title: "Innovation", text: "Reconnus pour notre adaptabilité, nous intégrons les dernières innovations en matière de création vidéo pour garantir votre pertinence et votre avantage concurrentiel. Laissez notre expertise renforcer votre réputation en matière de recrutement et de rétention des talents." },
         ] },
-        { type: "p", text: "**Innovation** : reconnus pour notre adaptabilité, nous intégrons les dernières innovations en matière de création vidéo pour garantir votre pertinence et votre avantage concurrentiel. Laissez notre expertise renforcer votre réputation en matière de recrutement et de rétention des talents." },
       ] },
       { h2: "Les étapes", blocks: [
         { type: "ol", items: [
@@ -462,8 +462,8 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Google Search", text: "Gagnez en visibilité rapidement dans la page de résultats de Google, sur les requêtes importantes pour vous." },
           { title: "Google Shopping", text: "Faites rapidement de nombreuses nouvelles ventes sur votre site e-commerce." },
+          { title: "Google Display", text: "Grâce à une présence optimale sur le réseau Display, vous augmentez le nombre de visites sur votre site et améliorez votre notoriété." },
         ] },
-        { type: "p", text: "**Google Display** : grâce à une présence optimale sur le réseau Display, vous augmentez le nombre de visites sur votre site et améliorez votre notoriété." },
       ] },
       { h2: "Notre méthode Google Ads en 4 étapes", blocks: [
         { type: "ol", items: [
@@ -472,13 +472,13 @@ export const SERVICE_CONTENT = {
           "**Optimisation continue.** Nous ajustons quotidiennement enchères, ciblage et annonces pour faire baisser le coût par acquisition et augmenter le retour sur investissement.",
           "**Reporting transparent.** Un tableau de bord clair et un point régulier : vous savez précisément ce que chaque euro investi vous rapporte.",
         ] },
-        { type: "callout", title: "Rapide (SEA) ou durable (SEO) ?", text: "Google Ads vous rend visible en quelques jours ; le [référencement naturel (SEO)](/referencement-strasbourg/) construit une visibilité durable sur le long terme. La combinaison des deux est souvent la stratégie la plus efficace." },
+        { type: "callout", title: "Rapide (SEA) ou durable (SEO) ?", text: "Google Ads vous rend visible en quelques jours ; le référencement naturel (SEO) construit une visibilité durable sur le long terme. La combinaison des deux est souvent la stratégie la plus efficace." },
       ] },
       { h2: "Questions fréquentes sur Google Ads", blocks: [
         { type: "h3", text: "Quel budget faut-il pour se lancer sur Google Ads ?" },
         { type: "p", text: "Le budget publicitaire dépend de votre secteur et de vos objectifs, et il reste distinct de nos frais de gestion. Nous définissons ensemble un budget de départ maîtrisé, que nous optimisons ensuite en fonction des résultats. Devis gratuit et sans engagement." },
         { type: "h3", text: "Quelle différence entre Google Ads (SEA) et le référencement naturel (SEO) ?" },
-        { type: "p", text: "Le SEA affiche vos annonces en haut de Google contre un budget publicitaire : les résultats sont immédiats mais s'arrêtent quand vous coupez les campagnes. Le [SEO](/referencement-strasbourg/) fait progresser votre site dans les résultats naturels : plus long à installer, mais durable. Les deux sont complémentaires." },
+        { type: "p", text: "Le SEA affiche vos annonces en haut de Google contre un budget publicitaire : les résultats sont immédiats mais s'arrêtent quand vous coupez les campagnes. Le SEO fait progresser votre site dans les résultats naturels : plus long à installer, mais durable. Les deux sont complémentaires." },
         { type: "h3", text: "En combien de temps voit-on des résultats ?" },
         { type: "p", text: "Très rapidement : une campagne bien construite génère du trafic qualifié dès les premiers jours. Les semaines suivantes servent à optimiser pour améliorer la rentabilité." },
         { type: "h3", text: "Peut-on cibler uniquement Strasbourg et le Grand Est ?" },
@@ -504,13 +504,13 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Sur-mesure", text: "Notre première étape consiste à comprendre en profondeur vos besoins spécifiques, vos objectifs et votre public cible. Nous réalisons une analyse détaillée de votre entreprise, de votre secteur d'activité et de votre concurrence pour identifier les opportunités uniques qui vous permettront de vous démarquer sur le marché." },
           { title: "Stratégie personnalisée", text: "Nous élaborons une stratégie marketing entièrement personnalisée, taillée sur mesure pour répondre à vos défis et capitaliser sur vos avantages concurrentiels. Que ce soit à travers des campagnes publicitaires ciblées, des initiatives de branding créatives ou des stratégies de contenu engageantes, chaque aspect de notre plan est soigneusement conçu pour maximiser l'impact et générer des résultats tangibles." },
+          { title: "Mesure & ROI", text: "Nous mettons l'accent sur la mesure des performances et l'analyse des données pour optimiser continuellement nos efforts et garantir un retour sur investissement optimal." },
         ] },
-        { type: "p", text: "**Mesure & ROI** : nous mettons l'accent sur la mesure des performances et l'analyse des données pour optimiser continuellement nos efforts et garantir un retour sur investissement optimal." },
         { type: "columns", cols: [
           { title: "Un marketing expert et souple", text: "Externalisation de la gestion marketing à l'année, sans nécessité d'embauche. Une approche flexible, adaptée aux besoins de votre entreprise." },
           { title: "Vision, stratégie et valeur", text: "Portez un regard externe sur votre entreprise, construisez une vision stratégique et créez une proposition de valeur unique." },
+          { title: "Innovation et croissance durable", text: "Sortez du cadre traditionnel, imaginez des solutions novatrices, apprenez de l'échec et persévérez. Maintenez toujours la vision de la croissance durable, en accueillant chaque petit progrès avec enthousiasme." },
         ] },
-        { type: "p", text: "**Innovation et croissance durable** : sortez du cadre traditionnel, imaginez des solutions novatrices, apprenez de l'échec et persévérez. Maintenez toujours la vision de la croissance durable, en accueillant chaque petit progrès avec enthousiasme." },
       ] },
       { h2: "Comment ça fonctionne ?", blocks: [
         { type: "ol", items: [
@@ -553,16 +553,16 @@ export const SERVICE_CONTENT = {
         { type: "columns", cols: [
           { title: "Une identité professionnelle cohérente", text: "Nous structurons votre identité pour qu'elle reflète vos valeurs, vos compétences et vos ambitions, avec une image authentique alignée sur vos objectifs." },
           { title: "Une stratégie de visibilité sur mesure", text: "Du choix des canaux à la création de contenu, chaque étape est pensée pour capter l'attention de votre audience et optimiser votre impact professionnel." },
+          { title: "Une réputation en ligne maîtrisée", text: "Vous bénéficiez d'une gestion proactive de votre e-réputation, avec des actions ciblées pour renforcer votre crédibilité et bâtir une relation de confiance durable avec vos communautés en ligne." },
         ] },
-        { type: "p", text: "**Une réputation en ligne maîtrisée** : vous bénéficiez d'une gestion proactive de votre e-réputation, avec des actions ciblées pour renforcer votre crédibilité et bâtir une relation de confiance durable avec vos communautés en ligne." },
       ] },
       { h2: "Pourquoi nous confier votre personal branding ?", blocks: [
         { type: "p", text: "Avec plus de 85 % des professionnels utilisant le digital pour établir leur crédibilité, construire une identité personnelle forte est devenu un élément clé de réussite. S'appuyer sur une expertise en personal branding permet d'assurer une image alignée avec vos valeurs et vos ambitions. Chez ABCM, nous vous aidons à vous démarquer, à attirer les opportunités qui comptent et à renforcer votre positionnement en tant que leader dans votre domaine." },
         { type: "columns", cols: [
           { title: "Une expertise dédiée", text: "Nous maîtrisons les stratégies modernes de personal branding et construisons une identité alignée avec vos valeurs et objectifs, pour vous positionner comme un leader reconnu." },
           { title: "Un accompagnement sur-mesure", text: "Un suivi personnalisé qui s'adapte à vos besoins spécifiques, avec une stratégie unique pour maximiser votre impact auprès de votre audience cible." },
+          { title: "Des résultats concrets et mesurables", text: "Notre approche intègre des outils d'analyse et des stratégies éprouvées pour garantir une visibilité accrue, une influence renforcée et des opportunités professionnelles adaptées à vos ambitions." },
         ] },
-        { type: "p", text: "**Des résultats concrets et mesurables** : notre approche intègre des outils d'analyse et des stratégies éprouvées pour garantir une visibilité accrue, une influence renforcée et des opportunités professionnelles adaptées à vos ambitions." },
       ] },
       { h2: "Comment ça fonctionne ?", blocks: [
         { type: "p", text: "À partir d'une analyse approfondie de votre image et de votre présence en ligne actuelle, ABCM élabore une stratégie de personal branding sur-mesure. Nous prenons en compte vos objectifs, vos valeurs, votre secteur d'activité et votre positionnement souhaité. Notre approche vous permet de :" },

@@ -122,8 +122,6 @@ export function ServiceDetail({ service }) {
           <nav className="svcd2-crumbs" aria-label="Fil d'Ariane">
             <Link href="/">Accueil</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/#services">Nos services</Link>
-            <span aria-hidden="true">/</span>
             <span className="svcd2-crumbs__current">{s.name}</span>
           </nav>
           <span className="svcd2-hero__eyebrow"><Icon name={group ? group.icon : "sparkles"} size={16} /> {group ? group.label : "Expertise"}</span>
