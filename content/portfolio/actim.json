@@ -1,11 +1,9 @@
 {
   "slug": "actim",
   "title": "Actim",
-  "projectType": "Stratégie & seo",
+  "projectType": "Campagne Google Ads",
   "categories": [
-    "marketing",
-    "publicite",
-    "strategie"
+    "publicite"
   ],
   "source": "https://abcmperformances.com/portfolio/marketing,publicite,strategie/actim/",
   "cover": "%ASSET%/portfolio/actim/img_0-816_wallpaper_mittel_1-1.jpg",
@@ -14,11 +12,11 @@
   "body": "<h2>La Demande</h2><p>Notre client <strong>Actim</strong> souhaite augmenter la <strong>visibilité</strong> de son <strong>site web</strong> en lançant une <strong>campagne publicitaire</strong> sur <strong>Google.</strong> Ils cherchent une <strong>agence spécialisée</strong> en <strong>SEA</strong> capable de concevoir et gérer leur <strong>campagne publicitaire</strong> pour obtenir un <strong>maximum</strong> de <strong>conversions.</strong></p><h2>Notre réponse</h2><p>Chez <strong>ABCM,</strong> nous sommes <strong>spécialisés</strong> en <strong>webmarketing</strong> et nous avons l’expertise nécessaire pour créer et gérer des <strong>campagnes publicitaires efficaces</strong> sur <strong>Google.</strong> Nous avons travaillé avec de nombreux clients dans des secteurs variés et nous avons développé des compétences solides dans la conception de campagnes SEA sur mesure.</p><p>Nous avons commencé par <strong>étudier</strong> les <strong>objectifs</strong> et les <strong>besoins</strong> de notre <strong>client Actim,</strong> en <strong>analysant</strong> leur <strong>marché,</strong> leur <strong>audience cible</strong> et leur <strong>budget.</strong> Nous avons ensuite élaboré une <strong>stratégie personnalisée</strong> pour maximiser leur retour sur <strong>investissement.</strong></p><p>Nous avons optimisé leur <strong>campagne publicitaire</strong> pour atteindre leur <strong>public cible</strong> de <strong>manière efficace</strong> et <strong>ciblée,</strong> en utilisant des <strong>mots-clés pertinents,</strong> des <strong>annonces attractives</strong> optimisées pour la conversion. Nous avons également <strong>suivi</strong> et <strong>mesuré</strong> les résultats de la campagne pour apporter des ajustements en temps réel.</p><figure class=\"pf-fig\"><img alt=\"\" src=\"%ASSET%/portfolio/actim/Plan-de-travail-1-18.jpg\"/></figure><h2>Le projet en quelques mots</h2><p>Nous sommes ravis d’avoir travaillé avec l’équipe <strong>d’Actim</strong> sur ce projet de <strong>campagne publicitaire</strong> sur Google. Leur <strong>collaboration</strong> et leur <strong>implication</strong> ont été <strong>précieuses</strong> tout au long du processus, nous permettant de comprendre leurs <strong>besoins</strong> et <strong>d’élaborer</strong> une <strong>stratégie efficace</strong> pour répondre à leurs objectifs.</p><p>La mission nous a particulièrement plu car elle nous a permis de mettre en pratique notre <strong>expertise</strong> en <strong>matière</strong> de <strong>SEA</strong> pour aider notre client à atteindre ses <strong>objectifs</strong> de <strong>visibilité</strong> et de <strong>conversion.</strong> Nous avons travaillé avec passion et engagement pour offrir des résultats de qualité à notre client.</p><p>Nous sommes reconnaissants à <strong>l’équipe</strong> d’Actim de nous avoir fait confiance pour cette mission et nous espérons continuer à travailler ensemble sur des projets futurs.</p><p>Chez <strong>ABCM,</strong> nous sommes déterminés à offrir à nos clients un service <strong>personnalisé</strong> et de <strong>qualité,</strong> en mettant notre <strong>expertise</strong> et notre <strong>passion</strong> à leur service.</p>",
   "promo": {
     "kind": "Service",
-    "url": "/referencement-strasbourg/",
-    "name": "Référencement SEO",
-    "desc": "Positionnez votre site en tête des résultats Google et captez des clients.",
-    "icon": "search",
-    "hue": "green",
-    "slug": "referencement-strasbourg"
+    "url": "/agence-sea/",
+    "name": "Google Ads (SEA)",
+    "desc": "Des campagnes SEA pour des résultats rapides et mesurables.",
+    "icon": "target",
+    "hue": "yellow",
+    "slug": "agence-sea"
   }
 }

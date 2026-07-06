@@ -3,10 +3,7 @@
   "title": "Abry Arnold",
   "projectType": "Stratégie Digitale",
   "categories": [
-    "graphisme",
-    "marketing",
-    "publicite",
-    "strategie"
+    "marketing"
   ],
   "source": "https://abcmperformances.com/portfolio/graphisme,marketing,publicite,strategie/abry-arnold/",
   "cover": "%ASSET%/portfolio/abry-arnold/abryarnold-800x800-1.png",
@@ -15,11 +12,11 @@
   "body": "<h2>La Demande</h2><p><strong>Abry</strong> <strong>Arnold</strong>, spécialisé dans <strong>l’aménagement</strong> <strong>intérieur</strong> (tapis, parquets, sols, rideaux), a sollicité l’agence pour la gestion de sa page Facebook.</p><p>Ils souhaitaient améliorer leur présence sur les réseaux sociaux et atteindre un public plus large pour <strong>augmenter leur notoriété et leur clientèle.</strong></p><p><strong>Leur objectif est de se démarquer de la concurrence en attirant de nouveaux clients grâce à leur présence en ligne.</strong></p><h2>Notre réponse</h2><p>Nous avons proposé à Abry Arnold de prendre en charge leur <strong> <a href=\"%ASSET%/community-management/\">community management</a> sur leur page Facebook</strong>, afin de promouvoir leur activité d’aménagement intérieur auprès d’un <strong>public plus large.</strong></p><p>Nous avons alors élaboré une <strong> stratégie de communication</strong> pour leur page Facebook, en créant des <strong>contenus variés et attractifs</strong> (publications, photos, vidéos, concours, etc.) pour <strong> engager leur communauté</strong>. Nous avons également assuré la modération des commentaires et messages reçus sur leur page, ainsi que la mesure des résultats de notre stratégie de communication.</p><p>Nous avons mis en place des <strong>indicateurs</strong> <strong>de performance</strong> pour <strong> mesurer l’impact</strong> de notre action sur leur page Facebook, tels que <strong> le taux d’engagement, le nombre de vues, le nombre de partages et le nombre de nouveaux abonnés.</strong></p><p>Nous avons régulièrement partagé ces <strong>résultats</strong> avec Abry Arnold, en leur fournissant un <strong> rapport détaillé</strong> de notre action, ainsi que <strong>des recommandations</strong> pour améliorer leur présence sur les réseaux sociaux.</p><figure class=\"pf-fig\"><img alt=\"\" src=\"%ASSET%/portfolio/abry-arnold/Plan-de-travail-1-5.jpg\"/></figure><h2>Le projet en quelques mots</h2><p>Le projet pour <strong>Abry Arnold</strong> consistait en la <strong>gestion</strong> de leur page <strong>Facebook</strong> par <strong>ABCM</strong>, en créant et en publiant du contenu pour leur entreprise.</p><p>Nous avons établi une stratégie de marketing des réseaux sociaux et avons travaillé en étroite collaboration avec le client pour comprendre leur vision et leurs objectifs.</p><p>Nous avons produit du <strong>contenu engageant</strong>, des <strong>visuels</strong> <strong>professionnels</strong> et avons <strong>interagi</strong> <strong>avec leur audience</strong> en répondant à leurs commentaires et messages.</p><p><strong> La relation entre l’agence et le client s’est très bien passée, grâce à une communication régulière et un professionnalisme mutuel.</strong></p><p><em>Nous tenons à remercier toute l’équipe d’Abry Arnold pour leur collaboration et leur confiance tout au long du Projet ! </em></p>",
   "promo": {
     "kind": "Service",
-    "url": "/marketing-externalise/",
-    "name": "Marketing externalisé",
-    "desc": "Déléguez votre marketing sans recruter, gardez le contrôle.",
-    "icon": "line-chart",
-    "hue": "blue",
-    "slug": "marketing-externalise"
+    "url": "/community-management/",
+    "name": "Community management",
+    "desc": "Des experts pour déployer votre marque sur les réseaux sociaux.",
+    "icon": "megaphone",
+    "hue": "magenta",
+    "slug": "community-management"
   }
 }

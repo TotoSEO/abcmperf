@@ -75,7 +75,7 @@ function buildJsonLd(s, faqs) {
 }
 
 const TRUST = [
-  { num: "2015", label: "à votre service depuis" },
+  { num: "+10", label: "ans d'expérience" },
   { num: "65+", label: "projets clients livrés" },
   { num: "24-48h", label: "délai de réponse" },
   { num: "Qualiopi", label: "organisme certifié" },
