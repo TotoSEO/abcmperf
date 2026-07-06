@@ -25,6 +25,12 @@
 .sv-viz { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; }
 @keyframes drift { 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(4%,3%,0) scale(1.12)} }
 
+/* Démarrage au scroll (JS ScrollReveal ajoute .sv-anim-lazy + .is-inview) :
+   la scène reste figée sur son 1er état tant qu'on ne l'a pas à l'écran,
+   puis démarre du début. Sans JS, tout tourne normalement. */
+html.sv-anim-lazy .sv-viz, html.sv-anim-lazy .sv-viz *, html.sv-anim-lazy .sv-screen::before { animation-play-state: paused; }
+html.sv-anim-lazy .sv-screen.is-inview .sv-viz, html.sv-anim-lazy .sv-screen.is-inview .sv-viz *, html.sv-anim-lazy .sv-screen.is-inview::before { animation-play-state: running; }
+
 /* ---- Bloc vitrine 2 colonnes (texte + scène) sur les pages service ---- */
 .sv-showcase { padding-block: clamp(var(--space-8), 4vw, var(--space-16)); }
 .sv-showcase__grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: center; }
@@ -456,6 +462,7 @@
 
 /* ---- Accessibilité : nouvelles scènes figées sur un état lisible ---- */
 @media (prefers-reduced-motion: reduce) {
+  .sv-viz-seo, .sv-viz-sea, .sv-viz-geo,
   .sv-viz-web, .sv-viz-shop, .sv-viz-maint, .sv-viz-audit, .sv-viz-comm,
   .sv-viz-video, .sv-viz-talent, .sv-viz-pilot, .sv-viz-brand, .sv-viz-trust { animation: none; opacity: 1; }
   .wb { animation: none; opacity: 1; transform: none; }

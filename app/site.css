@@ -1096,7 +1096,10 @@
 
 /* ---- Grille ---- */
 .pf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: clamp(var(--space-5), 2vw, var(--space-8)); }
-.pf-grid__item { animation: pf-in 0.5s var(--ease-out) both; animation-delay: calc(var(--_i, 0) * 38ms); }
+.pf-grid__item { min-width: 0; }
+/* Reveal au scroll : léger décalage par colonne (cascade en diagonale). */
+.reveal-on .pf-grid__item[data-reveal] { transition-delay: calc((var(--_i, 0) % 4) * 55ms) !important; }
+.reveal-on .blogcard[data-reveal] { transition-delay: calc((var(--_i, 0) % 3) * 55ms) !important; }
 @keyframes pf-in { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: none; } }
 
 /* ---- Carte ---- */

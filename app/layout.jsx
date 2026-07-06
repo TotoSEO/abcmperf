@@ -25,8 +25,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className="sv-anim-lazy">
       <head>
+        {/* Sans JS, les scènes animées tournent normalement (le JS les met en
+            pause hors écran puis les démarre au scroll — voir ScrollReveal). */}
+        <noscript>
+          <style>{`.sv-anim-lazy .sv-viz, .sv-anim-lazy .sv-viz *, .sv-anim-lazy .sv-screen::before { animation-play-state: running !important; }`}</style>
+        </noscript>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
