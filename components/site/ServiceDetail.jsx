@@ -109,14 +109,14 @@ export function ServiceDetail({ service }) {
       {/* ---- Hero ---- */}
       <section className="svcd2-hero on-dark" data-theme="dark">
         <div className="svcd2-hero__deco" aria-hidden="true">
-          <span className="svcd2-hero__blob svcd2-hero__blob--1" />
-          <span className="svcd2-hero__blob svcd2-hero__blob--2" />
+          <div className="svcd2-hero__aurora" />
           <span className="svcd2-rond svcd2-rond--a" />
           <span className="svcd2-rond svcd2-rond--b" />
           <svg className="svcd2-hero__dots" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs><pattern id="svcdd" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1.4" cy="1.4" r="1.4" fill="currentColor" /></pattern></defs>
             <rect width="140" height="140" fill="url(#svcdd)" />
           </svg>
+          <div className="svcd2-hero__grain" />
         </div>
         <div className="container svcd2-hero__inner">
           <nav className="svcd2-crumbs" aria-label="Fil d'Ariane">

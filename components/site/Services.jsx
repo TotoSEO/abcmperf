@@ -30,13 +30,16 @@ export function Services() {
                   <h3 className="svc-group__label">{group.label}</h3>
                 </div>
               </div>
+              {group.intro && <p className="svc-group__intro">{group.intro}</p>}
               <div className="svc-group__grid">
-                {items.map((s) => (
-                  <Link key={s.slug} href={`/${s.slug}/`} className="svc-card" style={{ "--_hue": `var(--logo-${s.hue})` }}>
-                    <span className="svc-card__ic"><Icon name={s.icon} size={24} /></span>
+                {items.map((s, i) => (
+                  <Link key={s.slug} href={`/${s.slug}/`} className={`svc-card${i === 0 ? " svc-card--feature" : ""}`} style={{ "--_hue": `var(--logo-${s.hue})` }}>
+                    {i === 0 && <span className="svc-card__tag">Prestation phare</span>}
+                    <span className="svc-card__ic"><Icon name={s.icon} size={i === 0 ? 30 : 24} /></span>
                     <h4 className="svc-card__title">{s.name}</h4>
                     <p className="svc-card__desc">{s.tagline}</p>
                     <span className="svc-card__go" aria-hidden="true">J&apos;en veux plus <Icon name="arrow-right" size={16} /></span>
+                    {i === 0 && <span className="svc-card__watermark" aria-hidden="true"><Icon name={s.icon} size={150} strokeWidth={1.4} /></span>}
                   </Link>
                 ))}
               </div>
