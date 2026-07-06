@@ -6,7 +6,7 @@ import { SCENE_HTML } from "./serviceScenes";
 export const SERVICE_SHOWCASE = {
   "referencement-strasbourg": { viz: "seo", hue: "green", kicker: "Référencement naturel",
     title: "On vous fait grimper dans les résultats Google.",
-    text: "Un travail de fond — technique, contenu, notoriété — qui installe durablement votre site en haut de la page, là où se trouvent les clics." },
+    text: "Un travail de fond, sur la technique, le contenu et la notoriété, qui installe durablement votre site en haut de la page, là où se trouvent les clics." },
   "agence-sea": { viz: "sea", hue: "yellow", kicker: "Publicité Google Ads",
     title: "Tout en haut de Google, dès aujourd'hui.",
     text: "Des campagnes SEA qui placent votre offre au-dessus des résultats naturels, ciblées sur les bonnes recherches et pilotées au résultat." },
@@ -24,7 +24,7 @@ export const SERVICE_SHOWCASE = {
     text: "Hébergement, sauvegardes, sécurité et mises à jour : on veille en continu pour que votre site reste rapide et disponible." },
   "audit-referencement": { viz: "audit", hue: "green", kicker: "Audit SEO",
     title: "Le diagnostic qui débloque votre référencement.",
-    text: "On passe votre site au crible — technique, contenu, popularité — et vous repartez avec un plan d'action clair et priorisé." },
+    text: "On passe votre site au crible, côté technique, contenu et popularité, et vous repartez avec un plan d'action clair et priorisé." },
   "community-management": { viz: "comm", hue: "magenta", kicker: "Community management",
     title: "Une communauté qui s'anime.",
     text: "Contenus, publications et modération : on fait vivre vos réseaux et on transforme votre audience en communauté engagée." },
