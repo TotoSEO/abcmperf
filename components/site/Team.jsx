@@ -3,21 +3,15 @@ import Link from "next/link";
 import { Icon } from "@/components/ds";
 import { assetPath } from "@/data/formations";
 
-// Membre nommé (photo réelle) + pôles d'expertise de l'équipe.
-const FEATURED = {
-  name: "Audrey Braun",
-  role: "Formatrice experte certifiée",
-  photo: "audrey-braun.png",
-  hue: "green",
-  text: "Anime nos formations Qualiopi, en présentiel à Strasbourg ou à distance.",
-};
-
-const POLES = [
-  { icon: "target", hue: "magenta", title: "Stratégie & direction", text: "On cadre votre stratégie, on priorise les actions et on pilote l'ensemble." },
-  { icon: "monitor", hue: "blue", title: "Web & e-commerce", text: "Des sites rapides, sur-mesure et pensés pour convertir vos visiteurs." },
-  { icon: "search", hue: "green", title: "Référencement SEO & GEO", text: "On vous rend visible sur Google et dans les moteurs d'IA." },
-  { icon: "megaphone", hue: "orange", title: "Réseaux sociaux & vidéo", text: "Contenus, animation et vidéos qui font vivre votre marque." },
-  { icon: "line-chart", hue: "yellow", title: "Publicité & acquisition", text: "Des campagnes Google Ads pilotées au retour sur investissement." },
+// Panneaux "accordéon" : au survol, la carte grandit et réduit les autres.
+// Audrey Braun (photo réelle) + les pôles d'expertise de l'agence.
+const MEMBERS = [
+  { kind: "person", title: "Audrey Braun", role: "Formatrice experte certifiée", photo: "audrey-braun.png", hue: "green", text: "Anime nos formations Qualiopi, en présentiel à Strasbourg ou à distance." },
+  { icon: "target", hue: "magenta", title: "Stratégie & direction", text: "On cadre votre stratégie, on priorise les actions et on pilote l'ensemble du projet." },
+  { icon: "monitor", hue: "blue", title: "Web & e-commerce", text: "Des sites rapides, sur-mesure et pensés pour convertir vos visiteurs en clients." },
+  { icon: "search", hue: "green", title: "Référencement SEO & GEO", text: "On vous rend visible sur Google et dans les moteurs de réponse par IA." },
+  { icon: "megaphone", hue: "orange", title: "Réseaux sociaux & vidéo", text: "Contenus, animation et vidéos qui font vivre votre marque au quotidien." },
+  { icon: "line-chart", hue: "yellow", title: "Publicité & acquisition", text: "Des campagnes Google Ads et social ads pilotées au retour sur investissement." },
 ];
 
 export function Team() {
@@ -25,7 +19,7 @@ export function Team() {
     <section className="section team" id="equipe">
       <div className="team__deco" aria-hidden="true">
         <span className="rond rond--blue team__r1" />
-        <span className="rond rond--magenta team__r2" />
+        <span className="rond rond--ring rond--magenta team__r2" />
         <span className="rond rond--orange team__r3" />
       </div>
       <div className="container">
@@ -36,23 +30,25 @@ export function Team() {
             Derrière ABCM, une équipe pluridisciplinaire à taille humaine : des experts réunis à Strasbourg,
             chacun dans son domaine, pour faire grandir votre entreprise avec exigence et proximité.
           </p>
+          <p className="team__hint" aria-hidden="true">Survolez une carte pour la découvrir</p>
         </header>
 
-        <div className="team__grid" data-reveal>
-          <article className="team-card team-card--person" style={{ "--_hue": `var(--logo-${FEATURED.hue})` }}>
-            <span className="team-card__photo">
-              <img src={assetPath(FEATURED.photo)} alt={FEATURED.name} loading="lazy" />
-            </span>
-            <span className="team-card__name">{FEATURED.name}</span>
-            <span className="team-card__role">{FEATURED.role}</span>
-            <span className="team-card__text">{FEATURED.text}</span>
-          </article>
-
-          {POLES.map((p) => (
-            <article className="team-card" key={p.title} style={{ "--_hue": `var(--logo-${p.hue})` }}>
-              <span className="team-card__ic"><Icon name={p.icon} size={24} /></span>
-              <span className="team-card__name">{p.title}</span>
-              <span className="team-card__text">{p.text}</span>
+        <div className="team-acc" data-reveal>
+          {MEMBERS.map((m) => (
+            <article className={"ta" + (m.kind === "person" ? " ta--person" : "")} key={m.title} style={{ "--_hue": `var(--logo-${m.hue})` }}>
+              <span className="ta__top">
+                {m.kind === "person" ? (
+                  <span className="ta__photo"><img src={assetPath(m.photo)} alt={m.title} loading="lazy" /></span>
+                ) : (
+                  <span className="ta__ic"><Icon name={m.icon} size={26} /></span>
+                )}
+              </span>
+              <span className="ta__vlabel">{m.title}</span>
+              <div className="ta__reveal">
+                <span className="ta__title">{m.title}</span>
+                {m.role ? <span className="ta__role">{m.role}</span> : null}
+                <p className="ta__desc">{m.text}</p>
+              </div>
             </article>
           ))}
         </div>
