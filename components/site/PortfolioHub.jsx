@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Icon } from "@/components/ds";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { PORTFOLIO_URL, PORTFOLIO_THEMES, primaryTheme, caseThemes } from "@/data/portfolio";
 
 function withBase(s) {
@@ -52,6 +53,7 @@ export function PortfolioHub({ cases }) {
 
   return (
     <div className="pf-hub">
+      <ScrollReveal />
       {/* ---- Hero ---- */}
       <section className="pf-hero on-dark" data-theme="dark">
         <div className="pf-hero__deco" aria-hidden="true">
@@ -106,7 +108,7 @@ export function PortfolioHub({ cases }) {
 
           <div className="pf-grid" key={active}>
             {filtered.map((c, i) => (
-              <div className="pf-grid__item" style={{ "--_i": i }} key={c.slug}>
+              <div className="pf-grid__item" style={{ "--_i": i }} key={c.slug} data-reveal>
                 <Card c={c} />
               </div>
             ))}
