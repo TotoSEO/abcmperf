@@ -84,8 +84,12 @@ export function PortfolioCase({ item }) {
     : -1;
   const jsonLd = buildJsonLd(c);
 
-  // Tous les services mobilisés sur ce projet (déduits de la fiche source).
-  const projectServices = (c.services || [])
+  // Services mobilisés sur ce projet (déduits de la fiche source). On exclut
+  // celui déjà mis en avant dans l'encart promo (« Service lié » plus haut) pour
+  // ne pas faire doublon : on ne montre que les AUTRES services.
+  const promoServiceSlug = promo && promo.kind === "Service" ? promo.slug : null;
+  const extraServices = (c.services || [])
+    .filter((slug) => slug !== promoServiceSlug)
     .map((slug) => getService(slug))
     .filter(Boolean);
 
@@ -207,18 +211,17 @@ export function PortfolioCase({ item }) {
         </div>
       </section>
 
-      {/* ---- Services mobilisés sur ce projet (accès multi-services) ---- */}
-      {projectServices.length ? (
+      {/* ---- Autres services mobilisés (hors service déjà mis en avant) ---- */}
+      {extraServices.length ? (
         <section className="section pf-case-svc">
           <div className="container">
             <div className="pf-case-svc__head" data-reveal>
-              <span className="pf-case-svc__eyebrow"><Icon name="sparkles" size={15} /> Notre accompagnement</span>
               <h2 className="pf-case-svc__title">
-                {projectServices.length > 1 ? "Les services mobilisés sur ce projet" : "Le service mobilisé sur ce projet"}
+                {promoServiceSlug ? "Ce projet a aussi mobilisé" : "Les services mobilisés sur ce projet"}
               </h2>
             </div>
             <div className="pf-case-svc__grid">
-              {projectServices.map((s) => (
+              {extraServices.map((s) => (
                 <Link key={s.slug} href={`/${s.slug}/`} className="pf-svc-chip" style={{ "--_hue": `var(--logo-${s.hue})` }} data-reveal>
                   <span className="pf-svc-chip__ic"><Icon name={s.icon} size={20} /></span>
                   <span className="pf-svc-chip__body">
