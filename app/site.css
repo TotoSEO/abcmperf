@@ -972,6 +972,9 @@
 .blog-hero__meta .abcm-ic { color: var(--logo-yellow); }
 .blog-hero__by { font-weight: 700; color: #fff; }
 .blog-hero__avatar { width: 1.9em; height: 1.9em; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.8em; font-weight: 700; color: #fff; background: linear-gradient(140deg, var(--logo-magenta), var(--logo-orange)); }
+/* Avatar auteur avec vraie photo (au lieu de l'initiale). */
+.blog-hero__avatar--photo, .blog-author__avatar--photo { background: none; padding: 0; overflow: hidden; }
+.blog-hero__avatar--photo img, .blog-author__avatar--photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .blog-hero__upd { font-weight: 600; color: var(--neutral-400); }
 .blog-hero__upd::before { content: ""; }
 

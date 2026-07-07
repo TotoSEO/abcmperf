@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Icon } from "@/components/ds";
-import { ABCM_INFO } from "@/data/formations";
+import { ABCM_INFO, assetPath } from "@/data/formations";
 
 const SITE = ABCM_INFO.url;
 const ARTICLES_URL = "/articles/";
@@ -22,6 +22,21 @@ function abs(src) {
 function initials(name) {
   if (!name) return "A";
   return name.trim().slice(0, 1).toUpperCase();
+}
+
+// Photo de profil réelle par auteur (sinon initiale).
+const AUTHOR_PHOTOS = { Audrey: "audrey-braun.png", "Audrey Braun": "audrey-braun.png" };
+
+function AuthorAvatar({ author, cls }) {
+  const photo = author && AUTHOR_PHOTOS[author];
+  if (photo) {
+    return (
+      <span className={`${cls} ${cls}--photo`}>
+        <img src={assetPath(photo)} alt={author} loading="lazy" />
+      </span>
+    );
+  }
+  return <span className={cls} aria-hidden="true">{initials(author)}</span>;
 }
 
 function buildJsonLd(post) {
@@ -78,7 +93,7 @@ export function BlogArticle({ post }) {
           <h1 className="blog-hero__title">{post.title}</h1>
           <div className="blog-hero__meta">
             {post.author ? (
-              <span className="blog-hero__by"><span className="blog-hero__avatar" aria-hidden="true">{initials(post.author)}</span>Par {post.author}</span>
+              <span className="blog-hero__by"><AuthorAvatar author={post.author} cls="blog-hero__avatar" />Par {post.author}</span>
             ) : null}
             {post.date ? <span><Icon name="clock" size={15} /> Publié le {frDate(post.date)}</span> : null}
             {showModified ? <span className="blog-hero__upd">Mis à jour le {frDate(post.modified)}</span> : null}
@@ -107,7 +122,7 @@ export function BlogArticle({ post }) {
         <div className="blog-content" dangerouslySetInnerHTML={{ __html: html }} />
 
         <section className="blog-author" aria-label="Auteur">
-          <span className="blog-author__avatar" aria-hidden="true">{initials(post.author)}</span>
+          <AuthorAvatar author={post.author} cls="blog-author__avatar" />
           <div className="blog-author__body">
             <span className="blog-author__kicker">Écrit par</span>
             <span className="blog-author__name">{post.author || ABCM_INFO.name}</span>
