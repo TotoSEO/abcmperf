@@ -75,13 +75,6 @@ function buildJsonLd(s, faqs) {
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
-const TRUST = [
-  { num: "+10", label: "ans d'expérience" },
-  { num: "65+", label: "projets clients livrés" },
-  { num: "24-48h", label: "délai de réponse" },
-  { num: "Qualiopi", label: "organisme certifié" },
-];
-
 export function ServiceDetail({ service }) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const s = service || ABCM_SERVICES[0];
@@ -140,19 +133,6 @@ export function ServiceDetail({ service }) {
         </div>
       </section>
 
-      {/* ---- Bande de confiance (superposée au hero) ---- */}
-      <div className="svcd2-trust-wrap">
-        <div className="container">
-          <div className="svcd2-trust" data-reveal>
-            {TRUST.map((t) => (
-              <div className="svcd2-trust__item" key={t.label}>
-                <span className="svcd2-trust__num">{t.num}</span>
-                <span className="svcd2-trust__label">{t.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ---- Corps : sections alternées ---- */}
       <div className="svcd2-body">

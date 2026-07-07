@@ -778,7 +778,10 @@
 .tw-quote--split .tw-quote__grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: clamp(var(--space-8), 5vw, var(--space-16)); align-items: center; }
 .tw-quote--split .tw-quote__col { min-width: 0; }
 .tw-quote__eyebrow { margin: 0 0 var(--space-4); color: var(--accent-700); }
-.tw-quote--split .tw-quote__text { text-align: left; max-width: 22ch; font-size: clamp(1.35rem, 0.9rem + 1.5vw, 2.1rem); line-height: 1.28; }
+.tw-quote--split .tw-quote__text { text-align: left; max-width: 22ch; font-size: clamp(1.35rem, 0.9rem + 1.5vw, 2.1rem); line-height: 1.28; padding-left: 0.92em; }
+/* Le guillemet est sorti du flux (position absolue) pour qu'il n'agrandisse
+   pas l'interligne de la 1re ligne — l'espace vertical reste régulier. */
+.tw-quote--split .tw-quote__mark { position: absolute; left: 0; top: 0.05em; font-size: 1.5em; line-height: 1; margin: 0; vertical-align: baseline; }
 .tw-word { display: inline-block; white-space: pre; }
 .tw-quote__text.is-in .tw-word { animation-name: tw-word; animation-duration: 0.5s; animation-timing-function: var(--ease-out); animation-fill-mode: both; }
 @keyframes tw-word { from { opacity: 0; transform: translateY(0.6em); } to { opacity: 1; transform: none; } }
@@ -1279,14 +1282,6 @@
 .svcd2-hero__ghost { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: #fff; text-decoration: none; border-bottom: 2px solid color-mix(in srgb, var(--_hue) 70%, transparent); padding-bottom: 2px; }
 .svcd2-hero__ghost:hover { border-color: #fff; }
 
-/* ---- Bande de confiance (superposée au hero) ---- */
-.svcd2-trust-wrap { position: relative; z-index: 2; margin-top: clamp(-3.5rem, -2rem - 3vw, -2.5rem); }
-.svcd2-trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg); padding: clamp(var(--space-4), 2.5vw, var(--space-6)); }
-.svcd2-trust__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; padding: var(--space-2); }
-.svcd2-trust__item + .svcd2-trust__item { border-left: 1px solid var(--border); }
-.svcd2-trust__num { font-family: var(--font-display); font-weight: 800; font-size: clamp(var(--text-lg), 1rem + 1.5vw, var(--text-2xl)); line-height: 1; color: var(--_hue); }
-.svcd2-trust__label { font-size: var(--text-2xs); color: var(--text-muted); }
-
 /* ---- Corps : sections alternées ---- */
 .svcd2-body { position: relative; }
 .svcd2-sec { position: relative; overflow: hidden; padding-block: clamp(var(--space-10), 5vw, var(--space-20)); background: var(--surface); }
@@ -1412,9 +1407,6 @@
 .svcd2-final__tel:hover { color: var(--logo-yellow); }
 
 @media (max-width: 640px) {
-  .svcd2-trust { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
-  .svcd2-trust__item:nth-child(3) { border-left: 0; }
-  .svcd2-trust__item + .svcd2-trust__item { border-left: 0; }
   .svcd2-cta, .svcd2-formation__card { flex-direction: column; align-items: flex-start; }
 }
 
@@ -1436,14 +1428,9 @@
 .rond--ring.rond--green { border-color: var(--logo-green); }
 .rond--ring.rond--yellow { border-color: var(--logo-yellow); }
 
-/* ---- Hero : bandeau de confiance (eyebrow + Qualiopi + avis Google) ---- */
+/* ---- Hero : eyebrow ---- */
 .hero__eyebrow { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.5em 1em; border-radius: var(--radius-pill); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: #fff; }
 .hero__eyebrow .abcm-ic { color: var(--accent-400); }
-.hero__trust { list-style: none; margin: var(--space-6) 0 0; padding: var(--space-6) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); border-top: 1px solid rgba(255,255,255,0.14); width: 100%; }
-.hero__trust-item { display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--neutral-200); }
-.hero__trust-item > .abcm-ic { color: var(--accent-400); flex: none; }
-.hero__stars { display: inline-flex; gap: 1px; color: var(--logo-yellow); }
-.hero__stars svg { fill: currentColor; stroke: currentColor; }
 
 /* ---- Clients : carte flottante qui chevauche le hero ---- */
 .clients2 { position: relative; z-index: 3; margin-top: calc(-1 * clamp(1.5rem, 4vw, 3.5rem)); padding-bottom: clamp(var(--space-8), 4vw, var(--space-12)); }

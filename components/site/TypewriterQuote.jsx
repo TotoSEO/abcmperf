@@ -62,8 +62,8 @@ export function TypewriterQuote() {
           </span>
         </div>
         <div className="tw-quote__viz" data-reveal="right">
-          <div className="sv-screen" style={{ "--_h": "var(--logo-blue)" }}>
-            <ServiceViz vizKey="trust" />
+          <div className="sv-screen" style={{ "--_h": "var(--logo-magenta)" }}>
+            <ServiceViz vizKey="logo" />
           </div>
         </div>
       </div>
