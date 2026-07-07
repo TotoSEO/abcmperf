@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button, Icon } from "@/components/ds";
 import { ABCM_INFO } from "@/data/formations";
 import { PORTFOLIO_URL, primaryTheme, caseThemes } from "@/data/portfolio";
+import { getService } from "@/data/services";
 import { getAllCases } from "@/lib/portfolio";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 
@@ -83,8 +84,19 @@ export function PortfolioCase({ item }) {
     : -1;
   const jsonLd = buildJsonLd(c);
 
-  const related = getAllCases()
-    .filter((x) => x.slug !== c.slug && (x.categories || []).includes(theme.id))
+  // Tous les services mobilisés sur ce projet (déduits de la fiche source).
+  const projectServices = (c.services || [])
+    .map((slug) => getService(slug))
+    .filter(Boolean);
+
+  const allCases = getAllCases();
+  // Références liées : d'abord celles qui partagent un service, sinon la thématique.
+  const svcSet = new Set(c.services || []);
+  const related = [
+    ...allCases.filter((x) => x.slug !== c.slug && (x.services || []).some((s) => svcSet.has(s))),
+    ...allCases.filter((x) => x.slug !== c.slug && (x.categories || []).includes(theme.id)),
+  ]
+    .filter((x, i, arr) => arr.findIndex((y) => y.slug === x.slug) === i)
     .slice(0, 3);
 
   return (
@@ -194,6 +206,32 @@ export function PortfolioCase({ item }) {
           </aside>
         </div>
       </section>
+
+      {/* ---- Services mobilisés sur ce projet (accès multi-services) ---- */}
+      {projectServices.length ? (
+        <section className="section pf-case-svc">
+          <div className="container">
+            <div className="pf-case-svc__head" data-reveal>
+              <span className="pf-case-svc__eyebrow"><Icon name="sparkles" size={15} /> Notre accompagnement</span>
+              <h2 className="pf-case-svc__title">
+                {projectServices.length > 1 ? "Les services mobilisés sur ce projet" : "Le service mobilisé sur ce projet"}
+              </h2>
+            </div>
+            <div className="pf-case-svc__grid">
+              {projectServices.map((s) => (
+                <Link key={s.slug} href={`/${s.slug}/`} className="pf-svc-chip" style={{ "--_hue": `var(--logo-${s.hue})` }} data-reveal>
+                  <span className="pf-svc-chip__ic"><Icon name={s.icon} size={20} /></span>
+                  <span className="pf-svc-chip__body">
+                    <span className="pf-svc-chip__name">{s.name}</span>
+                    <span className="pf-svc-chip__desc">{s.tagline}</span>
+                  </span>
+                  <span className="pf-svc-chip__go" aria-hidden="true"><Icon name="arrow-right" size={16} /></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---- Autres références de la même thématique ---- */}
       {related.length ? (

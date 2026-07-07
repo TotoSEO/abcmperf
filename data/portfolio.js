@@ -55,17 +55,19 @@ const CAT_BY_SERVICE = {
 // = slugs des services du même pôle (fournis par l'appelant).
 export function casesForService(service, allCases, groupServiceSlugs = [], max = 4) {
   const cases = Array.isArray(allCases) ? allCases : [];
-  const byPromo = cases.filter((c) => c.promo && c.promo.slug === service.slug);
-  const byGroup = cases.filter((c) => c.promo && groupServiceSlugs.includes(c.promo.slug));
+  const svc = (c) => c.services || [];
+  // 1. Projets qui ont réellement mobilisé CE service (source de vérité :
+  //    encart promo + liens service dans le corps de la fiche).
+  const byService = cases.filter((c) => svc(c).includes(service.slug));
+  // 2. Sinon, projets d'un autre service du MÊME pôle.
+  const byGroup = cases.filter((c) => svc(c).some((s) => groupServiceSlugs.includes(s)));
+  // 3. En dernier recours, repli par thématique portfolio.
   const override = CAT_BY_SERVICE[service.slug];
   const cat = override || CAT_BY_GROUP[service.group];
   const byCat = cat ? cases.filter((c) => (c.categories || []).includes(cat)) : [];
   const seen = new Set();
   const out = [];
-  // Avec une surcharge de catégorie, elle prime sur le repli par pôle (dont les
-  // services voisins ne partagent pas forcément les mêmes références).
-  const order = override ? [byPromo, byCat, byGroup] : [byPromo, byGroup, byCat];
-  for (const list of order) {
+  for (const list of [byService, byGroup, byCat]) {
     for (const c of list) {
       if (!seen.has(c.slug)) {
         seen.add(c.slug);
