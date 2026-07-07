@@ -16,6 +16,16 @@ function withBase(s, base) {
   return typeof s === "string" ? s.split("%ASSET%").join(base) : s;
 }
 
+// « de » / « d' » + nom du service : élision devant une voyelle, et on ne
+// minuscule que la 1re lettre pour préserver les sigles (SEO, SEA, GEO...).
+// Les noms qui débutent par une marque gardent leur capitale (« de Google Ads »).
+const KEEP_CAP = /^(Google|Meta|TikTok|LinkedIn|YouTube|Instagram|ChatGPT)\b/;
+function deService(name) {
+  const raw = name || "";
+  const n = KEEP_CAP.test(raw) ? raw : raw.charAt(0).toLowerCase() + raw.slice(1);
+  return /^[aeiouyàâäéèêëîïôöûü]/i.test(n) ? `d'${n}` : `de ${n}`;
+}
+
 // Sépare l'éventuelle section FAQ (rendue en accordéon) du reste du corps.
 function parseFaq(section) {
   const out = [];
@@ -158,7 +168,7 @@ export function ServiceDetail({ service }) {
                 <div className="container">
                   <div className="svcd2-cta" data-reveal>
                     <div>
-                      <h2>Un projet de {s.name.toLowerCase()}&nbsp;?</h2>
+                      <h2>Un projet {deService(s.name)}&nbsp;?</h2>
                       <p>Un premier échange gratuit pour cadrer vos besoins et vous proposer la bonne approche, sans engagement.</p>
                     </div>
                     <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Discuter de mon projet</Button>
@@ -177,7 +187,7 @@ export function ServiceDetail({ service }) {
           <div className="container">
             <header className="svcd2-cases__head" data-reveal>
               <span className="svcd2-cases__eyebrow"><Icon name="layout-grid" size={15} /> Nos réalisations</span>
-              <h2 className="svcd2-cases__title">Des projets de {s.name.toLowerCase()} que nous avons réalisés</h2>
+              <h2 className="svcd2-cases__title">Des projets {deService(s.name)} que nous avons réalisés</h2>
               <p className="svcd2-cases__sub">Quelques exemples concrets de missions menées pour nos clients.</p>
             </header>
             <div className="svcd2-cases__grid" data-reveal>
