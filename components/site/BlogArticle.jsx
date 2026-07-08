@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { Button, Icon } from "@/components/ds";
 import { ABCM_INFO, assetPath } from "@/data/formations";
+import { buildToc } from "@/lib/toc";
+import { BlogToc } from "@/components/site/BlogToc";
 
 const SITE = ABCM_INFO.url;
 const ARTICLES_URL = "/articles/";
@@ -65,7 +67,8 @@ function buildJsonLd(post) {
 
 export function BlogArticle({ post }) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const html = withBase(post.html || "", base);
+  const { html, toc } = buildToc(withBase(post.html || "", base));
+  const hasToc = toc.length >= 2;
   const cover = post.cover ? { ...post.cover, src: withBase(post.cover.src, base) } : null;
   const jsonLd = buildJsonLd(post);
   const summary = Array.isArray(post.summary) ? post.summary : null;
@@ -109,7 +112,9 @@ export function BlogArticle({ post }) {
         </div>
       ) : null}
 
-      <div className="container blog-wrap">
+      <div className={"container blog-layout" + (hasToc ? " blog-layout--toc" : "")}>
+        {hasToc ? <BlogToc toc={toc} /> : null}
+        <div className="blog-wrap">
         {summary ? (
           <aside className="blog-tldr" aria-label="En bref">
             <p className="blog-tldr__title"><Icon name="sparkles" size={18} /> En bref</p>
@@ -142,6 +147,7 @@ export function BlogArticle({ post }) {
             <Button as={Link} href="/contact" variant="primary" iconRight={<Icon name="arrow-right" size={18} />}>Parler à un expert</Button>
           </div>
         </footer>
+        </div>
       </div>
     </article>
   );
