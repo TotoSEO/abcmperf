@@ -66,6 +66,14 @@ export default buildConfig({
           // de chaîne de certificats sans désactiver le chiffrement.
           ssl: { rejectUnauthorized: false },
           connectionTimeoutMillis: 15000,
+          // Serverless Vercel : chaque instance (lambda) ouvre son propre pool.
+          // Le Session pooler Supabase plafonne à 15 connexions ; sans limite,
+          // quelques instances concurrentes saturent (« EMAXCONNSESSION max
+          // clients reached in session mode »). On borne donc chaque instance à
+          // 1 connexion + fermeture rapide des connexions inactives pour libérer
+          // les slots au plus vite entre deux invocations.
+          max: 1,
+          idleTimeoutMillis: 10000,
         },
         // En production, Payload applique automatiquement ces migrations au
         // premier démarrage (création du schéma dans Supabase) — pas besoin de
