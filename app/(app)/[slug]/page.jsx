@@ -5,10 +5,18 @@ import { BlogArticle } from "@/components/site/BlogArticle";
 import { getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
 import { getPost, blogSlugs } from "@/lib/blog";
+import { getPostFromPayload } from "@/lib/payload-posts";
 
 // Fiches formation, fiches service ET articles de blog servis à la racine
-// (slugs hérités du site WordPress pour conserver le jus SEO). Sinon -> 404.
-export const dynamicParams = false;
+// (slugs hérités du site WordPress pour conserver le jus SEO).
+//
+// Les articles sont rendus depuis Payload (édition en direct), avec repli sur
+// les fichiers d'origine si la base est indisponible. ISR : pages statiques,
+// régénérées à la publication (revalidatePath dans les hooks Articles) ou au
+// plus tard toutes les 5 min. dynamicParams autorise les nouveaux articles
+// créés dans l'admin à s'afficher sans rebuild.
+export const dynamicParams = true;
+export const revalidate = 300;
 
 export function generateStaticParams() {
   return [
@@ -18,11 +26,16 @@ export function generateStaticParams() {
   ];
 }
 
+// Récupère un article : Payload en priorité (live), repli fichier.
+async function resolvePost(slug) {
+  return (await getPostFromPayload(slug)) || getPost(slug);
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   if (getFormation(slug)) return formationMetadata(slug);
   if (getService(slug)) return serviceMetadata(slug);
-  const post = getPost(slug);
+  const post = await resolvePost(slug);
   if (post) {
     return {
       title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
@@ -46,7 +59,7 @@ export default async function RootSlugPage({ params }) {
   if (formation) return <FormationDetail formation={formation} />;
   const service = getService(slug);
   if (service) return <ServiceDetail service={service} />;
-  const post = getPost(slug);
+  const post = await resolvePost(slug);
   if (post) return <BlogArticle post={post} />;
   notFound();
 }

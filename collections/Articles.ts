@@ -1,9 +1,46 @@
 import type { CollectionConfig } from 'payload'
 import { contentEditor } from '@/lib/payload/editor'
 
+// Revalide la page publique d'un article (ISR) après publication / suppression.
+// Ne fait rien pendant l'import (context.seeding) ni hors contexte Next.
+async function revalidateArticle(slug?: string, context?: any) {
+  if (!slug || context?.seeding) return
+  try {
+    const { revalidatePath } = await import('next/cache')
+    revalidatePath(`/${slug}/`)
+    revalidatePath('/articles/')
+  } catch {
+    /* hors contexte Next (CLI) : ignoré */
+  }
+}
+
 export const Articles: CollectionConfig = {
   slug: 'articles',
   labels: { singular: 'Article', plural: 'Articles' },
+  hooks: {
+    beforeChange: [
+      ({ data, originalDoc, req }) => {
+        // L'import ne marque jamais un article comme « édité » : on préserve
+        // le HTML original (fidélité SEO). Seule une vraie édition du contenu
+        // dans l'admin bascule le rendu vers le contenu Lexical.
+        if (req?.context?.seeding) return data
+        const changed =
+          JSON.stringify(data?.content ?? null) !== JSON.stringify(originalDoc?.content ?? null)
+        if (changed && data) data.contentEdited = true
+        return data
+      },
+    ],
+    afterChange: [
+      ({ doc, req }) => {
+        void revalidateArticle(doc?.slug, req?.context)
+      },
+    ],
+    afterDelete: [
+      ({ doc, req }) => {
+        void revalidateArticle(doc?.slug, req?.context)
+      },
+    ],
+  },
   admin: {
     useAsTitle: 'title',
     group: 'Contenu',
@@ -117,6 +154,21 @@ export const Articles: CollectionConfig = {
         position: 'sidebar',
         description: 'HTML historique conservé pour référence.',
       },
+    },
+    {
+      // Passe à true dès que le contenu est édité dans l'admin : le site public
+      // rend alors le contenu Lexical au lieu du HTML original.
+      name: 'contentEdited',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { hidden: true },
+    },
+    {
+      // Chemin de la couverture d'origine (avec %ASSET%), utilisé en repli tant
+      // qu'aucune image n'est uploadée dans le média.
+      name: 'legacyCoverSrc',
+      type: 'text',
+      admin: { hidden: true },
     },
   ],
 }

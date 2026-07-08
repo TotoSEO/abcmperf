@@ -39,9 +39,15 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
       ...(collection === 'articles' ? { draft: true } : {}),
     })
     if (existing.docs.length) {
-      return payload.update({ collection, id: existing.docs[0].id, data, overrideAccess: true })
+      return payload.update({
+        collection,
+        id: existing.docs[0].id,
+        data,
+        overrideAccess: true,
+        context: { seeding: true },
+      })
     }
-    return payload.create({ collection, data, overrideAccess: true })
+    return payload.create({ collection, data, overrideAccess: true, context: { seeding: true } })
   }
 
   const uploadImageBySrc = async (src?: string, alt?: string): Promise<number | string | null> => {
@@ -145,6 +151,8 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
         seoTitle: raw.seoTitle || '',
         metaDescription: raw.description || '',
         legacyHtml: raw.html || '',
+        legacyCoverSrc: raw.cover?.src || '',
+        contentEdited: false,
         _status: 'published',
       })
       aOk++
