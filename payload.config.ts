@@ -47,11 +47,18 @@ export default buildConfig({
   // que l'app démarre et se vérifie sans configuration.
   db: databaseURI
     ? postgresAdapter({
-        pool: { connectionString: databaseURI },
-        // Crée / synchronise automatiquement le schéma au démarrage, y compris
-        // en production (drizzle-kit est une dépendance de prod). Indispensable
-        // ici : Supabase démarre vide et on ne gère pas encore de migrations.
-        push: true,
+        pool: {
+          connectionString: databaseURI,
+          // Supabase impose le SSL. rejectUnauthorized:false évite les soucis
+          // de chaîne de certificats sans désactiver le chiffrement.
+          ssl: { rejectUnauthorized: false },
+          connectionTimeoutMillis: 15000,
+        },
+        // Le schéma est créé / synchronisé pendant le BUILD Vercel (script
+        // ensure-schema, RUN_DB_PUSH=true) — là où drizzle-kit est présent et
+        // Supabase est joignable — et jamais au runtime (drizzle-kit n'est pas
+        // embarqué dans la fonction serverless, un push runtime échouerait).
+        push: process.env.RUN_DB_PUSH === 'true',
       })
     : sqliteAdapter({
         client: { url: process.env.SQLITE_URL || 'file:./payload.db' },
