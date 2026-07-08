@@ -170,16 +170,19 @@ export interface Page {
  */
 export interface Article {
   id: number;
+  /**
+   * Titre principal (H1) de l’article.
+   */
   title: string;
   /**
-   * Identifiant d’URL, ex. geo-vs-aeo → /geo-vs-aeo/
+   * ex. geo-vs-aeo → /geo-vs-aeo/
    */
   slug: string;
   author?: string | null;
   publishedDate?: string | null;
   cover?: (number | null) | Media;
   /**
-   * Prioritaire sur le alt du média. Décrit l’image à la une pour le SEO.
+   * Prioritaire sur le alt du média. Pour le SEO.
    */
   coverAlt?: string | null;
   /**
@@ -187,7 +190,12 @@ export interface Article {
    */
   excerpt?: string | null;
   /**
-   * Encart « En bref » (liste de points clés).
+   * Si vide, le titre de l’article est utilisé.
+   */
+  seoTitle?: string | null;
+  metaDescription?: string | null;
+  /**
+   * Encart « En bref » (liste de points clés, en tête d’article).
    */
   summary?:
     | {
@@ -211,12 +219,7 @@ export interface Article {
     [k: string]: unknown;
   } | null;
   /**
-   * Si vide, le titre de l’article est utilisé.
-   */
-  seoTitle?: string | null;
-  metaDescription?: string | null;
-  /**
-   * HTML historique conservé pour référence.
+   * HTML historique conservé pour fidélité de rendu et repli.
    */
   legacyHtml?: string | null;
   contentEdited?: boolean | null;
@@ -440,6 +443,8 @@ export interface ArticlesSelect<T extends boolean = true> {
   cover?: T;
   coverAlt?: T;
   excerpt?: T;
+  seoTitle?: T;
+  metaDescription?: T;
   summary?:
     | T
     | {
@@ -447,8 +452,6 @@ export interface ArticlesSelect<T extends boolean = true> {
         id?: T;
       };
   content?: T;
-  seoTitle?: T;
-  metaDescription?: T;
   legacyHtml?: T;
   contentEdited?: T;
   editedInAdmin?: T;

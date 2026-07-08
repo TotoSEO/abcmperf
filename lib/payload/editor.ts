@@ -9,6 +9,7 @@ import {
 import { Astuce } from '@/blocks/Astuce'
 import { CtaBanner } from '@/blocks/CtaBanner'
 import { Columns } from '@/blocks/Columns'
+import { BlockPaletteFeature } from '@/lib/payload/blockPalette'
 
 // Éditeur de corps d'article : rédaction riche (paragraphes, listes, citations,
 // liens, gras/italique…) + titres limités à H2→H4 (le H1 reste le titre de
@@ -22,5 +23,7 @@ export const contentEditor = lexicalEditor({
     EXPERIMENTAL_TableFeature(),
     FixedToolbarFeature(),
     BlocksFeature({ blocks: [Astuce, CtaBanner, Columns] }),
+    // Palette persistante « Blocs ABCM » au-dessus de l'éditeur (insertion au clic).
+    BlockPaletteFeature(),
   ],
 })

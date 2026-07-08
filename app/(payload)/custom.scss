@@ -94,3 +94,60 @@ a:hover {
   padding: 2.25rem;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
+
+/* ── Palette de blocs ABCM (au-dessus de l'éditeur de contenu) ───────────── */
+.abcm-palette {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: 10px;
+  background:
+    linear-gradient(0deg, color-mix(in srgb, var(--abcm-accent) 5%, transparent), transparent),
+    var(--theme-elevation-50);
+}
+.abcm-palette__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--theme-elevation-500);
+  padding-right: 0.4rem;
+}
+.abcm-palette__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.abcm-palette__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--theme-elevation-150);
+  border-radius: 8px;
+  background: var(--theme-elevation-0);
+  color: var(--theme-elevation-800);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, transform 0.05s;
+}
+.abcm-palette__item:hover {
+  border-color: var(--abcm-accent);
+  background: color-mix(in srgb, var(--abcm-accent) 12%, var(--theme-elevation-0));
+}
+.abcm-palette__item:active {
+  transform: translateY(1px);
+}
+.abcm-palette__item:focus-visible {
+  outline: 2px solid var(--abcm-accent);
+  outline-offset: 1px;
+}
+.abcm-palette__icon {
+  font-size: 1rem;
+  line-height: 1;
+}
