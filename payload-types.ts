@@ -220,6 +220,8 @@ export interface Article {
    */
   legacyHtml?: string | null;
   contentEdited?: boolean | null;
+  editedInAdmin?: boolean | null;
+  legacyModified?: string | null;
   legacyCoverSrc?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -449,6 +451,8 @@ export interface ArticlesSelect<T extends boolean = true> {
   metaDescription?: T;
   legacyHtml?: T;
   contentEdited?: T;
+  editedInAdmin?: T;
+  legacyModified?: T;
   legacyCoverSrc?: T;
   updatedAt?: T;
   createdAt?: T;

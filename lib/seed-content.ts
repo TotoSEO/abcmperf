@@ -152,7 +152,13 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
         metaDescription: raw.description || '',
         legacyHtml: raw.html || '',
         legacyCoverSrc: raw.cover?.src || '',
+        legacyModified: raw.modified || raw.date || undefined,
         contentEdited: false,
+        editedInAdmin: false,
+        // Aligne les timestamps système sur les dates d'origine (affichage
+        // admin cohérent). Payload les respecte à la création.
+        createdAt: raw.date || undefined,
+        updatedAt: raw.modified || raw.date || undefined,
         _status: 'published',
       })
       aOk++

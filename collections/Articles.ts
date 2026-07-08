@@ -20,13 +20,19 @@ export const Articles: CollectionConfig = {
   hooks: {
     beforeChange: [
       ({ data, originalDoc, req }) => {
-        // L'import ne marque jamais un article comme « édité » : on préserve
-        // le HTML original (fidélité SEO). Seule une vraie édition du contenu
-        // dans l'admin bascule le rendu vers le contenu Lexical.
+        // L'import (seeding) ne marque jamais un article comme édité : on
+        // préserve le HTML original ET la date de modification d'origine
+        // (fidélité SEO). Une vraie édition dans l'admin marque l'article.
         if (req?.context?.seeding) return data
-        const changed =
-          JSON.stringify(data?.content ?? null) !== JSON.stringify(originalDoc?.content ?? null)
-        if (changed && data) data.contentEdited = true
+        if (data) {
+          // Toute édition dans l'admin → la date de modification (updatedAt de
+          // Payload) devient la référence pour dateModified.
+          data.editedInAdmin = true
+          // Édition spécifique du contenu → rendu depuis Lexical.
+          const changed =
+            JSON.stringify(data?.content ?? null) !== JSON.stringify(originalDoc?.content ?? null)
+          if (changed) data.contentEdited = true
+        }
         return data
       },
     ],
@@ -161,6 +167,22 @@ export const Articles: CollectionConfig = {
       name: 'contentEdited',
       type: 'checkbox',
       defaultValue: false,
+      admin: { hidden: true },
+    },
+    {
+      // Passe à true à la première édition dans l'admin. Tant que false, la
+      // dateModified (données structurées / affichage) reste la date de
+      // modification d'origine (legacyModified), et non la date d'import.
+      name: 'editedInAdmin',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { hidden: true },
+    },
+    {
+      // Date de modification d'origine (issue du site WordPress). Sert de
+      // dateModified tant que l'article n'a pas été édité dans l'admin.
+      name: 'legacyModified',
+      type: 'date',
       admin: { hidden: true },
     },
     {

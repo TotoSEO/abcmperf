@@ -47,14 +47,22 @@ export const getPostFromPayload = cache(async (slug: string) => {
       ? doc.summary.map((s: any) => s?.point).filter(Boolean)
       : []
 
+    // Date de première publication : FIGÉE (jamais modifiée par une édition).
+    const date = doc.publishedDate || doc.createdAt || undefined
+    // Date de modification : la date d'origine tant que l'article n'a pas été
+    // édité dans l'admin ; sinon la date de dernière sauvegarde Payload.
+    const modified = doc.editedInAdmin
+      ? doc.updatedAt || date
+      : doc.legacyModified || date
+
     return {
       slug: doc.slug,
       title: doc.title,
       seoTitle: doc.seoTitle || '',
       description: doc.metaDescription || doc.excerpt || '',
       author: doc.author || '',
-      date: doc.publishedDate || undefined,
-      modified: doc.updatedAt || undefined,
+      date,
+      modified,
       cover,
       summary,
       html,
