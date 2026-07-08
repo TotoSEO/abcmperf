@@ -1,11 +1,13 @@
-# Mise en ligne du back-office (Vercel + Supabase)
+# Mise en ligne du site + back-office (Vercel + Supabase)
 
-Le code du back-office est **prêt**. Il reste à créer les 2 comptes gratuits et à
-brancher les clés — environ **5 minutes**. Tout est transférable à ta supérieure
-plus tard (Supabase et Vercel permettent de transférer un projet).
+**Swap complet vers Vercel + Supabase.** Le site public **et** le back-office
+sont désormais servis par Vercel (fini GitHub Pages et l'export statique). Une
+fois les 2 comptes gratuits créés et les clés branchées (~**5 minutes**), le
+site est **en ligne comme pour le public** sur une URL `…vercel.app` — il ne
+restera qu'à **brancher le nom de domaine** (dernière étape).
 
-Tant que le domaine n'est pas basculé, le site public reste **en ligne sur
-GitHub Pages, intact**. La preview Vercel sert à voir et utiliser le back-office.
+Tout est transférable à ta supérieure plus tard (Supabase et Vercel permettent
+de transférer un projet).
 
 ---
 
@@ -14,13 +16,17 @@ GitHub Pages, intact**. La preview Vercel sert à voir et utiliser le back-offic
 1. Créer un compte sur **https://supabase.com** → **New project**.
 2. Choisir une région proche (**Europe / Frankfurt** ou **Paris**), définir un
    mot de passe de base de données (le noter).
-3. Aller dans **Project Settings → Database → Connection string → URI**.
-4. Copier l'URI. **Important** : prendre la version **« Connection pooler »**
-   (port **6543**), adaptée au serverless de Vercel. Elle ressemble à :
+3. Aller dans **Connect** (bouton en haut) → onglet **Connection string**.
+4. Choisir **« Session pooler »** et copier l'URI. **Important** : c'est bien la
+   *Session pooler* (port **5432**, hôte `…pooler.supabase.com`) qu'il faut —
+   elle est en IPv4 (compatible Vercel) **et** compatible Payload. Éviter la
+   *Transaction pooler* (port 6543) qui provoque des erreurs avec Payload
+   (prepared statements). L'URI ressemble à :
    ```
-   postgresql://postgres.xxxxx:MOT_DE_PASSE@aws-0-eu-west-3.pooler.supabase.com:6543/postgres
+   postgresql://postgres.xxxxx:MOT_DE_PASSE@aws-0-eu-west-3.pooler.supabase.com:5432/postgres
    ```
-   → c'est la valeur `DATABASE_URI`.
+   → c'est la valeur `DATABASE_URI`. Si le mot de passe contient des caractères
+   spéciaux (@ : / ?), les encoder (ex. `@` → `%40`).
 
 ## 2. Hébergement — Vercel (2 min)
 
