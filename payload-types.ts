@@ -219,6 +219,10 @@ export interface Article {
    * HTML historique conservé pour référence.
    */
   legacyHtml?: string | null;
+  contentEdited?: boolean | null;
+  editedInAdmin?: boolean | null;
+  legacyModified?: string | null;
+  legacyCoverSrc?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -446,6 +450,10 @@ export interface ArticlesSelect<T extends boolean = true> {
   seoTitle?: T;
   metaDescription?: T;
   legacyHtml?: T;
+  contentEdited?: T;
+  editedInAdmin?: T;
+  legacyModified?: T;
+  legacyCoverSrc?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

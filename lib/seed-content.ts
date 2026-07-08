@@ -39,9 +39,15 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
       ...(collection === 'articles' ? { draft: true } : {}),
     })
     if (existing.docs.length) {
-      return payload.update({ collection, id: existing.docs[0].id, data, overrideAccess: true })
+      return payload.update({
+        collection,
+        id: existing.docs[0].id,
+        data,
+        overrideAccess: true,
+        context: { seeding: true },
+      })
     }
-    return payload.create({ collection, data, overrideAccess: true })
+    return payload.create({ collection, data, overrideAccess: true, context: { seeding: true } })
   }
 
   const uploadImageBySrc = async (src?: string, alt?: string): Promise<number | string | null> => {
@@ -145,6 +151,14 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
         seoTitle: raw.seoTitle || '',
         metaDescription: raw.description || '',
         legacyHtml: raw.html || '',
+        legacyCoverSrc: raw.cover?.src || '',
+        legacyModified: raw.modified || raw.date || undefined,
+        contentEdited: false,
+        editedInAdmin: false,
+        // Aligne les timestamps système sur les dates d'origine (affichage
+        // admin cohérent). Payload les respecte à la création.
+        createdAt: raw.date || undefined,
+        updatedAt: raw.modified || raw.date || undefined,
         _status: 'published',
       })
       aOk++

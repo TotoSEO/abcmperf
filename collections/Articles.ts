@@ -1,9 +1,52 @@
 import type { CollectionConfig } from 'payload'
 import { contentEditor } from '@/lib/payload/editor'
 
+// Revalide la page publique d'un article (ISR) après publication / suppression.
+// Ne fait rien pendant l'import (context.seeding) ni hors contexte Next.
+async function revalidateArticle(slug?: string, context?: any) {
+  if (!slug || context?.seeding) return
+  try {
+    const { revalidatePath } = await import('next/cache')
+    revalidatePath(`/${slug}/`)
+    revalidatePath('/articles/')
+  } catch {
+    /* hors contexte Next (CLI) : ignoré */
+  }
+}
+
 export const Articles: CollectionConfig = {
   slug: 'articles',
   labels: { singular: 'Article', plural: 'Articles' },
+  hooks: {
+    beforeChange: [
+      ({ data, originalDoc, req }) => {
+        // L'import (seeding) ne marque jamais un article comme édité : on
+        // préserve le HTML original ET la date de modification d'origine
+        // (fidélité SEO). Une vraie édition dans l'admin marque l'article.
+        if (req?.context?.seeding) return data
+        if (data) {
+          // Toute édition dans l'admin → la date de modification (updatedAt de
+          // Payload) devient la référence pour dateModified.
+          data.editedInAdmin = true
+          // Édition spécifique du contenu → rendu depuis Lexical.
+          const changed =
+            JSON.stringify(data?.content ?? null) !== JSON.stringify(originalDoc?.content ?? null)
+          if (changed) data.contentEdited = true
+        }
+        return data
+      },
+    ],
+    afterChange: [
+      ({ doc, req }) => {
+        void revalidateArticle(doc?.slug, req?.context)
+      },
+    ],
+    afterDelete: [
+      ({ doc, req }) => {
+        void revalidateArticle(doc?.slug, req?.context)
+      },
+    ],
+  },
   admin: {
     useAsTitle: 'title',
     group: 'Contenu',
@@ -117,6 +160,37 @@ export const Articles: CollectionConfig = {
         position: 'sidebar',
         description: 'HTML historique conservé pour référence.',
       },
+    },
+    {
+      // Passe à true dès que le contenu est édité dans l'admin : le site public
+      // rend alors le contenu Lexical au lieu du HTML original.
+      name: 'contentEdited',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { hidden: true },
+    },
+    {
+      // Passe à true à la première édition dans l'admin. Tant que false, la
+      // dateModified (données structurées / affichage) reste la date de
+      // modification d'origine (legacyModified), et non la date d'import.
+      name: 'editedInAdmin',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { hidden: true },
+    },
+    {
+      // Date de modification d'origine (issue du site WordPress). Sert de
+      // dateModified tant que l'article n'a pas été édité dans l'admin.
+      name: 'legacyModified',
+      type: 'date',
+      admin: { hidden: true },
+    },
+    {
+      // Chemin de la couverture d'origine (avec %ASSET%), utilisé en repli tant
+      // qu'aucune image n'est uploadée dans le média.
+      name: 'legacyCoverSrc',
+      type: 'text',
+      admin: { hidden: true },
     },
   ],
 }
