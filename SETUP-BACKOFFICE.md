@@ -1,11 +1,13 @@
-# Mise en ligne du back-office (Vercel + Supabase)
+# Mise en ligne du site + back-office (Vercel + Supabase)
 
-Le code du back-office est **prêt**. Il reste à créer les 2 comptes gratuits et à
-brancher les clés — environ **5 minutes**. Tout est transférable à ta supérieure
-plus tard (Supabase et Vercel permettent de transférer un projet).
+**Swap complet vers Vercel + Supabase.** Le site public **et** le back-office
+sont désormais servis par Vercel (fini GitHub Pages et l'export statique). Une
+fois les 2 comptes gratuits créés et les clés branchées (~**5 minutes**), le
+site est **en ligne comme pour le public** sur une URL `…vercel.app` — il ne
+restera qu'à **brancher le nom de domaine** (dernière étape).
 
-Tant que le domaine n'est pas basculé, le site public reste **en ligne sur
-GitHub Pages, intact**. La preview Vercel sert à voir et utiliser le back-office.
+Tout est transférable à ta supérieure plus tard (Supabase et Vercel permettent
+de transférer un projet).
 
 ---
 
