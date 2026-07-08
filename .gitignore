@@ -21,6 +21,13 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
+
+# Payload
+/payload.db
+/payload.db-*
+/media
+/public/uploads
 
 # typescript
 *.tsbuildinfo

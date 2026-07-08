@@ -1,25 +1,43 @@
+import { withPayload } from '@payloadcms/next/withPayload'
+
 /** @type {import('next').NextConfig} */
 
-// Déploiement GitHub Pages (projet servi depuis /abcmperf/).
-// Le workflow .github/workflows/deploy.yml passe GITHUB_PAGES=true :
-//   -> export statique dans out/ + basePath /abcmperf + images non optimisées.
-// En local et pour un futur domaine personnalisé (servi à la racine),
-// laisser GITHUB_PAGES vide : aucun basePath, comportement normal.
-const isPages = process.env.GITHUB_PAGES === "true";
-const repo = "abcmperf";
+// Deux cibles de déploiement pendant la migration :
+//
+//  • GitHub Pages (GITHUB_PAGES=true) — export statique du SITE PUBLIC uniquement,
+//    servi depuis /abcmperf/. Ne construit PAS le back-office Payload (impossible
+//    en export statique). Le workflow ne tourne que sur la branche `main`.
+//
+//  • Vercel (par défaut, GITHUB_PAGES vide) — application complète Next + Payload
+//    (back-office /admin), servie à la racine. C'est la cible de la preview.
+const isPages = process.env.GITHUB_PAGES === 'true'
+const repo = 'abcmperf'
 
-const nextConfig = {
+const baseConfig = {
   reactStrictMode: true,
-  // Les fiches réutilisent les URLs WordPress existantes, qui finissent par "/".
+  // Les URLs héritées de WordPress finissent par « / ».
   trailingSlash: true,
-  // Exposé au client pour préfixer les assets statiques servis via <img> bruts
-  // (le basePath de Next ne préfixe pas les <img>, seulement _next/ et <Link>).
-  env: { NEXT_PUBLIC_BASE_PATH: isPages ? `/${repo}` : "" },
-  ...(isPages && {
-    output: "export",
-    basePath: `/${repo}`,
-    images: { unoptimized: true },
-  }),
-};
+  // Exposé au client pour préfixer les assets servis via <img> bruts.
+  env: { NEXT_PUBLIC_BASE_PATH: isPages ? `/${repo}` : '' },
+}
 
-export default nextConfig;
+const pagesConfig = {
+  ...baseConfig,
+  output: 'export',
+  basePath: `/${repo}`,
+  images: { unoptimized: true },
+}
+
+const vercelConfig = {
+  ...baseConfig,
+  async redirects() {
+    return [
+      // Point d'entrée du back-office demandé : /admin-login → connexion Payload.
+      { source: '/admin-login', destination: '/admin/login', permanent: false },
+    ]
+  },
+}
+
+// En mode Pages : config statique brute (pas de Payload). Sinon : app complète
+// enveloppée par Payload.
+export default isPages ? pagesConfig : withPayload(vercelConfig)
