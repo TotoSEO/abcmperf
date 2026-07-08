@@ -1,12 +1,15 @@
 /**
  * Crée / synchronise le schéma de la base au moment du BUILD (Vercel).
  *
- * Lancé par le script `vercel-build` avec RUN_DB_PUSH=true : Payload effectue
- * alors un « push » du schéma (drizzle-kit est disponible pendant le build et
- * Supabase est joignable). Au runtime, aucun push n'est tenté.
+ * Payload ne « push » le schéma que hors production
+ * (cf. @payloadcms/db-postgres connect.js :
+ *   if (NODE_ENV !== 'production' && push !== false) await pushDevSchema()).
+ * Pendant le build Vercel, NODE_ENV vaut 'production' → le push est ignoré et
+ * les tables ne sont jamais créées. On force donc NODE_ENV='development' juste
+ * pour cette étape (drizzle-kit est présent au build et Supabase est joignable).
+ * Le runtime, lui, reste en production et ne push pas.
  *
- * Ne bloque jamais le build : en cas d'échec, log l'erreur et sort en 0 pour
- * que le site public se déploie quand même (l'erreur reste visible dans le log).
+ * Ne bloque jamais le build : en cas d'échec, log l'erreur et sort en 0.
  */
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -17,9 +20,18 @@ try {
   if (!process.env.DATABASE_URI && !process.env.POSTGRES_URL) {
     log('ℹ ensure-schema : aucune DATABASE_URI — étape ignorée.')
   } else {
-    log('▶ ensure-schema : connexion à la base et synchronisation du schéma…')
-    await getPayload({ config })
-    log('✅ ensure-schema : schéma prêt.')
+    // Force le mode qui déclenche le push du schéma (voir en-tête).
+    process.env.NODE_ENV = 'development'
+    process.env.PAYLOAD_MIGRATING = 'false'
+    log('▶ ensure-schema : connexion à la base et push du schéma…')
+    const payload = await getPayload({ config })
+    // Sanity check : la table users doit exister après le push.
+    try {
+      await payload.count({ collection: 'users' })
+      log('✅ ensure-schema : schéma prêt (table users accessible).')
+    } catch (inner: any) {
+      log('⚠ ensure-schema : le push ne semble pas avoir créé les tables — ' + (inner?.message || inner))
+    }
   }
 } catch (e: any) {
   log('⚠ ensure-schema : échec — ' + (e?.message || e))

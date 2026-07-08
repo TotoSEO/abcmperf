@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "RUN_DB_PUSH=true payload run scripts/ensure-schema.ts && next build",
+    "vercel-build": "NODE_ENV=development RUN_DB_PUSH=true payload run scripts/ensure-schema.ts && next build",
     "start": "next start",
     "lint": "next lint",
     "payload": "payload",
