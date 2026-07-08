@@ -21,11 +21,29 @@ const dirname = path.dirname(filename)
 
 // URL de connexion Postgres (Supabase) fournie en production via l'environnement.
 // Accepte DATABASE_URI ou les variables standard de Supabase/Vercel Postgres.
-const databaseURI =
+const rawDatabaseURI =
   process.env.DATABASE_URI ||
   process.env.POSTGRES_URL ||
   process.env.SUPABASE_DB_URL ||
   ''
+
+// CRUCIAL (serverless + Supabase) : on force le **Transaction pooler** (port
+// 6543) au lieu du **Session pooler** (5432). En mode session, chaque instance
+// Vercel garde une connexion Postgres ouverte en permanence (Payload en tient
+// une par pool pour écouter les erreurs, jamais relâchée) ; les instances
+// serverless gelées accumulent ces connexions jusqu'à saturer les 15 slots du
+// pooler → « EMAXCONNSESSION max clients reached in session mode ».
+//
+// Le Transaction pooler multiplexe : une connexion cliente inactive n'occupe
+// AUCUN backend Postgres (un backend n'est emprunté que le temps d'une
+// transaction), et la limite de clients est bien plus élevée. C'est le mode
+// recommandé par Supabase pour Vercel/serverless. Les deux poolers partagent le
+// même hôte et les mêmes identifiants : seul le port change, d'où la réécriture
+// ci-dessous (idempotente : sans effet si l'URL n'est pas le Session pooler).
+const databaseURI = rawDatabaseURI.replace(
+  /(pooler\.supabase\.com):5432\b/i,
+  '$1:6543',
+)
 
 // Jeton de stockage média Vercel Blob (production). Vide en local.
 const blobToken = process.env.BLOB_READ_WRITE_TOKEN || ''
@@ -65,15 +83,15 @@ export default buildConfig({
           // Supabase impose le SSL. rejectUnauthorized:false évite les soucis
           // de chaîne de certificats sans désactiver le chiffrement.
           ssl: { rejectUnauthorized: false },
-          connectionTimeoutMillis: 15000,
-          // Serverless Vercel : chaque instance (lambda) ouvre son propre pool.
-          // Le Session pooler Supabase plafonne à 15 connexions ; sans limite,
-          // quelques instances concurrentes saturent (« EMAXCONNSESSION max
-          // clients reached in session mode »). On borne donc chaque instance à
-          // 1 connexion + fermeture rapide des connexions inactives pour libérer
-          // les slots au plus vite entre deux invocations.
-          max: 1,
-          idleTimeoutMillis: 10000,
+          connectionTimeoutMillis: 10000,
+          // Via le Transaction pooler, plusieurs connexions par instance sont
+          // sans danger (les inactives ne tiennent aucun backend). max DOIT être
+          // > 1 : Payload garde en permanence 1 connexion par pool pour l'écoute
+          // d'erreurs ; à max:1 il ne resterait AUCUNE connexion pour les
+          // requêtes (elles tomberaient toutes en timeout). idleTimeoutMillis
+          // libère les connexions clientes inactives entre deux invocations.
+          max: 5,
+          idleTimeoutMillis: 30000,
         },
         // En production, Payload applique automatiquement ces migrations au
         // premier démarrage (création du schéma dans Supabase) — pas besoin de
