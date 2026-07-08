@@ -6,6 +6,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { fr } from '@payloadcms/translations/languages/fr'
 import sharp from 'sharp'
 
 import { Users } from '@/collections/Users'
@@ -37,8 +38,19 @@ export default buildConfig({
       titleSuffix: ' — ABCM Admin',
       title: 'ABCM · Back-office',
     },
+    components: {
+      graphics: {
+        Logo: '/components/admin/Logo#Logo',
+        Icon: '/components/admin/Icon#Icon',
+      },
+    },
   },
   collections: [Pages, Articles, Redirects, Media, Users],
+  // Interface du back-office forcée en français (indépendamment du navigateur).
+  i18n: {
+    supportedLanguages: { fr },
+    fallbackLanguage: 'fr',
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'dev-secret-a-remplacer-en-production',
   typescript: {

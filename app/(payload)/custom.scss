@@ -1,2 +1,96 @@
-/* Styles personnalisés du back-office ABCM.
-   (Réservé aux ajustements visuels de l'admin Payload.) */
+/* ─────────────────────────────────────────────────────────────────────────
+   Back-office ABCM — habillage aux couleurs de la marque.
+   Palette : accent jaune #fad646 sur noir-nuit #00001b.
+   Typo : Hanken Grotesk (corps) · Bricolage Grotesque (titres).
+   ───────────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --abcm-accent: #fad646;
+  --abcm-accent-hover: #f0c520;
+  --abcm-accent-press: #d2a60a;
+  --abcm-night: #00001b;
+
+  /* Police de base du back-office. */
+  --font-body: 'Hanken Grotesk', 'Roboto Condensed', system-ui, sans-serif;
+
+  /* Anneau de focus et surbrillances aux couleurs ABCM. */
+  --theme-success-500: var(--abcm-accent);
+}
+
+/* Titres du back-office en Bricolage Grotesque. */
+h1, h2, h3, h4,
+.step-nav,
+.doc-header__title,
+.collection-list__title,
+.dashboard__label {
+  font-family: 'Bricolage Grotesque', 'Hanken Grotesk', system-ui, sans-serif !important;
+}
+
+/* ── Boutons d'action principaux → jaune ABCM, texte noir-nuit ──────────── */
+.btn--style-primary {
+  --bg-color: var(--abcm-accent);
+  --color: var(--abcm-night);
+  --hover-bg: var(--abcm-accent-hover);
+  --hover-color: var(--abcm-night);
+  font-weight: 700;
+}
+
+/* Bouton « Publier » / sauvegarde dans l'en-tête de document. */
+.doc-controls__controls .btn--style-primary,
+.form-submit .btn--style-primary {
+  --bg-color: var(--abcm-accent);
+  --color: var(--abcm-night);
+}
+
+/* ── Navigation latérale : lien actif souligné en jaune ─────────────────── */
+.nav .nav__link.active,
+.nav a[aria-current='page'] {
+  box-shadow: inset 3px 0 0 0 var(--abcm-accent);
+  background: color-mix(in srgb, var(--abcm-accent) 12%, transparent);
+}
+.nav .nav__link:hover {
+  background: color-mix(in srgb, var(--abcm-accent) 8%, transparent);
+}
+
+/* ── Focus visible aux couleurs de la marque ────────────────────────────── */
+:where(input, select, textarea, button, a, .rs__control):focus-visible,
+.field-type input:focus,
+.field-type textarea:focus {
+  outline: 2px solid var(--abcm-accent) !important;
+  outline-offset: 1px;
+  border-color: var(--abcm-accent-press) !important;
+}
+
+/* Cases à cocher / interrupteurs actifs en jaune. */
+.checkbox-input__input:checked + .checkbox-input__icon,
+.checkbox-input--checked .checkbox-input__icon {
+  background: var(--abcm-accent) !important;
+  border-color: var(--abcm-accent) !important;
+  color: var(--abcm-night) !important;
+}
+
+/* Liens : survol en or ABCM. */
+a:hover {
+  color: var(--abcm-accent-press);
+}
+
+/* Pastille de statut « publié » teintée marque (discret). */
+.pill--style-success {
+  background: color-mix(in srgb, var(--abcm-accent) 22%, #fff);
+  color: var(--abcm-night);
+}
+
+/* ── Écran de connexion : fond sombre ABCM, carte centrée ───────────────── */
+.login {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, color-mix(in srgb, var(--abcm-accent) 10%, transparent), transparent),
+    var(--abcm-night);
+}
+.login .login__wrap,
+.login .login__form {
+  background: var(--theme-elevation-0);
+  border-radius: 14px;
+  padding: 2.25rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
