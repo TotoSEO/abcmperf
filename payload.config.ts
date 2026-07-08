@@ -78,15 +78,15 @@ export default buildConfig({
       }),
   sharp,
   plugins: [
-    // En production, les médias sont stockés sur Vercel Blob (le FS de Vercel
-    // est en lecture seule). En local, stockage disque classique.
-    ...(blobToken
-      ? [
-          vercelBlobStorage({
-            collections: { media: true },
-            token: blobToken,
-          }),
-        ]
-      : []),
+    // Le plugin est TOUJOURS déclaré (même sans token) pour que son composant
+    // client soit inclus dans l'importMap — sinon l'admin plante au runtime
+    // dès que le token est présent (« PayloadComponent not found in importMap »).
+    // Il n'est fonctionnellement actif (stockage Vercel Blob) que si un token
+    // est fourni ; sinon `enabled: false` → stockage disque local classique.
+    vercelBlobStorage({
+      enabled: Boolean(blobToken),
+      collections: { media: true },
+      token: blobToken || 'vercel_blob_rw_placeholder',
+    }),
   ],
 })
