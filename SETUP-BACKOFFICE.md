@@ -16,13 +16,17 @@ de transférer un projet).
 1. Créer un compte sur **https://supabase.com** → **New project**.
 2. Choisir une région proche (**Europe / Frankfurt** ou **Paris**), définir un
    mot de passe de base de données (le noter).
-3. Aller dans **Project Settings → Database → Connection string → URI**.
-4. Copier l'URI. **Important** : prendre la version **« Connection pooler »**
-   (port **6543**), adaptée au serverless de Vercel. Elle ressemble à :
+3. Aller dans **Connect** (bouton en haut) → onglet **Connection string**.
+4. Choisir **« Session pooler »** et copier l'URI. **Important** : c'est bien la
+   *Session pooler* (port **5432**, hôte `…pooler.supabase.com`) qu'il faut —
+   elle est en IPv4 (compatible Vercel) **et** compatible Payload. Éviter la
+   *Transaction pooler* (port 6543) qui provoque des erreurs avec Payload
+   (prepared statements). L'URI ressemble à :
    ```
-   postgresql://postgres.xxxxx:MOT_DE_PASSE@aws-0-eu-west-3.pooler.supabase.com:6543/postgres
+   postgresql://postgres.xxxxx:MOT_DE_PASSE@aws-0-eu-west-3.pooler.supabase.com:5432/postgres
    ```
-   → c'est la valeur `DATABASE_URI`.
+   → c'est la valeur `DATABASE_URI`. Si le mot de passe contient des caractères
+   spéciaux (@ : / ?), les encoder (ex. `@` → `%40`).
 
 ## 2. Hébergement — Vercel (2 min)
 
