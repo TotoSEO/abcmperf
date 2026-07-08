@@ -93,7 +93,16 @@ export default buildConfig({
     // est fourni ; sinon `enabled: false` → stockage disque local classique.
     vercelBlobStorage({
       enabled: Boolean(blobToken),
-      collections: { media: true },
+      collections: {
+        // disablePayloadAccessControl : les URLs média pointent DIRECTEMENT sur
+        // le CDN Vercel Blob (store public) au lieu de la route Payload
+        // /api/media/file/*. Les vignettes de l'admin et les images du site
+        // public sont donc servies par le CDN — plus aucune fonction serverless
+        // ni connexion Postgres par image (cause majeure de l'« EMAXCONNSESSION »
+        // sur la grille média). Sûr ici : le store Blob est public, ces images
+        // sont destinées à être publiques.
+        media: { disablePayloadAccessControl: true },
+      },
       token: blobToken || 'vercel_blob_rw_placeholder',
     }),
   ],
