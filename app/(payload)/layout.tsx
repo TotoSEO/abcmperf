@@ -3,6 +3,9 @@
    CSS du site. */
 import type { ServerFunctionClient } from 'payload'
 import config from '@payload-config'
+/* Styles cœur du back-office Payload : DOIVENT être importés par le layout
+   (qui enveloppe la page admin) pour être inclus dans son bundle CSS. */
+import '@payloadcms/next/css'
 import { RootLayout, handleServerFunctions } from '@payloadcms/next/layouts'
 import React from 'react'
 
