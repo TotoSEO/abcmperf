@@ -69,76 +69,62 @@ export const Articles: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Titre (H1 / affichage)',
+      admin: { description: 'Titre principal (H1) de l’article.' },
     },
+
+    // ── Colonne de droite (sidebar) : réglages de l'article, façon WordPress ──
+    // Box repliable regroupant slug, image à la une, auteur, date, extrait.
     {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-      index: true,
-      label: 'Slug (URL)',
-      admin: {
-        position: 'sidebar',
-        description: 'Identifiant d’URL, ex. geo-vs-aeo → /geo-vs-aeo/',
-      },
-    },
-    {
-      type: 'row',
+      type: 'collapsible',
+      label: 'Réglages de l’article',
+      admin: { position: 'sidebar', initCollapsed: false },
       fields: [
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          index: true,
+          label: 'Slug (URL)',
+          admin: { description: 'ex. geo-vs-aeo → /geo-vs-aeo/' },
+        },
         {
           name: 'author',
           type: 'text',
           label: 'Auteur',
           defaultValue: 'ABCM',
-          admin: { width: '50%' },
         },
         {
           name: 'publishedDate',
           type: 'date',
           label: 'Date de publication',
-          admin: { width: '50%', date: { pickerAppearance: 'dayAndTime' } },
+          admin: { date: { pickerAppearance: 'dayAndTime' } },
+        },
+        {
+          name: 'cover',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image à la une',
+        },
+        {
+          name: 'coverAlt',
+          type: 'text',
+          label: 'Texte alternatif (alt)',
+          admin: { description: 'Prioritaire sur le alt du média. Pour le SEO.' },
+        },
+        {
+          name: 'excerpt',
+          type: 'textarea',
+          label: 'Extrait',
+          admin: { description: 'Résumé court affiché dans les listes d’articles.' },
         },
       ],
     },
-    {
-      name: 'cover',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Image à la une',
-    },
-    {
-      name: 'coverAlt',
-      type: 'text',
-      label: 'Texte alternatif de l’image à la une (alt)',
-      admin: {
-        description:
-          'Prioritaire sur le alt du média. Décrit l’image à la une pour le SEO.',
-      },
-    },
-    {
-      name: 'excerpt',
-      type: 'textarea',
-      label: 'Extrait',
-      admin: { description: 'Résumé court affiché dans les listes d’articles.' },
-    },
-    {
-      name: 'summary',
-      type: 'array',
-      label: 'En bref',
-      labels: { singular: 'point', plural: 'points' },
-      admin: { description: 'Encart « En bref » (liste de points clés).' },
-      fields: [{ name: 'point', type: 'text', required: true }],
-    },
-    {
-      name: 'content',
-      type: 'richText',
-      label: 'Contenu',
-      editor: contentEditor,
-    },
+    // SEO : deuxième box repliable dans la sidebar.
     {
       type: 'collapsible',
       label: 'SEO',
-      admin: { initCollapsed: true },
+      admin: { position: 'sidebar', initCollapsed: true },
       fields: [
         {
           name: 'seoTitle',
@@ -149,17 +135,39 @@ export const Articles: CollectionConfig = {
         { name: 'metaDescription', type: 'textarea', label: 'Meta description' },
       ],
     },
+
+    // ─────────────────── Colonne centrale : le contenu ───────────────────
     {
-      // Conservation du HTML d'origine importé depuis WordPress : garantit une
-      // fidélité de rendu parfaite et sert de repli. Non éditable.
-      name: 'legacyHtml',
-      type: 'textarea',
-      label: 'HTML original (import)',
-      admin: {
-        readOnly: true,
-        position: 'sidebar',
-        description: 'HTML historique conservé pour référence.',
-      },
+      name: 'summary',
+      type: 'array',
+      label: 'En bref',
+      labels: { singular: 'point', plural: 'points' },
+      admin: { description: 'Encart « En bref » (liste de points clés, en tête d’article).' },
+      fields: [{ name: 'point', type: 'text', required: true }],
+    },
+    {
+      name: 'content',
+      type: 'richText',
+      label: 'Contenu',
+      editor: contentEditor,
+    },
+    // HTML original importé : conservé pour référence et repli, mais rangé dans
+    // un menu replié fermé par défaut (retiré de la sidebar).
+    {
+      type: 'collapsible',
+      label: 'HTML original (import — référence)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          name: 'legacyHtml',
+          type: 'textarea',
+          label: 'HTML original',
+          admin: {
+            readOnly: true,
+            description: 'HTML historique conservé pour fidélité de rendu et repli.',
+          },
+        },
+      ],
     },
     {
       // Passe à true dès que le contenu est édité dans l'admin : le site public
