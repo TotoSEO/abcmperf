@@ -48,6 +48,10 @@ export default buildConfig({
   db: databaseURI
     ? postgresAdapter({
         pool: { connectionString: databaseURI },
+        // Crée / synchronise automatiquement le schéma au démarrage, y compris
+        // en production (drizzle-kit est une dépendance de prod). Indispensable
+        // ici : Supabase démarre vide et on ne gère pas encore de migrations.
+        push: true,
       })
     : sqliteAdapter({
         client: { url: process.env.SQLITE_URL || 'file:./payload.db' },
