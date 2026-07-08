@@ -13,6 +13,7 @@ import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Articles } from '@/collections/Articles'
 import { Redirects } from '@/collections/Redirects'
+import { migrations } from '@/migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -54,11 +55,11 @@ export default buildConfig({
           ssl: { rejectUnauthorized: false },
           connectionTimeoutMillis: 15000,
         },
-        // Le schéma est créé / synchronisé pendant le BUILD Vercel (script
-        // ensure-schema, RUN_DB_PUSH=true) — là où drizzle-kit est présent et
-        // Supabase est joignable — et jamais au runtime (drizzle-kit n'est pas
-        // embarqué dans la fonction serverless, un push runtime échouerait).
-        push: process.env.RUN_DB_PUSH === 'true',
+        // En production, Payload applique automatiquement ces migrations au
+        // premier démarrage (création du schéma dans Supabase) — pas besoin de
+        // drizzle-kit au runtime, ce sont de simples requêtes SQL versionnées.
+        // En dev, le schéma est poussé automatiquement (comportement par défaut).
+        prodMigrations: migrations,
       })
     : sqliteAdapter({
         client: { url: process.env.SQLITE_URL || 'file:./payload.db' },
