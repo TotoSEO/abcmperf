@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "payload run scripts/build-seed.ts && next build",
+    "vercel-build": "payload run scripts/build-seed.ts && payload run scripts/export-redirects.ts && next build",
     "start": "next start",
     "lint": "next lint",
     "payload": "payload",

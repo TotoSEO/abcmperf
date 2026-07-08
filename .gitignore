@@ -29,6 +29,9 @@ yarn-error.log*
 /media
 /public/uploads
 
+# Redirections générées au build depuis le back-office
+/redirects.generated.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
