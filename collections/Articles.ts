@@ -9,6 +9,7 @@ async function revalidateArticle(slug?: string, context?: any) {
     const { revalidatePath } = await import('next/cache')
     revalidatePath(`/${slug}/`)
     revalidatePath('/articles/')
+    revalidatePath('/sitemap.xml')
   } catch {
     /* hors contexte Next (CLI) : ignoré */
   }
@@ -53,6 +54,14 @@ export const Articles: CollectionConfig = {
     defaultColumns: ['title', 'slug', 'publishedDate', '_status', 'updatedAt'],
     description: 'Articles de blog.',
     listSearchableFields: ['title', 'slug'],
+    components: {
+      edit: {
+        // Bouton « Supprimer… » avec overlay de création de redirection.
+        beforeDocumentControls: [
+          '/lib/payload/deleteWithRedirect/DeleteWithRedirect#DeleteWithRedirect',
+        ],
+      },
+    },
   },
   versions: {
     drafts: {

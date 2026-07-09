@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Icon } from "@/components/ds";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { getAllPosts } from "@/lib/blog";
+import { getAllPostsFromPayload } from "@/lib/payload-posts";
 
 function frDate(iso) {
   if (!iso) return "";
@@ -14,9 +15,11 @@ function withBase(s, base) {
   return typeof s === "string" ? s.split("%ASSET%").join(base) : s;
 }
 
-export function BlogIndex() {
+export async function BlogIndex() {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const posts = getAllPosts();
+  // Payload est la source de vérité (les articles créés/supprimés dans l'admin
+  // remontent). Repli sur les fichiers d'origine si la base est injoignable.
+  const posts = (await getAllPostsFromPayload()) || getAllPosts();
 
   return (
     <div className="bloglist">

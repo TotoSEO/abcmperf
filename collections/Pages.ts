@@ -10,6 +10,14 @@ export const Pages: CollectionConfig = {
     defaultColumns: ['title', 'path', 'pageType', 'updatedAt'],
     description: 'Pages du site : titres, méta et H1.',
     listSearchableFields: ['title', 'path'],
+    components: {
+      edit: {
+        // Bouton « Supprimer… » avec overlay de création de redirection.
+        beforeDocumentControls: [
+          '/lib/payload/deleteWithRedirect/DeleteWithRedirect#DeleteWithRedirect',
+        ],
+      },
+    },
   },
   access: {
     read: () => true,

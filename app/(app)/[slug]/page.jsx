@@ -1,11 +1,11 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect, permanentRedirect } from "next/navigation";
 import { FormationDetail } from "@/components/site/FormationDetail";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
 import { BlogArticle } from "@/components/site/BlogArticle";
 import { getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
 import { getPost, blogSlugs } from "@/lib/blog";
-import { getPostFromPayload } from "@/lib/payload-posts";
+import { getPostFromPayload, getRedirectFor } from "@/lib/payload-posts";
 
 // Fiches formation, fiches service ET articles de blog servis à la racine
 // (slugs hérités du site WordPress pour conserver le jus SEO).
@@ -26,9 +26,18 @@ export function generateStaticParams() {
   ];
 }
 
-// Récupère un article : Payload en priorité (live), repli fichier.
+// Récupère un article. Payload est la source de vérité :
+//  - un article publié est rendu (live) ;
+//  - `null` = article inexistant ou supprimé → on renvoie null (→ 404), pour
+//    qu'une suppression dans l'admin soit bien répercutée ;
+//  - une ERREUR = base injoignable → repli sur le fichier d'origine pour ne
+//    jamais renvoyer un 500 (aucune régression en cas de coupure).
 async function resolvePost(slug) {
-  return (await getPostFromPayload(slug)) || getPost(slug);
+  try {
+    return await getPostFromPayload(slug);
+  } catch {
+    return getPost(slug);
+  }
 }
 
 export async function generateMetadata({ params }) {
@@ -61,5 +70,12 @@ export default async function RootSlugPage({ params }) {
   if (service) return <ServiceDetail service={service} />;
   const post = await resolvePost(slug);
   if (post) return <BlogArticle post={post} />;
+  // Article inexistant/supprimé : une redirection gérée (créée dans l'admin,
+  // ex. à la suppression) peut exister — on l'applique en live avant le 404.
+  const red = await getRedirectFor(`/${slug}/`);
+  if (red) {
+    if (red.type === "302") redirect(red.to);
+    permanentRedirect(red.to);
+  }
   notFound();
 }

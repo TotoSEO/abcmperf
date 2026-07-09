@@ -151,3 +151,56 @@ a:hover {
   font-size: 1rem;
   line-height: 1;
 }
+
+/* ── Overlay « Supprimer et rediriger » ─────────────────────────────────── */
+.abcm-delredir__panel {
+  width: min(520px, 92vw);
+  margin: auto;
+  padding: 1.75rem;
+  border-radius: 14px;
+  background: var(--theme-elevation-0);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+.abcm-delredir__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+.abcm-delredir__intro {
+  margin: 0 0 1.25rem;
+  color: var(--theme-elevation-600);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.abcm-delredir__intro code {
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  background: var(--theme-elevation-100);
+  font-size: 0.85em;
+}
+.abcm-delredir__label {
+  display: block;
+  margin: 0.9rem 0 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--theme-elevation-700);
+}
+.abcm-delredir__input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: 8px;
+  background: var(--theme-input-bg, var(--theme-elevation-0));
+  color: var(--theme-elevation-800);
+  font-size: 0.9rem;
+}
+.abcm-delredir__input:focus-visible {
+  outline: 2px solid var(--abcm-accent);
+  outline-offset: 1px;
+}
+.abcm-delredir__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}

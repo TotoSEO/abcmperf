@@ -33,6 +33,15 @@ const nextConfig = {
   reactStrictMode: true,
   // Les URLs héritées de WordPress finissent par « / » — conservé pour le SEO.
   trailingSlash: true,
+  // Le repli fichier (content/blog/*.json), utilisé si la base est injoignable,
+  // s'exécute désormais au runtime (ISR) — pas seulement au build. On force donc
+  // l'inclusion de ces fichiers dans le bundle des fonctions serverless Vercel,
+  // sans quoi le repli renverrait une liste vide pendant une coupure base.
+  outputFileTracingIncludes: {
+    '/articles': ['./content/blog/**/*'],
+    '/[slug]': ['./content/blog/**/*'],
+    '/sitemap.xml': ['./content/blog/**/*'],
+  },
   async redirects() {
     return [
       // Point d'entrée du back-office : /admin-login → connexion Payload.
