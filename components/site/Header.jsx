@@ -32,7 +32,7 @@ function ServicesMega({ groups, open }) {
               <div className="mega__chead">
                 <span className="mega__cic"><Icon name={group.icon} size={18} /></span>
                 <span className="mega__cheads">
-                  <span className="mega__ctitle">{group.eyebrow}</span>
+                  <span className="mega__ctitle">{group.label}</span>
                 </span>
               </div>
               <ul className="mega__list">
@@ -150,7 +150,7 @@ export function Header() {
             <div className="site-menu__sub">
               {groups.map(({ group, items }) => (
                 <div className="site-menu__grp" key={group.id} style={{ "--_hue": `var(--logo-${group.hue})` }}>
-                  <p className="site-menu__grplabel">{group.eyebrow}</p>
+                  <p className="site-menu__grplabel">{group.label}</p>
                   {items.map((s) => (
                     <Link key={s.slug} href={`/${s.slug}/`} className="site-menu__sublink" onClick={closeMenu}>
                       <span className="site-menu__subdot" aria-hidden="true" />{s.name}
