@@ -5,14 +5,14 @@ import { assetPath } from "@/data/formations";
 
 const STATS = [
   { num: "+10", label: "ans d'expérience" },
-  { num: "9", label: "experts dédiés" },
+  { num: "8", label: "experts dédiés" },
   { num: "360°", label: "de compétences" },
-  { num: "65+", label: "projets réalisés" },
+  { num: "100+", label: "projets réalisés" },
 ];
 
 const ADVANTAGES = [
   { icon: "map-pin", title: "Ancrage strasbourgeois", text: "Une agence locale spécialisée en stratégie de communication et marketing digital." },
-  { icon: "users", title: "Une équipe d'experts", text: "9 collaborateurs, chacun œuvrant dans son domaine de prédilection." },
+  { icon: "users", title: "Une équipe d'experts", text: "8 experts, chacun œuvrant dans son domaine de prédilection." },
   { icon: "clock", title: "Réactivité à toute épreuve", text: "Nous répondons rapidement à l'ensemble de vos demandes." },
   { icon: "target", title: "Approche à 360°", text: "Web, e-commerce, SEO, SEA, publicités, réseaux sociaux et formation." },
 ];

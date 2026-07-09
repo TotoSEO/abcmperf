@@ -52,7 +52,7 @@ export default function ModalitesPage() {
           <h2>Accessibilité</h2>
           <p>Nous accueillons tout type de public et sans distinction.</p>
           <p>Cependant, si vous êtes en situation de handicap, vous pouvez être amené à avoir besoin d'un accompagnement spécifique ou d'une aide adaptée.</p>
-          <p>Afin d'organiser votre venue dans les meilleures conditions et de nous assurer que les moyens de la prestation de formation peuvent être adaptés à vos besoins spécifiques, vous pouvez nous contacter au 06 33 07 28 53 ou par mail info@abcmperformances.com</p>
+          <p>Afin d'organiser votre venue dans les meilleures conditions et de nous assurer que les moyens de la prestation de formation peuvent être adaptés à vos besoins spécifiques, vous pouvez nous contacter au 09 83 53 20 25 ou par mail info@abcmperformances.com</p>
 
           <h2>Le déroulé d'une formation</h2>
           <h3>En amont de la formation</h3>

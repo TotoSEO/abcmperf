@@ -8,7 +8,7 @@ const LOGOS = [
   { slug: "caisse-epargne", name: "Caisse d'Épargne" },
   { slug: "pierre-lannier", name: "Pierre Lannier" },
   { slug: "crcc", name: "CRCC" },
-  { slug: "welch-kessler", name: "Welch Kessler" },
+  { slug: "wera-tools", name: "Wera Tools" },
 ];
 
 export function Clients() {

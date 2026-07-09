@@ -248,7 +248,7 @@ export function ServiceDetail({ service }) {
               <div className="svcd2-formation__body">
                 <span className="svcd2-formation__kicker">Vous préférez gagner en autonomie&nbsp;?</span>
                 <h2 className="svcd2-formation__h">{s.relatedFormation.label}</h2>
-                <p>Formez vos équipes en présentiel à Strasbourg ou à distance. Formation finançable par votre OPCO, organisme certifié Qualiopi.</p>
+                <p>Formez vos équipes en présentiel à Strasbourg ou à distance. Formation finançable par votre OPCO.</p>
               </div>
               <Link href={s.relatedFormation.url} className="svcd2-formation__link">Voir la formation <Icon name="arrow-right" size={16} /></Link>
             </div>
