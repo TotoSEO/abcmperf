@@ -66,10 +66,13 @@ export function AgencyMap({
             </div>
           </div>
           <div className="agencymap__map">
+            {/* loading="eager" : un iframe lazy ajouté lors d'une navigation SPA
+                ne se déclenche pas toujours sans scroll — la carte reste « plate »
+                tant qu'on ne recharge pas. */}
             <iframe
               title="Carte de localisation d'ABCM Performances à Strasbourg"
               src={EMBED}
-              loading="lazy"
+              loading="eager"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />

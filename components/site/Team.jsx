@@ -3,15 +3,17 @@ import Link from "next/link";
 import { Icon } from "@/components/ds";
 import { assetPath } from "@/data/formations";
 
-// Panneaux "accordéon" : au survol, la carte grandit et réduit les autres.
-// Audrey Braun (photo réelle) + les pôles d'expertise de l'agence.
+// Panneaux « accordéon » : au survol, la carte grandit et réduit les autres.
+// L'équipe : 8 experts (photo réelle, nom et fonction).
 const MEMBERS = [
-  { kind: "person", title: "Audrey Braun", role: "Formatrice experte certifiée", photo: "audrey-braun.png", hue: "green", text: "Anime nos formations Qualiopi, en présentiel à Strasbourg ou à distance." },
-  { icon: "target", hue: "magenta", title: "Stratégie & direction", text: "On cadre votre stratégie, on priorise les actions et on pilote l'ensemble du projet." },
-  { icon: "monitor", hue: "blue", title: "Web & e-commerce", text: "Des sites rapides, sur-mesure et pensés pour convertir vos visiteurs en clients." },
-  { icon: "search", hue: "green", title: "Référencement SEO & GEO", text: "On vous rend visible sur Google et dans les moteurs de réponse par IA." },
-  { icon: "megaphone", hue: "orange", title: "Réseaux sociaux & vidéo", text: "Contenus, animation et vidéos qui font vivre votre marque au quotidien." },
-  { icon: "line-chart", hue: "yellow", title: "Publicité & acquisition", text: "Des campagnes Google Ads et social ads pilotées au retour sur investissement." },
+  { kind: "person", title: "Caroline", role: "Founder & CEO", photo: "team/caroline.webp", hue: "magenta", text: "Cofondatrice : vision, stratégie et direction de l'agence." },
+  { kind: "person", title: "Audrey", role: "Founder & CEO", photo: "team/audrey.webp", hue: "green", text: "Cofondatrice : pilotage des projets et relation client." },
+  { kind: "person", title: "Thomas", role: "Communication & IA", photo: "team/thomas.webp", hue: "orange", text: "Communication et intelligence artificielle au service de votre visibilité." },
+  { kind: "person", title: "Anto", role: "Webdesigner", photo: "team/anto.webp", hue: "blue", text: "Conçoit des interfaces soignées, modernes et pensées pour convertir." },
+  { kind: "person", title: "Johan", role: "Développeur Web", photo: "team/johan.webp", hue: "magenta", text: "Développe des sites rapides, robustes et sur-mesure." },
+  { kind: "person", title: "Patrice", role: "SEO · SEA", photo: "team/patrice.webp", hue: "green", text: "Référencement naturel et campagnes payantes pilotées au ROI." },
+  { kind: "person", title: "Sakhavat", role: "SEO · SEA", photo: "team/sakhavat.webp", hue: "yellow", text: "Optimise votre présence sur Google, en organique comme en publicité." },
+  { kind: "person", title: "Jérôme", role: "Développeur Web", photo: "team/jerome.webp", hue: "blue", text: "Intègre et développe vos projets web avec exigence." },
 ];
 
 export function Team() {
@@ -35,14 +37,9 @@ export function Team() {
 
         <div className="team-acc" data-reveal>
           {MEMBERS.map((m) => (
-            <article className={"ta" + (m.kind === "person" ? " ta--person" : "")} key={m.title} style={{ "--_hue": `var(--logo-${m.hue})` }}>
-              <span className="ta__top">
-                {m.kind === "person" ? (
-                  <span className="ta__photo"><img src={assetPath(m.photo)} alt={m.title} loading="lazy" /></span>
-                ) : (
-                  <span className="ta__ic"><Icon name={m.icon} size={26} /></span>
-                )}
-              </span>
+            <article className="ta ta--person" key={m.title} style={{ "--_hue": `var(--logo-${m.hue})` }}>
+              <img className="ta__bg" src={assetPath(m.photo)} alt={`${m.title} — ${m.role}`} loading="lazy" />
+              <span className="ta__tint" aria-hidden="true" />
               <span className="ta__vlabel">{m.title}</span>
               <div className="ta__reveal">
                 <span className="ta__title">{m.title}</span>

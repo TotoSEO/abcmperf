@@ -1536,19 +1536,19 @@
 
 /* Accordéon : au survol d'une carte elle grandit et les autres se réduisent. */
 .team-acc { display: flex; gap: var(--space-3); margin-top: clamp(var(--space-8), 4vw, var(--space-10)); height: clamp(340px, 42vw, 440px); }
-.ta { --_hue: var(--logo-blue); position: relative; flex: 1; min-width: 0; border-radius: var(--radius-xl); overflow: hidden; cursor: default; color: #fff; background: linear-gradient(162deg, color-mix(in srgb, var(--_hue) 90%, #fff), color-mix(in srgb, var(--_hue) 60%, #17111f)); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--_hue) 60%, transparent); transition: flex 0.55s var(--ease-out), box-shadow 0.55s var(--ease-out); }
-.ta::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,10,22,0.05) 0%, transparent 30%, rgba(15,10,22,0.55) 100%); z-index: 1; }
-.ta > * { position: relative; z-index: 2; }
+.ta { --_hue: var(--logo-blue); position: relative; flex: 1; min-width: 0; border-radius: var(--radius-xl); overflow: hidden; cursor: default; color: #fff; background: color-mix(in srgb, var(--_hue) 72%, #17111f); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--_hue) 60%, transparent); transition: flex 0.55s var(--ease-out), box-shadow 0.55s var(--ease-out); }
+/* Photo plein cadre + teinte de marque (duotone) : l'image remplit toute la
+   carte et la teinte conserve l'identité colorée de l'accordéon. */
+.ta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; z-index: 0; }
+.ta__tint { position: absolute; inset: 0; z-index: 1; background: linear-gradient(168deg, color-mix(in srgb, var(--_hue) 82%, transparent) 0%, color-mix(in srgb, var(--_hue) 40%, transparent) 52%, transparent 100%); mix-blend-mode: multiply; pointer-events: none; }
+.ta::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(15,10,22,0.10) 0%, transparent 34%, rgba(15,10,22,0.68) 100%); }
+.ta__vlabel, .ta__reveal { z-index: 3; }
 @media (hover: hover) {
   .team-acc:hover .ta { flex: 0.72; }
   /* Sélecteur plus spécifique (0,4,0) que la règle de réduction (0,3,0)
      pour que la carte survolée grandisse bien au lieu de rétrécir. */
   .team-acc:hover .ta:hover { flex: 3.4; box-shadow: 0 26px 50px -22px color-mix(in srgb, var(--_hue) 70%, transparent); }
 }
-.ta__top { position: absolute; top: var(--space-5); left: var(--space-5); }
-.ta__ic { width: 3em; height: 3em; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(4px); }
-.ta__photo { display: block; width: 3.4em; height: 3.4em; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.6); box-shadow: 0 8px 18px -8px rgba(0,0,0,0.5); }
-.ta__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .ta__vlabel { position: absolute; bottom: var(--space-5); left: 50%; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); letter-spacing: 0.01em; white-space: nowrap; text-shadow: 0 2px 10px rgba(0,0,0,0.35); transition: opacity 0.3s var(--ease-out); }
 .ta__reveal { position: absolute; inset: auto var(--space-5) var(--space-5) var(--space-5); display: flex; flex-direction: column; gap: 4px; opacity: 0; transform: translateY(10px); transition: opacity 0.45s var(--ease-out) 0.08s, transform 0.45s var(--ease-out) 0.08s; }
 .ta__title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); line-height: 1.1; text-shadow: 0 2px 10px rgba(0,0,0,0.35); }
@@ -1566,18 +1566,12 @@
 .team__cta p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); color: var(--text); }
 .team__link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--logo-magenta); transition: gap var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out); }
 .team__link:hover { color: var(--logo-orange); gap: 0.6em; }
-/* Sous 820px : l'accordéon horizontal devient une pile de cartes lisibles. */
+/* Sous 820px : l'accordéon horizontal devient une pile de cartes photo. */
 @media (max-width: 820px) {
-  .team-acc { flex-direction: column; height: auto; gap: var(--space-3); }
-  .ta, .team-acc:hover .ta, .ta:hover { flex: 1 1 auto; }
-  .ta { min-height: 0; padding: var(--space-6) var(--space-6) var(--space-6) 5.4em; }
-  .ta__top { top: 50%; transform: translateY(-50%); }
+  .team-acc { flex-direction: column; height: auto; gap: var(--space-4); }
+  .ta, .team-acc:hover .ta, .ta:hover { flex: 1 1 auto; min-height: 380px; }
   .ta__vlabel { display: none; }
-  .ta__reveal { position: static; inset: auto; opacity: 1; transform: none; }
-}
-@media (max-width: 820px) and (max-width: 380px) {
-  .ta { padding-left: var(--space-6); }
-  .ta__top { position: static; transform: none; margin-bottom: var(--space-3); }
+  .ta__reveal { opacity: 1; transform: none; }
 }
 
 /* ---- Pourquoi nous : ronds décoratifs + photo locale ---- */
