@@ -128,14 +128,36 @@ function buildJsonLd(f) {
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
-export function FormationDetail({ formation, h1Override = "", contentHtml = "" }) {
-  const f = formation;
+// Fusionne la fiche codée en dur avec le contenu édité dans le back-office
+// (collection Pages). Chaque champ vide de l'override conserve la valeur
+// d'origine (repli), de sorte qu'une fiche Payload partielle ne casse rien.
+function mergeFormation(f, fo) {
+  if (!fo) return f;
+  return {
+    ...f,
+    lead: fo.lead || f.lead,
+    duree: fo.duree || f.duree,
+    public: fo.public || f.public,
+    prerequis: fo.prerequis || f.prerequis,
+    modalites: fo.modalites || f.modalites,
+    financement: fo.financement || f.financement,
+    objectifs: fo.objectifs && fo.objectifs.length ? fo.objectifs : f.objectifs,
+    programme: fo.programme && fo.programme.length ? fo.programme : f.programme,
+    tarifs: fo.tarifs && fo.tarifs.length ? fo.tarifs : f.tarifs,
+    faq: fo.faq && fo.faq.length ? fo.faq : f.faq,
+  };
+}
+
+export function FormationDetail({ formation, fo = null, h1Override = "", contentHtml = "" }) {
+  const f = mergeFormation(formation, fo);
+  const _h1 = (fo && fo.h1) || h1Override || "";
+  const _contentHtml = (fo && fo.contentHtml) || contentHtml || "";
   const silo = getSilo(f.silo);
   const related = relatedFor(f);
   const tarifs = f.tarifs || STD_TARIFS;
   const jsonLd = buildJsonLd(f);
   const content = formationContent(f.slug);
-  const priceStr = formationPriceFrom(f).toLocaleString("fr-FR");
+  const priceStr = (fo && fo.prix != null ? fo.prix : formationPriceFrom(formation)).toLocaleString("fr-FR");
   const stars = Array.from({ length: ABCM_INFO.googleStars });
 
   const facts = [
@@ -169,7 +191,7 @@ export function FormationDetail({ formation, h1Override = "", contentHtml = "" }
               <span aria-hidden="true">/</span>
               <span className="fmt__crumb-current">{f.name}</span>
             </nav>
-            <h1 className="fmt-hero__title">{renderTitle(h1Override || f.title)}</h1>
+            <h1 className="fmt-hero__title">{renderTitle(_h1 || f.title)}</h1>
             <p className="fmt-hero__sub">Avec une formatrice experte, en présentiel à Strasbourg ou à distance.</p>
             <p className="fmt-hero__lead">{f.lead}</p>
           </div>
@@ -206,8 +228,8 @@ export function FormationDetail({ formation, h1Override = "", contentHtml = "" }
         <div className="container fmt__grid">
           <div className="fmt__main">
             {/* Contenu éditorial piloté depuis le back-office (collection Pages). */}
-            {contentHtml ? (
-              <div className="rich fmt__cms" data-reveal dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            {_contentHtml ? (
+              <div className="rich fmt__cms" data-reveal dangerouslySetInnerHTML={{ __html: _contentHtml }} />
             ) : null}
             {/* Objectifs */}
             <header className="fmt-head" data-reveal>

@@ -6,7 +6,7 @@ import type { Payload } from 'payload'
 
 import { contentEditor } from '@/lib/payload/editor'
 import { ABCM_SERVICES, serviceMetadata } from '@/data/services'
-import { rootFormationSlugs, getFormation, formationMetadata } from '@/data/formations'
+import { rootFormationSlugs, getFormation, formationMetadata, formationPriceFrom } from '@/data/formations'
 
 type SeedOpts = {
   payload: Payload
@@ -244,6 +244,23 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
       seoTitle: titleStr(md.title),
       metaDescription: md.description || '',
       h1: f?.title || '',
+      // Contenu structuré de la fiche formation, repris tel quel de l'existant.
+      formationContent: {
+        lead: f?.lead || '',
+        prix: f ? formationPriceFrom(f) : undefined,
+        duree: f?.duree || '',
+        public: f?.public || '',
+        prerequis: f?.prerequis || '',
+        modalites: f?.modalites || '',
+        financement: f?.financement || '',
+        objectifs: (f?.objectifs || []).map((o: string) => ({ objectif: o })),
+        programme: (f?.programme || []).map((m: any) => ({
+          module: m?.module || '',
+          points: (m?.points || []).map((p: string) => ({ point: p })),
+        })),
+        tarifs: (f?.tarifs || []).map((t: string) => ({ tarif: t })),
+        faq: (f?.faq || []).map((x: any) => ({ question: x?.q || '', reponse: x?.a || '' })),
+      },
     }
   })
 
@@ -252,15 +269,22 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
       collection: 'pages',
       where: { path: { equals: p.path } },
       limit: 1,
-      depth: 0,
+      depth: 2,
     })
     if (existing.docs.length) {
       const cur: any = existing.docs[0]
       const data: any = { title: p.title, pageType: p.pageType }
-      // fill-only-empty : ne jamais écraser une valeur SEO éditée dans l'admin.
+      // fill-only-empty : ne jamais écraser une valeur éditée dans l'admin.
       if (p.seoTitle && !cur.seoTitle) data.seoTitle = p.seoTitle
       if (p.metaDescription && !cur.metaDescription) data.metaDescription = p.metaDescription
       if (p.h1 && !cur.h1) data.h1 = p.h1
+      // Contenu formation : peuplé uniquement s'il n'a jamais été renseigné.
+      if (p.formationContent) {
+        const curFC: any = cur.formationContent || {}
+        const alreadyFilled =
+          (Array.isArray(curFC.programme) && curFC.programme.length > 0) || Boolean(curFC.lead)
+        if (!alreadyFilled) data.formationContent = p.formationContent
+      }
       return payload.update({ collection: 'pages', id: cur.id, data, overrideAccess: true, context: { seeding: true } })
     }
     return payload.create({
@@ -272,6 +296,7 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
         seoTitle: p.seoTitle || '',
         metaDescription: p.metaDescription || '',
         h1: p.h1 || '',
+        ...(p.formationContent ? { formationContent: p.formationContent } : {}),
       },
       overrideAccess: true,
       context: { seeding: true },

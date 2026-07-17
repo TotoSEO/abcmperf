@@ -85,12 +85,88 @@ export const Pages: CollectionConfig = {
         },
       ],
     },
+    // ── Contenu structuré d'une fiche FORMATION (affiché seulement pour les
+    // pages de type « formation »). Chaque champ laissé vide conserve la valeur
+    // actuelle du site (repli). ─────────────────────────────────────────────
+    {
+      type: 'collapsible',
+      label: 'Contenu de la formation',
+      admin: {
+        initCollapsed: false,
+        condition: (data) => data?.pageType === 'formation',
+        description:
+          'Pilote la fiche formation. Un champ vide = la valeur actuelle du site est conservée.',
+      },
+      fields: [
+        {
+          name: 'formationContent',
+          type: 'group',
+          label: false,
+          fields: [
+            { name: 'lead', type: 'textarea', label: 'Accroche (chapô sous le titre)' },
+            {
+              type: 'row',
+              fields: [
+                { name: 'prix', type: 'number', label: 'Prix « à partir de » (€ HT / pers.)', admin: { width: '33%' } },
+                { name: 'duree', type: 'text', label: 'Durée', admin: { width: '33%' } },
+                { name: 'public', type: 'text', label: 'Public visé', admin: { width: '34%' } },
+              ],
+            },
+            { name: 'prerequis', type: 'text', label: 'Prérequis' },
+            {
+              name: 'objectifs',
+              type: 'array',
+              label: 'Objectifs pédagogiques',
+              labels: { singular: 'objectif', plural: 'objectifs' },
+              fields: [{ name: 'objectif', type: 'text', required: true }],
+            },
+            {
+              name: 'programme',
+              type: 'array',
+              label: 'Programme (modules)',
+              labels: { singular: 'module', plural: 'modules' },
+              admin: { description: 'Le déroulé de la formation, module par module.' },
+              fields: [
+                { name: 'module', type: 'text', required: true, label: 'Titre du module' },
+                {
+                  name: 'points',
+                  type: 'array',
+                  label: 'Points abordés',
+                  labels: { singular: 'point', plural: 'points' },
+                  fields: [{ name: 'point', type: 'text', required: true }],
+                },
+              ],
+            },
+            { name: 'modalites', type: 'textarea', label: 'Modalités (paragraphe)' },
+            { name: 'financement', type: 'textarea', label: 'Financement (encart)' },
+            {
+              name: 'tarifs',
+              type: 'array',
+              label: 'Tarifs (HT)',
+              labels: { singular: 'tarif', plural: 'tarifs' },
+              fields: [{ name: 'tarif', type: 'text', required: true }],
+            },
+            {
+              name: 'faq',
+              type: 'array',
+              label: 'FAQ',
+              labels: { singular: 'question', plural: 'questions' },
+              fields: [
+                { name: 'question', type: 'text', required: true },
+                { name: 'reponse', type: 'textarea', required: true },
+              ],
+            },
+          ],
+        },
+      ],
+    },
     {
       name: 'content',
       type: 'richText',
-      label: 'Contenu (optionnel)',
+      label: 'Contenu éditorial (SEO)',
       admin: {
-        description: 'Utilisé pour les pages classiques éditables via le CMS.',
+        description:
+          'Bloc de contenu rédactionnel affiché sur la page (pages classiques, et en tête de corps des fiches service/formation).',
       },
     },
   ],

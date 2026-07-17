@@ -141,8 +141,51 @@ export interface Page {
   metaDescription?: string | null;
   h1?: string | null;
   noindex?: boolean | null;
+  formationContent?: {
+    lead?: string | null;
+    prix?: number | null;
+    duree?: string | null;
+    public?: string | null;
+    prerequis?: string | null;
+    objectifs?:
+      | {
+          objectif: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Le déroulé de la formation, module par module.
+     */
+    programme?:
+      | {
+          module: string;
+          points?:
+            | {
+                point: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    modalites?: string | null;
+    financement?: string | null;
+    tarifs?:
+      | {
+          tarif: string;
+          id?: string | null;
+        }[]
+      | null;
+    faq?:
+      | {
+          question: string;
+          reponse: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   /**
-   * Utilisé pour les pages classiques éditables via le CMS.
+   * Bloc de contenu rédactionnel affiché sur la page (pages classiques, et en tête de corps des fiches service/formation).
    */
   content?: {
     root: {
@@ -427,6 +470,48 @@ export interface PagesSelect<T extends boolean = true> {
   metaDescription?: T;
   h1?: T;
   noindex?: T;
+  formationContent?:
+    | T
+    | {
+        lead?: T;
+        prix?: T;
+        duree?: T;
+        public?: T;
+        prerequis?: T;
+        objectifs?:
+          | T
+          | {
+              objectif?: T;
+              id?: T;
+            };
+        programme?:
+          | T
+          | {
+              module?: T;
+              points?:
+                | T
+                | {
+                    point?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        modalites?: T;
+        financement?: T;
+        tarifs?:
+          | T
+          | {
+              tarif?: T;
+              id?: T;
+            };
+        faq?:
+          | T
+          | {
+              question?: T;
+              reponse?: T;
+              id?: T;
+            };
+      };
   content?: T;
   updatedAt?: T;
   createdAt?: T;

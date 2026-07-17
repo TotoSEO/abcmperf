@@ -53,6 +53,65 @@ export const getPageOverride = cache(async (path: string): Promise<PageOverride 
   }
 })
 
+// Contenu structuré d'une fiche FORMATION piloté depuis le back-office.
+// Renvoie un objet dont chaque champ est vide/null s'il n'a pas été renseigné
+// (le composant applique alors un repli sur la valeur codée en dur). null si la
+// page n'existe pas ou en cas d'erreur (repli complet).
+export const getFormationOverride = cache(async (path: string) => {
+  try {
+    const payload = await getPayload({ config })
+    const res = await payload.find({
+      collection: 'pages',
+      where: { path: { equals: path } },
+      limit: 1,
+      depth: 2,
+    })
+    const doc: any = res.docs?.[0]
+    if (!doc) return null
+    const fc: any = doc.formationContent || {}
+
+    let contentHtml = ''
+    if (doc.content?.root) {
+      try {
+        contentHtml = (await renderLexicalToHtml(doc.content)) || ''
+      } catch {
+        contentHtml = ''
+      }
+    }
+
+    return {
+      h1: (doc.h1 || '').trim(),
+      contentHtml,
+      lead: (fc.lead || '').trim(),
+      prix: typeof fc.prix === 'number' ? fc.prix : null,
+      duree: (fc.duree || '').trim(),
+      public: (fc.public || '').trim(),
+      prerequis: (fc.prerequis || '').trim(),
+      modalites: (fc.modalites || '').trim(),
+      financement: (fc.financement || '').trim(),
+      objectifs: Array.isArray(fc.objectifs)
+        ? fc.objectifs.map((o: any) => o?.objectif).filter(Boolean)
+        : [],
+      programme: Array.isArray(fc.programme)
+        ? fc.programme
+            .map((m: any) => ({
+              module: m?.module || '',
+              points: Array.isArray(m?.points) ? m.points.map((p: any) => p?.point).filter(Boolean) : [],
+            }))
+            .filter((m: any) => m.module)
+        : [],
+      tarifs: Array.isArray(fc.tarifs)
+        ? fc.tarifs.map((t: any) => t?.tarif).filter(Boolean)
+        : [],
+      faq: Array.isArray(fc.faq)
+        ? fc.faq.map((x: any) => ({ q: x?.question || '', a: x?.reponse || '' })).filter((x: any) => x.q && x.a)
+        : [],
+    }
+  } catch {
+    return null
+  }
+})
+
 // Applique l'override d'une page Payload sur un objet Metadata Next existant :
 // seoTitle → title (template « %s | ABCM » conservé), metaDescription →
 // description (y compris OpenGraph), noindex → robots. Ne touche à rien si le

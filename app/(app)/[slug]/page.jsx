@@ -6,7 +6,7 @@ import { getFormation, rootFormationSlugs, formationMetadata } from "@/data/form
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
 import { getPost, blogSlugs } from "@/lib/blog";
 import { getPostFromPayload, getRedirectFor } from "@/lib/payload-posts";
-import { getPageOverride, withPageOverride } from "@/lib/payload-pages";
+import { getPageOverride, getFormationOverride, withPageOverride } from "@/lib/payload-pages";
 
 // Fiches formation, fiches service ET articles de blog servis à la racine
 // (slugs hérités du site WordPress pour conserver le jus SEO).
@@ -69,8 +69,8 @@ export default async function RootSlugPage({ params }) {
   const { slug } = await params;
   const formation = getFormation(slug);
   if (formation) {
-    const o = await getPageOverride(`/${slug}/`);
-    return <FormationDetail formation={formation} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
+    const fo = await getFormationOverride(`/${slug}/`);
+    return <FormationDetail formation={formation} fo={fo} />;
   }
   const service = getService(slug);
   if (service) {
