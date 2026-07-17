@@ -135,6 +135,10 @@ function mergeFormation(f, fo) {
   if (!fo) return f;
   return {
     ...f,
+    // Le prix « à partir de » édité dans le back-office prime et devient le
+    // priceFrom de la fiche : il alimente donc AUSSI les données structurées
+    // (JSON-LD Course/Offer), pas seulement l'affichage.
+    priceFrom: fo.prix != null ? fo.prix : f.priceFrom,
     lead: fo.lead || f.lead,
     duree: fo.duree || f.duree,
     public: fo.public || f.public,
@@ -157,7 +161,9 @@ export function FormationDetail({ formation, fo = null, h1Override = "", content
   const tarifs = f.tarifs || STD_TARIFS;
   const jsonLd = buildJsonLd(f);
   const content = formationContent(f.slug);
-  const priceStr = (fo && fo.prix != null ? fo.prix : formationPriceFrom(formation)).toLocaleString("fr-FR");
+  // f.priceFrom intègre déjà l'override back-office (cf. mergeFormation), donc
+  // l'affichage et le JSON-LD partagent la même source de vérité.
+  const priceStr = formationPriceFrom(f).toLocaleString("fr-FR");
   const stars = Array.from({ length: ABCM_INFO.googleStars });
 
   const facts = [
@@ -227,10 +233,6 @@ export function FormationDetail({ formation, fo = null, h1Override = "", content
       <section className="section fmt-body">
         <div className="container fmt__grid">
           <div className="fmt__main">
-            {/* Contenu éditorial piloté depuis le back-office (collection Pages). */}
-            {_contentHtml ? (
-              <div className="rich fmt__cms" data-reveal dangerouslySetInnerHTML={{ __html: _contentHtml }} />
-            ) : null}
             {/* Objectifs */}
             <header className="fmt-head" data-reveal>
               <span className="eyebrow">Objectifs pédagogiques</span>
@@ -317,14 +319,23 @@ export function FormationDetail({ formation, fo = null, h1Override = "", content
         </div>
       </section>
 
-      {/* ---- Contenu sémantique éditorial (pleine largeur) ---- */}
-      {content && (
+      {/* ---- Contenu sémantique éditorial (mini-article SEO, pleine largeur) ----
+              Édité depuis le back-office (collection Pages, champ « Contenu
+              éditorial »). Repli sur le contenu fichier si la fiche Payload est
+              vide ou la base injoignable. ---- */}
+      {_contentHtml ? (
+        <section className="section fmt-rich-wrap">
+          <div className="container">
+            <div dangerouslySetInnerHTML={{ __html: _contentHtml }} />
+          </div>
+        </section>
+      ) : content ? (
         <section className="section fmt-rich-wrap">
           <div className="container">
             <RichContent content={content} />
           </div>
         </section>
-      )}
+      ) : null}
 
       {/* ---- Qualiopi (pleine largeur) ---- */}
       <section className="section fmt-trust">

@@ -3,6 +3,7 @@ import { cache } from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { renderLexicalToHtml } from '@/lib/lexical-html'
+import { renderFormationEditorialToHtml } from '@/lib/formation-editorial-html'
 
 export type PageOverride = {
   seoTitle: string
@@ -73,7 +74,7 @@ export const getFormationOverride = cache(async (path: string) => {
     let contentHtml = ''
     if (doc.content?.root) {
       try {
-        contentHtml = (await renderLexicalToHtml(doc.content)) || ''
+        contentHtml = (await renderFormationEditorialToHtml(doc.content)) || ''
       } catch {
         contentHtml = ''
       }

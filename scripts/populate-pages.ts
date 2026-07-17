@@ -12,10 +12,36 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { ABCM_SERVICES, serviceMetadata } from '@/data/services'
-import { rootFormationSlugs, getFormation, formationMetadata, formationPriceFrom } from '@/data/formations'
+import {
+  rootFormationSlugs, getFormation, formationMetadata, formationPriceFrom,
+  STD_MODALITES, STD_FINANCEMENT, STD_TARIFS, STD_PREREQUIS,
+} from '@/data/formations'
+import { formationContent } from '@/data/formationContent'
+import { formationContentToLexical } from '@/lib/formation-content-to-lexical'
 
 const log = (m: string) => process.stderr.write(m + '\n')
 const titleStr = (t: any): string => (typeof t === 'string' ? t : t?.absolute || '')
+
+// Un champ est « vide » (donc à compléter) s'il est null/undefined, une chaîne
+// vide ou un tableau vide. Un nombre (0 inclus) ou un objet non vide comptent
+// comme renseignés.
+const isEmptyValue = (v: any): boolean => {
+  if (v === null || v === undefined) return true
+  if (typeof v === 'string') return v.trim() === ''
+  if (Array.isArray(v)) return v.length === 0
+  return false
+}
+
+// Un contenu richText Lexical est « rempli » s'il contient au moins un nœud
+// non vide (autre chose qu'un unique paragraphe vide).
+const hasRichContent = (c: any): boolean => {
+  const kids = c?.root?.children
+  if (!Array.isArray(kids) || kids.length === 0) return false
+  return kids.some((n: any) => {
+    if (n?.type === 'paragraph') return Array.isArray(n.children) && n.children.length > 0
+    return Boolean(n?.type)
+  })
+}
 
 const staticPages: any[] = [
   { path: '/', title: 'Accueil', pageType: 'classique' },
@@ -46,23 +72,29 @@ const servicePages = ABCM_SERVICES.map((s: any) => {
 const formationPages = rootFormationSlugs().map((slug: string) => {
   const f: any = getFormation(slug)
   const md: any = formationMetadata(slug)
+  // Contenu éditorial « mini-article » (après le bloc formatrice) converti en
+  // Lexical, pour être repris et édité dans le back-office comme un article.
+  const editorial = formationContentToLexical(formationContent(slug))
   return {
     path: `/${slug}/`, title: f?.title || slug, pageType: 'formation',
     seoTitle: titleStr(md.title), metaDescription: md.description || '', h1: f?.title || '',
+    ...(editorial ? { content: editorial } : {}),
     formationContent: {
       lead: f?.lead || '',
       prix: f ? formationPriceFrom(f) : undefined,
       duree: f?.duree || '',
       public: f?.public || '',
-      prerequis: f?.prerequis || '',
-      modalites: f?.modalites || '',
-      financement: f?.financement || '',
+      // Ces champs utilisent des standards partagés en repli sur le site : on
+      // les reprend tels quels pour que le back-office ne soit jamais vide.
+      prerequis: f?.prerequis || STD_PREREQUIS,
+      modalites: f?.modalites || STD_MODALITES,
+      financement: f?.financement || STD_FINANCEMENT,
       objectifs: (f?.objectifs || []).map((o: string) => ({ objectif: o })),
       programme: (f?.programme || []).map((m: any) => ({
         module: m?.module || '',
         points: (m?.points || []).map((p: string) => ({ point: p })),
       })),
-      tarifs: (f?.tarifs || []).map((t: string) => ({ tarif: t })),
+      tarifs: (f?.tarifs || STD_TARIFS).map((t: string) => ({ tarif: t })),
       faq: (f?.faq || []).map((x: any) => ({ question: x?.q || '', reponse: x?.a || '' })),
     },
   }
@@ -78,10 +110,20 @@ try {
       if (p.seoTitle && !cur.seoTitle) data.seoTitle = p.seoTitle
       if (p.metaDescription && !cur.metaDescription) data.metaDescription = p.metaDescription
       if (p.h1 && !cur.h1) data.h1 = p.h1
+      // Contenu éditorial (richText) : rempli seulement s'il est vide (jamais
+      // écrasé si un rédacteur l'a déjà édité dans le back-office).
+      if (p.content && !hasRichContent(cur.content)) data.content = p.content
       if (p.formationContent) {
+        // Fill-only-empty champ par champ : on complète chaque valeur manquante
+        // (ex. modalités/financement/tarifs restés vides), sans toucher à ce qui
+        // a déjà été saisi.
         const curFC: any = cur.formationContent || {}
-        const already = (Array.isArray(curFC.programme) && curFC.programme.length > 0) || Boolean(curFC.lead)
-        if (!already) data.formationContent = p.formationContent
+        const merged: any = {}
+        let changed = false
+        for (const [k, v] of Object.entries(p.formationContent)) {
+          if (isEmptyValue(curFC[k]) && !isEmptyValue(v)) { merged[k] = v; changed = true }
+        }
+        if (changed) data.formationContent = { ...curFC, ...merged }
       }
       return payload.update({ collection: 'pages', id: cur.id, data, overrideAccess: true, context: { seeding: true } })
     }
@@ -90,6 +132,7 @@ try {
       data: {
         path: p.path, title: p.title, pageType: p.pageType,
         seoTitle: p.seoTitle || '', metaDescription: p.metaDescription || '', h1: p.h1 || '',
+        ...(p.content ? { content: p.content } : {}),
         ...(p.formationContent ? { formationContent: p.formationContent } : {}),
       },
       overrideAccess: true, context: { seeding: true },

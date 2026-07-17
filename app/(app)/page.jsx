@@ -9,6 +9,7 @@ import { FormationsPromo } from "@/components/site/FormationsPromo";
 import { WhyUs } from "@/components/site/WhyUs";
 import { LatestArticles } from "@/components/site/LatestArticles";
 import { AgencyMap } from "@/components/site/AgencyMap";
+import { homeJsonLd } from "@/lib/site-jsonld";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -17,6 +18,10 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd()) }}
+      />
       <ScrollReveal />
       <Hero />
       <Clients />
