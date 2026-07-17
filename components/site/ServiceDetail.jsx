@@ -85,7 +85,7 @@ function buildJsonLd(s, faqs) {
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
-export function ServiceDetail({ service }) {
+export function ServiceDetail({ service, h1Override = "", contentHtml = "" }) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const s = service || ABCM_SERVICES[0];
   const group = SERVICE_GROUPS.find((g) => g.id === s.group);
@@ -129,7 +129,7 @@ export function ServiceDetail({ service }) {
             <span className="svcd2-crumbs__current">{s.name}</span>
           </nav>
           <span className="svcd2-hero__eyebrow"><Icon name={group ? group.icon : "sparkles"} size={16} /> {group ? group.label : "Expertise"}</span>
-          <h1 className="svcd2-hero__title">{s.title}</h1>
+          <h1 className="svcd2-hero__title">{h1Override || s.title}</h1>
           <p className="svcd2-hero__lead">{s.tagline}</p>
           <ul className="svcd2-hero__points">
             <li><Icon name="check" size={16} /> Agence à taille humaine à Strasbourg</li>
@@ -146,6 +146,15 @@ export function ServiceDetail({ service }) {
 
       {/* ---- Corps : sections alternées ---- */}
       <div className="svcd2-body">
+        {/* Contenu éditorial piloté depuis le back-office (collection Pages),
+            affiché en tête de corps quand la fiche Payload en contient. */}
+        {contentHtml ? (
+          <section className="svcd2-sec">
+            <div className="container container-narrow svcd2-sec__inner" data-reveal>
+              <div className="svcd2-rich rich" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          </section>
+        ) : null}
         {bodySections.map((sec, i) => (
           <React.Fragment key={i}>
             <section className={"svcd2-sec" + (i % 2 === 1 ? " svcd2-sec--tint" : "")}>

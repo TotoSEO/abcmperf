@@ -1,21 +1,26 @@
 import { FormationsHub } from "@/components/site/FormationsHub";
+import { withPageOverride } from "@/lib/payload-pages";
 
-export const metadata = {
-  title: "Formations digitales & IA à Strasbourg",
-  description:
-    "18 formations professionnelles à Strasbourg et en visio : IA, réseaux sociaux, marketing digital, web et marque employeur. Qualiopi, financement OPCO.",
-  keywords: ["formation Strasbourg", "formation marketing digital Strasbourg", "formation IA", "formation réseaux sociaux", "Qualiopi", "OPCO"],
-  alternates: { canonical: "/formations-strasbourg/" },
-  openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    siteName: "ABCM Performances",
-    title: "Formations à Strasbourg | ABCM Performances",
+// Métadonnées codées en dur, surchargées en live par la fiche Payload
+// (collection « pages », chemin /formations-strasbourg/).
+export async function generateMetadata() {
+  return withPageOverride("/formations-strasbourg/", {
+    title: "Formations digitales & IA à Strasbourg",
     description:
-      "18 formations professionnelles à Strasbourg et en distanciel. Organisme certifié Qualiopi, financement OPCO.",
-    url: "/formations-strasbourg/",
-  },
-};
+      "18 formations professionnelles à Strasbourg et en visio : IA, réseaux sociaux, marketing digital, web et marque employeur. Qualiopi, financement OPCO.",
+    keywords: ["formation Strasbourg", "formation marketing digital Strasbourg", "formation IA", "formation réseaux sociaux", "Qualiopi", "OPCO"],
+    alternates: { canonical: "/formations-strasbourg/" },
+    openGraph: {
+      type: "website",
+      locale: "fr_FR",
+      siteName: "ABCM Performances",
+      title: "Formations à Strasbourg | ABCM Performances",
+      description:
+        "18 formations professionnelles à Strasbourg et en distanciel. Organisme certifié Qualiopi, financement OPCO.",
+      url: "/formations-strasbourg/",
+    },
+  });
+}
 
 export default function FormationsHubPage() {
   return <FormationsHub />;

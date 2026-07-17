@@ -128,7 +128,7 @@ function buildJsonLd(f) {
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
-export function FormationDetail({ formation }) {
+export function FormationDetail({ formation, h1Override = "", contentHtml = "" }) {
   const f = formation;
   const silo = getSilo(f.silo);
   const related = relatedFor(f);
@@ -169,7 +169,7 @@ export function FormationDetail({ formation }) {
               <span aria-hidden="true">/</span>
               <span className="fmt__crumb-current">{f.name}</span>
             </nav>
-            <h1 className="fmt-hero__title">{renderTitle(f.title)}</h1>
+            <h1 className="fmt-hero__title">{renderTitle(h1Override || f.title)}</h1>
             <p className="fmt-hero__sub">Avec une formatrice experte, en présentiel à Strasbourg ou à distance.</p>
             <p className="fmt-hero__lead">{f.lead}</p>
           </div>
@@ -205,6 +205,10 @@ export function FormationDetail({ formation }) {
       <section className="section fmt-body">
         <div className="container fmt__grid">
           <div className="fmt__main">
+            {/* Contenu éditorial piloté depuis le back-office (collection Pages). */}
+            {contentHtml ? (
+              <div className="rich fmt__cms" data-reveal dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            ) : null}
             {/* Objectifs */}
             <header className="fmt-head" data-reveal>
               <span className="eyebrow">Objectifs pédagogiques</span>

@@ -1,11 +1,14 @@
 import { ABCM_INFO } from "@/data/formations";
+import { withPageOverride } from "@/lib/payload-pages";
 
-export const metadata = {
-  title: "Mentions légales & RGPD",
-  description:
-    "Mentions légales du site ABCM Performances : éditeur, propriété intellectuelle, cookies, protection des données personnelles (RGPD).",
-  alternates: { canonical: "/mentions-legales/" },
-};
+export async function generateMetadata() {
+  return withPageOverride("/mentions-legales/", {
+    title: "Mentions légales & RGPD",
+    description:
+      "Mentions légales du site ABCM Performances : éditeur, propriété intellectuelle, cookies, protection des données personnelles (RGPD).",
+    alternates: { canonical: "/mentions-legales/" },
+  });
+}
 
 export default function MentionsLegalesPage() {
   return (

@@ -6,6 +6,7 @@ import { getFormation, rootFormationSlugs, formationMetadata } from "@/data/form
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
 import { getPost, blogSlugs } from "@/lib/blog";
 import { getPostFromPayload, getRedirectFor } from "@/lib/payload-posts";
+import { getPageOverride, withPageOverride } from "@/lib/payload-pages";
 
 // Fiches formation, fiches service ET articles de blog servis à la racine
 // (slugs hérités du site WordPress pour conserver le jus SEO).
@@ -42,8 +43,10 @@ async function resolvePost(slug) {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  if (getFormation(slug)) return formationMetadata(slug);
-  if (getService(slug)) return serviceMetadata(slug);
+  // Fiches formation / service : métadonnées codées en dur, surchargées en live
+  // par la fiche Payload (collection « pages ») si ses champs SEO sont remplis.
+  if (getFormation(slug)) return withPageOverride(`/${slug}/`, formationMetadata(slug));
+  if (getService(slug)) return withPageOverride(`/${slug}/`, serviceMetadata(slug));
   const post = await resolvePost(slug);
   if (post) {
     return {
@@ -65,9 +68,15 @@ export async function generateMetadata({ params }) {
 export default async function RootSlugPage({ params }) {
   const { slug } = await params;
   const formation = getFormation(slug);
-  if (formation) return <FormationDetail formation={formation} />;
+  if (formation) {
+    const o = await getPageOverride(`/${slug}/`);
+    return <FormationDetail formation={formation} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
+  }
   const service = getService(slug);
-  if (service) return <ServiceDetail service={service} />;
+  if (service) {
+    const o = await getPageOverride(`/${slug}/`);
+    return <ServiceDetail service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
+  }
   const post = await resolvePost(slug);
   if (post) return <BlogArticle post={post} />;
   // Article inexistant/supprimé : une redirection gérée (créée dans l'admin,

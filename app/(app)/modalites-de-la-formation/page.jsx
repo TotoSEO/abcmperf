@@ -2,13 +2,16 @@ import Link from "next/link";
 import { Icon } from "@/components/ds";
 import { HUB_URL } from "@/data/formations";
 import { QualiopiBlock } from "@/components/site/QualiopiBlock";
+import { withPageOverride } from "@/lib/payload-pages";
 
-export const metadata = {
-  title: "Modalités de formation",
-  description:
-    "Modalités, moyens pédagogiques, techniques et d'encadrement des formations ABCM Performances, organisme certifié Qualiopi à Strasbourg.",
-  alternates: { canonical: "/modalites-de-la-formation/" },
-};
+export async function generateMetadata() {
+  return withPageOverride("/modalites-de-la-formation/", {
+    title: "Modalités de formation",
+    description:
+      "Modalités, moyens pédagogiques, techniques et d'encadrement des formations ABCM Performances, organisme certifié Qualiopi à Strasbourg.",
+    alternates: { canonical: "/modalites-de-la-formation/" },
+  });
+}
 
 export default function ModalitesPage() {
   return (

@@ -1,9 +1,26 @@
 import type { CollectionConfig } from 'payload'
 
+// Revalide (ISR) la page publique correspondante après édition/suppression —
+// les modifs SEO/H1/contenu passent donc en live. Ne fait rien pendant l'import
+// (context.seeding) ni hors contexte Next (CLI).
+async function revalidatePage(path?: string, context?: any) {
+  if (!path || context?.seeding) return
+  try {
+    const { revalidatePath } = await import('next/cache')
+    revalidatePath(path)
+  } catch {
+    /* hors contexte Next : ignoré */
+  }
+}
+
 // Pages du site (hors articles de blog). Sert à piloter les champs SEO
 // (Title / Meta / H1) et, pour les pages classiques, un contenu éditable.
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  hooks: {
+    afterChange: [({ doc, req }) => { void revalidatePage(doc?.path, req?.context) }],
+    afterDelete: [({ doc, req }) => { void revalidatePage(doc?.path, req?.context) }],
+  },
   admin: {
     useAsTitle: 'title',
     group: 'Contenu',
