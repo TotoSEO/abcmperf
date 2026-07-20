@@ -26,15 +26,25 @@ function initials(name) {
   return name.trim().slice(0, 1).toUpperCase();
 }
 
-// Photo de profil réelle par auteur (sinon initiale).
-const AUTHOR_PHOTOS = { Audrey: "audrey-braun.png", "Audrey Braun": "audrey-braun.png" };
+// Photo de profil réelle par auteur — reprend les portraits de la section équipe.
+const AUTHOR_PHOTOS = {
+  Audrey: "team/audrey.webp",
+  "Audrey Braun": "team/audrey.webp",
+  Thomas: "team/thomas.webp",
+  Caroline: "team/caroline.webp",
+  Anto: "team/anto.webp",
+  Johan: "team/johan.webp",
+  Patrice: "team/patrice.webp",
+  Sakhavat: "team/sakhavat.webp",
+  "Jérôme": "team/jerome.webp",
+};
 
 function AuthorAvatar({ author, cls }) {
   const photo = author && AUTHOR_PHOTOS[author];
   if (photo) {
     return (
       <span className={`${cls} ${cls}--photo`}>
-        <img src={assetPath(photo)} alt={author} loading="lazy" />
+        <img src={assetPath(photo)} alt={author} loading="lazy" style={{ objectPosition: "center 20%" }} />
       </span>
     );
   }
