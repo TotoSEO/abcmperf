@@ -4,10 +4,19 @@ import type { CollectionConfig } from 'payload'
 // les modifs SEO/H1/contenu passent donc en live. Ne fait rien pendant l'import
 // (context.seeding) ni hors contexte Next (CLI).
 async function revalidatePage(path?: string, context?: any) {
-  if (!path || context?.seeding) return
+  if (context?.seeding) return
   try {
     const { revalidatePath } = await import('next/cache')
-    revalidatePath(path)
+    if (path) revalidatePath(path)
+    // Le sitemap est piloté par la collection « pages » : une page créée /
+    // supprimée / mise en noindex doit s'y répercuter. On rafraîchit l'index et
+    // les sous-sitemaps alimentés par les pages (pages, service, formations,
+    // portfolio pour la page listing).
+    revalidatePath('/sitemap_index.xml')
+    revalidatePath('/sitemap-pages.xml')
+    revalidatePath('/sitemap-service.xml')
+    revalidatePath('/sitemap-formations.xml')
+    revalidatePath('/sitemap-portfolio.xml')
   } catch {
     /* hors contexte Next : ignoré */
   }

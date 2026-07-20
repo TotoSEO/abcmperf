@@ -9,7 +9,8 @@ async function revalidateArticle(slug?: string, context?: any) {
     const { revalidatePath } = await import('next/cache')
     revalidatePath(`/${slug}/`)
     revalidatePath('/articles/')
-    revalidatePath('/sitemap.xml')
+    revalidatePath('/sitemap-articles.xml')
+    revalidatePath('/sitemap_index.xml')
   } catch {
     /* hors contexte Next (CLI) : ignoré */
   }

@@ -40,12 +40,21 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/articles': ['./content/blog/**/*'],
     '/[slug]': ['./content/blog/**/*'],
-    '/sitemap.xml': ['./content/blog/**/*'],
+    // Les fiches portfolio et les sitemaps utilisent le repli fichier au runtime
+    // (ISR) si la base est injoignable → on force l'inclusion de ces contenus
+    // dans le bundle des fonctions serverless Vercel.
+    '/portfolio': ['./content/portfolio/**/*'],
+    '/portfolio/[slug]': ['./content/portfolio/**/*'],
+    '/sitemap_index.xml': ['./content/blog/**/*', './content/portfolio/**/*'],
+    '/sitemap-articles.xml': ['./content/blog/**/*'],
+    '/sitemap-portfolio.xml': ['./content/portfolio/**/*'],
   },
   async redirects() {
     return [
       // Point d'entrée du back-office : /admin-login → connexion Payload.
       { source: '/admin-login', destination: '/admin/login', permanent: false },
+      // Sitemap historique → index segmenté (préserve les soumissions existantes).
+      { source: '/sitemap.xml', destination: '/sitemap_index.xml', permanent: true },
       ...managedRedirects(),
     ]
   },

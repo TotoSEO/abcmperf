@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     articles: Article;
+    portfolio: Portfolio;
     redirects: Redirect;
     media: Media;
     users: User;
@@ -81,6 +82,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -324,6 +326,92 @@ export interface Media {
   };
 }
 /**
+ * Fiches références / cas clients affichées dans le portfolio.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio".
+ */
+export interface Portfolio {
+  id: number;
+  /**
+   * Ex. « Abry Arnold ». Sert de H1 sur la fiche.
+   */
+  title: string;
+  /**
+   * ex. abry-arnold → /portfolio/abry-arnold/
+   */
+  slug: string;
+  /**
+   * Seules les fiches « Publié » apparaissent sur le site et dans le sitemap.
+   */
+  status: 'draft' | 'published';
+  /**
+   * Ex. « Stratégie Digitale », « Création de site »… (affiché en sur-titre).
+   */
+  projectType?: string | null;
+  /**
+   * Une ou plusieurs thématiques. La première sert de thématique principale (couleur / filtre).
+   */
+  categories?: ('site-internet' | 'formations' | 'strategie' | 'marketing' | 'publicite' | 'graphisme')[] | null;
+  /**
+   * Visuel principal : vignette de la grille et image du hero.
+   */
+  cover?: (number | null) | Media;
+  logo?: (number | null) | Media;
+  /**
+   * Si vide, le titre de la fiche est utilisé.
+   */
+  seoTitle?: string | null;
+  metaDescription?: string | null;
+  /**
+   * Coché par défaut (politique du site) : la fiche est en noindex et exclue du sitemap. Décochez pour indexer cette fiche et l’ajouter au sitemap portfolio.
+   */
+  noindex?: boolean | null;
+  /**
+   * Corps de la fiche. Chaque titre H2 (ex. « La demande », « Notre réponse ») démarre une nouvelle section illustrée.
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  promo?: {
+    kind?: ('none' | 'service' | 'formation') | null;
+    service?:
+      | (
+          | 'agence-web-strasbourg'
+          | 'creation-site-ecommerce'
+          | 'maintenance-site-web'
+          | 'referencement-strasbourg'
+          | 'referencement-ia-geo'
+          | 'audit-referencement'
+          | 'community-management'
+          | 'video-reseaux-sociaux'
+          | 'videos-marque-employeur'
+          | 'agence-sea'
+          | 'marketing-externalise'
+          | 'personal-branding'
+        )
+      | null;
+    /**
+     * Ex. formation-wordpress (le slug de la fiche formation, sans les slashs).
+     */
+    formation?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Redirections 301 / 302.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -403,6 +491,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'articles';
         value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'portfolio';
+        value: number | Portfolio;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -545,6 +637,32 @@ export interface ArticlesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  projectType?: T;
+  categories?: T;
+  cover?: T;
+  logo?: T;
+  seoTitle?: T;
+  metaDescription?: T;
+  noindex?: T;
+  content?: T;
+  promo?:
+    | T
+    | {
+        kind?: T;
+        service?: T;
+        formation?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
