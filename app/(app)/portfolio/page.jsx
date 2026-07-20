@@ -1,6 +1,11 @@
 import { PortfolioHub } from "@/components/site/PortfolioHub";
-import { getAllCases } from "@/lib/portfolio";
+import { getAllPortfolioSummaries } from "@/lib/payload-portfolio";
 import { withPageOverride } from "@/lib/payload-pages";
+
+// ISR : la grille se régénère quand une fiche est publiée / supprimée dans
+// l'admin (revalidatePath dans les hooks Portfolio) ou au plus tard toutes les
+// 5 min.
+export const revalidate = 300;
 
 export async function generateMetadata() {
   return withPageOverride("/portfolio/", {
@@ -16,9 +21,10 @@ export async function generateMetadata() {
   });
 }
 
-export default function PortfolioPage() {
-  // On ne passe au composant client que les champs utiles à la grille.
-  const cases = getAllCases().map((c) => ({
+export default async function PortfolioPage() {
+  // Fusion Payload (source de vérité) + fiches fichier ; on ne passe au composant
+  // client que les champs utiles à la grille.
+  const cases = (await getAllPortfolioSummaries()).map((c) => ({
     slug: c.slug,
     title: c.title,
     projectType: c.projectType,

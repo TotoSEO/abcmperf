@@ -65,7 +65,7 @@ function buildJsonLd(c) {
   };
 }
 
-export function PortfolioCase({ item }) {
+export function PortfolioCase({ item, allCases: allCasesProp }) {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const c = item;
   const theme = primaryTheme(c.categories);
@@ -93,7 +93,9 @@ export function PortfolioCase({ item }) {
     .map((slug) => getService(slug))
     .filter(Boolean);
 
-  const allCases = getAllCases();
+  // Fiches liées : fusion Payload + fichiers fournie par la page (repli sur les
+  // seules fiches fichier si la prop n'est pas passée).
+  const allCases = allCasesProp && allCasesProp.length ? allCasesProp : getAllCases();
   // Références liées : d'abord celles qui partagent un service, sinon la thématique.
   const svcSet = new Set(c.services || []);
   const related = [

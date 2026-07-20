@@ -28,6 +28,10 @@ function sourceUrl(collectionSlug: string | undefined, value: unknown): string {
     if (!v.endsWith('/')) v = `${v}/`
     return v
   }
+  // Portfolio : URL publique = /portfolio/slug/.
+  if (collectionSlug === 'portfolio') {
+    return `/portfolio/${raw.replace(/^\/+|\/+$/g, '')}/`
+  }
   // Articles : URL publique = /slug/.
   return `/${raw.replace(/^\/+|\/+$/g, '')}/`
 }
@@ -65,7 +69,9 @@ export function DeleteWithRedirect(): React.ReactElement | null {
   // Destination par défaut proposée (modifiable) : liste blog pour un article,
   // accueil pour une page.
   React.useEffect(() => {
-    setTo(collectionSlug === 'pages' ? '/' : '/articles/')
+    if (collectionSlug === 'pages') setTo('/')
+    else if (collectionSlug === 'portfolio') setTo('/portfolio/')
+    else setTo('/articles/')
   }, [collectionSlug])
 
   // Seulement sur un document existant (pas en création).

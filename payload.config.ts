@@ -13,6 +13,7 @@ import { Users } from '@/collections/Users'
 import { Media } from '@/collections/Media'
 import { Pages } from '@/collections/Pages'
 import { Articles } from '@/collections/Articles'
+import { Portfolio } from '@/collections/Portfolio'
 import { Redirects } from '@/collections/Redirects'
 import { migrations } from '@/migrations'
 
@@ -63,7 +64,7 @@ export default buildConfig({
       },
     },
   },
-  collections: [Pages, Articles, Redirects, Media, Users],
+  collections: [Pages, Articles, Portfolio, Redirects, Media, Users],
   // Interface du back-office forcée en français (indépendamment du navigateur).
   i18n: {
     supportedLanguages: { fr },
