@@ -1,17 +1,14 @@
 import React from "react";
-import Link from "next/link";
 import { Icon } from "@/components/ds";
 import { ABCM_INFO } from "@/data/formations";
+import { AgencyMapCanvas } from "@/components/site/AgencyMapCanvas";
 
 // Carte de localisation de l'agence (accueil + page contact).
-// Fond de carte OpenStreetMap en iframe : aucune clé API, aucun cookie de suivi
-// (pas de bandeau de consentement nécessaire), compatible export statique.
-// Les liens « itinéraire / voir sur la carte » pointent vers Google Maps.
+// Fond de carte OpenStreetMap rendu avec Leaflet (composant client, voir
+// AgencyMapCanvas) : aucune clé API, aucun cookie de suivi (pas de bandeau de
+// consentement nécessaire). Les liens « itinéraire / voir sur la carte »
+// pointent vers Google Maps.
 const ADDR = `${ABCM_INFO.street}, ${ABCM_INFO.postalCode} ${ABCM_INFO.city}`;
-const LAT = 48.5808595;
-const LON = 7.7475844;
-const BBOX = [LON - 0.005, LAT - 0.003, LON + 0.005, LAT + 0.003].join("%2C");
-const EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${BBOX}&layer=mapnik&marker=${LAT}%2C${LON}`;
 const Q = encodeURIComponent(`ABCM Performances, ${ADDR}`);
 const SEARCH = `https://www.google.com/maps/search/?api=1&query=${Q}`;
 const DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${Q}`;
@@ -66,16 +63,7 @@ export function AgencyMap({
             </div>
           </div>
           <div className="agencymap__map">
-            {/* loading="eager" : un iframe lazy ajouté lors d'une navigation SPA
-                ne se déclenche pas toujours sans scroll — la carte reste « plate »
-                tant qu'on ne recharge pas. */}
-            <iframe
-              title="Carte de localisation d'ABCM Performances à Strasbourg"
-              src={EMBED}
-              loading="eager"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <AgencyMapCanvas />
             <a className="agencymap__maplink" href={SEARCH} target="_blank" rel="noreferrer">
               Voir sur Google Maps <Icon name="arrow-up-right" size={14} />
             </a>

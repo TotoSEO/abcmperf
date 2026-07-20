@@ -22,6 +22,9 @@ export const ABCM_INFO = {
   region: "Grand Est",
   postalCode: "67000",
   country: "FR",
+  // Coordonnées de l'agence (carte de localisation + données structurées).
+  latitude: 48.5808595,
+  longitude: 7.7475844,
   url: "https://abcmperformances.com",
   // Avis Google (affichés dans le hero des fiches). Modifiables ici.
   googleStars: 5,

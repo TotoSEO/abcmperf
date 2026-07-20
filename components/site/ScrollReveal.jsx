@@ -59,6 +59,10 @@ export function ScrollReveal() {
       io1.disconnect();
       mo.disconnect();
       if (io2) io2.disconnect();
+      // On retire « reveal-on » au démontage : sinon, après une navigation SPA
+      // vers une page sans ScrollReveal, la classe restait sur <html> et gardait
+      // ses [data-reveal] figés en opacity:0 (aucun observateur pour les révéler).
+      document.documentElement.classList.remove("reveal-on");
     };
   }, []);
 

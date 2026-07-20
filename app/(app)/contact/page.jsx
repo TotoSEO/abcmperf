@@ -1,5 +1,6 @@
 import { Contact } from "@/components/site/Contact";
 import { AgencyMap } from "@/components/site/AgencyMap";
+import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { withPageOverride } from "@/lib/payload-pages";
 
 // Métadonnées codées en dur, surchargées en live par la fiche Payload
@@ -16,6 +17,10 @@ export async function generateMetadata() {
 export default function ContactPage() {
   return (
     <>
+      {/* Sans ScrollReveal sur la page, la classe globale « reveal-on » laissée
+          par une navigation SPA depuis une autre page gardait le bloc [data-reveal]
+          « Où nous trouver » invisible (grand vide blanc) jusqu'au rechargement. */}
+      <ScrollReveal />
       <Contact
         titleAs="h1"
         eyebrow="Contact"
