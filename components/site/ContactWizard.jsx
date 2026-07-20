@@ -36,6 +36,8 @@ export function ContactWizard() {
   const [step, setStep] = React.useState(0);
   const [dir, setDir] = React.useState("fwd");
   const [sent, setSent] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [sendError, setSendError] = React.useState("");
   const [data, setData] = React.useState(EMPTY);
   const [errors, setErrors] = React.useState({});
 
@@ -61,18 +63,37 @@ export function ContactWizard() {
   const next0 = () => { if (validateInfos()) go(1, "fwd"); };
   const chooseMotif = (m) => { setData((d) => ({ ...d, motif: m })); go(2, "fwd"); };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     const er = {};
     if (data.motif === "renseignement" && !data.message.trim()) er.message = "Écrivez votre message";
     if (data.motif === "formation" && data.formations.length === 0) er.formations = "Choisissez au moins une formation";
     setErrors(er);
     if (Object.keys(er).length) return;
-    // NOTE: branchement back-end à faire (e-mail / CRM). Pour l'instant : confirmation visuelle.
-    setSent(true);
+
+    setSending(true);
+    setSendError("");
+    try {
+      const res = await fetch("/contact/submit/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || !body.ok) {
+        if (body.errors) setErrors(body.errors);
+        setSendError(body.error || "L'envoi a échoué. Réessayez ou écrivez-nous directement.");
+        return;
+      }
+      setSent(true);
+    } catch {
+      setSendError("Connexion impossible. Vérifiez votre réseau et réessayez.");
+    } finally {
+      setSending(false);
+    }
   };
 
-  const reset = () => { setData(EMPTY); setErrors({}); setSent(false); go(0, "back"); };
+  const reset = () => { setData(EMPTY); setErrors({}); setSent(false); setSendError(""); go(0, "back"); };
 
   return (
     <div className="fmt-wiz">
@@ -159,9 +180,10 @@ export function ContactWizard() {
                   <h2 className="fmt-wiz__title">Votre message</h2>
                   <p className="fmt-wiz__hint">Dites-nous en quelques lignes comment nous pouvons vous aider.</p>
                   <Textarea id="message" name="message" label="Votre demande" rows={6} placeholder="Bonjour, je souhaiterais…" value={data.message} onChange={set("message")} error={errors.message} />
+                  {sendError && <p className="fmt-field__error" role="alert">{sendError}</p>}
                   <div className="fmt-wiz__nav">
-                    <Button type="button" variant="ghost" onClick={() => go(1, "back")} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>
-                    <Button type="submit" variant="primary" size="lg" iconRight={<Icon name="send" size={18} />}>Envoyer ma demande</Button>
+                    <Button type="button" variant="ghost" onClick={() => go(1, "back")} disabled={sending} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>
+                    <Button type="submit" variant="primary" size="lg" disabled={sending} iconRight={<Icon name="send" size={18} />}>{sending ? "Envoi…" : "Envoyer ma demande"}</Button>
                   </div>
                 </>
               )}
@@ -240,9 +262,10 @@ export function ContactWizard() {
                   </div>
                   <Textarea id="precisions" name="precisions" label="Précisions (facultatif)" rows={3} placeholder="Objectifs, niveau des participants, contexte…" value={data.precisions} onChange={set("precisions")} />
 
+                  {sendError && <p className="fmt-field__error" role="alert">{sendError}</p>}
                   <div className="fmt-wiz__nav">
-                    <Button type="button" variant="ghost" onClick={() => go(1, "back")} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>
-                    <Button type="submit" variant="primary" size="lg" iconRight={<Icon name="send" size={18} />}>Envoyer ma demande</Button>
+                    <Button type="button" variant="ghost" onClick={() => go(1, "back")} disabled={sending} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>
+                    <Button type="submit" variant="primary" size="lg" disabled={sending} iconRight={<Icon name="send" size={18} />}>{sending ? "Envoi…" : "Envoyer ma demande"}</Button>
                   </div>
                 </>
               )}
