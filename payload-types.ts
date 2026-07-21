@@ -334,41 +334,65 @@ export interface Media {
 export interface Portfolio {
   id: number;
   /**
-   * Ex. « Abry Arnold ». Sert de H1 sur la fiche.
+   * Ex. « Abry Arnold ». Sert de nom de la référence dans le back-office.
    */
   title: string;
   /**
-   * ex. abry-arnold → /portfolio/abry-arnold/
+   * Titre affiché en haut de la fiche. Si vide, le titre ci-dessus est utilisé.
    */
-  slug: string;
+  h1?: string | null;
   /**
-   * Seules les fiches « Publié » apparaissent sur le site et dans le sitemap.
+   * Résumé court affiché en introduction de la fiche (1 à 3 phrases).
    */
-  status: 'draft' | 'published';
+  summary?: string | null;
   /**
-   * Ex. « Stratégie Digitale », « Création de site »… (affiché en sur-titre).
+   * Le besoin, le contexte et les objectifs du client.
    */
-  projectType?: string | null;
+  clientRequest?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
-   * Une ou plusieurs thématiques. La première sert de thématique principale (couleur / filtre).
+   * La solution mise en place, la démarche et les livrables.
    */
-  categories?: ('site-internet' | 'formations' | 'strategie' | 'marketing' | 'publicite' | 'graphisme')[] | null;
+  ourResponse?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   /**
-   * Visuel principal : vignette de la grille et image du hero.
+   * Une ou plusieurs images (mockups, captures, réalisations…). Ajoutez-en autant que nécessaire.
    */
-  cover?: (number | null) | Media;
-  logo?: (number | null) | Media;
+  gallery?:
+    | {
+        image: number | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
-   * Si vide, le titre de la fiche est utilisé.
-   */
-  seoTitle?: string | null;
-  metaDescription?: string | null;
-  /**
-   * Coché par défaut (politique du site) : la fiche est en noindex et exclue du sitemap. Décochez pour indexer cette fiche et l’ajouter au sitemap portfolio.
-   */
-  noindex?: boolean | null;
-  /**
-   * Corps de la fiche. Chaque titre H2 (ex. « La demande », « Notre réponse ») démarre une nouvelle section illustrée.
+   * Optionnel. Ancien format « corps libre » (sections en titres H2). Utilisé uniquement si les champs structurés ci-dessus sont vides.
    */
   content?: {
     root: {
@@ -408,6 +432,36 @@ export interface Portfolio {
      */
     formation?: string | null;
   };
+  /**
+   * ex. abry-arnold → /portfolio/abry-arnold/
+   */
+  slug: string;
+  /**
+   * Seules les fiches « Publié » apparaissent sur le site et dans le sitemap.
+   */
+  status: 'draft' | 'published';
+  /**
+   * Ex. « Stratégie Digitale », « Création de site »… (affiché en sur-titre).
+   */
+  projectType?: string | null;
+  /**
+   * Une ou plusieurs catégories. La première sert de catégorie principale (couleur / filtre).
+   */
+  categories?: ('site-internet' | 'formations' | 'strategie' | 'marketing' | 'publicite' | 'graphisme')[] | null;
+  /**
+   * Visuel principal : vignette de la grille et image du hero.
+   */
+  cover?: (number | null) | Media;
+  logo?: (number | null) | Media;
+  /**
+   * Si vide, le titre de la fiche est utilisé.
+   */
+  seoTitle?: string | null;
+  metaDescription?: string | null;
+  /**
+   * Coché par défaut (politique du site) : la fiche est en noindex et exclue du sitemap. Décochez pour indexer cette fiche et l’ajouter au sitemap portfolio.
+   */
+  noindex?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -644,6 +698,25 @@ export interface ArticlesSelect<T extends boolean = true> {
  */
 export interface PortfolioSelect<T extends boolean = true> {
   title?: T;
+  h1?: T;
+  summary?: T;
+  clientRequest?: T;
+  ourResponse?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  content?: T;
+  promo?:
+    | T
+    | {
+        kind?: T;
+        service?: T;
+        formation?: T;
+      };
   slug?: T;
   status?: T;
   projectType?: T;
@@ -653,14 +726,6 @@ export interface PortfolioSelect<T extends boolean = true> {
   seoTitle?: T;
   metaDescription?: T;
   noindex?: T;
-  content?: T;
-  promo?:
-    | T
-    | {
-        kind?: T;
-        service?: T;
-        formation?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
 }
