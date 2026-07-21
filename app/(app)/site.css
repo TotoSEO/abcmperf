@@ -1918,7 +1918,9 @@
 .aia-plan { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
 .aia-plan--hot { border-color: color-mix(in srgb, var(--_hue) 55%, var(--border)); box-shadow: 0 34px 70px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
 .aia-plan--hot::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; background: var(--gradient-brand-3); }
-.aia-plan__tag { position: absolute; top: 0; right: var(--space-5); transform: translateY(-50%); font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: var(--_hue); padding: 0.4em 0.8em; border-radius: var(--radius-pill); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent); }
+/* Tag centré sur le bord supérieur : évite le débordement / rognage par le
+   coin arrondi de la carte (bug « bandeau trop large et coupé »). */
+.aia-plan__tag { position: absolute; top: 0; left: 50%; right: auto; transform: translate(-50%, -50%); white-space: nowrap; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: var(--_hue); padding: 0.4em 0.9em; border-radius: var(--radius-pill); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent); }
 .aia-plan__name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: 0; }
 .aia-plan__price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--_hue); }
 .aia-plan__pitch { font-size: var(--text-sm); line-height: 1.5; color: var(--text-muted); margin: 0; }
@@ -1927,6 +1929,16 @@
 .aia-plan__feats .abcm-ic { color: var(--logo-green); flex: none; margin-top: 0.15em; }
 .aia-plan .abcm-btn { margin-top: auto; }
 .aia-plans__note { text-align: center; font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-6) 0 0; }
+
+/* ---- Bloc de renvoi vers le service GEO (visibilité organique) ---- */
+.aia-geo { position: relative; overflow: hidden; display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; padding: clamp(var(--space-5), 3vw, var(--space-8)); border-radius: var(--radius-2xl); background: color-mix(in oklch, var(--_hue) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--_hue) 24%, var(--border)); box-shadow: 0 20px 44px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
+.aia-geo__ic { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 3.4rem; height: 3.4rem; border-radius: 16px; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 72%, #fff), var(--_hue)); box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.35); }
+.aia-geo__body { flex: 1; min-width: 240px; }
+.aia-geo__kicker { display: block; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: var(--_hue); margin-bottom: 4px; }
+.aia-geo__h { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: 0 0 var(--space-2); }
+.aia-geo__body p { margin: 0; font-size: var(--text-sm); line-height: 1.55; color: var(--text-muted); }
+.aia-geo__link { flex: none; display: inline-flex; align-items: center; gap: 0.5em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: #fff; text-decoration: none; padding: 0.8em 1.2em; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--_hue), color-mix(in srgb, var(--_hue) 55%, var(--logo-blue))); box-shadow: 0 12px 26px -12px color-mix(in srgb, var(--_hue) 60%, transparent); transition: transform var(--dur-base) var(--ease-out); }
+.aia-geo__link:hover { transform: translateY(-2px); }
 
 /* ---- Garanties ---- */
 .aia-guar { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
