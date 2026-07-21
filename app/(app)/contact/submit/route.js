@@ -6,7 +6,12 @@ import { buildContactEmail } from "@/lib/contact-email";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const TO = process.env.CONTACT_EMAIL_TO || "info@abcmperformances.com";
+// Destinataires des demandes. Surchargeable via CONTACT_EMAIL_TO (liste
+// séparée par des virgules). Par défaut : les deux boîtes ABCM.
+const TO = (process.env.CONTACT_EMAIL_TO || "caroline@abcmperformances.com, audrey@abcm.io")
+  .split(",")
+  .map((a) => a.trim())
+  .filter(Boolean);
 // Expéditeur : doit appartenir à un domaine vérifié dans Resend.
 // À défaut, le domaine de test « onboarding@resend.dev » fonctionne sans config.
 const FROM = process.env.CONTACT_EMAIL_FROM || "ABCM Performances <onboarding@resend.dev>";
@@ -48,6 +53,7 @@ export async function POST(req) {
     participants: s(raw?.participants),
     periode: s(raw?.periode),
     precisions: s(raw?.precisions),
+    consent: raw?.consent === true,
   };
 
   const errors = {};
@@ -57,6 +63,7 @@ export async function POST(req) {
   if (!EMAIL_RE.test(payload.email)) errors.email = "E-mail invalide.";
   if (motif === "renseignement" && !payload.message) errors.message = "Message requis.";
   if (motif === "formation" && payload.formations.length === 0) errors.formations = "Sélectionnez au moins une formation.";
+  if (!payload.consent) errors.consent = "Consentement requis.";
   if (Object.keys(errors).length) return json({ ok: false, errors }, 422);
 
   // ---- Configuration Resend ----
@@ -79,7 +86,7 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         from: FROM,
-        to: [TO],
+        to: TO,
         subject,
         html,
         text,
