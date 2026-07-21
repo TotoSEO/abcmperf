@@ -423,6 +423,7 @@ export interface Portfolio {
           | 'video-reseaux-sociaux'
           | 'videos-marque-employeur'
           | 'agence-sea'
+          | 'agence-pub-ia'
           | 'marketing-externalise'
           | 'personal-branding'
         )
