@@ -1,6 +1,7 @@
 import { notFound, redirect, permanentRedirect } from "next/navigation";
 import { FormationDetail } from "@/components/site/FormationDetail";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
+import { AiAdsAgency } from "@/components/site/AiAdsAgency";
 import { BlogArticle } from "@/components/site/BlogArticle";
 import { ABCM_INFO, getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
@@ -90,6 +91,11 @@ export default async function RootSlugPage({ params }) {
   const service = getService(slug);
   if (service) {
     const o = await getPageOverride(`/${slug}/`);
+    // Fiche « Agence de publicité IA » : gabarit dédié, plus futuriste et
+    // orienté conversion (le reste des services garde le gabarit standard).
+    if (slug === "agence-pub-ia") {
+      return <AiAdsAgency service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
+    }
     return <ServiceDetail service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
   }
   const post = await resolvePost(slug);

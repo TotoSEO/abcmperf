@@ -1832,3 +1832,125 @@
 .nf-card__desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; }
 .nf-card__go { color: var(--_hue); display: inline-flex; transition: transform 0.18s ease; }
 .nf-card:hover .nf-card__go { transform: translate(2px, -2px); }
+
+/* ============================================================================
+   Fiche « Agence de publicité IA » (/agence-pub-ia) — variante futuriste,
+   orientée conversion. S'appuie sur les tokens et le hero des fiches service
+   (.svcd2-*) et ajoute des sections dédiées (.aia-*).
+   ========================================================================== */
+.aia { --_hue: var(--logo-magenta); }
+.aia-grad { background: var(--gradient-brand-3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---- Hero : grille en perspective animée + métriques ---- */
+.aia-hero { padding-bottom: clamp(3rem, 2rem + 5vw, 5.5rem); }
+.aia-hero__grid { position: absolute; inset: -2px; pointer-events: none;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.055) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(125% 92% at 82% 2%, #000 26%, transparent 72%);
+  mask-image: radial-gradient(125% 92% at 82% 2%, #000 26%, transparent 72%);
+  animation: aia-grid-drift 20s linear infinite; }
+@keyframes aia-grid-drift { to { background-position: 46px 46px, 46px 46px; } }
+.aia-hero__title { text-wrap: balance; }
+.aia-metrics { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+.aia-metric { position: relative; flex: 1 1 170px; min-width: 150px; padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-xl, 18px); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(6px); }
+.aia-metric__big { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem); line-height: 1.05;
+  background: var(--gradient-brand-3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aia-metric__label { display: block; margin-top: 4px; font-size: var(--text-2xs); line-height: 1.35; color: var(--neutral-300); }
+
+/* ---- Bandeau confiance ---- */
+.aia-trust { background: var(--surface); border-bottom: 1px solid var(--border); }
+.aia-trust__inner { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4) var(--space-8); padding-block: var(--space-4); }
+.aia-trust__item { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted); }
+.aia-trust__item .abcm-ic { color: var(--_hue); }
+
+/* ---- En-têtes de section centrés ---- */
+.aia-head { text-align: center; max-width: 46rem; margin: 0 auto var(--space-10); display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.aia-head .svcd2-sec__title { margin-bottom: 0; }
+.aia-lead { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text-muted); margin: 0 0 var(--space-4); text-align: center; }
+
+/* ---- Capacités ---- */
+.aia-caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); }
+.aia-cap { position: relative; overflow: hidden; padding: var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -32px color-mix(in srgb, var(--_hue) 55%, transparent); transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+.aia-cap::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--gradient-brand-3); opacity: 0; transition: opacity var(--dur-base) var(--ease-out); }
+.aia-cap:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--_hue) 40%, var(--border)); box-shadow: 0 32px 60px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
+.aia-cap:hover::before { opacity: 1; }
+.aia-cap__ic { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 14px; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 74%, #fff), var(--_hue)); box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.35); margin-bottom: var(--space-4); }
+.aia-cap__t { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: 0 0 var(--space-2); }
+.aia-cap__d { font-size: var(--text-sm); line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+/* ---- Méthode (étapes) ---- */
+.aia-steps-sec { position: relative; overflow: hidden; }
+.aia-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--space-5); position: relative; z-index: 1; }
+.aia-step { position: relative; padding: var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); }
+.aia-step__n { display: block; font-family: var(--font-display); font-weight: 800; font-size: 2.1rem; line-height: 1; margin-bottom: var(--space-3);
+  background: var(--gradient-brand-3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aia-step__t { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--text); margin: 0 0 var(--space-2); }
+.aia-step__d { font-size: var(--text-sm); line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+/* ---- Comparatif IA vs classique ---- */
+.aia-vs { border-radius: var(--radius-2xl); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+.aia-vs__row { display: grid; grid-template-columns: 1fr 1.35fr 1.2fr; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-top: 1px solid var(--border); }
+.aia-vs__row:first-child { border-top: 0; }
+.aia-vs__row--head { background: color-mix(in oklch, var(--_hue) 6%, var(--surface)); }
+.aia-vs__row--head .aia-vs__ia { color: var(--_hue); }
+.aia-vs__k { font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--text); }
+.aia-vs__ia { display: inline-flex; align-items: flex-start; gap: 0.5em; font-size: var(--text-sm); font-weight: 600; color: var(--text); }
+.aia-vs__ia .abcm-ic { color: var(--logo-green); flex: none; margin-top: 0.15em; }
+.aia-vs__old { font-size: var(--text-sm); color: var(--text-muted); }
+.aia-vs__row--head .aia-vs__ia, .aia-vs__row--head .aia-vs__old { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; }
+
+/* ---- Bande preuves (dark) ---- */
+.aia-stats { position: relative; isolation: isolate; overflow: hidden; background: var(--night); color: #fff; padding-block: clamp(var(--space-10), 5vw, var(--space-16)); }
+.aia-stats::before { content: ""; position: absolute; inset: -30% 20% auto -10%; height: 120%; z-index: 0; pointer-events: none; filter: blur(80px); opacity: 0.5; background: radial-gradient(closest-side, var(--_hue), transparent), radial-gradient(closest-side, var(--logo-blue), transparent) 60% 40%; }
+.aia-stats__deco { position: absolute; inset: 0; pointer-events: none; }
+.aia-stats .svcd2-rond--g { width: 90px; height: 90px; border: 12px solid var(--logo-yellow); opacity: 0.25; top: 18%; left: 7%; }
+.aia-stats .svcd2-rond--h { width: 48px; height: 48px; background: var(--logo-green); opacity: 0.4; bottom: 22%; right: 12%; }
+.aia-stats__inner { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-6); text-align: center; }
+.aia-stat__big { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); line-height: 1;
+  background: linear-gradient(120deg, #fff, color-mix(in srgb, var(--_hue) 60%, #fff)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aia-stat__label { display: block; margin-top: var(--space-2); font-size: var(--text-sm); line-height: 1.4; color: var(--neutral-300); }
+
+/* ---- Formules ---- */
+.aia-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); align-items: stretch; }
+.aia-plan { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
+.aia-plan--hot { border-color: color-mix(in srgb, var(--_hue) 55%, var(--border)); box-shadow: 0 34px 70px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
+.aia-plan--hot::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; background: var(--gradient-brand-3); }
+.aia-plan__tag { position: absolute; top: 0; right: var(--space-5); transform: translateY(-50%); font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: var(--_hue); padding: 0.4em 0.8em; border-radius: var(--radius-pill); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent); }
+.aia-plan__name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: 0; }
+.aia-plan__price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--_hue); }
+.aia-plan__pitch { font-size: var(--text-sm); line-height: 1.5; color: var(--text-muted); margin: 0; }
+.aia-plan__feats { list-style: none; margin: 0 0 var(--space-2); padding: 0; display: grid; gap: var(--space-2); }
+.aia-plan__feats li { display: flex; align-items: flex-start; gap: 0.5em; font-size: var(--text-sm); color: var(--text); }
+.aia-plan__feats .abcm-ic { color: var(--logo-green); flex: none; margin-top: 0.15em; }
+.aia-plan .abcm-btn { margin-top: auto; }
+.aia-plans__note { text-align: center; font-size: var(--text-xs); color: var(--text-muted); margin: var(--space-6) 0 0; }
+
+/* ---- Garanties ---- */
+.aia-guar { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
+.aia-guar__item { display: flex; gap: var(--space-4); padding: var(--space-5); border-radius: var(--radius-xl, 18px); background: var(--surface); border: 1px solid var(--border); }
+.aia-guar__ic { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; color: var(--_hue); background: color-mix(in oklch, var(--_hue) 12%, var(--surface)); }
+.aia-guar__t { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--text); margin: 0 0 4px; }
+.aia-guar__d { font-size: var(--text-sm); line-height: 1.5; color: var(--text-muted); margin: 0; }
+
+/* ---- CTA collant (mobile) ---- */
+.aia-sticky { display: none; }
+@media (max-width: 640px) {
+  .aia-sticky { position: fixed; inset: auto 0 0 0; z-index: 60; display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--border); box-shadow: 0 -10px 30px -18px rgba(0,0,0,0.4); }
+  .aia-sticky__btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 0.5em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: #fff; text-decoration: none; padding: 0.85em 1em; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--_hue), color-mix(in srgb, var(--_hue) 60%, var(--logo-blue))); box-shadow: 0 12px 24px -12px color-mix(in srgb, var(--_hue) 60%, transparent); }
+  .aia-sticky__tel { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 2.9em; height: 2.9em; border-radius: 50%; color: var(--_hue); background: color-mix(in oklch, var(--_hue) 14%, var(--surface)); border: 1px solid color-mix(in srgb, var(--_hue) 30%, var(--border)); }
+}
+
+/* ---- Comparatif : empilage mobile ---- */
+@media (max-width: 620px) {
+  .aia-vs__row { grid-template-columns: 1fr; gap: 4px; padding: var(--space-4); }
+  .aia-vs__row--head { display: none; }
+  .aia-vs__k { font-size: var(--text-base); margin-bottom: 2px; }
+  .aia-vs__ia::before { content: "Avec l'IA — "; font-weight: 700; color: var(--logo-green); }
+  .aia-vs__old::before { content: "Sans IA — "; font-weight: 700; color: var(--text); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aia-hero__grid { animation: none; }
+}
