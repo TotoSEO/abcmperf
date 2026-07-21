@@ -68,6 +68,15 @@ const nextConfig = {
   reactStrictMode: true,
   // Les URLs héritées de WordPress finissent par « / » — conservé pour le SEO.
   trailingSlash: true,
+  // Optimisation des images (next/image) : les couvertures d'articles sont de
+  // lourds PNG (jusqu'à ~1,5 Mo) servis depuis Vercel Blob. On les autorise pour
+  // que Next les redimensionne et les convertisse en AVIF/WebP à la volée.
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },
+    ],
+  },
   // Le repli fichier (content/blog/*.json), utilisé si la base est injoignable,
   // s'exécute désormais au runtime (ISR) — pas seulement au build. On force donc
   // l'inclusion de ces fichiers dans le bundle des fonctions serverless Vercel,

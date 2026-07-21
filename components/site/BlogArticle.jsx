@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button, Icon } from "@/components/ds";
 import { ABCM_INFO, assetPath } from "@/data/formations";
 import { buildToc } from "@/lib/toc";
@@ -117,7 +118,15 @@ export function BlogArticle({ post }) {
       {cover ? (
         <div className="container">
           <figure className="blog-cover">
-            <img src={cover.src} alt={cover.alt || post.title} />
+            <Image
+              src={cover.src}
+              alt={cover.alt || post.title}
+              width={1600}
+              height={900}
+              sizes="(max-width: 880px) 100vw, 880px"
+              priority
+              style={{ width: "100%", height: "auto" }}
+            />
           </figure>
         </div>
       ) : null}

@@ -702,7 +702,7 @@
 .articles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: var(--space-10); }
 .article-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
 .article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.article-card__media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+.article-card__media { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
 .article-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s var(--ease-out); }
 .article-card:hover .article-card__media img { transform: scale(1.05); }
 .article-card__body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); flex: 1; }
@@ -1112,7 +1112,7 @@
 .bloglist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(var(--space-5), 2.5vw, var(--space-8)); }
 .blogcard { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
 .blogcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in oklch, var(--logo-magenta) 35%, var(--border)); }
-.blogcard__media { display: block; aspect-ratio: 16 / 9; background: color-mix(in oklch, var(--logo-blue) 10%, var(--surface-inset)); overflow: hidden; }
+.blogcard__media { position: relative; display: block; aspect-ratio: 16 / 9; background: color-mix(in oklch, var(--logo-blue) 10%, var(--surface-inset)); overflow: hidden; }
 .blogcard__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--dur-slow, 0.4s) var(--ease-out); }
 .blogcard:hover .blogcard__media img { transform: scale(1.04); }
 .blogcard__body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); flex: 1; }
