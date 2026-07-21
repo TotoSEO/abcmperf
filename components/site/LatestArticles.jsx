@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionHeading, Icon, Button } from "@/components/ds";
 import { getAllPosts } from "@/lib/blog";
 import { getAllPostsFromPayload } from "@/lib/payload-posts";
@@ -43,7 +44,12 @@ export async function LatestArticles() {
               <Link key={p.slug} href={`/${p.slug}/`} className="article-card">
                 {cover && (
                   <span className="article-card__media">
-                    <img src={cover} alt={p.cover?.alt || p.title} loading="lazy" width="760" height="427" />
+                    <Image
+                      src={cover}
+                      alt={p.cover?.alt || p.title}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 400px"
+                    />
                   </span>
                 )}
                 <div className="article-card__body">

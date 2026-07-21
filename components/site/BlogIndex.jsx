@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Icon } from "@/components/ds";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
 import { getAllPosts } from "@/lib/blog";
@@ -46,7 +47,9 @@ export async function BlogIndex() {
               return (
                 <Link key={p.slug} href={`/${p.slug}/`} className="blogcard" style={{ "--_i": i }} data-reveal>
                   <span className={"blogcard__media" + (cover ? "" : " blogcard__media--empty")}>
-                    {cover ? <img src={cover} alt={p.cover.alt || p.title} loading="lazy" /> : null}
+                    {cover ? (
+                      <Image src={cover} alt={p.cover.alt || p.title} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 360px" />
+                    ) : null}
                   </span>
                   <span className="blogcard__body">
                     {p.date ? <span className="blogcard__date">{frDate(p.date)}</span> : null}
