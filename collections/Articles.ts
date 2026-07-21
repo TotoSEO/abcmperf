@@ -9,6 +9,8 @@ async function revalidateArticle(slug?: string, context?: any) {
     const { revalidatePath } = await import('next/cache')
     revalidatePath(`/${slug}/`)
     revalidatePath('/articles/')
+    // Section « derniers articles » de la home.
+    revalidatePath('/')
     revalidatePath('/sitemap-articles.xml')
     revalidatePath('/sitemap_index.xml')
   } catch {
