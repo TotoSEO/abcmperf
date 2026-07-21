@@ -1915,12 +1915,12 @@
 
 /* ---- Formules ---- */
 .aia-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); align-items: stretch; }
-.aia-plan { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
-.aia-plan--hot { border-color: color-mix(in srgb, var(--_hue) 55%, var(--border)); box-shadow: 0 34px 70px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
-.aia-plan--hot::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0; background: var(--gradient-brand-3); }
-/* Tag centré sur le bord supérieur : évite le débordement / rognage par le
-   coin arrondi de la carte (bug « bandeau trop large et coupé »). */
-.aia-plan__tag { position: absolute; top: 0; left: 50%; right: auto; transform: translate(-50%, -50%); white-space: nowrap; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: var(--_hue); padding: 0.4em 0.9em; border-radius: var(--radius-pill); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent); }
+.aia-plan { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
+/* Carte mise en avant : réserve la place du bandeau supérieur pleine largeur. */
+.aia-plan--hot { padding-top: calc(var(--space-8) + 1.9em); border-color: color-mix(in srgb, var(--_hue) 55%, var(--border)); box-shadow: 0 34px 70px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
+/* Bandeau « le plus choisi » : pleine largeur, calé en haut de la carte (ses
+   coins épousent le radius de la carte grâce à overflow:hidden sur .aia-plan). */
+.aia-plan__tag { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 0.45em; padding: 0.7em 1em; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--_hue), color-mix(in srgb, var(--_hue) 55%, var(--logo-blue))); }
 .aia-plan__name { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: 0; }
 .aia-plan__price { font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); color: var(--_hue); }
 .aia-plan__pitch { font-size: var(--text-sm); line-height: 1.5; color: var(--text-muted); margin: 0; }
@@ -1941,11 +1941,13 @@
 .aia-geo__link:hover { transform: translateY(-2px); }
 
 /* ---- Garanties ---- */
-.aia-guar { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
-.aia-guar__item { display: flex; gap: var(--space-4); padding: var(--space-5); border-radius: var(--radius-xl, 18px); background: var(--surface); border: 1px solid var(--border); }
-.aia-guar__ic { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 50%; color: var(--_hue); background: color-mix(in oklch, var(--_hue) 12%, var(--surface)); }
-.aia-guar__t { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: var(--text); margin: 0 0 4px; }
-.aia-guar__d { font-size: var(--text-sm); line-height: 1.5; color: var(--text-muted); margin: 0; }
+/* Engagements en accordéon horizontal (même interaction que la section équipe
+   de la home) : 4 cartes sur une ligne, une s'agrandit au survol. Réutilise la
+   mécanique .team-acc / .ta, avec un fond coloré (pas de photo) + une icône. */
+.aia-guar__hint { text-align: center; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted); margin: var(--space-2) 0 0; }
+.aia-guar-acc { margin-top: 0; height: clamp(300px, 34vw, 380px); }
+.ta--guar { background: linear-gradient(158deg, color-mix(in srgb, var(--_hue) 80%, var(--night)) 0%, color-mix(in srgb, var(--_hue) 46%, var(--night)) 100%); }
+.ta__ic { position: absolute; top: var(--space-5); left: var(--space-5); z-index: 3; display: inline-flex; align-items: center; justify-content: center; width: 2.7em; height: 2.7em; border-radius: 50%; color: #fff; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(4px); }
 
 /* ---- CTA collant (mobile) ---- */
 .aia-sticky { display: none; }

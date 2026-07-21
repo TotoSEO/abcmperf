@@ -82,7 +82,12 @@ export function Header() {
   const [mobFormations, setMobFormations] = React.useState(false);
   const [mega, setMega] = React.useState(null); // "services" | "formations" | null
   const [scrolled, setScrolled] = React.useState(false);
-  const groups = servicesByGroup();
+  // Menu services : on masque les fiches marquées « hideFromNav » (pages landing
+  // accessibles en direct / via campagnes, volontairement hors navigation).
+  const groups = servicesByGroup().map((g) => ({
+    ...g,
+    items: g.items.filter((s) => !s.hideFromNav),
+  }));
   const pathname = usePathname();
 
   React.useEffect(() => {

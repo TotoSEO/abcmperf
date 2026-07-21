@@ -80,6 +80,9 @@ export const ABCM_SERVICES = [
     name: "Publicité IA",
     title: "Agence de publicité IA à Strasbourg",
     tagline: "Nous diffusons et gérons vos campagnes publicitaires sur les IA : ChatGPT, Perplexity, Gemini et Copilot.",
+    // Page « landing » (accessible en direct / via campagnes) : volontairement
+    // absente du menu de navigation. Reste dans le sitemap et les listings.
+    hideFromNav: true,
     relatedFormation: { url: "/formation-savoir-utiliser-chat-gpt-pour-ameliorer-sa-productivite/", label: "Formation IA générative" } },
   { slug: "marketing-externalise", group: "strategie", hue: "blue", icon: "line-chart",
     name: "Marketing externalisé",

@@ -4,7 +4,12 @@ import { SectionHeading, Button, Icon } from "@/components/ds";
 import { servicesByGroup } from "@/data/services";
 
 export function Services() {
-  const groups = servicesByGroup();
+  // On masque les fiches « landing » (hideFromNav) de la grille des services,
+  // comme dans le menu : accessibles en direct / via campagnes, pas en vitrine.
+  const groups = servicesByGroup().map((g) => ({
+    ...g,
+    items: g.items.filter((s) => !s.hideFromNav),
+  }));
 
   return (
     <section className="services" id="services">
