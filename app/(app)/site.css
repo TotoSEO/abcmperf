@@ -1187,6 +1187,9 @@
 .pf-card__tag { --_hue: var(--logo-blue); font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; background: color-mix(in srgb, var(--_hue) 90%, transparent); padding: 0.34em 0.62em; border-radius: var(--radius-pill); }
 .pf-card__go { position: absolute; top: var(--space-3); right: var(--space-3); width: 2.15em; height: 2.15em; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.94); color: var(--night); opacity: 0; transform: translateY(-5px) scale(0.9); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
 .pf-card:hover .pf-card__go { opacity: 1; transform: none; }
+/* Badge « À la une » sur les fiches épinglées (première ligne) */
+.pf-card__pin { position: absolute; bottom: var(--space-3); left: var(--space-3); z-index: 2; display: inline-flex; align-items: center; gap: 0.35em; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: var(--night); background: rgba(255,255,255,0.94); padding: 0.34em 0.62em 0.34em 0.5em; border-radius: var(--radius-pill); box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--_hue) 60%, transparent); }
+.pf-card--featured { border-color: color-mix(in srgb, var(--_hue) 45%, var(--border)); box-shadow: 0 20px 44px -30px color-mix(in srgb, var(--_hue) 60%, transparent); }
 .pf-card__body { position: relative; display: flex; flex-direction: column; gap: 0.28em; padding: var(--space-6) var(--space-5) var(--space-5); }
 .pf-card__logo { position: absolute; top: 0; left: var(--space-5); transform: translateY(-58%); width: 56px; height: 56px; border-radius: 15px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; padding: 8px; overflow: hidden; }
 .pf-card__logo img { width: 100%; height: 100%; object-fit: contain; }
@@ -1245,7 +1248,10 @@
 .pf-sec__head { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); padding-bottom: var(--space-5); border-bottom: 1px dashed color-mix(in oklch, var(--_hue) 32%, var(--border)); }
 .pf-sec__num { flex: none; width: 2.6em; height: 2.6em; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: var(--text-base); color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 78%, #fff), var(--_hue)); box-shadow: 0 10px 22px -10px color-mix(in srgb, var(--_hue) 65%, transparent), inset 0 1px 0 rgba(255,255,255,0.45); }
 .pf-sec__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 1.05rem + 1.3vw, 1.95rem); line-height: 1.1; letter-spacing: var(--tracking-tight); color: var(--text); margin: 0; }
-.pf-sec__content { position: relative; }
+/* display:flow-root établit un contexte de formatage de bloc : la section
+   contient l'encart promo flottant (« Service lié ») même quand le texte à
+   côté est court ou absent — sinon le float dépasse du cadre de la section. */
+.pf-sec__content { position: relative; display: flow-root; }
 .pf-sec__prose > p { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text); margin: 0 0 var(--space-4); }
 .pf-sec__prose > p:last-child { margin-bottom: 0; }
 .pf-sec__prose h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--text-lg); color: var(--text); margin: var(--space-6) 0 var(--space-2); }

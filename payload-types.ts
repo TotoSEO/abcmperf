@@ -441,6 +441,14 @@ export interface Portfolio {
    */
   status: 'draft' | 'published';
   /**
+   * Épingle cette fiche sur la première ligne du portfolio. Jusqu’à 3 fiches à la une (les 3 rangs les plus bas si davantage sont cochées).
+   */
+  featured?: boolean | null;
+  /**
+   * Ordre d’affichage parmi les fiches à la une (1 = première). Laisser vide pour classer par titre.
+   */
+  featuredRank?: number | null;
+  /**
    * Ex. « Stratégie Digitale », « Création de site »… (affiché en sur-titre).
    */
   projectType?: string | null;
@@ -719,6 +727,8 @@ export interface PortfolioSelect<T extends boolean = true> {
       };
   slug?: T;
   status?: T;
+  featured?: T;
+  featuredRank?: T;
   projectType?: T;
   categories?: T;
   cover?: T;

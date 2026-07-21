@@ -31,6 +31,7 @@ export default async function PortfolioPage() {
     categories: c.categories,
     cover: c.cover,
     logo: c.logo,
+    featured: c.featured,
   }));
   return <PortfolioHub cases={cases} />;
 }

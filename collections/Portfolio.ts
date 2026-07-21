@@ -203,6 +203,34 @@ export const Portfolio: CollectionConfig = {
               'Seules les fiches « Publié » apparaissent sur le site et dans le sitemap.',
           },
         },
+        // ── Mise en avant : « à la une » sur la première ligne de la grille ──
+        // Jusqu'à 3 fiches peuvent être épinglées. Elles sont affichées en tête
+        // du portfolio (première ligne). L'ordre entre elles est donné par le
+        // rang ci-dessous (1 → 3). Au-delà de 3, seules les 3 premières (rang le
+        // plus bas) sont réellement épinglées côté site.
+        {
+          name: 'featured',
+          type: 'checkbox',
+          defaultValue: false,
+          label: 'À la une (première ligne)',
+          admin: {
+            description:
+              'Épingle cette fiche sur la première ligne du portfolio. Jusqu’à 3 fiches à la une (les 3 rangs les plus bas si davantage sont cochées).',
+          },
+        },
+        {
+          name: 'featuredRank',
+          type: 'number',
+          label: 'Rang à la une (1 à 3)',
+          min: 1,
+          max: 3,
+          admin: {
+            condition: (_, sibling) => Boolean(sibling?.featured),
+            description:
+              'Ordre d’affichage parmi les fiches à la une (1 = première). Laisser vide pour classer par titre.',
+            step: 1,
+          },
+        },
         {
           name: 'projectType',
           type: 'text',

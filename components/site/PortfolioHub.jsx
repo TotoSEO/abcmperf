@@ -16,10 +16,17 @@ function Card({ c }) {
   const cover = withBase(c.cover);
   const logo = withBase(c.logo);
   return (
-    <Link href={`${PORTFOLIO_URL}${c.slug}/`} className="pf-card" style={{ "--_hue": theme.hue }}>
+    <Link
+      href={`${PORTFOLIO_URL}${c.slug}/`}
+      className={"pf-card" + (c.featured ? " pf-card--featured" : "")}
+      style={{ "--_hue": theme.hue }}
+    >
       <span className="pf-card__media">
         {cover ? <img src={cover} alt="" loading="lazy" /> : <span className="pf-card__ph" />}
         <span className="pf-card__scrim" aria-hidden="true" />
+        {c.featured ? (
+          <span className="pf-card__pin"><Icon name="sparkles" size={13} /> À la une</span>
+        ) : null}
         <span className="pf-card__tags">
           {themes.slice(0, 2).map((t) => (
             <span key={t.id} className="pf-card__tag" style={{ "--_hue": t.hue }}>{t.short}</span>

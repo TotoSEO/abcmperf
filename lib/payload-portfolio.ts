@@ -194,6 +194,8 @@ export type PortfolioSummary = {
   logo: string | null
   noindex: boolean
   services: string[]
+  featured: boolean
+  featuredRank: number | null
   lastModified?: string
   source: 'payload' | 'file'
 }
@@ -212,6 +214,8 @@ function summaryFromDoc(doc: any): PortfolioSummary {
     logo: mediaUrl(doc.logo),
     noindex: Boolean(doc.noindex),
     services,
+    featured: Boolean(doc.featured),
+    featuredRank: typeof doc.featuredRank === 'number' ? doc.featuredRank : null,
     lastModified: doc.updatedAt || doc.createdAt || undefined,
     source: 'payload' as const,
   }
@@ -249,6 +253,10 @@ function fileSummaries(): PortfolioSummary[] {
     // (case « noindex » décochée) entrent dans le sitemap portfolio.
     noindex: true,
     services: c.services || [],
+    // Les fiches historiques (fichier) ne sont jamais mises à la une : seule
+    // l'édition back-office pilote l'épinglage.
+    featured: false,
+    featuredRank: null,
     lastModified: undefined as string | undefined,
     source: 'file' as const,
   }))
@@ -264,7 +272,24 @@ export const getAllPortfolioSummaries = cache(async () => {
   for (const f of fileSummaries()) {
     if (!seen.has(f.slug)) merged.push(f)
   }
-  return merged.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'fr'))
+
+  const byTitle = (a: PortfolioSummary, b: PortfolioSummary) =>
+    (a.title || '').localeCompare(b.title || '', 'fr')
+
+  // Fiches « à la une » : classées par rang (1 → 3) puis par titre, limitées à
+  // 3 (première ligne de la grille). Au-delà de 3, les fiches en trop perdent
+  // leur statut épinglé pour rester cohérent avec le rendu côté site.
+  const pinned = merged
+    .filter((c) => c.featured)
+    .sort((a, b) => (a.featuredRank ?? 99) - (b.featuredRank ?? 99) || byTitle(a, b))
+    .slice(0, 3)
+  const pinnedSlugs = new Set(pinned.map((c) => c.slug))
+  for (const c of merged) {
+    if (c.featured && !pinnedSlugs.has(c.slug)) c.featured = false
+  }
+
+  const rest = merged.filter((c) => !pinnedSlugs.has(c.slug)).sort(byTitle)
+  return [...pinned, ...rest]
 }
 )
 
