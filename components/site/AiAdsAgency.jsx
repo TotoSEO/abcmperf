@@ -7,21 +7,19 @@ import { ScrollReveal } from "@/components/site/ScrollReveal";
 
 // Fiche service « Agence de publicité IA » (/agence-pub-ia).
 //
-// Gabarit dédié : reprend l'ADN visuel des fiches service (classes svcd2-*)
-// mais dans une version plus futuriste et 100 % orientée conversion (sections
-// aia-*). Contenu construit pour dépasser les concurrents (425PPM, Adrénaline,
-// ALIA…) : on couvre à la fois la PERFORMANCE (pub sur IA conversationnelles,
-// enchères pilotées, attribution) ET la CRÉATION générative, avec les atouts
-// ABCM (proximité Strasbourg, humain + IA, sans engagement, transparence).
+// ANGLE : on vend de la publicité SUR les IA — rendre la marque visible, citée
+// et recommandée DANS les réponses des assistants (ChatGPT, Perplexity, Gemini,
+// Copilot…) et sécuriser les futurs formats publicitaires natifs de ces
+// moteurs. Ce n'est PAS de la pub « pilotée / assistée par l'IA ».
 //
-// Composant serveur : aucune dépendance JS côté client (FAQ en <details>, CTA
-// collant en CSS). Le contenu vit ici pour rester maîtrisé éditorialement.
+// Gabarit dédié : reprend l'ADN visuel des fiches service (.svcd2-*) dans une
+// version plus futuriste, animée et 100 % orientée conversion (.aia-*).
+// Composant serveur, sans JS client (animations en CSS, FAQ en <details>).
 
 const SITE = ABCM_INFO.url;
 const SLUG = "agence-pub-ia";
 
 // ── Glyphes futuristes (SVG en ligne, style « trait » cohérent avec lucide) ──
-// Évite de dépendre d'icônes absentes de la map maison.
 function Glyph({ name, size = 24 }) {
   const p = {
     width: size, height: size, viewBox: "0 0 24 24", fill: "none",
@@ -40,104 +38,130 @@ function Glyph({ name, size = 24 }) {
       return (<svg {...p}><path d="M12 3l9 5-9 5-9-5z" /><path d="M3 13l9 5 9-5" /></svg>);
     case "radar":
       return (<svg {...p}><path d="M12 12l6-3.5" /><path d="M20.5 12a8.5 8.5 0 1 1-4.3-7.4" /><path d="M16.5 12a4.5 4.5 0 1 1-2.3-3.9" /><circle cx="12" cy="12" r="1" /></svg>);
-    case "brain":
-      return (<svg {...p}><path d="M9.5 4a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 5 9a2.5 2.5 0 0 0 1 4v2a2.5 2.5 0 0 0 3.5 2.3" /><path d="M14.5 4A2.5 2.5 0 0 1 17 6.5 2.5 2.5 0 0 1 19 9a2.5 2.5 0 0 1-1 4v2a2.5 2.5 0 0 1-3.5 2.3" /><path d="M12 4.5v15" /></svg>);
+    case "shield":
+      return (<svg {...p}><path d="M12 3l7 3v5c0 4.3-3 8-7 10-4-2-7-5.7-7-10V6z" /><path d="M9.2 12l1.9 1.9L15 10" /></svg>);
     default:
       return (<svg {...p}><circle cx="12" cy="12" r="8" /></svg>);
   }
 }
 
-// ── Contenu (data → rendu, pour garder du texte propre et sûr au lint) ──
+// ── Textes courts (constantes → évite l'échappement des apostrophes en JSX) ──
+const EYEBROW = "Publicité sur l'IA";
+const HERO_LEAD = "Vos clients ne tapent plus de mots-clés : ils posent leurs questions à ChatGPT, Perplexity, Gemini ou Copilot. Nous plaçons votre marque au cœur de leurs réponses.";
+const WHY_TITLE = "Vos clients ne cherchent plus, ils demandent à l'IA";
+const WHY_1 = "Des centaines de millions de personnes utilisent déjà ChatGPT, Perplexity ou Gemini pour choisir un produit, un prestataire, une agence. Elles ne parcourent plus dix liens : elles lisent une réponse, et souvent une seule recommandation.";
+const WHY_2 = "La vraie question n'est plus « suis-je bien référencé sur Google ? » mais « est-ce que l'IA parle de moi, et en bien ? ». Les marques qui s'installent maintenant dans ces réponses prennent une avance difficile à rattraper. C'est exactement là que nous intervenons.";
+const CAPS_TITLE = "Votre marque au cœur des réponses de l'IA";
+const METHOD_TITLE = "De l'invisible à la réponse recommandée";
+const VS_TITLE = "Être dans la réponse plutôt que dans la liste";
+const PLANS_TITLE = "Prenez position sur les IA";
+const GUAR_TITLE = "L'avance, avec les bonnes pratiques";
+const FAQ_TITLE = "Vos questions sur la publicité sur les IA";
+const CTA_BAND_H = "Où apparaît votre marque quand on interroge l'IA ?";
+const CTA_BAND_P = "On pose la question aux grandes IA sur votre marché et on vous montre le résultat, gratuitement.";
+const FINAL_H = "Prenez la place avant vos concurrents";
+const FINAL_P = "Un échange de 30 minutes pour voir où vous en êtes dans les réponses de l'IA, et comment y prendre la première place.";
 
-const HERO_POINTS = [
-  "Humain + IA : la créativité de notre équipe, la puissance des algorithmes",
-  "Vous gardez la propriété de vos comptes, de vos données et de vos audiences",
-  "Sans engagement de durée : seuls les résultats prolongent le partenariat",
-];
+// Bloc animé : simulation d'une réponse d'IA qui recommande la marque.
+const DEMO = {
+  q: "Quelle agence pour de la publicité sur l'IA à Strasbourg ?",
+  a1: "Pour rendre une marque visible dans les réponses des IA à Strasbourg, la référence est :",
+  brand: "ABCM Performances",
+  badge: "Recommandé",
+  a2: "Spécialiste de la visibilité des marques dans ChatGPT, Perplexity et Gemini.",
+};
+
+const ENGINES = ["ChatGPT", "Perplexity", "Google Gemini", "Microsoft Copilot", "Claude", "Grok", "AI Overviews", "Meta AI", "Mistral Le Chat"];
 
 const METRICS = [
-  { big: "Jusqu'à -38 %", label: "de coût d'acquisition à budget égal" },
-  { big: "x10", label: "de variantes créatives testées chaque mois" },
-  { big: "24/7", label: "d'optimisation automatique des campagnes" },
+  { big: "6+ IA", label: "moteurs couverts : ChatGPT, Perplexity, Gemini, Copilot…" },
+  { big: "Nº1", label: "objectif : être la marque que l'IA recommande" },
+  { big: "First", label: "l'avantage du premier arrivé, avant vos concurrents" },
+];
+
+const HERO_POINTS = [
+  "Votre marque citée et recommandée dans les réponses des IA",
+  "Les futurs formats publicitaires natifs sécurisés dès leur ouverture",
+  "Sans engagement, avec un interlocuteur dédié à Strasbourg",
 ];
 
 const CAPS = [
-  { g: "chat-ai", t: "Publicité sur les IA conversationnelles",
-    d: "On positionne votre marque là où vos clients posent désormais leurs questions : ChatGPT, Perplexity, Gemini, Copilot. Formats natifs et visibilité dans les réponses génératives (GEO/AEO)." },
-  { g: "spark", t: "Création publicitaire générative",
-    d: "Visuels, déclinaisons et vidéos produits en série par IA, puis affinés par nos directeurs artistiques. De quoi alimenter l'A/B testing sans exploser le budget création." },
-  { g: "target", t: "Ciblage prédictif, sans cookies",
-    d: "Segmentation par signaux d'intention et modèles prédictifs (Performance Max, Advantage+). On touche les bons profils au bon moment, y compris dans un web sans cookies tiers." },
-  { g: "gauge", t: "Enchères & budgets pilotés par IA",
-    d: "Les algorithmes ajustent enchères, audiences et diffusion en continu ; nous fixons le cap, les garde-fous et la stratégie pour éviter le pilotage automatique aveugle." },
-  { g: "layers", t: "Personnalisation à grande échelle",
-    d: "Messages, accroches et pages d'atterrissage adaptés à chaque audience et chaque étape du parcours, générés et testés à une cadence impossible en manuel." },
-  { g: "radar", t: "Mesure & attribution augmentée",
-    d: "On regarde l'incrémentalité réelle, pas seulement le dernier clic. Reporting clair, KPIs business (leads, CA, marge) et recommandations, pas des tableaux illisibles." },
+  { g: "chat-ai", t: "Publicité native dans les IA conversationnelles",
+    d: "Dès que ChatGPT, Perplexity ou Copilot ouvrent leurs formats publicitaires, votre marque y est. On sécurise vos placements sur ces nouveaux espaces avant qu'ils ne se saturent." },
+  { g: "spark", t: "Être LA réponse recommandée (GEO / AEO)",
+    d: "On optimise votre marque pour que les IA la citent et la recommandent spontanément dans leurs réponses. C'est la visibilité organique de demain, à capter aujourd'hui." },
+  { g: "radar", t: "Présence dans les AI Overviews de Google",
+    d: "Les résumés générés par l'IA coiffent désormais les résultats Google et captent le clic avant les liens bleus. On travaille votre contenu pour y figurer, pas pour disparaître." },
+  { g: "layers", t: "Contenu & données pensés pour les modèles",
+    d: "Pages sources, données structurées, entités de marque : on donne aux IA tout ce qu'il faut pour vous comprendre, vous choisir et vous citer correctement." },
+  { g: "target", t: "Veille & part de voix dans les réponses IA",
+    d: "On surveille ce que les IA disent de vous et de vos concurrents sur vos requêtes clés, et on mesure votre part de voix pour la faire progresser, semaine après semaine." },
+  { g: "shield", t: "Réputation & maîtrise du discours IA",
+    d: "Corriger une IA qui vous dessert, faire remonter les bons signaux, éviter les hallucinations sur votre marque : on pilote l'image que l'IA renvoie de vous." },
 ];
 
 const STEPS = [
-  { t: "Audit & données", d: "Analyse de vos campagnes, de votre marché et de vos données. On identifie les fuites de budget et les gisements de croissance avant de dépenser un euro." },
-  { t: "Création augmentée", d: "Angles, visuels et vidéos générés par IA puis validés par notre équipe. On arrive au lancement avec un arsenal de variantes, pas une seule annonce." },
-  { t: "Lancement & pilotage IA", d: "Mise en ligne multi-canal (Google, Meta, LinkedIn, IA conversationnelles) avec enchères pilotées par les algorithmes sous notre supervision." },
-  { t: "Optimisation & reporting", d: "Chaque semaine, on coupe ce qui ne marche pas, on amplifie ce qui convertit, et on vous livre un point clair et actionnable." },
+  { t: "Cartographie des questions IA", d: "On identifie les questions que vos clients posent aux IA et ce qu'elles répondent aujourd'hui : où vous apparaissez, où vos concurrents captent la réponse." },
+  { t: "Optimisation pour être cité", d: "Contenu source, données structurées, cohérence de marque et signaux de confiance : on vous rend compréhensible et recommandable par les modèles." },
+  { t: "Placements & campagnes sur les IA", d: "On active les formats publicitaires natifs des moteurs conversationnels dès leur ouverture, et on renforce votre présence sur les IA qui monétisent déjà." },
+  { t: "Part de voix & optimisation continue", d: "On mesure votre présence dans les réponses IA chaque semaine, on corrige, on amplifie ce qui vous fait recommander." },
 ];
 
 const VS = [
-  { k: "Volume créatif", ia: "Des dizaines de variantes générées et testées", old: "1 à 3 annonces, figées des semaines" },
-  { k: "Ciblage", ia: "Prédictif, par intention, sans cookies tiers", old: "Audiences manuelles, dépendantes des cookies" },
-  { k: "Optimisation", ia: "En continu, 24/7, par les algorithmes", old: "Ajustements ponctuels, quelques fois par mois" },
-  { k: "Nouveaux canaux", ia: "Présence sur ChatGPT, Perplexity, Gemini", old: "Search & social classiques uniquement" },
-  { k: "Mesure", ia: "Incrémentalité & KPIs business", old: "Dernier clic, CPC, indicateurs de vanité" },
-  { k: "Coût création", ia: "Marginal grâce à la génération IA", old: "Élevé, chaque déclinaison se facture" },
+  { k: "Où vous apparaissez", ia: "Dans la réponse même de l'IA", old: "Dans une liste de liens à faire défiler" },
+  { k: "Intention", ia: "Question précise, contexte riche", old: "Un mot-clé isolé" },
+  { k: "Format", ia: "Une recommandation conversationnelle", old: "Une annonce texte ou display" },
+  { k: "Concurrence", ia: "Faible : espace émergent", old: "Saturée, enchères qui grimpent" },
+  { k: "Confiance", ia: "L'IA vous recommande, c'est une caution", old: "Un bandeau perçu comme de la pub" },
+  { k: "Fenêtre de tir", ia: "L'avantage du premier arrivé", old: "Un terrain déjà occupé" },
 ];
 
 const STATS = [
-  { big: "2015", label: "l'agence forme et déploie le digital dans le Grand Est" },
+  { big: "2015", label: "l'agence déploie le digital dans le Grand Est" },
   { big: "4,9/5", label: "note moyenne de nos clients accompagnés" },
-  { big: "100 %", label: "de vos comptes et données restent les vôtres" },
-  { big: "0", label: "engagement de durée imposé" },
+  { big: "6+", label: "moteurs d'IA surveillés et travaillés" },
+  { big: "100 %", label: "de vos contenus et données restent les vôtres" },
 ];
 
 const PLANS = [
-  { name: "Diagnostic IA", price: "Offert", tag: "",
-    pitch: "Un audit de vos campagnes et de votre potentiel IA, avec un plan d'action concret que vous repartez avec, même sans travailler avec nous.",
-    feats: ["Audit des campagnes existantes", "Opportunités IA & canaux prioritaires", "Estimation de gains réaliste"],
-    cta: "Réserver mon diagnostic" },
-  { name: "Croissance", price: "à partir de 900 €/mois", tag: "Le plus choisi",
-    pitch: "La gestion complète de vos campagnes publicitaires pilotées par IA : création générative, diffusion multi-canal, optimisation et reporting.",
-    feats: ["Campagnes Google, Meta & IA conversationnelles", "Création générative illimitée", "Optimisation continue + point hebdo", "Reporting business mensuel"],
-    cta: "Lancer ma croissance" },
-  { name: "Sur-mesure", price: "Sur devis", tag: "",
-    pitch: "Pour les budgets média conséquents et les enjeux multi-marchés : dispositif dédié, intégrations data et accompagnement stratégique renforcé.",
-    feats: ["Stratégie omnicanale avancée", "Intégrations data & CRM", "Interlocuteur dédié à Strasbourg"],
+  { name: "Diagnostic visibilité IA", price: "Offert", tag: "",
+    pitch: "On interroge les grandes IA sur votre marché et on vous montre où votre marque apparaît (ou pas) dans leurs réponses, avec un plan d'action concret que vous gardez.",
+    feats: ["Test sur ChatGPT, Perplexity, Gemini…", "Votre part de voix face aux concurrents", "Plan d'action priorisé"],
+    cta: "Faire mon diagnostic" },
+  { name: "Présence IA", price: "à partir de 690 €/mois", tag: "Le plus choisi",
+    pitch: "On rend votre marque citée et recommandée par les IA : optimisation GEO/AEO, contenu source, présence dans les AI Overviews et veille de votre part de voix.",
+    feats: ["Optimisation GEO/AEO en continu", "Contenu & données pour les modèles", "Présence AI Overviews Google", "Veille part de voix + reporting mensuel"],
+    cta: "Gagner en visibilité IA" },
+  { name: "Publicité IA & sur-mesure", price: "Sur devis", tag: "",
+    pitch: "Les placements publicitaires natifs sur les moteurs conversationnels dès leur ouverture, plus un dispositif complet pour les enjeux multi-marchés.",
+    feats: ["Placements sponsorisés natifs", "Campagnes sur Perplexity & consorts", "Interlocuteur dédié à Strasbourg"],
     cta: "Construire mon dispositif" },
 ];
 
 const GUARANTEES = [
-  { i: "shield-check", t: "Vous restez propriétaire", d: "Comptes publicitaires, données et audiences vous appartiennent, à 100 %. On travaille sur vos actifs, jamais à votre place." },
-  { i: "line-chart", t: "Transparence totale", d: "Vous voyez où va chaque euro de budget média et ce qu'il rapporte. Aucun coût caché, aucune marge dissimulée sur vos dépenses." },
-  { i: "user-round", t: "Un humain à Strasbourg", d: "Un interlocuteur dédié qui connaît votre dossier, pas un ticket. L'IA fait le volume, nous gardons le jugement." },
-  { i: "sparkles", t: "Sans engagement", d: "Pas de durée imposée. Notre seule sécurité, c'est votre satisfaction et vos résultats mois après mois." },
+  { i: "sparkles", t: "Pionniers, pas suiveurs", d: "On est déjà présents sur ces nouveaux espaces. Vous avancez avec une longueur d'avance, sans essuyer les plâtres." },
+  { i: "line-chart", t: "Transparence totale", d: "Vous voyez précisément où votre marque apparaît dans les IA et ce que ça rapporte. Zéro indicateur de vanité." },
+  { i: "user-round", t: "Un humain à Strasbourg", d: "Un interlocuteur dédié qui suit votre présence dans les IA, pas un ticket anonyme dans une file." },
+  { i: "shield-check", t: "Vous restez propriétaire", d: "Vos contenus, vos données et vos comptes vous appartiennent, à 100 %, et sans engagement de durée." },
 ];
 
 const FAQS = [
-  { q: "C'est quoi, concrètement, une agence de publicité IA ?",
-    a: "C'est une agence qui conçoit, diffuse et optimise vos campagnes publicitaires en s'appuyant sur l'intelligence artificielle à chaque étape : génération des créations (visuels, vidéos, accroches), ciblage prédictif, enchères automatiques et mesure de la performance. L'IA fait le volume et la vitesse, notre équipe garde la stratégie, la direction créative et le contrôle." },
-  { q: "En quoi est-ce différent d'une campagne Google Ads classique ?",
-    a: "Le SEA classique reste au cœur du dispositif, mais la publicité IA va plus loin : on génère et teste dix fois plus de variantes créatives, on cible par signaux d'intention plutôt que par simples mots-clés, on laisse les algorithmes optimiser en continu, et on ouvre de nouveaux espaces comme les réponses de ChatGPT ou Perplexity. Résultat : moins de budget gaspillé et plus de conversions." },
-  { q: "Peut-on vraiment faire de la publicité dans ChatGPT ou Perplexity aujourd'hui ?",
-    a: "Les formats publicitaires natifs dans les moteurs conversationnels arrivent très vite, et certains sont déjà accessibles. En attendant leur généralisation, on vous rend visible dans les réponses générées par l'IA grâce au GEO (Generative Engine Optimization). Se positionner maintenant, c'est prendre l'avantage du premier arrivé avant que la concurrence et les coûts n'augmentent." },
-  { q: "L'IA va-t-elle remplacer l'humain et diluer ma marque ?",
-    a: "Non, et c'est justement notre différence. L'IA accélère la production et l'optimisation, mais chaque angle, chaque visuel et chaque message passe par le filtre de notre équipe et de votre charte. Vous gardez une marque cohérente et une voix qui vous ressemble, sans les dérapages du tout-automatique." },
-  { q: "Comment ciblez-vous sans les cookies tiers ?",
-    a: "On s'appuie sur les données de première main (vos clients, votre CRM), sur les signaux d'intention et sur les modèles prédictifs des régies (Performance Max, Advantage+). Ces approches sont conçues pour un web sans cookies et sont souvent plus précises que l'ancien ciblage, car elles anticipent l'intention d'achat plutôt que de suivre passivement." },
+  { q: "C'est quoi, la publicité sur les IA ?",
+    a: "C'est le fait de rendre votre marque visible directement dans les réponses des assistants IA (ChatGPT, Perplexity, Gemini, Copilot), là où vos clients posent désormais leurs questions. Cela repose sur deux leviers : la visibilité organique, c'est-à-dire être cité et recommandé par l'IA (le GEO/AEO), et les formats publicitaires natifs de ces moteurs, que nous sécurisons dès leur ouverture." },
+  { q: "En quoi est-ce différent du SEO ou de Google Ads ?",
+    a: "Le SEO vous place dans une liste de liens ; Google Ads achète un bandeau. La publicité sur les IA vous place dans la réponse elle-même, celle que l'assistant formule et que l'utilisateur lit en premier. On ne se bat plus pour un clic dans une liste : on devient la recommandation." },
+  { q: "Peut-on vraiment faire de la pub dans ChatGPT ou Perplexity aujourd'hui ?",
+    a: "Perplexity diffuse déjà des formats sponsorisés, et ChatGPT, Gemini et Copilot ouvrent progressivement la publicité. En parallèle, la visibilité organique (être cité par ces IA) est, elle, pleinement exploitable dès maintenant. On agit sur les deux fronts : on vous rend recommandable tout de suite et on sécurise vos placements payants dès qu'ils s'ouvrent." },
+  { q: "Comment fait-on pour que l'IA recommande ma marque ?",
+    a: "En donnant aux modèles de bonnes raisons de vous citer : un contenu source clair et fiable, des données structurées, une marque cohérente sur l'ensemble du web, des signaux de confiance et une présence là où les IA puisent leurs réponses. C'est un travail continu, que l'on pilote via votre part de voix dans les réponses." },
+  { q: "Comment mesure-t-on les résultats ?",
+    a: "On suit concrètement votre présence : sur quelles questions l'IA vous cite, votre part de voix face aux concurrents, l'évolution des recommandations et le trafic amené par les IA vers votre site. Des indicateurs lisibles, orientés business, pas des tableaux abstraits." },
+  { q: "Et si une IA raconte des choses fausses sur mon entreprise ?",
+    a: "C'est un vrai risque, les fameuses hallucinations. On surveille ce que les IA disent de vous, on corrige les signaux à la source pour rétablir la bonne information, et on renforce les contenus de référence pour que les modèles s'appuient dessus plutôt que sur des approximations." },
   { q: "Quel budget faut-il prévoir ?",
-    a: "La gestion de campagnes démarre à partir de 900 €/mois d'honoraires, auxquels s'ajoute votre budget média, que vous maîtrisez et pouvez ajuster. Nous commençons toujours par un diagnostic gratuit pour définir un budget réaliste au regard de vos objectifs, sans vous survendre." },
-  { q: "Au bout de combien de temps voit-on des résultats ?",
-    a: "Les premiers signaux (baisse du coût par clic, hausse du taux de conversion) apparaissent souvent dès les premières semaines, le temps que les algorithmes apprennent. Pour une performance stable et durable, on raisonne sur 2 à 3 mois. On vous dit toujours la vérité sur ce qui est atteignable et quand." },
-  { q: "Suis-je engagé et est-ce que je garde mes comptes ?",
-    a: "Aucun engagement de durée : vous restez libre à tout moment. Et vos comptes publicitaires, vos données et vos audiences vous appartiennent intégralement : si notre collaboration s'arrête, vous repartez avec l'ensemble de vos actifs. C'est votre satisfaction qui fait durer le partenariat, rien d'autre." },
+    a: "L'accompagnement démarre à partir de 690 €/mois pour la présence IA (visibilité organique et veille). Les placements publicitaires payants dépendent des formats ouverts par chaque moteur. On commence toujours par un diagnostic gratuit pour définir un plan réaliste au regard de vos objectifs." },
+  { q: "Suis-je engagé et est-ce que je garde mes actifs ?",
+    a: "Aucun engagement de durée : vous restez libre à tout moment. Et vos contenus, vos données et vos comptes restent votre propriété pleine et entière. C'est votre progression dans les réponses des IA qui fait durer le partenariat, rien d'autre." },
 ];
 
 function buildJsonLd(tagline) {
@@ -149,8 +173,8 @@ function buildJsonLd(tagline) {
       {
         "@type": "Service",
         "@id": url + "#service",
-        name: "Publicité IA",
-        serviceType: "Agence de publicité par intelligence artificielle",
+        name: "Publicité sur les IA",
+        serviceType: "Agence de publicité et de visibilité sur les moteurs d'IA (GEO/AEO)",
         description: tagline,
         url,
         provider: { "@id": orgId },
@@ -184,10 +208,10 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
     .filter(Boolean)
     .slice(0, 4);
   const jsonLd = buildJsonLd(s.tagline);
-  const h1 = h1Override || "L'agence de publicité propulsée par l'IA";
-  // Accent dégradé sur « Strasbourg ». Si le H1 le contient déjà (cas du titre
-  // surchargé depuis le back-office), on met ce mot en avant ; sinon on ajoute
-  // « à Strasbourg » — jamais les deux (évite le doublon « …Strasbourg à Strasbourg »).
+  const h1 = h1Override || "L'agence de publicité sur l'IA";
+  // Accent dégradé sur « Strasbourg ». Si le H1 le contient déjà (titre
+  // surchargé au back-office), on met ce mot en avant ; sinon on ajoute
+  // « à Strasbourg ». Jamais les deux (évite le doublon).
   const cityIdx = h1.indexOf("Strasbourg");
   const h1Node = cityIdx === -1
     ? (<>{h1} <span className="aia-grad">à Strasbourg</span></>)
@@ -198,7 +222,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
       <ScrollReveal />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ---- Hero futuriste ---- */}
+      {/* ---- Hero futuriste (2 colonnes : accroche + démo animée) ---- */}
       <section className="svcd2-hero aia-hero on-dark" data-theme="dark">
         <div className="svcd2-hero__deco" aria-hidden="true">
           <div className="svcd2-hero__aurora" />
@@ -211,34 +235,68 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
           </svg>
           <div className="svcd2-hero__grain" />
         </div>
-        <div className="container svcd2-hero__inner">
-          <nav className="svcd2-crumbs" aria-label="Fil d'Ariane">
-            <Link href="/">Accueil</Link>
-            <span aria-hidden="true">/</span>
-            <span className="svcd2-crumbs__current">{s.name}</span>
-          </nav>
-          <span className="svcd2-hero__eyebrow aia-hero__eyebrow"><Icon name="sparkles" size={16} /> Publicité nouvelle génération</span>
-          <h1 className="svcd2-hero__title aia-hero__title">{h1Node}</h1>
-          <p className="svcd2-hero__lead">{s.tagline} On combine la créativité de notre équipe et la puissance des algorithmes pour transformer votre budget média en clients.</p>
+        <div className="container svcd2-hero__inner aia-hero__inner">
+          <div className="aia-hero__col">
+            <nav className="svcd2-crumbs" aria-label="Fil d'Ariane">
+              <Link href="/">Accueil</Link>
+              <span aria-hidden="true">/</span>
+              <span className="svcd2-crumbs__current">{s.name}</span>
+            </nav>
+            <span className="svcd2-hero__eyebrow aia-hero__eyebrow"><Icon name="sparkles" size={16} /> {EYEBROW}</span>
+            <h1 className="svcd2-hero__title aia-hero__title">{h1Node}</h1>
+            <p className="svcd2-hero__lead">{HERO_LEAD}</p>
 
-          <div className="aia-metrics" role="list">
-            {METRICS.map((m) => (
-              <div className="aia-metric" role="listitem" key={m.big}>
-                <span className="aia-metric__big">{m.big}</span>
-                <span className="aia-metric__label">{m.label}</span>
-              </div>
-            ))}
+            <div className="aia-metrics" role="list">
+              {METRICS.map((m) => (
+                <div className="aia-metric" role="listitem" key={m.big}>
+                  <span className="aia-metric__big">{m.big}</span>
+                  <span className="aia-metric__label">{m.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <ul className="svcd2-hero__points">
+              {HERO_POINTS.map((p) => (<li key={p}><Icon name="check" size={16} /> {p}</li>))}
+            </ul>
+            <div className="svcd2-hero__actions">
+              <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Voir où apparaît ma marque</Button>
+              <a href="#methode" className="svcd2-hero__ghost">Découvrir la méthode</a>
+            </div>
           </div>
 
-          <ul className="svcd2-hero__points">
-            {HERO_POINTS.map((p) => (<li key={p}><Icon name="check" size={16} /> {p}</li>))}
-          </ul>
-          <div className="svcd2-hero__actions">
-            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Auditer mes campagnes gratuitement</Button>
-            <a href="#methode" className="svcd2-hero__ghost">Voir notre méthode</a>
+          {/* Bloc animé : réponse d'IA qui recommande la marque */}
+          <div className="aia-hero__demo" aria-hidden="true">
+            <div className="aia-demo">
+              <div className="aia-demo__bar">
+                <span className="aia-demo__win"><i /><i /><i /></span>
+                <span className="aia-demo__name"><Glyph name="spark" size={14} /> Assistant IA</span>
+                <span className="aia-demo__live"><i className="aia-demo__pulse" /> en direct</span>
+              </div>
+              <div className="aia-demo__q"><span>{DEMO.q}</span></div>
+              <div className="aia-demo__a">
+                <span className="aia-demo__avatar"><Glyph name="spark" size={15} /></span>
+                <div className="aia-demo__bubble">
+                  <p className="aia-demo__line aia-demo__l1">{DEMO.a1}</p>
+                  <p className="aia-demo__reco aia-demo__l2">
+                    <span className="aia-demo__brand">{DEMO.brand}</span>
+                    <span className="aia-demo__badge"><Icon name="check" size={12} /> {DEMO.badge}</span>
+                  </p>
+                  <p className="aia-demo__line aia-demo__l3">{DEMO.a2}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ---- Bandeau défilant des moteurs d'IA ---- */}
+      <div className="aia-marquee" aria-hidden="true">
+        <div className="aia-marquee__track">
+          {[...ENGINES, ...ENGINES].map((e, i) => (
+            <span className="aia-marquee__item" key={i}><span className="aia-marquee__dot" /> {e}</span>
+          ))}
+        </div>
+      </div>
 
       {/* ---- Bandeau confiance ---- */}
       <div className="aia-trust">
@@ -250,13 +308,13 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         </div>
       </div>
 
-      {/* ---- Pourquoi maintenant (first mover, honnête) ---- */}
+      {/* ---- Pourquoi maintenant ---- */}
       <section className="svcd2-sec aia-why">
         <div className="container container-narrow svcd2-sec__inner" data-reveal>
           <span className="svcd2-cases__eyebrow"><Icon name="sparkles" size={15} /> Le virage est maintenant</span>
-          <h2 className="svcd2-sec__title">Vos clients ne cherchent plus, ils demandent à l&apos;IA</h2>
-          <p className="aia-lead">Des millions de recherches ont déjà quitté Google pour ChatGPT, Perplexity ou Gemini. La publicité suit ce mouvement, et de nouveaux espaces s&apos;ouvrent. Les marques qui s&apos;y positionnent aujourd&apos;hui captent l&apos;attention pendant que les coûts sont bas et la concurrence rare. C&apos;est l&apos;avantage du premier arrivé, et il ne durera pas.</p>
-          <p className="aia-lead">Notre rôle : vous y placer intelligemment, sans jargon ni promesses magiques, en pilotant l&apos;IA avec un vrai jugement humain, pour des résultats que l&apos;on mesure en clients, pas en impressions.</p>
+          <h2 className="svcd2-sec__title">{WHY_TITLE}</h2>
+          <p className="aia-lead">{WHY_1}</p>
+          <p className="aia-lead">{WHY_2}</p>
         </div>
       </section>
 
@@ -265,7 +323,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container">
           <header className="aia-head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="target" size={15} /> Ce que nous activons pour vous</span>
-            <h2 className="svcd2-sec__title">Une machine à conversions, de la création à la mesure</h2>
+            <h2 className="svcd2-sec__title">{CAPS_TITLE}</h2>
           </header>
           <div className="aia-caps">
             {CAPS.map((c) => (
@@ -285,7 +343,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container">
           <header className="aia-head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="line-chart" size={15} /> Notre méthode</span>
-            <h2 className="svcd2-sec__title">Quatre étapes, zéro budget gaspillé</h2>
+            <h2 className="svcd2-sec__title">{METHOD_TITLE}</h2>
           </header>
           <ol className="aia-steps" data-reveal>
             {STEPS.map((st, i) => (
@@ -303,14 +361,14 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
       <section className="section aia-vs-sec">
         <div className="container container-narrow">
           <header className="aia-head" data-reveal>
-            <span className="svcd2-cases__eyebrow"><Icon name="sparkles" size={15} /> IA vs gestion classique</span>
-            <h2 className="svcd2-sec__title">Pourquoi vos concurrents restés au manuel décrochent</h2>
+            <span className="svcd2-cases__eyebrow"><Icon name="sparkles" size={15} /> Sur l&apos;IA vs publicité classique</span>
+            <h2 className="svcd2-sec__title">{VS_TITLE}</h2>
           </header>
           <div className="aia-vs" data-reveal>
             <div className="aia-vs__row aia-vs__row--head">
               <span className="aia-vs__k" />
-              <span className="aia-vs__ia">Publicité pilotée par IA</span>
-              <span className="aia-vs__old">Gestion classique</span>
+              <span className="aia-vs__ia">Publicité sur les IA</span>
+              <span className="aia-vs__old">Publicité classique</span>
             </div>
             {VS.map((r) => (
               <div className="aia-vs__row" key={r.k}>
@@ -328,10 +386,10 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container">
           <div className="svcd2-cta" data-reveal>
             <div>
-              <h2>Curieux de ce que l&apos;IA changerait pour vous&nbsp;?</h2>
-              <p>On audite gratuitement vos campagnes et on vous montre, chiffres à l&apos;appui, où se cachent vos prochains clients.</p>
+              <h2>{CTA_BAND_H}</h2>
+              <p>{CTA_BAND_P}</p>
             </div>
-            <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander mon audit gratuit</Button>
+            <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander mon diagnostic gratuit</Button>
           </div>
         </div>
       </section>
@@ -354,7 +412,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container">
           <header className="aia-head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="layout-grid" size={15} /> Nos formules</span>
-            <h2 className="svcd2-sec__title">Un point de départ pour chaque ambition</h2>
+            <h2 className="svcd2-sec__title">{PLANS_TITLE}</h2>
           </header>
           <div className="aia-plans">
             {PLANS.map((pl) => (
@@ -370,7 +428,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
               </article>
             ))}
           </div>
-          <p className="aia-plans__note">Budget média non inclus, maîtrisé par vos soins. Devis clair et transparent avant tout démarrage.</p>
+          <p className="aia-plans__note">Budget publicitaire éventuel non inclus, maîtrisé par vos soins. Devis clair et transparent avant tout démarrage.</p>
         </div>
       </section>
 
@@ -379,7 +437,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container">
           <header className="aia-head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="shield-check" size={15} /> Nos engagements</span>
-            <h2 className="svcd2-sec__title">La technologie de demain, l&apos;éthique en plus</h2>
+            <h2 className="svcd2-sec__title">{GUAR_TITLE}</h2>
           </header>
           <div className="aia-guar">
             {GUARANTEES.map((g) => (
@@ -400,7 +458,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
         <div className="container container-narrow">
           <header className="svcd2-faq__head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="sparkles" size={15} /> FAQ</span>
-            <h2 className="svcd2-sec__title">Vos questions sur la publicité IA</h2>
+            <h2 className="svcd2-sec__title">{FAQ_TITLE}</h2>
           </header>
           <div className="svcd2-faq__list" data-reveal>
             {FAQS.map((f) => (
@@ -422,7 +480,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
               <div className="svcd2-formation__body">
                 <span className="svcd2-formation__kicker">Vous préférez internaliser&nbsp;?</span>
                 <h2 className="svcd2-formation__h">{s.relatedFormation.label}</h2>
-                <p>Formez vos équipes à l&apos;IA générative et à la publicité augmentée, en présentiel à Strasbourg ou à distance. Finançable par votre OPCO.</p>
+                <p>Formez vos équipes à l&apos;IA générative et à la visibilité sur les moteurs conversationnels, en présentiel à Strasbourg ou à distance. Finançable par votre OPCO.</p>
               </div>
               <Link href={s.relatedFormation.url} className="svcd2-formation__link">Voir la formation <Icon name="arrow-right" size={16} /></Link>
             </div>
@@ -456,18 +514,18 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
       <section className="svcd2-final on-dark" data-theme="dark">
         <div className="svcd2-final__deco" aria-hidden="true"><span className="svcd2-rond svcd2-rond--g" /><span className="svcd2-rond svcd2-rond--h" /></div>
         <div className="container svcd2-final__inner" data-reveal>
-          <h2 className="svcd2-final__title">Prenez l&apos;avantage avant vos concurrents</h2>
-          <p className="svcd2-final__sub">Un échange de 30 minutes, gratuit et sans engagement, pour voir ce que la publicité IA peut changer pour votre activité.</p>
+          <h2 className="svcd2-final__title">{FINAL_H}</h2>
+          <p className="svcd2-final__sub">{FINAL_P}</p>
           <div className="svcd2-final__actions">
-            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Réserver mon audit gratuit</Button>
+            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Réserver mon diagnostic gratuit</Button>
             <a className="svcd2-final__tel" href={`tel:${ABCM_INFO.phoneHref}`}><Icon name="phone" size={16} /> {ABCM_INFO.phone}</a>
           </div>
         </div>
       </section>
 
       {/* ---- CTA collant (mobile) ---- */}
-      <div className="aia-sticky" aria-hidden="false">
-        <Link href="/contact" className="aia-sticky__btn">Audit gratuit <Icon name="arrow-right" size={16} /></Link>
+      <div className="aia-sticky">
+        <Link href="/contact" className="aia-sticky__btn">Diagnostic gratuit <Icon name="arrow-right" size={16} /></Link>
         <a href={`tel:${ABCM_INFO.phoneHref}`} className="aia-sticky__tel" aria-label="Nous appeler"><Icon name="phone" size={18} /></a>
       </div>
     </div>

@@ -1839,7 +1839,8 @@
    (.svcd2-*) et ajoute des sections dédiées (.aia-*).
    ========================================================================== */
 .aia { --_hue: var(--logo-magenta); }
-.aia-grad { background: var(--gradient-brand-3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aia-grad { background: linear-gradient(90deg, var(--logo-magenta), var(--logo-blue), var(--logo-green), var(--logo-magenta)); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: aia-grad-shift 9s linear infinite; }
+@keyframes aia-grad-shift { to { background-position: 220% 0; } }
 
 /* ---- Hero : grille en perspective animée + métriques ---- */
 .aia-hero { padding-bottom: clamp(3rem, 2rem + 5vw, 5.5rem); }
@@ -1947,10 +1948,64 @@
   .aia-vs__row { grid-template-columns: 1fr; gap: 4px; padding: var(--space-4); }
   .aia-vs__row--head { display: none; }
   .aia-vs__k { font-size: var(--text-base); margin-bottom: 2px; }
-  .aia-vs__ia::before { content: "Avec l'IA — "; font-weight: 700; color: var(--logo-green); }
-  .aia-vs__old::before { content: "Sans IA — "; font-weight: 700; color: var(--text); }
+  .aia-vs__ia::before { content: "Sur les IA — "; font-weight: 700; color: var(--logo-green); }
+  .aia-vs__old::before { content: "Classique — "; font-weight: 700; color: var(--text); }
 }
 
+/* ---- Hero 2 colonnes : accroche + démo animée ---- */
+.aia-hero__inner { max-width: min(74rem, 100%); display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr); gap: clamp(var(--space-6), 4vw, var(--space-12)); align-items: center; }
+.aia-hero__col { min-width: 0; }
+.aia-hero__demo { min-width: 0; }
+@media (max-width: 900px) {
+  .aia-hero__inner { grid-template-columns: 1fr; }
+  .aia-hero__demo { margin-top: var(--space-2); max-width: 30rem; }
+}
+
+/* Carte « réponse d'IA » animée */
+.aia-demo { position: relative; overflow: hidden; border-radius: var(--radius-2xl); background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(10px); box-shadow: 0 40px 90px -40px rgba(0,0,0,0.7); padding: clamp(var(--space-4), 2vw, var(--space-6)); }
+.aia-demo::before { content: ""; position: absolute; inset: -40% 40% auto -20%; height: 80%; z-index: 0; pointer-events: none; filter: blur(60px); opacity: 0.5; background: radial-gradient(closest-side, color-mix(in srgb, var(--_hue) 80%, transparent), transparent), radial-gradient(closest-side, var(--logo-blue), transparent) 70% 30%; animation: aia-demo-glow 8s ease-in-out infinite alternate; }
+.aia-demo > * { position: relative; z-index: 1; }
+.aia-demo__bar { display: flex; align-items: center; gap: 0.6em; padding-bottom: var(--space-3); margin-bottom: var(--space-4); border-bottom: 1px solid rgba(255,255,255,0.1); }
+.aia-demo__win { display: inline-flex; gap: 5px; }
+.aia-demo__win i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.28); }
+.aia-demo__name { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-200); }
+.aia-demo__name .abcm-ic { color: var(--_hue); }
+.aia-demo__live { margin-left: auto; display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-300); }
+.aia-demo__pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--logo-green); box-shadow: 0 0 0 0 color-mix(in srgb, var(--logo-green) 70%, transparent); animation: aia-pulse 2s ease-out infinite; }
+.aia-demo__q { align-self: flex-end; margin: 0 0 var(--space-4) auto; max-width: 88%; width: fit-content; padding: 0.7em 1em; border-radius: 16px 16px 4px 16px; background: color-mix(in srgb, var(--_hue) 80%, transparent); color: #fff; font-size: var(--text-sm); line-height: 1.4; box-shadow: 0 12px 26px -14px color-mix(in srgb, var(--_hue) 70%, transparent); animation: aiaQ 11s ease-in-out infinite; }
+.aia-demo__q span::after { content: "|"; margin-left: 2px; color: rgba(255,255,255,0.8); animation: aia-caret 0.9s steps(1) infinite; }
+.aia-demo__a { display: flex; gap: 0.7em; align-items: flex-start; }
+.aia-demo__avatar { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 2em; height: 2em; border-radius: 50%; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 72%, #fff), var(--_hue)); box-shadow: 0 8px 18px -8px color-mix(in srgb, var(--_hue) 60%, transparent); animation: aiaL1 11s ease-in-out infinite; }
+.aia-demo__bubble { flex: 1; min-width: 0; padding: 0.85em 1em; border-radius: 4px 16px 16px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+.aia-demo__line { margin: 0; font-size: var(--text-sm); line-height: 1.5; color: var(--neutral-100); }
+.aia-demo__reco { margin: 0.55em 0; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+.aia-demo__brand { font-family: var(--font-display); font-weight: 800; font-size: var(--text-base); background: linear-gradient(90deg, #fff, color-mix(in srgb, var(--_hue) 55%, #fff)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.aia-demo__badge { display: inline-flex; align-items: center; gap: 0.3em; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: #fff; padding: 0.3em 0.6em; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--_hue), color-mix(in srgb, var(--_hue) 55%, var(--logo-blue))); box-shadow: 0 0 0 0 color-mix(in srgb, var(--_hue) 60%, transparent); animation: aia-badge 2.6s ease-out infinite; }
+.aia-demo__l1 { animation: aiaL1 11s ease-in-out infinite; }
+.aia-demo__l2 { animation: aiaL3 11s ease-in-out infinite; }
+.aia-demo__l3 { animation: aiaL4 11s ease-in-out infinite; }
+
+@keyframes aiaQ  { 0%,2%{opacity:0; transform:translateY(8px);} 7%,90%{opacity:1; transform:none;} 97%,100%{opacity:0; transform:translateY(-6px);} }
+@keyframes aiaL1 { 0%,14%{opacity:0; transform:translateY(8px);} 20%,90%{opacity:1; transform:none;} 97%,100%{opacity:0; transform:translateY(-6px);} }
+@keyframes aiaL3 { 0%,24%{opacity:0; transform:translateY(8px);} 30%,90%{opacity:1; transform:none;} 97%,100%{opacity:0; transform:translateY(-6px);} }
+@keyframes aiaL4 { 0%,34%{opacity:0; transform:translateY(8px);} 40%,90%{opacity:1; transform:none;} 97%,100%{opacity:0; transform:translateY(-6px);} }
+@keyframes aia-caret { 50% { opacity: 0; } }
+@keyframes aia-pulse { 0%{ box-shadow: 0 0 0 0 color-mix(in srgb, var(--logo-green) 65%, transparent);} 70%,100%{ box-shadow: 0 0 0 8px transparent;} }
+@keyframes aia-badge { 0%{ box-shadow: 0 0 0 0 color-mix(in srgb, var(--_hue) 55%, transparent);} 70%,100%{ box-shadow: 0 0 0 10px transparent;} }
+@keyframes aia-demo-glow { from { transform: translate(0,0) scale(1); opacity: 0.35; } to { transform: translate(10%, 6%) scale(1.15); opacity: 0.6; } }
+
+/* ---- Bandeau défilant des moteurs d'IA ---- */
+.aia-marquee { overflow: hidden; background: var(--night); border-bottom: 1px solid color-mix(in srgb, #fff 8%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.aia-marquee__track { display: flex; align-items: center; gap: clamp(var(--space-5), 3vw, var(--space-10)); width: max-content; padding-block: var(--space-4); animation: aia-marq 32s linear infinite; }
+.aia-marquee__item { display: inline-flex; align-items: center; gap: 0.7em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: color-mix(in srgb, #fff 62%, transparent); white-space: nowrap; }
+.aia-marquee__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--_hue); box-shadow: 0 0 10px color-mix(in srgb, var(--_hue) 70%, transparent); }
+@keyframes aia-marq { to { transform: translateX(-50%); } }
+
 @media (prefers-reduced-motion: reduce) {
-  .aia-hero__grid { animation: none; }
+  .aia-hero__grid, .aia-grad, .aia-marquee__track, .aia-demo::before,
+  .aia-demo__q, .aia-demo__avatar, .aia-demo__l1, .aia-demo__l2, .aia-demo__l3,
+  .aia-demo__pulse, .aia-demo__badge { animation: none !important; }
+  .aia-demo__q, .aia-demo__avatar, .aia-demo__l1, .aia-demo__l2, .aia-demo__l3 { opacity: 1; transform: none; }
+  .aia-demo__q span::after { content: ""; }
+  .aia-grad { background-position: 0 0; }
 }
