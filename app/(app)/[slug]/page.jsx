@@ -2,7 +2,7 @@ import { notFound, redirect, permanentRedirect } from "next/navigation";
 import { FormationDetail } from "@/components/site/FormationDetail";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
 import { BlogArticle } from "@/components/site/BlogArticle";
-import { getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
+import { ABCM_INFO, getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
 import { getPost, blogSlugs } from "@/lib/blog";
 import { getPostFromPayload, getRedirectFor } from "@/lib/payload-posts";
@@ -49,6 +49,14 @@ export async function generateMetadata({ params }) {
   if (getService(slug)) return withPageOverride(`/${slug}/`, serviceMetadata(slug));
   const post = await resolvePost(slug);
   if (post) {
+    // Couverture de l'article en URL absolue pour l'og:image. La source peut
+    // être déjà absolue (média Payload) ou contenir le placeholder %ASSET% du
+    // repli fichier → on le résout vers le domaine de production.
+    const coverUrl = post.cover?.src
+      ? post.cover.src.startsWith("%ASSET%")
+        ? ABCM_INFO.url + post.cover.src.replace("%ASSET%", "")
+        : post.cover.src
+      : null;
     return {
       title: post.seoTitle ? { absolute: post.seoTitle } : post.title,
       description: post.description || undefined,
@@ -59,6 +67,13 @@ export async function generateMetadata({ params }) {
         description: post.description || undefined,
         publishedTime: post.date || undefined,
         modifiedTime: post.modified || undefined,
+        images: coverUrl ? [{ url: coverUrl, alt: post.cover.alt || post.title }] : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.seoTitle || post.title,
+        description: post.description || undefined,
+        images: coverUrl ? [coverUrl] : undefined,
       },
     };
   }

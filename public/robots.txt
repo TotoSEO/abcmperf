@@ -1,4 +1,19 @@
+# robots.txt — ABCM Performances
+# Le site public est entièrement indexable. On exclut uniquement le back-office
+# et les endpoints techniques, sans valeur pour le référencement. On ne bloque
+# NI le JS NI le CSS (/_next/…) : Google en a besoin pour rendre les pages.
+
 User-agent: *
 Allow: /
 
+# Back-office Payload & connexion admin
+Disallow: /admin
+Disallow: /admin-login
+
+# API technique (Payload REST/GraphQL) & endpoint d'envoi du formulaire
+Disallow: /api/
+Disallow: /contact/submit
+
 Sitemap: https://abcmperformances.com/sitemap_index.xml
+
+# Ressource pour les IA génératives (résumé du site) : /llms.txt

@@ -18,8 +18,28 @@ export const metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "ABCM Performances",
+    url: "/",
     title: "ABCM Performances, agence de communication & marketing digital",
     description: "Boostez votre visibilité sur le web & les réseaux. Une équipe à taille humaine à Strasbourg, depuis 2015.",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "ABCM Performances — agence de communication & marketing digital à Strasbourg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ABCM Performances, agence de communication & marketing digital",
+    description: "Boostez votre visibilité sur le web & les réseaux. Une équipe à taille humaine à Strasbourg, depuis 2015.",
+    images: ["/og-default.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
