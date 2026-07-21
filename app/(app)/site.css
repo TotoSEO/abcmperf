@@ -712,6 +712,7 @@
 .article-card__link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--accent-700); margin-top: var(--space-1); }
 .article-card__link .abcm-ic { transition: transform var(--dur-base) var(--ease-out); }
 .article-card:hover .article-card__link .abcm-ic { transform: translateX(3px); }
+.articles__more { display: flex; justify-content: center; margin-top: var(--space-10); }
 
 @media (max-width: 960px) {
   .whyus { grid-template-columns: 1fr; gap: var(--space-8); }

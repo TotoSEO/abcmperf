@@ -15,6 +15,11 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
+// ISR : la home est régénérée à la publication / suppression d'un article
+// (revalidatePath('/') dans les hooks Articles) ou au plus tard toutes les
+// 5 min, pour que la section « derniers articles » reste à jour sans rebuild.
+export const revalidate = 300;
+
 export default function HomePage() {
   return (
     <>
