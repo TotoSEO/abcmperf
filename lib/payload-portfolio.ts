@@ -73,22 +73,72 @@ function mediaUrl(m: any): string | null {
   return null
 }
 
-// Objet « case » complet (même forme que lib/portfolio.js) pour le rendu d'une
-// fiche : corps HTML rendu depuis Lexical, promo résolu, services déduits.
-async function buildCase(doc: any) {
-  let body = ''
-  if (doc.content?.root) {
-    try {
-      body = (await renderLexicalToHtml(doc.content)) || ''
-    } catch {
-      body = ''
-    }
+function esc(s: unknown): string {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+// Rend un champ richText Lexical en HTML (chaîne vide si vide / erreur).
+async function richToHtml(field: any): Promise<string> {
+  if (!field?.root) return ''
+  try {
+    return (await renderLexicalToHtml(field)) || ''
+  } catch {
+    return ''
   }
+}
+
+// Galerie « Visuels de la prestation » → suite de <figure> (même habillage que
+// les images du corps historique).
+function galleryHtml(gallery: any): string {
+  if (!Array.isArray(gallery)) return ''
+  return gallery
+    .map((item: any) => {
+      const src = mediaUrl(item?.image)
+      if (!src) return ''
+      return `<figure class="pf-fig"><img src="${esc(src)}" alt="${esc(item?.alt || '')}" loading="lazy"/></figure>`
+    })
+    .filter(Boolean)
+    .join('')
+}
+
+// Corps HTML de la fiche. Nouvelles fiches : assemblé à partir des champs
+// structurés (résumé, demande, réponse, visuels) sous la même forme (intro +
+// sections en <h2>) que le corps historique, pour un rendu identique sans
+// toucher au composant. Fiches historiques (champs structurés vides) : repli
+// sur le corps libre « content ».
+async function buildBody(doc: any): Promise<string> {
+  const [request, response] = await Promise.all([
+    richToHtml(doc.clientRequest),
+    richToHtml(doc.ourResponse),
+  ])
+  const gallery = galleryHtml(doc.gallery)
+  const summary = (doc.summary || '').trim()
+  const hasStructured = Boolean(summary || request || response || gallery)
+  if (hasStructured) {
+    return [
+      summary ? `<p>${esc(summary)}</p>` : '',
+      request ? `<h2>La demande du client</h2>${request}` : '',
+      response ? `<h2>Notre réponse</h2>${response}` : '',
+      gallery ? `<h2>Le projet en images</h2>${gallery}` : '',
+    ].filter(Boolean).join('\n')
+  }
+  return richToHtml(doc.content)
+}
+
+// Objet « case » complet (même forme que lib/portfolio.js) pour le rendu d'une
+// fiche : corps HTML assemblé, promo résolu, services déduits.
+async function buildCase(doc: any) {
+  const body = await buildBody(doc)
   const promo = buildPromo(doc.promo)
   const categories = Array.isArray(doc.categories) ? doc.categories.filter(Boolean) : []
   const c: any = {
     slug: doc.slug,
     title: doc.title,
+    h1: (doc.h1 || '').trim() || doc.title,
     projectType: doc.projectType || '',
     categories,
     cover: mediaUrl(doc.cover),

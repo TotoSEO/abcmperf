@@ -133,7 +133,7 @@ export function PortfolioCase({ item, allCases: allCasesProp }) {
               <span className="pf-hero2__eyebrow">
                 <Icon name={theme.icon} size={16} /> {c.projectType || "Cas client"}
               </span>
-              <h1 className="pf-hero2__title">{c.title}</h1>
+              <h1 className="pf-hero2__title">{c.h1 || c.title}</h1>
               <div className="pf-hero2__tags">
                 {themes.map((t) => (
                   <span key={t.id} className="pf-tag" style={{ "--_hue": t.hue }}>

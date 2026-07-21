@@ -32,6 +32,11 @@ const SERVICE_OPTIONS = ABCM_SERVICES.map((s: any) => ({
 // Fiches références / cas clients du portfolio, éditables et créables depuis le
 // back-office. Le site public lit cette collection en priorité (source de
 // vérité), avec repli sur les fiches historiques (content/portfolio/*.json).
+//
+// Structure de la fiche pensée pour l'édition : chaque partie a son propre champ
+// (demande du client, notre réponse, visuels, projet en quelques mots…) plutôt
+// qu'un seul corps libre. Le champ « content » historique reste disponible en
+// repli pour les fiches importées avant cette refonte.
 export const Portfolio: CollectionConfig = {
   slug: 'portfolio',
   labels: { singular: 'Référence (portfolio)', plural: 'Portfolio' },
@@ -58,12 +63,114 @@ export const Portfolio: CollectionConfig = {
     read: () => true,
   },
   fields: [
+    // ─────────────────── Colonne centrale : le contenu ───────────────────
     {
       name: 'title',
       type: 'text',
       required: true,
       label: 'Titre (nom du client / projet)',
-      admin: { description: 'Ex. « Abry Arnold ». Sert de H1 sur la fiche.' },
+      admin: { description: 'Ex. « Abry Arnold ». Sert de nom de la référence dans le back-office.' },
+    },
+    {
+      name: 'h1',
+      type: 'text',
+      label: 'H1 (titre principal de la page)',
+      admin: { description: 'Titre affiché en haut de la fiche. Si vide, le titre ci-dessus est utilisé.' },
+    },
+    {
+      name: 'summary',
+      type: 'textarea',
+      label: 'Le projet en quelques mots',
+      admin: { description: 'Résumé court affiché en introduction de la fiche (1 à 3 phrases).' },
+    },
+    {
+      name: 'clientRequest',
+      type: 'richText',
+      label: 'La demande du client',
+      editor: contentEditor,
+      admin: { description: 'Le besoin, le contexte et les objectifs du client.' },
+    },
+    {
+      name: 'ourResponse',
+      type: 'richText',
+      label: 'Notre réponse',
+      editor: contentEditor,
+      admin: { description: 'La solution mise en place, la démarche et les livrables.' },
+    },
+    {
+      name: 'gallery',
+      type: 'array',
+      label: 'Visuels de la prestation',
+      labels: { singular: 'Visuel', plural: 'Visuels' },
+      admin: { description: 'Une ou plusieurs images (mockups, captures, réalisations…). Ajoutez-en autant que nécessaire.' },
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: 'Image',
+        },
+        {
+          name: 'alt',
+          type: 'text',
+          label: 'Texte alternatif (accessibilité / SEO)',
+        },
+      ],
+    },
+    // Corps libre historique : repli pour les fiches importées avant la refonte
+    // par champs dédiés. Optionnel pour les nouvelles fiches.
+    {
+      name: 'content',
+      type: 'richText',
+      label: 'Contenu libre (optionnel)',
+      editor: contentEditor,
+      admin: {
+        description:
+          'Optionnel. Ancien format « corps libre » (sections en titres H2). Utilisé uniquement si les champs structurés ci-dessus sont vides.',
+      },
+    },
+    // Encart « service / formation lié » affiché en surimpression du corps.
+    {
+      type: 'collapsible',
+      label: 'Service / formation associé (encart mis en avant)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          name: 'promo',
+          type: 'group',
+          label: false,
+          fields: [
+            {
+              name: 'kind',
+              type: 'select',
+              defaultValue: 'none',
+              label: 'Type d’encart',
+              options: [
+                { label: 'Aucun', value: 'none' },
+                { label: 'Service lié', value: 'service' },
+                { label: 'Formation liée', value: 'formation' },
+              ],
+            },
+            {
+              name: 'service',
+              type: 'select',
+              label: 'Service associé',
+              options: SERVICE_OPTIONS,
+              admin: { condition: (_, sibling) => sibling?.kind === 'service' },
+            },
+            {
+              name: 'formation',
+              type: 'text',
+              label: 'Slug de la formation liée',
+              admin: {
+                condition: (_, sibling) => sibling?.kind === 'formation',
+                description: 'Ex. formation-wordpress (le slug de la fiche formation, sans les slashs).',
+              },
+            },
+          ],
+        },
+      ],
     },
 
     // ── Colonne de droite : réglages de la fiche ──────────────────────────
@@ -99,25 +206,25 @@ export const Portfolio: CollectionConfig = {
         {
           name: 'projectType',
           type: 'text',
-          label: 'Type de projet',
+          label: 'Type de projet (sur-titre)',
           admin: { description: 'Ex. « Stratégie Digitale », « Création de site »… (affiché en sur-titre).' },
         },
         {
           name: 'categories',
           type: 'select',
           hasMany: true,
-          label: 'Thématiques',
+          label: 'Catégorie de projet',
           options: CATEGORY_OPTIONS,
           admin: {
             description:
-              'Une ou plusieurs thématiques. La première sert de thématique principale (couleur / filtre).',
+              'Une ou plusieurs catégories. La première sert de catégorie principale (couleur / filtre).',
           },
         },
         {
           name: 'cover',
           type: 'upload',
           relationTo: 'media',
-          label: 'Image de couverture (vignette)',
+          label: 'Image de présentation (vignette)',
           admin: { description: 'Visuel principal : vignette de la grille et image du hero.' },
         },
         {
@@ -152,60 +259,6 @@ export const Portfolio: CollectionConfig = {
             description:
               'Coché par défaut (politique du site) : la fiche est en noindex et exclue du sitemap. Décochez pour indexer cette fiche et l’ajouter au sitemap portfolio.',
           },
-        },
-      ],
-    },
-
-    // ─────────────────── Colonne centrale : le contenu ───────────────────
-    {
-      name: 'content',
-      type: 'richText',
-      label: 'Contenu de la fiche',
-      editor: contentEditor,
-      admin: {
-        description:
-          'Corps de la fiche. Chaque titre H2 (ex. « La demande », « Notre réponse ») démarre une nouvelle section illustrée.',
-      },
-    },
-    // Encart « service / formation lié » affiché en surimpression du corps.
-    {
-      type: 'collapsible',
-      label: 'Encart mis en avant (service ou formation lié)',
-      admin: { initCollapsed: true },
-      fields: [
-        {
-          name: 'promo',
-          type: 'group',
-          label: false,
-          fields: [
-            {
-              name: 'kind',
-              type: 'select',
-              defaultValue: 'none',
-              label: 'Type d’encart',
-              options: [
-                { label: 'Aucun', value: 'none' },
-                { label: 'Service lié', value: 'service' },
-                { label: 'Formation liée', value: 'formation' },
-              ],
-            },
-            {
-              name: 'service',
-              type: 'select',
-              label: 'Service lié',
-              options: SERVICE_OPTIONS,
-              admin: { condition: (_, sibling) => sibling?.kind === 'service' },
-            },
-            {
-              name: 'formation',
-              type: 'text',
-              label: 'Slug de la formation liée',
-              admin: {
-                condition: (_, sibling) => sibling?.kind === 'formation',
-                description: 'Ex. formation-wordpress (le slug de la fiche formation, sans les slashs).',
-              },
-            },
-          ],
         },
       ],
     },
