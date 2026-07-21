@@ -356,21 +356,25 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
       const categories = (Array.isArray(raw.categories) ? raw.categories : []).filter((c: string) =>
         VALID_CATS.has(c),
       )
+      // Typé `any` : les valeurs (catégories, service de l'encart…) viennent des
+      // fichiers et sont validées à l'exécution, pas assignables aux littéraux
+      // générés par Payload.
+      const data: any = {
+        title: raw.title || slug,
+        slug,
+        status: 'published',
+        projectType: raw.projectType || '',
+        categories,
+        ...(coverId != null ? { cover: coverId } : {}),
+        ...(logoId != null ? { logo: logoId } : {}),
+        content,
+        promo: mapPromo(raw.promo),
+        // Politique du site : fiches références en noindex (comme le repli fichier).
+        noindex: true,
+      }
       await payload.create({
         collection: 'portfolio',
-        data: {
-          title: raw.title || slug,
-          slug,
-          status: 'published',
-          projectType: raw.projectType || '',
-          categories,
-          ...(coverId != null ? { cover: coverId } : {}),
-          ...(logoId != null ? { logo: logoId } : {}),
-          content,
-          promo: mapPromo(raw.promo),
-          // Politique du site : fiches références en noindex (comme le repli fichier).
-          noindex: true,
-        },
+        data,
         overrideAccess: true,
         context: { seeding: true },
       })
