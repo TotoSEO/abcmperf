@@ -7,6 +7,7 @@ import type { Payload } from 'payload'
 import { contentEditor } from '@/lib/payload/editor'
 import { ABCM_SERVICES, serviceMetadata } from '@/data/services'
 import { rootFormationSlugs, getFormation, formationMetadata, formationPriceFrom } from '@/data/formations'
+import { PORTFOLIO_THEMES } from '@/data/portfolio'
 
 type SeedOpts = {
   payload: Payload
@@ -314,7 +315,78 @@ export async function runContentSeed({ payload, log = () => {}, skipMedia = fals
   }
   log(`▶ Pages : ${pOk}`)
 
-  const summary = { articles: aOk, articleFails: aFail, redirects: rOk, pages: pOk }
-  log(`✅ Import terminé — articles ${aOk}/${articleFiles.length} (échecs ${aFail}), redirections ${rOk}, pages ${pOk}`)
+  // ── 4. Portfolio ───────────────────────────────────────────────────────────
+  // Importe les fiches références historiques (content/portfolio/*.json), qui
+  // n'existaient que comme repli fichier, dans la collection « portfolio » pour
+  // les rendre visibles ET éditables au back-office. Idempotent : une fiche déjà
+  // présente en base (créée / éditée dans l'admin) n'est jamais écrasée.
+  const PORTFOLIO_DIR = path.join(CWD, 'content', 'portfolio')
+  const VALID_CATS = new Set(PORTFOLIO_THEMES.map((t: any) => t.id))
+  const PORTFOLIO_SERVICE_SLUGS = new Set(ABCM_SERVICES.map((s: any) => s.slug))
+
+  const mapPromo = (promo: any) => {
+    const slug = String(promo?.url || '').replace(/^\/+|\/+$/g, '')
+    if (promo?.kind === 'Service' && PORTFOLIO_SERVICE_SLUGS.has(slug)) return { kind: 'service', service: slug }
+    if (promo?.kind === 'Formation' && slug) return { kind: 'formation', formation: slug }
+    return { kind: 'none' }
+  }
+
+  const portfolioFiles = fs.existsSync(PORTFOLIO_DIR)
+    ? fs.readdirSync(PORTFOLIO_DIR).filter((f) => f.endsWith('.json'))
+    : []
+  log(`▶ Portfolio (${portfolioFiles.length})${skipMedia ? ' — sans images (skipMedia)' : ''}`)
+  let pfOk = 0
+  let pfFail = 0
+  for (const file of portfolioFiles) {
+    const slug = file.slice(0, -5)
+    try {
+      const existing = await payload.find({
+        collection: 'portfolio',
+        where: { slug: { equals: slug } },
+        limit: 1,
+        depth: 0,
+      })
+      if (existing.docs.length) continue // ne jamais écraser une fiche déjà en base
+      const raw = JSON.parse(fs.readFileSync(path.join(PORTFOLIO_DIR, file), 'utf8'))
+      const coverId = await uploadImageBySrc(raw.cover)
+      const logoId = await uploadImageBySrc(raw.logo)
+      // Corps libre historique → champ « content ». On retire le placeholder
+      // %ASSET% pour que les liens internes pointent vers de vraies URLs.
+      const content = await htmlToContent(String(raw.body || '').replaceAll('%ASSET%', ''))
+      const categories = (Array.isArray(raw.categories) ? raw.categories : []).filter((c: string) =>
+        VALID_CATS.has(c),
+      )
+      // Typé `any` : les valeurs (catégories, service de l'encart…) viennent des
+      // fichiers et sont validées à l'exécution, pas assignables aux littéraux
+      // générés par Payload.
+      const data: any = {
+        title: raw.title || slug,
+        slug,
+        status: 'published',
+        projectType: raw.projectType || '',
+        categories,
+        ...(coverId != null ? { cover: coverId } : {}),
+        ...(logoId != null ? { logo: logoId } : {}),
+        content,
+        promo: mapPromo(raw.promo),
+        // Politique du site : fiches références en noindex (comme le repli fichier).
+        noindex: true,
+      }
+      await payload.create({
+        collection: 'portfolio',
+        data,
+        overrideAccess: true,
+        context: { seeding: true },
+      })
+      pfOk++
+    } catch (e: any) {
+      pfFail++
+      log(`  ✗ portfolio ${slug} — ${e?.message || e}`)
+    }
+  }
+  log(`▶ Portfolio : ${pfOk}${pfFail ? ` (échecs ${pfFail})` : ''}`)
+
+  const summary = { articles: aOk, articleFails: aFail, redirects: rOk, pages: pOk, portfolio: pfOk }
+  log(`✅ Import terminé — articles ${aOk}/${articleFiles.length} (échecs ${aFail}), redirections ${rOk}, pages ${pOk}, portfolio ${pfOk}`)
   return summary
 }
