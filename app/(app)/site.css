@@ -1948,6 +1948,8 @@
 .aia-guar-acc { margin-top: 0; height: clamp(300px, 34vw, 380px); }
 .ta--guar { background: linear-gradient(158deg, color-mix(in srgb, var(--_hue) 80%, var(--night)) 0%, color-mix(in srgb, var(--_hue) 46%, var(--night)) 100%); }
 .ta__ic { position: absolute; top: var(--space-5); left: var(--space-5); z-index: 3; display: inline-flex; align-items: center; justify-content: center; width: 2.7em; height: 2.7em; border-radius: 50%; color: #fff; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(4px); }
+/* Titre au repos en HORIZONTAL (et non en vertical comme la section équipe). */
+.aia-guar-acc .ta__vlabel { writing-mode: horizontal-tb; transform: none; left: var(--space-5); right: var(--space-5); bottom: var(--space-5); text-align: left; white-space: normal; font-size: var(--text-lg); line-height: 1.15; }
 
 /* ---- CTA collant (mobile) ---- */
 .aia-sticky { display: none; }
