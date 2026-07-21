@@ -21,6 +21,8 @@ export type ContactPayload = {
   participants?: string;
   periode?: string;
   precisions?: string;
+  // Consentement RGPD coché à l'envoi (traçabilité).
+  consent?: boolean;
 };
 
 /** Échappe les caractères HTML sensibles d'une chaîne utilisateur. */
@@ -74,8 +76,24 @@ function contactRows(p: ContactPayload): string {
   );
 }
 
+/** Horodatage lisible (fuseau de Paris) de la réception. */
+function parisStamp(): string {
+  try {
+    return new Intl.DateTimeFormat("fr-FR", {
+      dateStyle: "long",
+      timeStyle: "short",
+      timeZone: "Europe/Paris",
+    }).format(new Date());
+  } catch {
+    return new Date().toISOString();
+  }
+}
+
 /** Enveloppe HTML commune (en-tête + carte + pied de page). */
-function wrap(opts: { badge: string; title: string; inner: string; preheader: string }): string {
+function wrap(opts: { badge: string; title: string; inner: string; preheader: string; consent?: boolean }): string {
+  const consentLine = opts.consent
+    ? `<div style="margin-top:10px;padding-top:10px;border-top:1px solid ${LINE};color:${MUTED};font-size:12px;">✓ Consentement RGPD accepté par la personne à l'envoi du formulaire, le ${esc(parisStamp())}.</div>`
+    : "";
   return `<!doctype html>
 <html lang="fr">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -99,6 +117,7 @@ function wrap(opts: { badge: string; title: string; inner: string; preheader: st
         <tr><td style="padding:16px 28px 26px;color:${MUTED};font-size:12px;line-height:1.5;">
           Cet e-mail a été généré automatiquement à la soumission du formulaire de contact du site.
           Répondez directement à ce message pour recontacter la personne.
+          ${consentLine}
         </td></tr>
       </table>
     </td></tr>
@@ -121,6 +140,7 @@ function renseignementHtml(p: ContactPayload): string {
     title: `Nouvelle demande de ${p.prenom} ${p.nom}`.trim(),
     preheader: `Renseignement — ${p.prenom} ${p.nom} (${p.email})`,
     inner: contactRows(p) + messageBlock,
+    consent: p.consent,
   });
 }
 
@@ -159,6 +179,7 @@ function formationHtml(p: ContactPayload): string {
       row("Participants", participants) +
       row("Période souhaitée", periode) +
       precisionsBlock,
+    consent: p.consent,
   });
 }
 
@@ -182,6 +203,10 @@ function textVersion(p: ContactPayload): string {
   } else {
     L.push("Message :");
     L.push(p.message || "—");
+  }
+  if (p.consent) {
+    L.push("");
+    L.push(`Consentement RGPD : accepté à l'envoi du formulaire, le ${parisStamp()}.`);
   }
   return L.join("\n");
 }

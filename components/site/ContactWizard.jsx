@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Input, Textarea, Button, Icon } from "@/components/ds";
+import { Input, Textarea, Button, Icon, Checkbox } from "@/components/ds";
 import { ABCM_INFO, formationsBySilo } from "@/data/formations";
 
 const cx = (...a) => a.filter(Boolean).join(" ");
@@ -10,7 +10,35 @@ const EMPTY = {
   prenom: "", nom: "", entreprise: "", email: "", telephone: "",
   motif: "", message: "",
   formations: [], modalite: "", format: "", participants: "", periode: "", precisions: "",
+  consent: false,
 };
+
+/* Consentement RGPD + mention d'information (art. 13 RGPD). Case non
+   pré-cochée et obligatoire pour envoyer, comme le recommande la CNIL. */
+function ConsentBlock({ checked, onChange, error }) {
+  return (
+    <div className="fmt-consent">
+      <Checkbox
+        checked={checked}
+        onChange={onChange}
+        aria-invalid={error ? "true" : undefined}
+        label={
+          <>
+            J'accepte que les informations saisies soient utilisées par ABCM
+            Performances pour traiter ma demande. <span aria-hidden="true">*</span>
+          </>
+        }
+      />
+      {error && <span className="fmt-field__error">{error}</span>}
+      <p className="fmt-consent__note">
+        Vos données ne servent qu'à répondre à votre demande et ne sont jamais
+        cédées à des tiers. Vous disposez d'un droit d'accès, de rectification,
+        d'effacement et d'opposition — voir nos{" "}
+        <a href="/mentions-legales/">mentions légales &amp; RGPD</a>.
+      </p>
+    </div>
+  );
+}
 
 /* Petit contrôle segmenté (radiogroup stylé). */
 function Segmented({ label, value, onChange, options }) {
@@ -68,6 +96,7 @@ export function ContactWizard() {
     const er = {};
     if (data.motif === "renseignement" && !data.message.trim()) er.message = "Écrivez votre message";
     if (data.motif === "formation" && data.formations.length === 0) er.formations = "Choisissez au moins une formation";
+    if (!data.consent) er.consent = "Merci de cocher cette case pour envoyer votre demande.";
     setErrors(er);
     if (Object.keys(er).length) return;
 
@@ -180,6 +209,7 @@ export function ContactWizard() {
                   <h2 className="fmt-wiz__title">Votre message</h2>
                   <p className="fmt-wiz__hint">Dites-nous en quelques lignes comment nous pouvons vous aider.</p>
                   <Textarea id="message" name="message" label="Votre demande" rows={6} placeholder="Bonjour, je souhaiterais…" value={data.message} onChange={set("message")} error={errors.message} />
+                  <ConsentBlock checked={data.consent} onChange={(e) => setData((d) => ({ ...d, consent: e.target.checked }))} error={errors.consent} />
                   {sendError && <p className="fmt-field__error" role="alert">{sendError}</p>}
                   <div className="fmt-wiz__nav">
                     <Button type="button" variant="ghost" onClick={() => go(1, "back")} disabled={sending} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>
@@ -262,6 +292,7 @@ export function ContactWizard() {
                   </div>
                   <Textarea id="precisions" name="precisions" label="Précisions (facultatif)" rows={3} placeholder="Objectifs, niveau des participants, contexte…" value={data.precisions} onChange={set("precisions")} />
 
+                  <ConsentBlock checked={data.consent} onChange={(e) => setData((d) => ({ ...d, consent: e.target.checked }))} error={errors.consent} />
                   {sendError && <p className="fmt-field__error" role="alert">{sendError}</p>}
                   <div className="fmt-wiz__nav">
                     <Button type="button" variant="ghost" onClick={() => go(1, "back")} disabled={sending} iconLeft={<Icon name="arrow-left" size={18} />}>Retour</Button>

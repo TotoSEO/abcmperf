@@ -619,6 +619,14 @@
 .fmt-wiz__note { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-muted); background: var(--info-soft); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin: 0; }
 .fmt-wiz__note .abcm-ic { color: var(--info); flex: none; margin-top: 0.15em; }
 
+/* Consentement RGPD */
+.fmt-consent { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-2); }
+.fmt-consent .abcm-choice { align-items: flex-start; font-size: var(--text-sm); line-height: 1.45; }
+.fmt-consent .abcm-choice__box { margin-top: 0.1em; flex: none; }
+.fmt-consent__note { font-size: var(--text-xs); color: var(--text-subtle); line-height: 1.5; margin: 0; }
+.fmt-consent__note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.fmt-consent__note a:hover { color: var(--text); }
+
 /* Succès */
 .fmt-wiz__done { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding: var(--space-6) 0; }
 .fmt-wiz__done-ic { width: 4.5em; height: 4.5em; border-radius: 50%; background: var(--success-soft); color: var(--success); display: inline-flex; align-items: center; justify-content: center; animation: wiz-pop var(--dur-slow) var(--ease-spring); }
