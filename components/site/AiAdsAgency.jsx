@@ -141,10 +141,10 @@ const PLANS = [
 ];
 
 const GUARANTEES = [
-  { i: "sparkles", hue: "magenta", t: "Pionniers, pas suiveurs", d: "On diffuse déjà sur ces nouveaux espaces publicitaires. Vous avancez avec une longueur d'avance, sans essuyer les plâtres." },
-  { i: "line-chart", hue: "blue", t: "Transparence totale", d: "Vous voyez où va chaque euro de budget média et ce qu'il rapporte. Aucun coût caché, aucune marge dissimulée sur vos dépenses." },
-  { i: "user-round", hue: "green", t: "Un humain à Strasbourg", d: "Un interlocuteur dédié qui gère et suit vos campagnes, pas un ticket anonyme dans une file." },
-  { i: "shield-check", hue: "orange", t: "Vous restez propriétaire", d: "Vos comptes publicitaires, vos budgets et vos données vous appartiennent, à 100 %, et sans engagement de durée." },
+  { i: "sparkles", t: "Pionniers, pas suiveurs", d: "On diffuse déjà sur ces nouveaux espaces publicitaires. Vous avancez avec une longueur d'avance, sans essuyer les plâtres." },
+  { i: "line-chart", t: "Transparence totale", d: "Vous voyez où va chaque euro de budget média et ce qu'il rapporte. Aucun coût caché, aucune marge dissimulée sur vos dépenses." },
+  { i: "user-round", t: "Un humain à Strasbourg", d: "Un interlocuteur dédié qui gère et suit vos campagnes, pas un ticket anonyme dans une file." },
+  { i: "shield-check", t: "Vous restez propriétaire", d: "Vos comptes publicitaires, vos budgets et vos données vous appartiennent, à 100 %, et sans engagement de durée." },
 ];
 
 const FAQS = [
@@ -460,7 +460,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
           </header>
           <div className="team-acc aia-guar-acc" data-reveal>
             {GUARANTEES.map((g) => (
-              <article className="ta ta--guar" key={g.t} style={{ "--_hue": `var(--logo-${g.hue})` }}>
+              <article className="ta ta--guar" key={g.t}>
                 <span className="ta__ic"><Icon name={g.i} size={22} /></span>
                 <span className="ta__vlabel">{g.t}</span>
                 <div className="ta__reveal">
