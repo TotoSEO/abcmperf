@@ -185,6 +185,13 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
     .slice(0, 4);
   const jsonLd = buildJsonLd(s.tagline);
   const h1 = h1Override || "L'agence de publicité propulsée par l'IA";
+  // Accent dégradé sur « Strasbourg ». Si le H1 le contient déjà (cas du titre
+  // surchargé depuis le back-office), on met ce mot en avant ; sinon on ajoute
+  // « à Strasbourg » — jamais les deux (évite le doublon « …Strasbourg à Strasbourg »).
+  const cityIdx = h1.indexOf("Strasbourg");
+  const h1Node = cityIdx === -1
+    ? (<>{h1} <span className="aia-grad">à Strasbourg</span></>)
+    : (<>{h1.slice(0, cityIdx)}<span className="aia-grad">Strasbourg</span>{h1.slice(cityIdx + "Strasbourg".length)}</>);
 
   return (
     <div className="svcd2 aia" style={{ "--_hue": `var(--logo-${s.hue})` }}>
@@ -211,7 +218,7 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
             <span className="svcd2-crumbs__current">{s.name}</span>
           </nav>
           <span className="svcd2-hero__eyebrow aia-hero__eyebrow"><Icon name="sparkles" size={16} /> Publicité nouvelle génération</span>
-          <h1 className="svcd2-hero__title aia-hero__title">{h1} <span className="aia-grad">à Strasbourg</span></h1>
+          <h1 className="svcd2-hero__title aia-hero__title">{h1Node}</h1>
           <p className="svcd2-hero__lead">{s.tagline} On combine la créativité de notre équipe et la puissance des algorithmes pour transformer votre budget média en clients.</p>
 
           <div className="aia-metrics" role="list">
