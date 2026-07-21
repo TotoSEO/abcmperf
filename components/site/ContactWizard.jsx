@@ -33,9 +33,39 @@ function ConsentBlock({ checked, onChange, error }) {
       <p className="fmt-consent__note">
         Vos données ne servent qu'à répondre à votre demande et ne sont jamais
         cédées à des tiers. Vous disposez d'un droit d'accès, de rectification,
-        d'effacement et d'opposition — voir nos{" "}
+        d'effacement et d'opposition, détaillés dans nos{" "}
         <a href="/mentions-legales/">mentions légales &amp; RGPD</a>.
       </p>
+    </div>
+  );
+}
+
+/* Carte de sélection d'une formation : zone cochable + lien vers la fiche.
+   Le lien et le bouton de sélection sont deux éléments distincts pour que
+   « voir la fiche » n'entraîne pas la sélection. */
+function FormationCard({ name, label, url, selected, onToggle }) {
+  return (
+    <div className={cx("fmt-fcard", selected && "is-sel")}>
+      <button
+        type="button"
+        className="fmt-fcard__toggle"
+        aria-pressed={selected}
+        onClick={onToggle}
+      >
+        <span className="fmt-fcard__check" aria-hidden="true"><Icon name="check" size={14} /></span>
+        <span className="fmt-fcard__name">{label || name}</span>
+      </button>
+      {url && (
+        <a
+          className="fmt-fcard__link"
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+        >
+          Voir la fiche <Icon name="arrow-up-right" size={13} />
+        </a>
+      )}
     </div>
   );
 }
@@ -68,6 +98,15 @@ export function ContactWizard() {
   const [sendError, setSendError] = React.useState("");
   const [data, setData] = React.useState(EMPTY);
   const [errors, setErrors] = React.useState({});
+  const topRef = React.useRef(null);
+
+  // À l'affichage du message de confirmation, on ramène l'utilisateur en haut
+  // du formulaire (sinon il reste en bas de page et ne voit pas la validation).
+  React.useEffect(() => {
+    if (sent && topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [sent]);
 
   const set = (k) => (e) => setData((d) => ({ ...d, [k]: e.target.value }));
   const go = (next, d = "fwd") => { setDir(d); setStep(next); };
@@ -125,7 +164,7 @@ export function ContactWizard() {
   const reset = () => { setData(EMPTY); setErrors({}); setSent(false); setSendError(""); go(0, "back"); };
 
   return (
-    <div className="fmt-wiz">
+    <div className="fmt-wiz" ref={topRef} style={{ scrollMarginTop: "5rem" }}>
       {/* Progression */}
       <ol className="fmt-wiz__steps" aria-hidden={sent}>
         {STEPS.map((s, i) => (
@@ -231,34 +270,28 @@ export function ContactWizard() {
                     {formationsBySilo().map(({ silo, items }) => (
                       <div className="fmt-pick__group" key={silo.id}>
                         <span className="fmt-pick__group-label">{silo.emoji} {silo.label}</span>
-                        <div className="fmt-pick__chips">
-                          {items.map((f) => {
-                            const on = data.formations.includes(f.name);
-                            return (
-                              <button
-                                type="button" key={f.slug} aria-pressed={on}
-                                className={cx("fmt-pick__chip", on && "is-sel")}
-                                onClick={() => toggleFormation(f.name)}
-                              >
-                                <span className="fmt-pick__check" aria-hidden="true"><Icon name="check" size={13} /></span>
-                                {f.name}
-                              </button>
-                            );
-                          })}
+                        <div className="fmt-fcards">
+                          {items.map((f) => (
+                            <FormationCard
+                              key={f.slug}
+                              name={f.name}
+                              url={f.url}
+                              selected={data.formations.includes(f.name)}
+                              onToggle={() => toggleFormation(f.name)}
+                            />
+                          ))}
                         </div>
                       </div>
                     ))}
                     <div className="fmt-pick__group">
                       <span className="fmt-pick__group-label">Autre</span>
-                      <div className="fmt-pick__chips">
-                        <button
-                          type="button" aria-pressed={data.formations.includes("Autre / sur-mesure")}
-                          className={cx("fmt-pick__chip", data.formations.includes("Autre / sur-mesure") && "is-sel")}
-                          onClick={() => toggleFormation("Autre / sur-mesure")}
-                        >
-                          <span className="fmt-pick__check" aria-hidden="true"><Icon name="check" size={13} /></span>
-                          Autre / formation sur-mesure
-                        </button>
+                      <div className="fmt-fcards">
+                        <FormationCard
+                          name="Autre / sur-mesure"
+                          label="Autre / formation sur-mesure"
+                          selected={data.formations.includes("Autre / sur-mesure")}
+                          onToggle={() => toggleFormation("Autre / sur-mesure")}
+                        />
                       </div>
                     </div>
                     {errors.formations && <span className="fmt-field__error">{errors.formations}</span>}

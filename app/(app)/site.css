@@ -608,12 +608,18 @@
 .fmt-pick__hint { font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-subtle); margin-left: var(--space-2); }
 .fmt-pick__group + .fmt-pick__group { margin-top: var(--space-3); }
 .fmt-pick__group-label { display: block; font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: var(--space-2); }
-.fmt-pick__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.fmt-pick__chip { display: inline-flex; align-items: center; gap: 0.45em; padding: 0.5em 0.9em; border-radius: var(--radius-pill); border: 1.5px solid var(--border); background: var(--surface); font-size: var(--text-sm); color: var(--text); cursor: pointer; text-align: left; transition: all var(--dur-base) var(--ease-out); }
-.fmt-pick__chip:hover { border-color: var(--accent-400); background: var(--accent-50); }
-.fmt-pick__check { display: inline-flex; width: 1.2em; height: 1.2em; align-items: center; justify-content: center; border-radius: 50%; border: 1.5px solid var(--border-strong); color: transparent; flex: none; transition: all var(--dur-base) var(--ease-out); }
-.fmt-pick__chip.is-sel { border-color: var(--accent-500); background: var(--accent-100); font-weight: 600; }
-.fmt-pick__chip.is-sel .fmt-pick__check { background: var(--accent-400); border-color: var(--accent-400); color: var(--night); }
+
+/* Cartes de formation (grille alignée, cases stylisées + lien vers la fiche) */
+.fmt-fcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--space-3); }
+.fmt-fcard { position: relative; display: flex; flex-direction: column; border: 1.5px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; transition: border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out); }
+.fmt-fcard:hover { border-color: var(--accent-400); box-shadow: var(--shadow-sm); }
+.fmt-fcard.is-sel { border-color: var(--accent-500); background: var(--accent-50); box-shadow: 0 0 0 1px var(--accent-500) inset; }
+.fmt-fcard__toggle { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-3) var(--space-3) var(--space-2); background: none; border: 0; cursor: pointer; text-align: left; font: inherit; color: var(--text); width: 100%; }
+.fmt-fcard__check { display: inline-flex; width: 1.35em; height: 1.35em; align-items: center; justify-content: center; border-radius: var(--radius-sm); border: 1.5px solid var(--border-strong); color: transparent; flex: none; margin-top: 0.05em; transition: all var(--dur-base) var(--ease-out); }
+.fmt-fcard.is-sel .fmt-fcard__check { background: var(--accent-400); border-color: var(--accent-400); color: var(--night); }
+.fmt-fcard__name { font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); line-height: 1.35; }
+.fmt-fcard__link { display: inline-flex; align-items: center; gap: 0.3em; align-self: flex-start; margin: 0 var(--space-3) var(--space-3) calc(var(--space-3) + 1.35em + var(--space-2)); font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); text-decoration: none; transition: color var(--dur-base) var(--ease-out); }
+.fmt-fcard__link:hover { color: var(--accent-600, var(--accent-500)); }
 
 /* Encart d'info */
 .fmt-wiz__note { display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--text-sm); color: var(--text-muted); background: var(--info-soft); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin: 0; }

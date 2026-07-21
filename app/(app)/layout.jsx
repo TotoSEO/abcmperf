@@ -26,7 +26,7 @@ export const metadata = {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "ABCM Performances — agence de communication & marketing digital à Strasbourg",
+        alt: "ABCM Performances, agence de communication & marketing digital à Strasbourg",
       },
     ],
   },

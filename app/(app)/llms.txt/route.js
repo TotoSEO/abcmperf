@@ -46,7 +46,7 @@ function build() {
     "> Agence de communication & marketing digital à Strasbourg (Grand Est), " +
       "depuis 2015. Nous accompagnons TPE, PME et institutions sur la création " +
       "de site web, le référencement (SEO & GEO/IA), la publicité en ligne, les " +
-      "réseaux sociaux et la stratégie digitale — et formons les équipes " +
+      "réseaux sociaux et la stratégie digitale, et formons les équipes " +
       "(organisme certifié Qualiopi, financement OPCO possible).",
   );
   parts.push("");
