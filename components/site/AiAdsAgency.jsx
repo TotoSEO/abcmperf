@@ -456,13 +456,11 @@ export function AiAdsAgency({ service, h1Override = "", contentHtml = "" }) {
           <header className="aia-head" data-reveal>
             <span className="svcd2-cases__eyebrow"><Icon name="shield-check" size={15} /> Nos engagements</span>
             <h2 className="svcd2-sec__title">{GUAR_TITLE}</h2>
-            <p className="aia-guar__hint" aria-hidden="true">Survolez une carte pour la découvrir</p>
           </header>
           <div className="team-acc aia-guar-acc" data-reveal>
             {GUARANTEES.map((g) => (
               <article className="ta ta--guar" key={g.t}>
                 <span className="ta__ic"><Icon name={g.i} size={22} /></span>
-                <span className="ta__vlabel">{g.t}</span>
                 <div className="ta__reveal">
                   <span className="ta__title">{g.t}</span>
                   <p className="ta__desc">{g.d}</p>

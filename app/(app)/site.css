@@ -1952,10 +1952,15 @@
 .aia-guar-acc .ta { --_hue: var(--logo-magenta); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -32px color-mix(in srgb, var(--_hue) 55%, transparent); }
 .aia-guar-acc .ta::after { display: none; }
 .ta__ic { position: absolute; top: var(--space-5); left: var(--space-5); z-index: 3; display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 14px; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 74%, #fff), var(--_hue)); box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.35); }
-/* Titre au repos en HORIZONTAL (et non en vertical comme la section équipe). */
-.aia-guar-acc .ta__vlabel { writing-mode: horizontal-tb; transform: none; left: var(--space-5); right: var(--space-5); bottom: var(--space-5); text-align: left; white-space: normal; font-size: var(--text-lg); line-height: 1.15; color: var(--text); text-shadow: none; }
-.aia-guar-acc .ta__title { color: var(--text); text-shadow: none; }
+/* Titre + description TOUJOURS visibles (sans survol), en horizontal. */
+.aia-guar-acc .ta__reveal { opacity: 1; transform: none; }
+.aia-guar-acc .ta__title { color: var(--text); text-shadow: none; font-size: var(--text-lg); line-height: 1.15; }
 .aia-guar-acc .ta__desc { color: var(--text-muted); }
+/* Au survol du bloc, les cartes rétrécies masquent leur texte (pas de
+   troncature) : il ne reste que l'icône ; seule la carte survolée l'affiche. */
+@media (hover: hover) and (pointer: fine) {
+  .aia-guar-acc:hover .ta:not(:hover) .ta__reveal { opacity: 0; }
+}
 
 /* ---- CTA collant (mobile) ---- */
 .aia-sticky { display: none; }
