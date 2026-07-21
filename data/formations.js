@@ -618,7 +618,7 @@ export const FORMATIONS = [
     cardDesc: "Créez et optimisez des campagnes Google Ads rentables.",
     title: "Formation Google Ads à Strasbourg",
     metaDescription: "Formation Google Ads à Strasbourg et en visio : créez, pilotez et optimisez vos campagnes Search, Display et remarketing. ROI mesuré. Qualiopi, financement OPCO.",
-    lead: "La régie publicitaire de Google couvre bien plus que la recherche. Cette formation approfondie, sur 2 jours, vous fait exploiter tout l'écosystème Google Ads — Search, Display, YouTube, Shopping et Performance Max — pour générer un trafic ciblé et rentable.",
+    lead: "La régie publicitaire de Google couvre bien plus que la recherche. Cette formation approfondie, sur 2 jours, vous fait exploiter tout l'écosystème Google Ads (Search, Display, YouTube, Shopping et Performance Max) pour générer un trafic ciblé et rentable.",
     objectifs: [
       "Exploiter tout l'écosystème Google Ads : Search, Display, YouTube, Shopping et Performance Max",
       "Mettre en place un suivi des conversions et une attribution fiables",

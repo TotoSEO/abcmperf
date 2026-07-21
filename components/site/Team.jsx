@@ -38,7 +38,7 @@ export function Team() {
         <div className="team-acc" data-reveal>
           {MEMBERS.map((m) => (
             <article className="ta ta--person" key={m.title} style={{ "--_hue": `var(--logo-${m.hue})` }}>
-              <img className="ta__bg" src={assetPath(m.photo)} alt={`${m.title} — ${m.role}`} loading="lazy" />
+              <img className="ta__bg" src={assetPath(m.photo)} alt={`${m.title}, ${m.role}`} loading="lazy" />
               <span className="ta__tint" aria-hidden="true" />
               <span className="ta__vlabel">{m.title}</span>
               <div className="ta__reveal">

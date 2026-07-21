@@ -42,7 +42,7 @@ const MODALITE_LABELS: Record<string, string> = {
 };
 
 const FORMAT_LABELS: Record<string, string> = {
-  intra: "Intra — équipe du client",
+  intra: "Intra (équipe du client)",
   inter: "Inter / individuel",
 };
 
@@ -67,10 +67,10 @@ function contactRows(p: ContactPayload): string {
   const mailLink = `<a href="mailto:${esc(p.email)}" style="color:${BRAND};text-decoration:none;">${esc(p.email)}</a>`;
   const telLink = p.telephone
     ? `<a href="tel:${esc(p.telephone)}" style="color:${BRAND};text-decoration:none;">${esc(p.telephone)}</a>`
-    : `<span style="color:${MUTED};">—</span>`;
+    : `<span style="color:${MUTED};">Non précisé</span>`;
   return (
     row("Nom", `<strong>${fullName}</strong>`) +
-    row("Entreprise", p.entreprise ? esc(p.entreprise) : `<span style="color:${MUTED};">—</span>`) +
+    row("Entreprise", p.entreprise ? esc(p.entreprise) : `<span style="color:${MUTED};">Non précisé</span>`) +
     row("E-mail", mailLink) +
     row("Téléphone", telLink)
   );
@@ -106,7 +106,7 @@ function wrap(opts: { badge: string; title: string; inner: string; preheader: st
           <td style="background:${INK};padding:22px 28px;">
             <span style="display:inline-block;background:${BRAND};color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:6px;">${esc(opts.badge)}</span>
             <div style="color:#ffffff;font-size:19px;font-weight:700;margin-top:12px;">${esc(opts.title)}</div>
-            <div style="color:#9ca3af;font-size:13px;margin-top:2px;">Formulaire de contact — abcmperformances.com</div>
+            <div style="color:#9ca3af;font-size:13px;margin-top:2px;">Formulaire de contact · abcmperformances.com</div>
           </td>
         </tr>
         <tr><td style="padding:24px 28px 8px;">
@@ -138,7 +138,7 @@ function renseignementHtml(p: ContactPayload): string {
   return wrap({
     badge: "Renseignement",
     title: `Nouvelle demande de ${p.prenom} ${p.nom}`.trim(),
-    preheader: `Renseignement — ${p.prenom} ${p.nom} (${p.email})`,
+    preheader: `Renseignement · ${p.prenom} ${p.nom} (${p.email})`,
     inner: contactRows(p) + messageBlock,
     consent: p.consent,
   });
@@ -150,12 +150,12 @@ function formationHtml(p: ContactPayload): string {
     ? `<ul style="margin:0;padding-left:18px;color:${INK};font-size:15px;line-height:1.7;">${p.formations
         .map((f) => `<li>${esc(f)}</li>`)
         .join("")}</ul>`
-    : `<span style="color:${MUTED};">—</span>`;
+    : `<span style="color:${MUTED};">Non précisé</span>`;
 
-  const modalite = p.modalite ? esc(MODALITE_LABELS[p.modalite] ?? p.modalite) : `<span style="color:${MUTED};">—</span>`;
-  const format = p.format ? esc(FORMAT_LABELS[p.format] ?? p.format) : `<span style="color:${MUTED};">—</span>`;
-  const participants = p.participants ? esc(p.participants) : `<span style="color:${MUTED};">—</span>`;
-  const periode = p.periode ? esc(p.periode) : `<span style="color:${MUTED};">—</span>`;
+  const modalite = p.modalite ? esc(MODALITE_LABELS[p.modalite] ?? p.modalite) : `<span style="color:${MUTED};">Non précisé</span>`;
+  const format = p.format ? esc(FORMAT_LABELS[p.format] ?? p.format) : `<span style="color:${MUTED};">Non précisé</span>`;
+  const participants = p.participants ? esc(p.participants) : `<span style="color:${MUTED};">Non précisé</span>`;
+  const periode = p.periode ? esc(p.periode) : `<span style="color:${MUTED};">Non précisé</span>`;
 
   const precisionsBlock = p.precisions
     ? `
@@ -169,8 +169,8 @@ function formationHtml(p: ContactPayload): string {
 
   return wrap({
     badge: "Formation",
-    title: `Projet de formation — ${p.prenom} ${p.nom}`.trim(),
-    preheader: `Formation — ${p.prenom} ${p.nom} (${p.email})`,
+    title: `Projet de formation · ${p.prenom} ${p.nom}`.trim(),
+    preheader: `Formation · ${p.prenom} ${p.nom} (${p.email})`,
     inner:
       contactRows(p) +
       row("Formation(s)", formations) +
@@ -194,15 +194,15 @@ function textVersion(p: ContactPayload): string {
   if (p.telephone) L.push(`Téléphone  : ${p.telephone}`);
   L.push("");
   if (p.motif === "formation") {
-    L.push(`Formation(s) : ${(p.formations && p.formations.length) ? p.formations.join(", ") : "—"}`);
-    L.push(`Modalité     : ${p.modalite ? (MODALITE_LABELS[p.modalite] ?? p.modalite) : "—"}`);
-    L.push(`Format       : ${p.format ? (FORMAT_LABELS[p.format] ?? p.format) : "—"}`);
-    L.push(`Participants : ${p.participants || "—"}`);
-    L.push(`Période      : ${p.periode || "—"}`);
+    L.push(`Formation(s) : ${(p.formations && p.formations.length) ? p.formations.join(", ") : "Non précisé"}`);
+    L.push(`Modalité     : ${p.modalite ? (MODALITE_LABELS[p.modalite] ?? p.modalite) : "Non précisé"}`);
+    L.push(`Format       : ${p.format ? (FORMAT_LABELS[p.format] ?? p.format) : "Non précisé"}`);
+    L.push(`Participants : ${p.participants || "Non précisé"}`);
+    L.push(`Période      : ${p.periode || "Non précisé"}`);
     if (p.precisions) { L.push(""); L.push("Précisions :"); L.push(p.precisions); }
   } else {
     L.push("Message :");
-    L.push(p.message || "—");
+    L.push(p.message || "Non précisé");
   }
   if (p.consent) {
     L.push("");
@@ -213,10 +213,10 @@ function textVersion(p: ContactPayload): string {
 
 /** Construit le sujet + les corps HTML et texte de l'e-mail à envoyer à ABCM. */
 export function buildContactEmail(p: ContactPayload): { subject: string; html: string; text: string } {
-  const who = `${p.prenom} ${p.nom}`.trim() || p.email;
+  // Nom au format « NOM Prénom » (convention FR : patronyme en majuscules).
+  const person = [p.nom.toUpperCase(), p.prenom].filter(Boolean).join(" ").trim() || p.email;
   if (p.motif === "formation") {
-    const first = p.formations && p.formations.length ? ` · ${p.formations[0]}${p.formations.length > 1 ? ` (+${p.formations.length - 1})` : ""}` : "";
-    return { subject: `🎓 Formation — ${who}${first}`, html: formationHtml(p), text: textVersion(p) };
+    return { subject: `Demande de contact ABCM - Formation - ${person}`, html: formationHtml(p), text: textVersion(p) };
   }
-  return { subject: `✉️ Renseignement — ${who}`, html: renseignementHtml(p), text: textVersion(p) };
+  return { subject: `Demande de contact ABCM - Message - ${person}`, html: renseignementHtml(p), text: textVersion(p) };
 }

@@ -12,7 +12,7 @@ import { ABCM_INFO } from "@/data/formations";
 // minimum requis par la politique d'usage des tuiles OSM.
 const LAT = ABCM_INFO.latitude;
 const LON = ABCM_INFO.longitude;
-const LABEL = `${ABCM_INFO.name} — ${ABCM_INFO.street}, ${ABCM_INFO.postalCode} ${ABCM_INFO.city}`;
+const LABEL = `${ABCM_INFO.name}, ${ABCM_INFO.street}, ${ABCM_INFO.postalCode} ${ABCM_INFO.city}`;
 
 export function AgencyMapCanvas() {
   const holder = useRef(null);
