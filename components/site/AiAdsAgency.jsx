@@ -46,10 +46,10 @@ function Glyph({ name, size = 24 }) {
 
 // ── Textes courts (constantes → évite l'échappement des apostrophes en JSX) ──
 const EYEBROW = "Publicité sur l'IA";
-const HERO_LEAD = "Vos clients posent leurs questions à ChatGPT, Perplexity, Gemini ou Copilot. Nous diffusons vos publicités au cœur de ces réponses, et nous gérons vos campagnes de A à Z.";
+const HERO_LEAD = "Les annonces font leur entrée dans les réponses des IA : ChatGPT et l'AI Mode de Google affichent déjà des emplacements sponsorisés sur les questions à forte intention. On y place vos publicités et on gère vos campagnes de A à Z.";
 const WHY_TITLE = "Vos clients ne cherchent plus, ils demandent à l'IA";
-const WHY_1 = "Des centaines de millions de personnes utilisent déjà ChatGPT, Perplexity ou Gemini pour choisir un produit ou un prestataire. Un tout nouvel espace publicitaire s'ouvre, au cœur même de ces réponses.";
-const WHY_2 = "Les premières marques à y diffuser leurs annonces captent l'attention pendant que la concurrence est rare et les coûts bas. Nous gérons vos campagnes sur ces plateformes d'IA, de la création à l'optimisation, pour que vous preniez cette avance sans y passer vos journées.";
+const WHY_1 = "ChatGPT et l'AI Mode de Google affichent désormais des emplacements sponsorisés au cœur de leurs réponses, sur les prompts à forte intention — là précisément où vos futurs clients tranchent. C'est le nouvel espace publicitaire qui progresse le plus vite.";
+const WHY_2 = "Et il n'est plus réservé aux grands groupes : pas besoin d'un budget colossal pour s'y inviter. Vos concurrents, eux, peuvent déjà payer pour apparaître dans les conversations qui vous concernent. Les premières marques présentes prennent une place difficile à reprendre : on vous y positionne et on gère tout.";
 const CAPS_TITLE = "Vos publicités au cœur des réponses de l'IA";
 const METHOD_TITLE = "Vos campagnes sur les IA, gérées de A à Z";
 const VS_TITLE = "Être dans la réponse, pas dans la liste";
@@ -73,12 +73,12 @@ const DEMO = {
   a2: "Agence à Strasbourg qui gère vos campagnes publicitaires sur les IA.",
 };
 
-const ENGINES = ["ChatGPT", "Perplexity", "Google Gemini", "Microsoft Copilot", "Claude", "Grok", "AI Overviews", "Meta AI", "Mistral Le Chat"];
+const ENGINES = ["ChatGPT", "Google AI Mode", "Perplexity", "Google Gemini", "Microsoft Copilot", "Claude", "Grok", "Meta AI", "Mistral Le Chat"];
 
 const METRICS = [
-  { big: "6+ IA", label: "plateformes activées dès qu'elles ouvrent la publicité" },
+  { big: "6+ IA", label: "ChatGPT, AI Mode de Google, Perplexity, Copilot…" },
   { big: "A→Z", label: "vos campagnes gérées de bout en bout, pour vous" },
-  { big: "First", label: "l'avantage du premier arrivé, avant vos concurrents" },
+  { big: "First", label: "l'espace pub qui progresse le plus vite : prenez-le" },
 ];
 
 const HERO_POINTS = [
@@ -89,7 +89,7 @@ const HERO_POINTS = [
 
 const CAPS = [
   { g: "chat-ai", t: "Diffusion sur les plateformes d'IA",
-    d: "On lance vos campagnes là où les IA monétisent déjà (Perplexity) et on sécurise votre place sur ChatGPT, Gemini et Copilot dès l'ouverture de leurs formats publicitaires." },
+    d: "On place vos annonces dans les emplacements sponsorisés de ChatGPT et de l'AI Mode de Google, sur les prompts à forte intention, et on sécurise votre présence sur Perplexity, Copilot et Gemini au fil de leurs ouvertures." },
   { g: "spark", t: "Des annonces pensées pour l'IA",
     d: "Messages et visuels conçus pour s'intégrer dans une réponse conversationnelle, pas des bannières plaquées. On crée, on décline et on teste vos annonces pour vous." },
   { g: "target", t: "Ciblage par l'intention",
@@ -111,7 +111,7 @@ const STEPS = [
 
 const VS = [
   { k: "Où apparaît votre pub", ia: "Dans la réponse même de l'IA", old: "Dans une liste de liens à faire défiler" },
-  { k: "Le bon moment", ia: "Quand l'utilisateur pose sa question", old: "Sur un mot-clé, hors contexte" },
+  { k: "Le bon moment", ia: "Sur les prompts à forte intention", old: "Sur un mot-clé, hors contexte" },
   { k: "Format", ia: "Intégrée à la conversation", old: "Bannière ou annonce texte" },
   { k: "Concurrence", ia: "Faible : espace émergent", old: "Saturée, enchères qui grimpent" },
   { k: "Attention", ia: "Captée dans un contenu qu'on lit", old: "Ignorée par réflexe anti-pub" },
@@ -150,14 +150,14 @@ const GUARANTEES = [
 const FAQS = [
   { q: "C'est quoi, la publicité sur les IA ?",
     a: "C'est diffuser vos annonces directement dans les réponses des assistants IA (Perplexity aujourd'hui, ChatGPT, Gemini et Copilot demain), là où vos clients lisent désormais l'information. En tant qu'agence, nous concevons, lançons et optimisons ces campagnes à votre place." },
-  { q: "Peut-on vraiment faire de la pub sur ChatGPT ou Perplexity aujourd'hui ?",
-    a: "Perplexity diffuse déjà des formats sponsorisés, et ChatGPT, Gemini et Copilot ouvrent progressivement la publicité. On lance vos campagnes dès maintenant sur les plateformes qui monétisent, et on sécurise votre place sur les autres dès l'ouverture de leurs formats." },
+  { q: "Peut-on vraiment faire de la pub sur ChatGPT ou l'IA aujourd'hui ?",
+    a: "Oui, et ça s'accélère : ChatGPT et l'AI Mode de Google affichent déjà des emplacements sponsorisés sur les questions à forte intention, et Perplexity diffuse des formats publicitaires. On lance vos campagnes dès maintenant sur les plateformes ouvertes, et on sécurise votre place sur les autres dès qu'elles activent la publicité." },
   { q: "En quoi est-ce différent de Google Ads ?",
     a: "Avec Google Ads, vous achetez un lien dans une liste. Sur les IA, votre annonce apparaît dans la réponse elle-même, celle que l'utilisateur lit en premier et qu'il n'a pas le réflexe d'ignorer. C'est un espace neuf, encore peu concurrentiel." },
   { q: "Vous gérez les campagnes à ma place ?",
     a: "Oui, c'est tout l'intérêt : on prend en charge la stratégie, la création des annonces, la diffusion, le pilotage du budget et le reporting. Vous validez les grandes décisions, on s'occupe de l'exécution au quotidien." },
-  { q: "Quel budget faut-il prévoir ?",
-    a: "Nos honoraires de gestion démarrent à 690 €/mois, auxquels s'ajoute votre budget média (les sommes réellement dépensées en diffusion), que vous maîtrisez et ajustez. On commence toujours par un audit gratuit pour fixer un budget réaliste au regard de vos objectifs." },
+  { q: "Faut-il un gros budget pour s'y mettre ?",
+    a: "Non, et c'est justement l'opportunité : contrairement aux grandes régies saturées, s'inviter dans les réponses des IA ne demande pas encore un budget de grand groupe. Nos honoraires de gestion démarrent à 690 €/mois, auxquels s'ajoute votre budget média (les sommes réellement dépensées en diffusion) que vous maîtrisez et ajustez. On commence toujours par un audit gratuit pour fixer un budget réaliste au regard de vos objectifs." },
   { q: "Comment mesure-t-on les résultats ?",
     a: "On suit les indicateurs concrets de vos campagnes : impressions dans les réponses, clics, conversions et coût par résultat. Vous recevez un reporting clair, orienté business, pas des tableaux abstraits." },
   { q: "Au bout de combien de temps voit-on des résultats ?",
