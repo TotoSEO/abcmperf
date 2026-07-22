@@ -143,7 +143,7 @@ const PLANS = [
 const GUARANTEES = [
   { i: "sparkles", t: "Pionniers, pas suiveurs", d: "On diffuse déjà sur ces nouveaux espaces publicitaires. Vous avancez avec une longueur d'avance, sans essuyer les plâtres." },
   { i: "line-chart", t: "Transparence totale", d: "Vous voyez où va chaque euro de budget média et ce qu'il rapporte. Aucun coût caché, aucune marge dissimulée sur vos dépenses." },
-  { i: "user-round", t: "Un humain à Strasbourg", d: "Un interlocuteur dédié qui gère et suit vos campagnes, pas un ticket anonyme dans une file." },
+  { i: "users", t: "Une équipe d'experts", d: "Des experts à Strasbourg qui gèrent et suivent vos campagnes, pas un ticket anonyme dans une file." },
   { i: "shield-check", t: "Vous restez propriétaire", d: "Vos comptes publicitaires, vos budgets et vos données vous appartiennent, à 100 %, et sans engagement de durée." },
 ];
 

@@ -1918,7 +1918,9 @@
 
 /* ---- Formules ---- */
 .aia-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5); align-items: stretch; }
-.aia-plan { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); }
+.aia-plan { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8) var(--space-6); border-radius: var(--radius-2xl); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -34px color-mix(in srgb, var(--_hue) 50%, transparent); transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+/* Effet de survol homogène avec les autres cartes (.aia-cap). */
+.aia-plan:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--_hue) 40%, var(--border)); box-shadow: 0 32px 60px -34px color-mix(in srgb, var(--_hue) 55%, transparent); }
 /* Carte mise en avant : réserve la place du bandeau supérieur pleine largeur. */
 .aia-plan--hot { padding-top: calc(var(--space-8) + 1.9em); border-color: color-mix(in srgb, var(--_hue) 55%, var(--border)); box-shadow: 0 34px 70px -34px color-mix(in srgb, var(--_hue) 62%, transparent); }
 /* Bandeau « le plus choisi » : pleine largeur, calé en haut de la carte (ses
@@ -1948,15 +1950,16 @@
    de la home) : 4 cartes sur une ligne, une s'agrandit au survol. Réutilise la
    mécanique .team-acc / .ta, avec un fond coloré (pas de photo) + une icône. */
 .aia-guar__hint { text-align: center; font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-muted); margin: var(--space-2) 0 0; }
-.aia-guar-acc { margin-top: 0; height: clamp(300px, 34vw, 380px); }
+.aia-guar-acc { margin-top: 0; height: clamp(225px, 24vw, 262px); }
 /* Cartes claires, même habillage que « ce que nous gérons » (.aia-cap) : fond
-   surface, pastille d'icône en dégradé magenta, texte foncé. On neutralise le
-   style « sombre » hérité de .ta (section équipe). */
-.aia-guar-acc .ta { --_hue: var(--logo-magenta); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -32px color-mix(in srgb, var(--_hue) 55%, transparent); }
+   surface, pastille d'icône en dégradé magenta, texte foncé. Contenu groupé en
+   haut (icône → titre → description) pour une hauteur homogène avec le texte,
+   sans grand vide au centre. On neutralise le style « sombre » hérité de .ta. */
+.aia-guar-acc .ta { --_hue: var(--logo-magenta); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); padding: var(--space-5); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 18px 40px -32px color-mix(in srgb, var(--_hue) 55%, transparent); }
 .aia-guar-acc .ta::after { display: none; }
-.ta__ic { position: absolute; top: var(--space-5); left: var(--space-5); z-index: 3; display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 14px; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 74%, #fff), var(--_hue)); box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.35); }
-/* Titre + description TOUJOURS visibles (sans survol), en horizontal. */
-.aia-guar-acc .ta__reveal { opacity: 1; transform: none; }
+.ta__ic { display: inline-flex; align-items: center; justify-content: center; width: 2.9rem; height: 2.9rem; border-radius: 13px; color: #fff; background: linear-gradient(145deg, color-mix(in srgb, var(--_hue) 74%, #fff), var(--_hue)); box-shadow: 0 12px 24px -10px color-mix(in srgb, var(--_hue) 60%, transparent), inset 0 1px 0 rgba(255,255,255,0.35); }
+/* Titre + description TOUJOURS visibles (sans survol), sous l'icône. */
+.aia-guar-acc .ta__reveal { position: static; inset: auto; opacity: 1; transform: none; gap: 6px; }
 .aia-guar-acc .ta__title { color: var(--text); text-shadow: none; font-size: var(--text-lg); line-height: 1.15; }
 .aia-guar-acc .ta__desc { color: var(--text-muted); }
 /* Au survol du bloc, les cartes rétrécies masquent leur texte (pas de
