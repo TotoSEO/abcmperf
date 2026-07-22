@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/site/ScrollReveal";
 
 // Fiche service « Agence de publicité IA » (/agence-pub-ia).
 //
-// ANGLE STRICT : on VEND de la publicité SUR les IA — on diffuse et on gère,
+// ANGLE STRICT : on VEND de la publicité SUR les IA. On diffuse et on gère,
 // POUR le client, ses campagnes publicitaires sur les moteurs d'IA (Perplexity
 // aujourd'hui, ChatGPT / Gemini / Copilot à l'ouverture de leurs formats). Ce
 // n'est PAS de la pub « pilotée / assistée par l'IA », et ce n'est PAS du
@@ -48,7 +48,7 @@ function Glyph({ name, size = 24 }) {
 const EYEBROW = "Publicité sur l'IA";
 const HERO_LEAD = "Les annonces font leur entrée dans les réponses des IA : ChatGPT et l'AI Mode de Google affichent déjà des emplacements sponsorisés sur les questions à forte intention. On y place vos publicités et on gère vos campagnes de A à Z.";
 const WHY_TITLE = "Vos clients ne cherchent plus, ils demandent à l'IA";
-const WHY_1 = "ChatGPT et l'AI Mode de Google affichent désormais des emplacements sponsorisés au cœur de leurs réponses, sur les prompts à forte intention — là précisément où vos futurs clients tranchent. C'est le nouvel espace publicitaire qui progresse le plus vite.";
+const WHY_1 = "ChatGPT et l'AI Mode de Google affichent désormais des emplacements sponsorisés au cœur de leurs réponses, sur les prompts à forte intention, là précisément où vos futurs clients tranchent. C'est le nouvel espace publicitaire qui progresse le plus vite.";
 const WHY_2 = "Et il n'est plus réservé aux grands groupes : pas besoin d'un budget colossal pour s'y inviter. Vos concurrents, eux, peuvent déjà payer pour apparaître dans les conversations qui vous concernent. Les premières marques présentes prennent une place difficile à reprendre : on vous y positionne et on gère tout.";
 const CAPS_TITLE = "Vos publicités au cœur des réponses de l'IA";
 const METHOD_TITLE = "Vos campagnes sur les IA, gérées de A à Z";

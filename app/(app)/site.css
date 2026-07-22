@@ -1251,7 +1251,7 @@
 .pf-sec__title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 1.05rem + 1.3vw, 1.95rem); line-height: 1.1; letter-spacing: var(--tracking-tight); color: var(--text); margin: 0; }
 /* display:flow-root établit un contexte de formatage de bloc : la section
    contient l'encart promo flottant (« Service lié ») même quand le texte à
-   côté est court ou absent — sinon le float dépasse du cadre de la section. */
+   côté est court ou absent, sinon le float dépasse du cadre de la section. */
 .pf-sec__content { position: relative; display: flow-root; }
 .pf-sec__prose > p { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--text); margin: 0 0 var(--space-4); }
 .pf-sec__prose > p:last-child { margin-bottom: 0; }
@@ -1834,7 +1834,7 @@
 .nf-card:hover .nf-card__go { transform: translate(2px, -2px); }
 
 /* ============================================================================
-   Fiche « Agence de publicité IA » (/agence-pub-ia) — variante futuriste,
+   Fiche « Agence de publicité IA » (/agence-pub-ia), variante futuriste,
    orientée conversion. S'appuie sur les tokens et le hero des fiches service
    (.svcd2-*) et ajoute des sections dédiées (.aia-*).
    ========================================================================== */
@@ -1981,8 +1981,8 @@
   .aia-vs__row { grid-template-columns: 1fr; gap: 4px; padding: var(--space-4); }
   .aia-vs__row--head { display: none; }
   .aia-vs__k { font-size: var(--text-base); margin-bottom: 2px; }
-  .aia-vs__ia::before { content: "Sur les IA — "; font-weight: 700; color: var(--logo-green); }
-  .aia-vs__old::before { content: "Classique — "; font-weight: 700; color: var(--text); }
+  .aia-vs__ia::before { content: "Sur les IA : "; font-weight: 700; color: var(--logo-green); }
+  .aia-vs__old::before { content: "Classique : "; font-weight: 700; color: var(--text); }
 }
 
 /* ---- Hero 2 colonnes : accroche + démo animée ---- */
