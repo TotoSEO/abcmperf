@@ -133,12 +133,37 @@ const SERVICE_SEO_TITLES = {
   "personal-branding": "Personal branding pour dirigeants à Strasbourg",
 };
 
+// Meta descriptions dédiées (sinon repli sur tagline + signature). Utile pour
+// les fiches dont l'accroche seule ne fait pas une bonne description SERP.
+const SERVICE_SEO_DESCRIPTIONS = {
+  "agence-pub-ia":
+    "Diffusez vos publicités dans les réponses de ChatGPT, Perplexity et l'AI Mode de Google. ABCM Performances crée et gère vos campagnes sur les IA, à Strasbourg.",
+};
+
 export function serviceMetadata(slug) {
   const s = getService(slug);
   if (!s) return {};
+  const title = SERVICE_SEO_TITLES[s.slug] || s.title;
+  const description =
+    SERVICE_SEO_DESCRIPTIONS[s.slug] ||
+    `${s.tagline} ABCM Performances, agence de communication digitale à Strasbourg depuis 2015.`;
+  const url = `/${slug}/`;
   return {
-    title: SERVICE_SEO_TITLES[s.slug] || s.title,
-    description: `${s.tagline} ABCM Performances, agence de communication digitale à Strasbourg depuis 2015.`,
-    alternates: { canonical: `/${slug}/` },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description,
+      images: [{ url: "/og-default.png", width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-default.png"],
+    },
   };
 }
