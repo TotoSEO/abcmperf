@@ -128,10 +128,10 @@ const STATS = [
 ];
 
 const PLANS = [
-  { name: "Audit & cadrage", price: "Offert", tag: "",
-    pitch: "On étudie votre projet, votre existant et vos objectifs, puis on vous dit franchement si Payload est le bon choix, et pourquoi. Vous repartez avec une vision claire, même sans travailler avec nous.",
+  { name: "Audit & cadrage", price: "Sur devis", tag: "",
+    pitch: "On étudie votre projet, votre existant et vos objectifs, puis on vous dit franchement si Payload est le bon choix, et pourquoi. Vous repartez avec une feuille de route claire et un périmètre chiffré.",
     feats: ["Analyse de votre besoin & de l'existant", "Reco d'architecture & de stack", "Estimation de budget & de planning"],
-    cta: "Demander mon cadrage" },
+    cta: "Demander un cadrage" },
   { name: "Site sur-mesure Payload", price: "Sur devis", tag: "Le plus choisi",
     pitch: "La création complète de votre site : modélisation du back-office, design, développement Next.js, SEO technique, mise en ligne et formation de vos équipes.",
     feats: ["Back-office 100 % sur-mesure", "Front Next.js rapide & optimisé SEO", "Formation & prise en main incluses", "Hébergement & suivi en option"],
@@ -165,7 +165,7 @@ const FAQS = [
   { q: "Payload gère-t-il l'e-commerce ?",
     a: "Oui, en approche headless : Payload gère le catalogue et les contenus, connectés à une solution de paiement et, au besoin, à vos outils (ERP, CRM). C'est particulièrement adapté aux boutiques qui ont des besoins que les plateformes classiques ne couvrent pas." },
   { q: "Combien coûte un site Payload ?",
-    a: "Comme tout développement sur-mesure, le budget dépend de votre projet : nombre de fonctionnalités, complexité du back-office, ampleur du design. On commence toujours par un cadrage gratuit pour établir un devis clair et transparent, sans coût caché." },
+    a: "Comme tout développement sur-mesure, le budget dépend de votre projet : nombre de fonctionnalités, complexité du back-office, ampleur du design. On commence toujours par une phase de cadrage pour établir un devis clair et transparent, sans coût caché." },
 ];
 
 function buildJsonLd(tagline) {
@@ -262,7 +262,7 @@ export function PayloadAgency({ service, h1Override = "", contentHtml = "" }) {
               {HERO_POINTS.map((p) => (<li key={p}><Icon name="check" size={16} /> {p}</li>))}
             </ul>
             <div className="svcd2-hero__actions">
-              <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander mon cadrage gratuit</Button>
+              <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
               <a href="#methode" className="svcd2-hero__ghost">Découvrir la méthode</a>
             </div>
           </div>
@@ -439,7 +439,7 @@ export function PayloadAgency({ service, h1Override = "", contentHtml = "" }) {
               <h2>{CTA_BAND_H}</h2>
               <p>{CTA_BAND_P}</p>
             </div>
-            <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander mon cadrage gratuit</Button>
+            <Button as={Link} href="/contact" variant="secondary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
           </div>
         </div>
       </section>
@@ -550,7 +550,7 @@ export function PayloadAgency({ service, h1Override = "", contentHtml = "" }) {
           <h2 className="svcd2-final__title">{FINAL_H}</h2>
           <p className="svcd2-final__sub">{FINAL_P}</p>
           <div className="svcd2-final__actions">
-            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Réserver mon cadrage gratuit</Button>
+            <Button as={Link} href="/contact" variant="primary" size="lg" iconRight={<Icon name="arrow-right" size={18} />}>Demander un devis</Button>
             <a className="svcd2-final__tel" href={`tel:${ABCM_INFO.phoneHref}`}><Icon name="phone" size={16} /> {ABCM_INFO.phone}</a>
           </div>
         </div>
@@ -558,7 +558,7 @@ export function PayloadAgency({ service, h1Override = "", contentHtml = "" }) {
 
       {/* ---- CTA collant (mobile) ---- */}
       <div className="aia-sticky">
-        <Link href="/contact" className="aia-sticky__btn">Cadrage gratuit <Icon name="arrow-right" size={16} /></Link>
+        <Link href="/contact" className="aia-sticky__btn">Demander un devis <Icon name="arrow-right" size={16} /></Link>
         <a href={`tel:${ABCM_INFO.phoneHref}`} className="aia-sticky__tel" aria-label="Nous appeler"><Icon name="phone" size={18} /></a>
       </div>
     </div>
