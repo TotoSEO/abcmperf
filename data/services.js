@@ -42,11 +42,11 @@ export const ABCM_SERVICES = [
     name: "Agence Payload",
     title: "Agence Payload CMS à Strasbourg",
     tagline: "Sites et back-offices sur-mesure propulsés par Payload CMS et Next.js.",
-    // Page « landing » ciblée sur la requête « agence Payload » : gabarit dédié
-    // (PayloadAgency), volontairement hors du menu de navigation. Reste dans le
-    // sitemap, les listings et le cross-sell du pôle Web. Pas de formation liée
-    // (une formation WordPress serait contradictoire sur une fiche Payload).
-    hideFromNav: true },
+    // Fiche dédiée (gabarit PayloadAgency) ciblée sur la requête « agence
+    // Payload », affichée dans le menu et la grille d'accueil au sein du pôle
+    // Web. Pas de formation liée (une formation WordPress serait contradictoire
+    // sur une fiche Payload).
+  },
   // -------------------------------------------------------- RÉFÉRENCEMENT
   { slug: "referencement-strasbourg", group: "acquisition", hue: "green", icon: "search",
     name: "Référencement SEO",
