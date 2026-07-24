@@ -1515,15 +1515,21 @@
 .clients2__rtxt { font-size: var(--text-sm); color: var(--text-muted); }
 .clients2__rtxt b { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); color: var(--text); }
 .clients2__label { font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-subtle); margin-top: 3px; }
-.clients2__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: clamp(var(--space-4), 2.5vw, var(--space-8)); }
-.clients2__logo { display: inline-flex; align-items: center; }
+/* Carrousel de logos : viewport masqué aux bords + piste animée en boucle.
+   Chaque logo porte sa marge droite (plutôt qu'un gap flex) pour que le
+   translateX(-50%) tombe pile sur une série, sans saut. */
+.clients2__marquee { min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.clients2__track { display: flex; align-items: center; width: max-content; animation: clients-marq 30s linear infinite; }
+.clients2__marquee:hover .clients2__track { animation-play-state: paused; }
+.clients2__logo { flex: none; display: inline-flex; align-items: center; margin-right: clamp(var(--space-6), 3.5vw, var(--space-10)); }
 .clients2__logo img { height: clamp(34px, 3.6vw, 44px); width: auto; max-width: 150px; object-fit: contain; filter: grayscale(1); opacity: 0.66; transition: filter var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
 .clients2__logo:hover img { filter: none; opacity: 1; }
+@keyframes clients-marq { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .clients2__track { animation: none; flex-wrap: wrap; } }
 @media (max-width: 780px) {
   .clients2__card { grid-template-columns: 1fr; gap: var(--space-5); }
   .clients2__intro { flex-direction: row; align-items: center; gap: var(--space-3); padding-right: 0; padding-bottom: var(--space-5); border-right: none; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
   .clients2__label { margin-top: 0; margin-left: auto; }
-  .clients2__row { justify-content: flex-start; gap: var(--space-6); }
 }
 
 /* ---- Citation machine à écrire : profondeur + ronds ---- */

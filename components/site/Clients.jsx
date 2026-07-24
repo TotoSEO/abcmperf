@@ -23,12 +23,16 @@ export function Clients() {
             <span className="clients2__rtxt"><b>{ABCM_INFO.googleStars},0</b> sur {ABCM_INFO.googleReviews} avis Google</span>
             <span className="clients2__label">Ils nous font confiance</span>
           </div>
-          <div className="clients2__row">
-            {LOGOS.map((c) => (
-              <span className="clients2__logo" key={c.slug}>
-                <img src={assetPath(`clients/${c.slug}.png`)} alt={c.name} loading="lazy" />
-              </span>
-            ))}
+          <div className="clients2__marquee">
+            {/* Logos dupliqués : la 2e série (aria-hidden) assure une boucle
+                continue sans coupure. */}
+            <div className="clients2__track">
+              {[...LOGOS, ...LOGOS].map((c, i) => (
+                <span className="clients2__logo" key={i} aria-hidden={i >= LOGOS.length ? "true" : undefined}>
+                  <img src={assetPath(`clients/${c.slug}.png`)} alt={i >= LOGOS.length ? "" : c.name} loading="lazy" />
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
