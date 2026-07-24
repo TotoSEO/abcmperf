@@ -15,7 +15,7 @@ export const SERVICE_GROUPS = [
     services: ["referencement-strasbourg", "referencement-ia-geo", "agence-sea", "agence-pub-ia", "community-management"] },
   { id: "web", label: "Web & e-commerce", eyebrow: "Sites & boutiques en ligne", icon: "monitor", hue: "orange",
     intro: "Des sites et boutiques sur mesure, rapides et pensés pour convertir.",
-    services: ["agence-web-strasbourg", "creation-site-ecommerce", "maintenance-site-web"] },
+    services: ["agence-web-strasbourg", "creation-site-ecommerce", "maintenance-site-web", "agence-payload"] },
   { id: "marque", label: "Marque & influence", eyebrow: "Contenus, vidéo & personal branding", icon: "megaphone", hue: "magenta",
     intro: "Faites rayonner votre marque : vidéo, marque employeur et personal branding.",
     services: ["video-reseaux-sociaux", "videos-marque-employeur", "personal-branding"] },
@@ -38,6 +38,15 @@ export const ABCM_SERVICES = [
     title: "Maintenance et hébergement de site web à Strasbourg",
     tagline: "Confiez-nous la maintenance de votre site en toute tranquillité.",
     relatedFormation: { url: "/formation-wordpress/", label: "Formation WordPress" } },
+  { slug: "agence-payload", group: "web", hue: "blue", icon: "monitor",
+    name: "Agence Payload",
+    title: "Agence Payload CMS à Strasbourg",
+    tagline: "Sites et back-offices sur-mesure propulsés par Payload CMS et Next.js.",
+    // Page « landing » ciblée sur la requête « agence Payload » : gabarit dédié
+    // (PayloadAgency), volontairement hors du menu de navigation. Reste dans le
+    // sitemap, les listings et le cross-sell du pôle Web. Pas de formation liée
+    // (une formation WordPress serait contradictoire sur une fiche Payload).
+    hideFromNav: true },
   // -------------------------------------------------------- RÉFÉRENCEMENT
   { slug: "referencement-strasbourg", group: "acquisition", hue: "green", icon: "search",
     name: "Référencement SEO",
@@ -129,6 +138,7 @@ const SERVICE_SEO_TITLES = {
   "videos-marque-employeur": "Vidéos marque employeur à Strasbourg",
   "agence-sea": "Campagnes Google Ads & SEA à Strasbourg",
   "agence-pub-ia": "Agence de publicité IA à Strasbourg",
+  "agence-payload": "Agence Payload | Sites sur-mesure & back-office",
   "marketing-externalise": "Direction marketing externalisée à Strasbourg",
   "personal-branding": "Personal branding pour dirigeants à Strasbourg",
 };
@@ -138,6 +148,8 @@ const SERVICE_SEO_TITLES = {
 const SERVICE_SEO_DESCRIPTIONS = {
   "agence-pub-ia":
     "Diffusez vos publicités dans les réponses de ChatGPT, Perplexity et l'AI Mode de Google. ABCM Performances crée et gère vos campagnes sur les IA, à Strasbourg.",
+  "agence-payload":
+    "Agence Payload CMS à Strasbourg : ABCM conçoit des sites et back-offices sur-mesure avec Payload et Next.js. Rapides, sécurisés et 100% adaptés à votre métier.",
 };
 
 export function serviceMetadata(slug) {
