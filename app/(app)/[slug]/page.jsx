@@ -2,6 +2,7 @@ import { notFound, redirect, permanentRedirect } from "next/navigation";
 import { FormationDetail } from "@/components/site/FormationDetail";
 import { ServiceDetail } from "@/components/site/ServiceDetail";
 import { AiAdsAgency } from "@/components/site/AiAdsAgency";
+import { PayloadAgency } from "@/components/site/PayloadAgency";
 import { BlogArticle } from "@/components/site/BlogArticle";
 import { ABCM_INFO, getFormation, rootFormationSlugs, formationMetadata } from "@/data/formations";
 import { getService, serviceMetadata, ABCM_SERVICES } from "@/data/services";
@@ -95,6 +96,11 @@ export default async function RootSlugPage({ params }) {
     // orienté conversion (le reste des services garde le gabarit standard).
     if (slug === "agence-pub-ia") {
       return <AiAdsAgency service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
+    }
+    // Fiche « Agence Payload » : gabarit dédié (landing SEO « agence Payload »),
+    // même ADN visuel que la landing IA en accent bleu, avec mockup back-office.
+    if (slug === "agence-payload") {
+      return <PayloadAgency service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
     }
     return <ServiceDetail service={service} h1Override={o?.h1 || ""} contentHtml={o?.contentHtml || ""} />;
   }

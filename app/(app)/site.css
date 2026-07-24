@@ -2048,3 +2048,55 @@
   .aia-demo__q span::after { content: ""; }
   .aia-grad { background-position: 0 0; }
 }
+
+/* ============================================================
+   SERVICE — landing « Agence Payload » (.payl)
+   Réutilise l'ADN .svcd2-* et la grille .aia-* (en accent bleu),
+   et ajoute le mockup de back-office affiché dans le hero.
+   ============================================================ */
+.payl { --_hue: var(--logo-blue); }
+/* Cartes « engagements » : accent bleu (sinon magenta hérité de .aia). */
+.payl .aia-guar-acc .ta { --_hue: var(--logo-blue); }
+
+/* ---- Mockup back-office Payload (colonne droite du hero) ---- */
+.payl-admin { position: relative; overflow: hidden; border-radius: var(--radius-2xl); background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(10px); box-shadow: 0 40px 90px -40px rgba(0,0,0,0.7); }
+.payl-admin::before { content: ""; position: absolute; inset: -40% 40% auto -20%; height: 80%; z-index: 0; pointer-events: none; filter: blur(60px); opacity: 0.5; background: radial-gradient(closest-side, color-mix(in srgb, var(--_hue) 80%, transparent), transparent), radial-gradient(closest-side, var(--logo-green), transparent) 70% 30%; }
+.payl-admin > * { position: relative; z-index: 1; }
+
+/* Barre « navigateur » */
+.payl-admin__bar { display: flex; align-items: center; gap: 0.7em; padding: 0.7em 0.9em; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.payl-admin__win { display: inline-flex; gap: 5px; flex: none; }
+.payl-admin__win i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.28); }
+.payl-admin__url { display: inline-flex; align-items: center; gap: 0.4em; min-width: 0; font-family: var(--font-mono); font-size: var(--text-3xs); color: var(--neutral-300); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.payl-admin__url svg { color: var(--_hue); flex: none; }
+
+/* Corps : barre latérale des collections + panneau d'édition */
+.payl-admin__body { display: grid; grid-template-columns: 8.5rem 1fr; min-height: 15rem; }
+@media (max-width: 380px) { .payl-admin__body { grid-template-columns: 6.6rem 1fr; } }
+.payl-admin__side { display: flex; flex-direction: column; gap: 0.25em; padding: 0.9em 0.7em; border-right: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.16); }
+.payl-admin__brand { display: inline-flex; align-items: center; gap: 0.45em; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: #fff; margin-bottom: 0.4em; }
+.payl-admin__brand svg { color: var(--_hue); }
+.payl-admin__nav { font-size: var(--text-2xs); color: var(--neutral-300); padding: 0.4em 0.6em; border-radius: 8px; }
+.payl-admin__nav--on { color: #fff; background: color-mix(in srgb, var(--_hue) 42%, transparent); font-weight: 600; }
+
+/* Panneau principal : formulaire d'édition d'une page */
+.payl-admin__main { display: flex; flex-direction: column; gap: 0.5em; padding: 0.9em 1em; }
+.payl-admin__row--top { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; margin-bottom: 0.2em; }
+.payl-admin__title { font-family: var(--font-display); font-weight: 700; font-size: var(--text-base); color: #fff; }
+.payl-admin__status { display: inline-flex; align-items: center; gap: 0.4em; flex: none; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: 700; color: var(--logo-green); }
+.payl-admin__status i { width: 7px; height: 7px; border-radius: 50%; background: var(--logo-green); box-shadow: 0 0 0 0 color-mix(in srgb, var(--logo-green) 70%, transparent); animation: aia-pulse 2s ease-out infinite; }
+.payl-admin__label { font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-400); margin-top: 0.3em; }
+.payl-admin__field { display: block; padding: 0.6em 0.7em; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); font-size: var(--text-2xs); color: var(--neutral-100); }
+.payl-admin__field--lg { display: flex; flex-direction: column; gap: 6px; padding-block: 0.75em; }
+.payl-admin__field--lg i { height: 7px; border-radius: 999px; background: rgba(255,255,255,0.16); }
+.payl-admin__field--lg i:nth-child(1) { width: 92%; }
+.payl-admin__field--lg i:nth-child(2) { width: 78%; }
+.payl-admin__field--lg i:nth-child(3) { width: 45%; }
+.payl-admin__foot { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; margin-top: auto; padding-top: 0.7em; }
+.payl-admin__preview { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: var(--text-3xs); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--neutral-300); }
+.payl-admin__preview svg { color: var(--logo-yellow); }
+.payl-admin__save { font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xs); color: #fff; padding: 0.5em 0.9em; border-radius: var(--radius-pill); background: linear-gradient(135deg, var(--_hue), color-mix(in srgb, var(--_hue) 55%, var(--logo-green))); box-shadow: 0 10px 22px -12px color-mix(in srgb, var(--_hue) 70%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .payl-admin__status i { animation: none !important; }
+}
